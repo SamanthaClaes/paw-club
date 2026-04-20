@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DayCareController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::livewire('/', 'pages::home')->name('home');
+Route::livewire('/daycare', 'pages::daycare')->name('daycare.index');
+Route::livewire('/petsitter', 'pages::petsitter')->name('petsitter.index');
