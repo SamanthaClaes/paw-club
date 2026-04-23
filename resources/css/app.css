@@ -7,6 +7,11 @@
 
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
-    --color-element : #C0E2E5;
+    'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-element: #C0E2E5;
+    --color-text: #000633;
+    --color-card-pink: #FF7176;
+    --color-card-orange: #FF8000;
+    --color-card-blue: #1BA0AC;
+    --color-card-green: #88C9B1;
 }

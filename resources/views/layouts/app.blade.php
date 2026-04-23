@@ -14,10 +14,12 @@
 <header>
     <x-nav/>
 </header>
-<main>
+<main class="mt-20 mb-20">
     {{ $slot }}
 </main>
 
 @livewireScripts
 </body>
+<x-footer/>
 </html>
+
