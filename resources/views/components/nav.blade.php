@@ -1,7 +1,9 @@
-<nav class="bg-element p-8 text-text">
+<nav class="bg-element p-2 text-text">
     <ul class="flex gap-8 justify-around items-center ">
         <li>
-            <a href="{{ route('home')}}">Logo</a>
+            <a href="{{ route('home')}}">
+                <x-svg.logo/>
+            </a>
         </li>
         <li>
             <a href="{{ route('daycare.index') }}" class="hover:underline">La garderie</a>

@@ -1,5 +1,5 @@
-<footer class="bg-element">
-    <nav class="flex gap-8 justify-center p-8">
+<footer class="bg-element px-8 py-10">
+    <nav class="grid grid-cols-5 gap-8 items-start">
         <div>
             <a href="">
                 <x-svg.logo/>
@@ -52,18 +52,16 @@
                 <a href="">Adresse de la garderie</a>
             </li>
         </ul>
-        <ul class="flex gap-4">
-            <li>
-                <a href="">
-                   <x-svg.facebook/>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <x-svg.instagram/>
-                </a>
-            </li>
-        </ul>
-        <span class="font-bold"> 2026 Paw Club</span>
+        <div class="flex gap-4 items-start">
+            <div>
+                <x-svg.facebook/>
+            </div>
+            <div >
+                <x-svg.instagram/>
+            </div>
+        </div>
     </nav>
+    <div class="mt-10 border-t pt-4 flex justify-between items-center text-sm">
+        <span> © 2026 Paw Club</span>
+    </div>
 </footer>
