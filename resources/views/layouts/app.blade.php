@@ -14,7 +14,7 @@
 <header>
     <x-nav/>
 </header>
-<main class="mt-20 mb-20">
+<main>
     {{ $slot }}
 </main>
 
