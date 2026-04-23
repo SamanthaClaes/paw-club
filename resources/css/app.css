@@ -1,17 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
-
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Quicksand', ui-sans-serif, system-ui, sans-serif;
     --color-element: #C0E2E5;
     --color-text: #000633;
     --color-card-pink: #FF7176;
     --color-card-orange: #FF8000;
     --color-card-blue: #1BA0AC;
     --color-card-green: #88C9B1;
+    --color-hover: #6FBFA4;
 }
