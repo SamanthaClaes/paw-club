@@ -6,44 +6,44 @@
             </a>
         </div>
         <ul>
-            <li class="font-bold uppercase text-[16px]">
+            <li class="font-bold uppercase text-sm">
                 Services
             </li>
             <li>
-                <a href="{{ route('daycare.index') }}" class="hover:underline text-[12px]">Notre garderie (chien uniquement)
+                <a href="{{ route('daycare.index') }}" class="hover:underline text-xs">Notre garderie (chien uniquement)
                 </a>
             </li>
             <li>
-                <a href="#" class=" text-[12px]">Réserver un PetSitter</a>
+                <a href="#" class=" text-xs">Réserver un PetSitter</a>
             </li>
             <li>
-                <a href="">
+                <a href="" class="text-xs">
                     Contact
                 </a>
             </li>
         </ul>
         <ul>
-            <li class="font-bold uppercase text-[16px]">Informations</li>
+            <li class="font-bold uppercase text-sm">Informations</li>
             <li>
-                <a href="" class=" text-[12px]">À propos</a>
+                <a href="" class=" text-xs">À propos</a>
             </li>
             <li>
-                <a href="" class=" text-[12px]">Conditions générales</a>
+                <a href="" class=" text-xs">Conditions générales</a>
             </li>
             <li>
-                <a href="" class=" text-[12px]">Politique de confidentialité</a>
+                <a href="" class=" text-xs">Politique de confidentialité</a>
             </li>
         </ul>
         <ul>
             <li class="font-bold uppercase text-[16px]">Contact</li>
             <li>
-                <a href="" class=" text-[12px]">Email</a>
+                <a href="" class=" text-xs">Email</a>
             </li>
             <li>
-                <a href="" class=" text-[12px]">Téléphone</a>
+                <a href="" class=" text-xs">Téléphone</a>
             </li>
             <li>
-                <a href="" class=" text-[12px]">Adresse de la garderie</a>
+                <a href="" class=" text-xs">Adresse de la garderie</a>
             </li>
         </ul>
         <div class="flex gap-4 items-start">

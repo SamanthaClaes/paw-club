@@ -18,7 +18,8 @@
 </main>
 
 @livewireScripts
-</body>
 <x-footer/>
+</body>
+
 </html>
 
