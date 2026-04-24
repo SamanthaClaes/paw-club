@@ -49,8 +49,8 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
                          width="557" class="relative top-40 left-280">
                 </div>
             </div>
-            <div class="flex justify-center bg-card-green hover:bg-hover p-5 w-1/2 mx-auto rounded-lg mb-6">
-                <a href="#" class="text-text text-2xl font-bold uppercase">Découvrir nos petsitters</a>
+            <div class="flex justify-center">
+                <a href="#" class="text-cta text-2xl font-bold uppercase bg-card-green hover:bg-hover hover:text-white p-5 w-1/2 rounded-lg mb-6 text-center">Découvrir nos petsitters</a>
             </div>
         </div>
     </section>
@@ -68,9 +68,8 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
                         leurs habitudes. Notre objectif est de leur offrir un environnement rassurant et stimulant, afin
                         qu’ils puissent s’épanouir pleinement pendant votre absence.</p>
                 </div>
-                <div
-                    class="flex  bg-card-orange p-5 w-1/2 mx-auto rounded-lg mb-20 hover:bg-hover-orange cursor-pointer">
-                    <a href="" class="text-text text-2xl font-bold uppercase  hover:text-white">Réserver une garde</a>
+                <div class="flex">
+                    <a href="" class="text-text text-2xl font-bold uppercase bg-card-orange p-5 w-1/2 mx-auto rounded-lg mb-20 hover:bg-hover-orange hover:text-white cursor-pointer">Réserver une garde</a>
                 </div>
                 <div class="absolute">
                     <img src="{{ asset('svg/icons 1.svg') }}" alt="" class="relative bottom-45 left-135">
