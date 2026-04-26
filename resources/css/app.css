@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
@@ -15,5 +16,6 @@
     --color-card-green: #88C9B1;
     --color-hover: #6FBFA4;
     --color-hover-orange: #E67300;
-    --color-cta: #003B00
+    --color-cta: #003B00;
+    --color-text-orange: #4A1F00;
 }

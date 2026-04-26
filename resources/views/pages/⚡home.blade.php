@@ -77,9 +77,9 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
         <h2 class="text-center text-2xl font-extrabold text-text lg:text-5xl lg:mb-6">Nos services</h2>
         <div class="px-6 py-6 lg:flex gap-8">
             <div class="border-5 mx-auto max-w-6xl border-card-orange rounded-lg sm:px-6 lg:px-8 py-8">
-                <h3 class="mt-4 mb-4 lg:mt-8 lg:mb-8 text-center lg:text-4xl text-text font-bold">Notre garderie</h3>
+                <h3 class="text-lg mt-4 mb-4 lg:mt-8 lg:mb-8 text-center lg:text-4xl text-text font-bold">Notre garderie</h3>
                 <div>
-                    <p class="text-lg leading-8 line-clamp-7 text-text px-10 md:text-text  mb-5 text-center lg:text-left lg:line-clamp-none">
+                    <p class="text-sm leading-8 line-clamp-7 text-text px-10 md:text-text  mb-5 text-center lg:text-left lg:line-clamp-none">
                         Dans notre garderie, vos chiens sont accueillis
                         dans un espace
                         sécurisé et encadré, où ils profitent d’attention, de jeux et de moments de socialisation tout
@@ -88,10 +88,8 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
                         leurs habitudes. Notre objectif est de leur offrir un environnement rassurant et stimulant, afin
                         qu’ils puissent s’épanouir pleinement pendant votre absence.</p>
                 </div>
-                <div class="flex">
-                    <a href=""
-                       class="text-text text-2xl font-bold uppercase bg-card-orange p-5 w-1/2 mx-auto rounded-lg mb-20 hover:bg-hover-orange hover:text-white cursor-pointer">Réserver
-                        une garde</a>
+                <div class="flex justify-center">
+                    <a href="#" class=" text-text-orange  font-bold uppercase bg-card-orange hover:bg-hover-orange hover:text-white p-5 lg:w-1/2 rounded-lg mb-6  text-center">Découvrir nos petsitters</a>
                 </div>
              {{--   <div class="absolute">
                     <img src="{{ asset('svg/icons 1.svg') }}" alt="" class="relative bottom-45 left-135">
