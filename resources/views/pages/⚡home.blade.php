@@ -15,14 +15,14 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
 ?>
 
 <div>
-    <section class="h-[20vh] relative w-full md:h-[40vh] overflow-hidden">
+    <section class="h-[20vh] relative w-full lg:h-[50vh] overflow-hidden">
         <img src="{{ asset('img/Hero_home.jpeg') }}" alt="pleins de chiens en balade"
              class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/60"></div>
         <div class="absolute inset-0 flex flex-col justify-center items-center gap-4">
             <h1 class="
                text-white text-2xl md:text-6xl font-bold uppercase z-10">Paw club</h1>
-            <span class=" text-sm text-center text-white md:text-3xl z-10">Un service de garde fiable et attentionné pour accompagner votre animal en toute sérénité.</span>
+            <span class=" text-sm text-center text-white md:text-3xl z-10 w-1/2">Un service de garde fiable et attentionné pour accompagner votre animal en toute sérénité.</span>
         </div>
     </section>
     <section class="px-6 py-12">
@@ -160,7 +160,7 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
         </div>
     </section>
     <section>
-        <h2 class="text-text text-2xl sm:text-3xl uppercase font-bold mb-3 text-center mt-30">Nous contacter sur le formulaire ici</h2>
+        <h2 class="text-text text-2xl sm:text-3xl uppercase font-bold mb-3 text-center mt-30">Nous contacter</h2>
         <span
             class="text-center block mb-6">Une question ? Notre équipe est là pour vous répondre et vous conseiller
         </span>
