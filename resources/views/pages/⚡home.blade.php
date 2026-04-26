@@ -154,10 +154,35 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
                             Réserver un petsitter
                         </a>
                     </div>
-
                 </div>
 
             </div>
+        </div>
+    </section>
+    <section>
+        <h2 class="text-text text-2xl sm:text-3xl uppercase font-bold mb-3 text-center mt-30">Nous contacter sur le formulaire ici</h2>
+        <span
+            class="text-center block mb-6">Une question ? Notre équipe est là pour vous répondre et vous conseiller
+        </span>
+        <div class="flex justify-center">
+            <form action="" class="w-8/10">
+                <div class="flex gap-6 mt-6 justify-between">
+                    <x-input-label type="text" label="Prénom *" name="first_name" placeholder="Nicole" required/>
+                    <x-input-label type="text" label="Nom de famille *" name="last_name" placeholder="Kidman" required/>
+                </div>
+                <div class="flex gap-6 mt-6 justify-between">
+                    <x-input-label type="email" label="Email *" name="email" placeholder="nk@mail.com" required/>
+                    <x-input-label type="tel" label="Téléphone" name="phone"/>
+                </div>
+                <div class="mt-6 mb-6">
+                    <label for="msg" class="text-text font-bold uppercase">Message</label>
+                    <textarea name="msg" id="" cols="30" rows="10"
+                              class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background"></textarea>
+                </div>
+                <div class="mb-20">
+                    <button type="submit" class="w-full bg-element mb-6 rounded-lg text-text uppercase font-bold p-5 hover:bg-hover-element">Envoyer votre message</button>
+                </div>
+            </form>
         </div>
     </section>
 </div>
