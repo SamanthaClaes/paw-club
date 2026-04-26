@@ -9,16 +9,19 @@ new class extends Component {
 ?>
 
 <div>
-    <section>
-        <div>
-            <div>
-                <h1>{{ $title }}</h1>
-                <span>La garderie qui fait sentir vos compagnons comme à la maison, même en votre absence</span>
-                <div c>
-                    <a  href="#">Réserver une garde</a>
+    <section class="mt-20">
+        <div class="flex flex-row-reverse gap-8">
+            <img src="{{ asset('img/hero_image.jpeg') }}" alt="personne assise qui jouent avec des chiens de petites tailles"
+                     class="w-full  object-cover rounded-lg">
+            <div class="border-5 border-element rounded-lg">
+                <h1 class=" ">{{ $title }}</h1>
+                <span class="">
+                    La garderie qui fait sentir vos compagnons comme à la maison, même en votre absence
+                </span>
+                <div>
+                    <a href="#">Réserver une garde</a>
                 </div>
             </div>
-            <img src="{{ asset('img/hero_image.jpeg') }}"  alt="test">
         </div>
     </section>
     <section>
