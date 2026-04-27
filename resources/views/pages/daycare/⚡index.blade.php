@@ -94,4 +94,28 @@ class extends Component {
             </div>
         </div>
     </section>
+    <section>
+        <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold mt-10 lg:mt-20 mb-6">Vos compagnons en
+            vacances</h2>
+        <div class="grid lg:grid-cols-2 justify-center justify-items-center gap-8 mb-10 lg:mb-20">
+            <div>
+                <img src="{{ asset('img/food_dog.jpeg')}}" alt="homme remplissant une gamelle de croquette" height="308" width="552"  class=" aspect-3/2 object-cover rounded-lg">
+            </div>
+            <div>
+                <img src="{{ asset('img/playground.jpeg') }}" alt="chiens en train de jouer à la plaine de jeux pour chien" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg">
+            </div>
+            <div>
+                <img src="{{ asset('img/woman_dog.jpeg') }}" alt="femme en train de jouer avec un chien dans un enclos" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg">
+            </div>
+            <div>
+                <img src="{{ asset('img/run_dogs.jpeg') }}" alt="chiens en train de courir dans un vaste terrain d’herbe" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg">
+            </div>
+            <div>
+                <img src="{{ asset('img/dogs.jpeg') }}" alt="chiens coucher sur des gros coussins" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg">
+            </div>
+            <div>
+                <img src="{{ asset('img/playground_dogs2.jpeg') }}" alt="chiens en train de jouer à la plaine de jeux pour chien" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg">
+            </div>
+        </div>
+    </section>
 </div>
