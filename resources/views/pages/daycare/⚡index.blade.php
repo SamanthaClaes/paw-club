@@ -35,6 +35,19 @@ new class extends Component {
         </div>
     </section>
     <section>
-        <h2>Comment se passent les séjours ? </h2>
+        <h2 class="uppercase text-text text-lg lg:text-5xl text-center font-bold lg:mt-20 mb-6">Comment se passent les séjours ? </h2>
+        <div class="grid lg:grid-cols-2 justify-center justify-items-center gap-8" >
+            <div class="flex flex-col justify-center items-center bg-card-pink ml-12 mr-12 lg:ml-25  rounded-lg ">
+                <div class="mt-5 lg:mb-3">
+                    <x-svg.icons.icons1/>
+                </div>
+                <div>
+                   <p class="text-center text-sm/8 mb-5 lg:mb-20 pl-5 pr-5 pt-2 font-medium text-text-pink ">PawClub met à disposition un espace vert sécurisé où les chiens peuvent se dépenser et profiter des beaux jours.</p>
+                </div>
+            </div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
     </section>
 </div>
