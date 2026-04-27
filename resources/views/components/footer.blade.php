@@ -48,10 +48,10 @@
         </ul>
         <div class="flex gap-4 items-start">
             <div>
-                <x-svg.facebook/>
+                <x-svg.icons.facebook/>
             </div>
             <div >
-                <x-svg.instagram/>
+                <x-svg.icons.instagram/>
             </div>
         </div>
     </nav>
