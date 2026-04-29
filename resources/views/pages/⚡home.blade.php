@@ -167,12 +167,12 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
         <div class="flex justify-center">
             <form action="" class="w-8/10">
                 <div class="flex gap-6 mt-6 justify-between">
-                    <x-input-label type="text" label="Prénom *" name="first_name" placeholder="Nicole" required/>
-                    <x-input-label type="text" label="Nom de famille *" name="last_name" placeholder="Kidman" required/>
+                    <x-forms.input-label type="text" label="Prénom *" name="first_name" placeholder="Nicole" required/>
+                    <x-forms.input-label type="text" label="Nom de famille *" name="last_name" placeholder="Kidman" required/>
                 </div>
                 <div class="flex gap-6 mt-6 justify-between">
-                    <x-input-label type="email" label="Email *" name="email" placeholder="nk@mail.com" required/>
-                    <x-input-label type="tel" label="Téléphone" name="phone"/>
+                    <x-forms.input-label type="email" label="Email *" name="email" placeholder="nk@mail.com" required/>
+                    <x-forms.input-label type="tel" label="Téléphone" name="phone"/>
                 </div>
                 <div class="mt-6 mb-6">
                     <label for="msg" class="text-text font-bold uppercase">Message</label>
