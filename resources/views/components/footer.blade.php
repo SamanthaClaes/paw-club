@@ -1,61 +1,43 @@
-<footer class="bg-element px-8 py-6">
-    <nav class="grid grid-cols-5 gap-6 items-start">
-        <div>
-            <a href="">
+<footer class="bg-element px-6 py-8">
+
+    <nav class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 items-start">
+        <div class="sm:col-span-2 lg:col-span-1 justify-items-center">
+            <a href="{{ route('home') }}">
                 <x-svg.logo/>
             </a>
         </div>
-        <ul>
-            <li class="font-bold uppercase text-sm">
-                Services
-            </li>
+        <ul class="space-y-2">
+            <li class="font-bold uppercase text-sm">Services</li>
             <li>
-                <a href="{{ route('daycare.index') }}" class="hover:underline text-xs">Notre garderie (chien uniquement)
+                <a href="{{ route('daycare.index') }}" class="hover:underline text-xs">
+                    Notre garderie (chien uniquement)
                 </a>
             </li>
             <li>
-                <a href="#" class=" text-xs">Réserver un PetSitter</a>
+                <a href="#" class="text-xs">Réserver un PetSitter</a>
             </li>
             <li>
-                <a href="" class="text-xs">
-                    Contact
-                </a>
+                <a href="" class="text-xs">Contact</a>
             </li>
         </ul>
-        <ul>
+        <ul class="space-y-2">
             <li class="font-bold uppercase text-sm">Informations</li>
-            <li>
-                <a href="" class=" text-xs">À propos</a>
-            </li>
-            <li>
-                <a href="" class=" text-xs">Conditions générales</a>
-            </li>
-            <li>
-                <a href="" class=" text-xs">Politique de confidentialité</a>
-            </li>
+            <li><a href="" class="text-xs">À propos</a></li>
+            <li><a href="" class="text-xs">Conditions générales</a></li>
+            <li><a href="" class="text-xs">Politique de confidentialité</a></li>
         </ul>
-        <ul>
-            <li class="font-bold uppercase text-[16px]">Contact</li>
-            <li>
-                <a href="" class=" text-xs">Email</a>
-            </li>
-            <li>
-                <a href="" class=" text-xs">Téléphone</a>
-            </li>
-            <li>
-                <a href="" class=" text-xs">Adresse de la garderie</a>
-            </li>
+        <ul class="space-y-2">
+            <li class="font-bold uppercase text-sm">Contact</li>
+            <li><a href="" class="text-xs">Email</a></li>
+            <li><a href="" class="text-xs">Téléphone</a></li>
+            <li><a href="" class="text-xs">Adresse de la garderie</a></li>
         </ul>
-        <div class="flex gap-4 items-start">
-            <div>
-                <x-svg.icons.facebook/>
-            </div>
-            <div >
-                <x-svg.icons.instagram/>
-            </div>
+        <div class="flex gap-4 items-center lg:items-start">
+            <div><x-svg.icons.facebook/></div>
+            <div> <x-svg.icons.instagram/></div>
         </div>
     </nav>
-    <div class="mt-6 border-t pt-4 flex justify-between items-center text-sm">
-        <span> © 2026 Paw Club</span>
+    <div class="mt-8 border-t pt-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm">
+        <span>© 2026 Paw Club</span>
     </div>
 </footer>
