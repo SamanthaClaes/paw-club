@@ -165,7 +165,7 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
             class="text-center block mb-6">Une question ? Notre équipe est là pour vous répondre et vous conseiller
         </span>
         <div class="flex justify-center">
-            <form action="" class="w-8/10">
+            <form action="" method="GET" class="w-8/10">
                 <div class="flex gap-6 mt-6 justify-between">
                     <x-forms.input-label type="text" label="Prénom *" name="first_name" placeholder="Nicole" required/>
                     <x-forms.input-label type="text" label="Nom de famille *" name="last_name" placeholder="Kidman" required/>

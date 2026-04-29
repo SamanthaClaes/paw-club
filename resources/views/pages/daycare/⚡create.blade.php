@@ -9,12 +9,18 @@ new class extends Component {
 
 <div>
     <section>
-        <h1 class=" text-text text-2xl text-center font-bold mb-4 mt-4 lg:text-3xl">Envoyez une demande de garde pour notre garderie</h1>
+        <h1 class=" text-text text-2xl text-center font-bold mb-4 mt-4 lg:text-3xl">Envoyez une demande de garde pour
+            notre garderie</h1>
         <span class="block text-text text-sm text-center mb-5 lg:m-10">En remplissant ce formulaire, vous envoyez une demande de garde à notre garderie, une réponse vous sera envoyée dans les plus brefs délais.
 N’oubliez pas que notre garderie ne s’occupe que des chiens</span>
     </section>
-    <form action="" method="get">
+    <div class="flex justify-center gap-6 mt-6">
+    <form action="" method="GET" class="w-8/10">
+        <div class="lg:flex gap-6 mb-6 justify-between">
             <x-forms.select-option/>
-        <textarea name="need" id="need" cols="30" rows="10">Besoins spécifiques de l’animal</textarea>
+        </div>
+        <label for="need_msg">Besoins spécifiques de l’animal</label>
+        <textarea name="need_msg" id="need_msg" cols="30" rows="10" class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none mb-6 lg:mb-20"></textarea>
     </form>
+    </div>
 </div>
