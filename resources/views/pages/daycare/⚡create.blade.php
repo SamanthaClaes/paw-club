@@ -20,7 +20,13 @@ N’oubliez pas que notre garderie ne s’occupe que des chiens</span>
             <x-forms.select-option/>
         </div>
         <label for="need_msg">Besoins spécifiques de l’animal</label>
-        <textarea name="need_msg" id="need_msg" cols="30" rows="10" class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none mb-6 lg:mb-20"></textarea>
+        <textarea name="need_msg" id="need_msg" cols="30" rows="10" class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none mb-6">
+        </textarea>
+        <div class="mb-6">
+        <x-forms.button>
+            Envoyer ma demande de garde
+        </x-forms.button>
+        </div>
     </form>
     </div>
 </div>

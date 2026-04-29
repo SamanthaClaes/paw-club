@@ -180,7 +180,9 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
                               class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background"></textarea>
                 </div>
                 <div class="mb-20">
-                    <button type="submit" class="w-full bg-element mb-6 rounded-lg text-text uppercase font-bold p-5 hover:bg-hover-element">Envoyer votre message</button>
+                    <x-forms.button>
+                        Envoyer un message
+                    </x-forms.button>
                 </div>
             </form>
         </div>
