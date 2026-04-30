@@ -4,7 +4,7 @@
     'required' => false,
 ])
 <div {{ $attributes}} class="w-1/2">
-    <label for="{{ $name }}" class="block text-sm text-text uppercase font-bold">
+    <label for="{{ $name }}" class="block text-sm text-text uppercase font-bold mb-1">
         {{ $label }}
     </label>
 

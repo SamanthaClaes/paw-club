@@ -2,7 +2,7 @@
 
 <div {{ $attributes->merge(['class' => 'w-full']) }}>
     {{$slot}}
-    <label class="block text-sm  text-text uppercase font-bold" for="{{$name}}">{{$label}}</label>
+    <label class="block text-sm  text-text uppercase font-bold mb-1" for="{{$name}}">{{$label}}</label>
     <input type="{{$type}}"
            id="{{$name}}"
            name="{{$name}}"
