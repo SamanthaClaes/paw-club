@@ -1,6 +1,6 @@
 @props(['type', 'name', 'label', 'value' => '', 'required'=>null, 'placeholder'=>'',])
 
-<div {{ $attributes}} class="w-1/2">
+<div {{ $attributes->merge(['class' => 'w-full']) }}>
     {{$slot}}
     <label class="block text-sm  text-text uppercase font-bold" for="{{$name}}">{{$label}}</label>
     <input type="{{$type}}"

@@ -16,12 +16,12 @@ new class extends Component {
     <form action="#" class="w-8/10 mx-auto" enctype="multipart/form-data">
         <div class="flex gap-6 mt-6 justify-between">
             <x-forms.input-label label="Nom de famille *" name="last_name" type="text" placeholder="Dupont" value=""
-                                 required/>
-            <x-forms.input-label label="Prénom *" name="first_name" type="text" placeholder="Julie" value="" required/>
+                                 required class="w-1/2"/>
+            <x-forms.input-label label="Prénom *" name="first_name" type="text" placeholder="Julie" value="" required class="w-1/2"/>
         </div>
         <div class="mt-6">
             <x-forms.input-label label="Email *" type="email" name="email" placeholder="mail@test.be" value=""
-                                 required/>
+                                 required class="w-full"/>
         </div>
         <div class="flex gap-6 mt-6 justify-between">
             <x-forms.select-option label="Type d'animaux" name="animal">
