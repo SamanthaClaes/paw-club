@@ -15,4 +15,4 @@ new class extends Component
         <p>Bonjour</p>
     </section>
 </div>
-<x-footer/>
+

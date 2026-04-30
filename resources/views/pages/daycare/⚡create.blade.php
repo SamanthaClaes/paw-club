@@ -17,9 +17,18 @@ N’oubliez pas que notre garderie ne s’occupe que des chiens</span>
     <div class="flex justify-center gap-6 mt-6">
     <form action="" method="GET" class="w-8/10">
         <div class="lg:flex gap-6 mb-6 justify-between">
-            <x-forms.select-option/>
+            <x-forms.select-option label="Nom de l’animal" name="name">
+                <option value="charles">Charles</option>
+                <option value="mowgli">Mowgli</option>
+                <option value="simba">Simba</option>
+            </x-forms.select-option>
+            <x-forms.select-option label="Race de l’animal" name="breed">
+                <option value="chihuahua">chihuahua</option>
+                <option value="chihuahua">chihuahua</option>
+                <option value="chihuahua">chihuahua</option>
+            </x-forms.select-option>
         </div>
-        <label for="need_msg">Besoins spécifiques de l’animal</label>
+        <label for="need_msg" class="block text-sm  text-text uppercase font-bold">Besoins spécifiques de l’animal</label>
         <textarea name="need_msg" id="need_msg" cols="30" rows="10" class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none mb-6">
         </textarea>
         <div class="mb-6">
