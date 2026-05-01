@@ -1,9 +1,10 @@
 <?php
 
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new class extends Component
-{
+new #[Title('Petsitter')]
+class extends Component {
     public string $title = 'Vous chercher un petsitter ?';
 };
 ?>
@@ -40,50 +41,52 @@ new class extends Component
             </div>
         </div>
     </section>
-        <section>
-            <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6">Comment cela fonctionne ? </h2>
-            <div class="grid lg:grid-cols-2 justify-center justify-items-center gap-8 items-stretch auto-rows-fr ml-12">
-                <div class=" flex justify-center items-center bg-card-orange  mr-12 lg:mr-0  rounded-lg h-full ">
-                    <div class="text-9xl text-text px-6">
-                        1
-                    </div>
-                    <div>
-                        <p class=" pl-5 pr-5 text-text-pink lg:text-xl/10 font-bold">Choisissez le petsitter de votre choix</p>
-                        <p class=" pl-5 pr-5  font-medium text-text-pink lg:text-xl/10">
-                            Prenez contact avec le PetSitter de votre choix</p>
-                    </div>
+    <section>
+        <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6">Comment cela fonctionne
+            ? </h2>
+        <div class="grid lg:grid-cols-2 justify-center justify-items-center gap-8 items-stretch auto-rows-fr ml-12">
+            <div class=" flex justify-center items-center bg-card-orange  mr-12 lg:mr-0  rounded-lg h-full ">
+                <div class="text-9xl text-text px-6">
+                    1
                 </div>
-                <div class=" flex justify-center items-center bg-card-orange  mr-12 lg:mr-0  rounded-lg h-full ">
-                    <div class="text-9xl text-text px-6">
-                        1
-                    </div>
-                    <div>
-                        <p class=" pl-5 pr-5 text-text-pink lg:text-xl/10 font-bold">Choisissez le petsitter de votre choix</p>
-                        <p class=" pl-5 pr-5  font-medium text-text-pink lg:text-xl/10">
-                            Prenez contact avec le PetSitter de votre choix</p>
-                    </div>
-                </div>
-                <div class=" flex justify-center items-center bg-card-orange  mr-12 lg:mr-0  rounded-lg h-full ">
-                    <div class="text-9xl text-text px-6">
-                        1
-                    </div>
-                    <div>
-                        <p class=" pl-5 pr-5 text-text-pink lg:text-xl/10 font-bold">Choisissez le petsitter de votre choix</p>
-                        <p class=" pl-5 pr-5  font-medium text-text-pink lg:text-xl/10">
-                            Prenez contact avec le PetSitter de votre choix</p>
-                    </div>
-                </div>
-                <div class=" flex justify-center items-center bg-card-orange  mr-12 lg:mr-0  rounded-lg h-full ">
-                    <div class="text-9xl text-text px-6">
-                        1
-                    </div>
-                    <div>
-                        <p class=" pl-5 pr-5 text-text-pink lg:text-xl/10 font-bold">Choisissez le petsitter de votre choix</p>
-                        <p class=" pl-5 pr-5  font-medium text-text-pink lg:text-xl/10">
-                            Prenez contact avec le PetSitter de votre choix</p>
-                    </div>
+                <div>
+                    <p class=" pl-5 pr-5 text-text-pink lg:text-xl/10 font-bold">Choisissez le petsitter de votre
+                        choix</p>
+                    <p class=" pl-5 pr-5  font-medium text-text-pink lg:text-xl/10">
+                        Prenez contact avec le PetSitter de votre choix</p>
                 </div>
             </div>
-        </section>
+            <div class=" flex justify-center items-center bg-card-pink  mr-12 lg:mr-0  rounded-lg h-full ">
+                <div class="text-9xl text-text px-6">
+                    2
+                </div>
+                <div>
+                    <p class=" pl-5 pr-5 text-text-pink lg:text-xl/10 font-bold">Rencontre avec le petsitter</p>
+                    <p class=" pl-5 pr-5  font-medium text-text-pink lg:text-xl/10">
+                        Après l’acceptation, une rencontre est prévue pour remettre les clés et les consignes.</p>
+                </div>
+            </div>
+            <div class=" flex justify-center items-center bg-card-blue  mr-12 lg:mr-0  rounded-lg h-full ">
+                <div class="text-9xl text-text px-6">
+                    3
+                </div>
+                <div>
+                    <p class=" pl-5 pr-5 text-text-pink lg:text-xl/10 font-bold">Petsitting</p>
+                    <p class=" pl-5 pr-5  font-medium text-text-pink lg:text-xl/10">
+                        Restez en contact avec le petsitter pendant la garde pour suivre le bon déroulement de celle-ci.</p>
+                </div>
+            </div>
+            <div class=" flex justify-center items-center bg-card-green  mr-12 lg:mr-0  rounded-lg h-full ">
+                <div class="text-9xl text-text px-6">
+                    4
+                </div>
+                <div>
+                    <p class=" pl-5 pr-5 text-text-pink lg:text-xl/10 font-bold">Paiement</p>
+                    <p class=" pl-5 pr-5  font-medium text-text-pink lg:text-xl/10">
+                        Le paiement est effectué avant la garde directement auprès de votre petsitter.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
