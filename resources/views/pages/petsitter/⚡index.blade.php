@@ -42,50 +42,80 @@ class extends Component {
         </div>
     </section>
     <section>
-        <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6">Comment cela fonctionne
-            ? </h2>
-        <div class="grid lg:grid-cols-2 justify-center justify-items-center gap-8 items-stretch auto-rows-fr ml-12">
-            <div class=" flex justify-center items-center bg-card-orange  mr-12 lg:mr-0  rounded-lg h-full ">
-                <div class="text-9xl text-text px-6">
-                    1
-                </div>
+        <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6">
+            Comment cela fonctionne ?
+        </h2>
+
+        <div class="grid lg:grid-cols-2 gap-8 items-stretch auto-rows-fr">
+
+            <div class="flex items-center gap-4 bg-card-orange rounded-lg p-5 h-full relative overflow-hidden lg:ml-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icons.svg)] bg-repeat bg-center">
+            <span class="text-7xl font-bold text-text-orange leading-none shrink-0">
+                1
+            </span>
+
                 <div>
-                    <p class=" pl-5 pr-5 text-text-pink lg:text-xl/10 font-bold">Choisissez le petsitter de votre
-                        choix</p>
-                    <p class=" pl-5 pr-5  font-medium text-text-pink lg:text-xl/10">
-                        Prenez contact avec le PetSitter de votre choix</p>
+                    <p class="text-text-orange font-bold text-base lg:text-lg">
+                        Choisissez votre petsitter
+                    </p>
+                    <p class="text-text-orange text-sm lg:text-base font-medium">
+                        Prenez contact avec le PetSitter de votre choix
+                    </p>
                 </div>
+
             </div>
-            <div class=" flex justify-center items-center bg-card-pink  mr-12 lg:mr-0  rounded-lg h-full ">
-                <div class="text-9xl text-text px-6">
-                    2
-                </div>
+
+            <div class="flex items-center gap-4 bg-card-pink rounded-lg p-5 h-full relative overflow-hidden lg:mr-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icons_rose.svg)] bg-repeat bg-center">
+
+            <span class="text-7xl font-bold text-text-pink leading-none shrink-0">
+                2
+            </span>
+
                 <div>
-                    <p class=" pl-5 pr-5 text-text-pink lg:text-xl/10 font-bold">Rencontre avec le petsitter</p>
-                    <p class=" pl-5 pr-5  font-medium text-text-pink lg:text-xl/10">
-                        Après l’acceptation, une rencontre est prévue pour remettre les clés et les consignes.</p>
+                    <p class="text-text-pink font-bold text-base lg:text-lg">
+                        Rencontre avec le petsitter
+                    </p>
+                    <p class="text-text-pink text-sm lg:text-base font-medium">
+                        Après l’acceptation, une rencontre est prévue pour remettre les clés et les consignes.
+                    </p>
                 </div>
+
             </div>
-            <div class=" flex justify-center items-center bg-card-blue  mr-12 lg:mr-0  rounded-lg h-full ">
-                <div class="text-9xl text-text px-6">
-                    3
-                </div>
+
+            <div class="flex items-center gap-4 bg-element rounded-lg p-5 h-full relative overflow-hidden lg:ml-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icon_blue.svg)] bg-repeat bg-center ">
+
+            <span class="text-7xl font-bold text-text leading-none shrink-0">
+                3
+            </span>
+
                 <div>
-                    <p class=" pl-5 pr-5 text-text-pink lg:text-xl/10 font-bold">Petsitting</p>
-                    <p class=" pl-5 pr-5  font-medium text-text-pink lg:text-xl/10">
-                        Restez en contact avec le petsitter pendant la garde pour suivre le bon déroulement de celle-ci.</p>
+                    <p class="text-text font-bold text-base lg:text-lg">
+                        Petsitting
+                    </p>
+                    <p class="text-text text-sm lg:text-base font-medium">
+                        Restez en contact avec le petsitter pendant la garde pour suivre le bon déroulement de celle-ci.
+                    </p>
                 </div>
+
             </div>
-            <div class=" flex justify-center items-center bg-card-green  mr-12 lg:mr-0  rounded-lg h-full ">
-                <div class="text-9xl text-text px-6">
-                    4
-                </div>
+
+
+            <div class="flex items-center gap-4 bg-card-green rounded-lg p-5 h-full relative overflow-hidden lg:mr-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icon_green.svg)] bg-repeat bg-center">
+
+            <span class="text-7xl font-bold text-cta leading-none shrink-0">
+                4
+            </span>
+
                 <div>
-                    <p class=" pl-5 pr-5 text-text-pink lg:text-xl/10 font-bold">Paiement</p>
-                    <p class=" pl-5 pr-5  font-medium text-text-pink lg:text-xl/10">
-                        Le paiement est effectué avant la garde directement auprès de votre petsitter.</p>
+                    <p class="text-cta font-bold text-base lg:text-lg">
+                        Paiement
+                    </p>
+                    <p class="text-cta text-sm lg:text-base font-medium">
+                        Le paiement est effectué avant la garde directement auprès de votre petsitter.
+                    </p>
                 </div>
+
             </div>
+
         </div>
     </section>
 </div>
