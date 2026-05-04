@@ -48,8 +48,8 @@ class extends Component {
 
         <div class="grid lg:grid-cols-2 gap-8 items-stretch auto-rows-fr">
 
-            <div class="flex items-center gap-4 bg-card-orange rounded-lg p-5 h-full relative overflow-hidden lg:ml-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icons.svg)] bg-repeat bg-center">
-            <span class="text-7xl font-bold text-text-orange leading-none shrink-0">
+            <div class="flex items-center gap-4 bg-card-orange rounded-lg p-5 h-full relative overflow-hidden lg:ml-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icons.svg)] bg-repeat bg-center shadow-lg">
+            <span class="text-7xl font-bold text-text-orange leading-none shrink-0 [text-shadow:0_4px_4px_rgba(0,0,0,0.25)]">
                 1
             </span>
 
@@ -64,9 +64,9 @@ class extends Component {
 
             </div>
 
-            <div class="flex items-center gap-4 bg-card-pink rounded-lg p-5 h-full relative overflow-hidden lg:mr-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icons_rose.svg)] bg-repeat bg-center">
+            <div class="flex items-center gap-4 bg-card-pink rounded-lg p-5 h-full relative overflow-hidden lg:mr-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icons_rose.svg)] bg-repeat bg-center shadow-lg">
 
-            <span class="text-7xl font-bold text-text-pink leading-none shrink-0">
+            <span class="text-7xl font-bold text-text-pink leading-none shrink-0 [text-shadow:0_4px_4px_rgba(0,0,0,0.25)]">
                 2
             </span>
 
@@ -81,9 +81,9 @@ class extends Component {
 
             </div>
 
-            <div class="flex items-center gap-4 bg-element rounded-lg p-5 h-full relative overflow-hidden lg:ml-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icon_blue.svg)] bg-repeat bg-center ">
+            <div class="flex items-center gap-4 bg-element rounded-lg p-5 h-full relative overflow-hidden lg:ml-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icon_blue.svg)] bg-repeat bg-center shadow-lg">
 
-            <span class="text-7xl font-bold text-text leading-none shrink-0">
+            <span class="text-7xl font-bold text-text leading-none shrink-0 [text-shadow:0_4px_4px_rgba(0,0,0,0.25)]">
                 3
             </span>
 
@@ -99,9 +99,9 @@ class extends Component {
             </div>
 
 
-            <div class="flex items-center gap-4 bg-card-green rounded-lg p-5 h-full relative overflow-hidden lg:mr-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icon_green.svg)] bg-repeat bg-center">
+            <div class="flex items-center gap-4 bg-card-green rounded-lg p-5 h-full relative overflow-hidden lg:mr-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icon_green.svg)] bg-repeat bg-center shadow-lg">
 
-            <span class="text-7xl font-bold text-cta leading-none shrink-0">
+            <span class="text-7xl font-bold text-cta leading-none shrink-0 [text-shadow:0_4px_4px_rgba(0,0,0,0.25)]">
                 4
             </span>
 
@@ -113,10 +113,27 @@ class extends Component {
                         Le paiement est effectué avant la garde directement auprès de votre petsitter.
                     </p>
                 </div>
-
             </div>
 
         </div>
+    </section>
+    <section>
+        <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6"> Découvrez nos petsitters</h2>
+        {{--@foreach($petsitters as $petsitter)
+            <x-card
+                :name="$petsitter->name"
+                :image="$petsitter->image"
+                :description="$petsitter->description"
+                :tags="$petsitter->tags"
+                :choose-url="route('ajouter la route', $petsitter)"
+                :contact-url="route('ajouter la route', $petsitter)"
+            />
+        @endforeach--}}
+    </section>
+    <section class="flex flex-col items-center gap-4 bg-card-green rounded-lg p-5 ml-25 mr-25 min-h-40 lg:min-h-50">
+        <h3 class="mt-16 mb-8 text-text text-3xl font-semibold">Vous souhaitez devenir petsitter ? </h3>
+        <p class=" lg:w-1/2 my-12">Envie de vous occuper d’animaux ? Rejoignez PawClub et devenez petsitter en proposant un service adapté à vos disponibilités.</p>
+        <a href="" class=" text-center w-1/2 bg-white py-4 px-18 rounded-lg uppercase font-bold text-text">Devenir petsitter</a>
     </section>
 </div>
 
