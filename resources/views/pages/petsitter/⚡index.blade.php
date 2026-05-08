@@ -118,7 +118,7 @@ class extends Component {
         </div>
     </section>
     <section>
-        <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6"> Découvrez nos petsitters</h2>
+        <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6 mt-6"> Découvrez nos petsitters</h2>
         {{--@foreach($petsitters as $petsitter)
             <x-card
                 :name="$petsitter->name"
@@ -130,12 +130,24 @@ class extends Component {
             />
         @endforeach--}}
     </section>
-    <section class="relative flex flex-col items-center gap-4 bg-card-green rounded-lg p-5 ml-25 mr-25 min-h-40 lg:min-h-50 mb-20 shadow">
-        <h3 class="mt-16 mb-8 text-text text-3xl font-semibold">Vous souhaitez devenir petsitter ? </h3>
-        <p class=" lg:w-1/2 my-12">Envie de vous occuper d’animaux ? Rejoignez PawClub et devenez petsitter en proposant un service adapté à vos disponibilités.</p>
-        <a href="" class=" text-center w-1/2 bg-white py-4 px-18 rounded-lg uppercase font-bold text-text">Devenir petsitter</a>
-        <img src="{{ asset('svg/ill_6.svg') }}" alt="" class="absolute bottom-5 right-255 w-30 sm:w-40 md:w-56 lg:w-80 translate-x-1/4 translate-y-1/4">
-        <img src="{{ asset('svg/ill_7.svg') }}" alt="" class="absolute bottom-5 left-220 w-30 sm:w-40 md:w-56 lg:w-80 translate-x-1/4 translate-y-1/4">
+    <section class="relative flex flex-col items-center gap-4 bg-card-green rounded-lg p-4 lg:p-5 ml-4 mr-4 lg:ml-25 lg:mr-25 min-h-40 lg:min-h-50 mb-20 shadow">
+
+        <h3 class="mt-16 mb-8 text-text lg:text-3xl font-semibold text-center">
+            Vous souhaitez devenir petsitter ?
+        </h3>
+
+        <p class="lg:w-1/2 my-12 text-center">
+            Envie de vous occuper d’animaux ? Rejoignez PawClub et devenez petsitter en proposant un service adapté à vos disponibilités.
+        </p>
+
+        <a href="" class="text-lg lg:text-3xl text-center w-full lg:w-1/2 bg-white lg:py-4 lg:px-18 rounded-lg uppercase font-bold text-text">
+            Devenir petsitter
+        </a>
+
+        <img src="{{ asset('svg/ill_6.svg') }}" alt=""
+             class="hidden sm:block absolute bottom-5 right-255 w-30 sm:w-40 md:w-56 lg:w-80 translate-x-1/4 translate-y-1/4">
+        <img src="{{ asset('svg/ill_7.svg') }}" alt=""
+             class="hidden sm:block absolute bottom-5 left-220 w-30 sm:w-40 md:w-56 lg:w-80 translate-x-1/4 translate-y-1/4">
     </section>
 </div>
 

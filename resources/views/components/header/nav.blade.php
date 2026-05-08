@@ -1,4 +1,4 @@
-<nav class="bg-element p-2 text-text relative">
+<nav class="bg-element p-2 text-text relative z-9999">
     <input type="checkbox" id="menu-toggle" class="peer hidden">
 
     <div class="flex items-center justify-between">

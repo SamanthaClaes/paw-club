@@ -9,20 +9,11 @@
 
     @livewireStyles
 </head>
-<body>
 <header>
-    <x-header.nav/>
-</header>
-<div>
     <x-header.sideBar/>
-</div>
+</header>
+<body>
 <main>
     {{ $slot }}
 </main>
-
-@livewireScripts
-<x-footer/>
 </body>
-
-</html>
-
