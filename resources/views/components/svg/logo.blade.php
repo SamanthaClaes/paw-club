@@ -1,5 +1,5 @@
 <xml version="1.0" encoding="UTF-8"/>
-<svg id="Calque_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 2000 2000" width="100" height="100">
+<svg {{ $attributes }} viewBox="0 0 2000 2000" width="100" height="100">
     <defs>
         <style>
             .st0 {
