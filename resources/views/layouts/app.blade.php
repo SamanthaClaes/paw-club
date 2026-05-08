@@ -13,9 +13,6 @@
 <header>
     <x-header.nav/>
 </header>
-<div>
-    <x-header.sideBar/>
-</div>
 <main>
     {{ $slot }}
 </main>

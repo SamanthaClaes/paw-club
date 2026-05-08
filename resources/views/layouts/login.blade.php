@@ -9,11 +9,8 @@
 
     @livewireStyles
 </head>
-<header>
-    <x-header.sideBar/>
-</header>
-<body class="dark:bg-gray-700">
-<main class="md:ml-90 p-4">
+<body class="dark:bg-gray-700 bg-element">
+<main>
     {{ $slot }}
 </main>
 </body>

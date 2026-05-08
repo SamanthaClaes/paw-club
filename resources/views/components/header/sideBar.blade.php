@@ -6,55 +6,55 @@
     </svg>
 </label>
 <nav
-    class="fixed top-0 left-0 z-40 w-64 h-screen bg-element dark:bg-gray-800 transform -translate-x-full peer-checked:translate-x-0 transition-transform md:translate-x-0"
+    class="fixed top-0 left-0 z-40 w-90 min-h-screen bg-element dark:bg-gray-600 transform -translate-x-full peer-checked:translate-x-0 transition-transform md:translate-x-0"
     aria-label="Sidebar">
-    <div class="h-full px-3 py-4 overflow-y-auto bg-nav dark:bg-gray-800">
-        <ul class="space-y-12 font-medium">
+    <div class="h-full px-3 py-4">
+        <ul class="flex flex-col items-center gap-12">
             <li class="flex justify-center">
                 <x-svg.logo/>
             </li>
-            <li>
+            <li class="w-full">
                 <a href=""
-                   class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group font-text   ">
+                   class="flex items-center p-2 w-full rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group font-text   ">
                     <x-svg.icons.dashboard/>
-                    <span class="ms-3 text-text">Dashboard</span>
+                    <span class="ms-3">Dashboard</span>
                 </a>
             </li>
-            <li>
+            <li class="w-full">
                 <a href=""
-                   class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group font-text   ">
+                   class="flex items-center   p-2 w-full  rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group font-text   ">
                     <x-svg.icons.user/>
-                    <span class="ms-3 text-text">Nos petsitters</span>
+                    <span class="ms-3">Nos petsitters</span>
                 </a>
             </li>
-            <li>
+            <li class="w-full">
                 <a href=""
-                   class="flex items-center p-2 text-text rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group font-text">
+                   class="flex items-center    p-2 w-full text-text rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group font-text">
                     <x-svg.icons.animal/>
-                    <span class="flex-1 ms-3 whitespace-nowrap text-text">Nos chiens</span>
+                    <span class="ms-3">Nos chiens</span>
                 </a>
             </li>
-            <li>
+            <li class="w-full">
                 <a href=""
                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group font-text">
                     <x-svg.icons.msg/>
-                    <span class="flex-1 ms-3 whitespace-nowrap text-text">Messages</span>
+                    <span class="ms-3">Messages</span>
                 </a>
             </li>
-            <li>
+            <li class="w-full">
                 <a href=""
-                   class="flex items-center p-2 text-text rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group font-text">
+                   class="flex items-center  p-2 text-text rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group font-text">
                     <x-svg.icons.schedule/>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Mes demandes</span>
+                    <span class="ms-3">Mes demandes</span>
                 </a>
             </li>
-            <li>
+            <li class="w-full">
                 <form method="POST" action="">
                     @csrf
                     <button type="submit"
-                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            class="flex items-center p-2 w-full text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer">
                         <x-svg.icons.logout/>
-                        <span class="flex-1 ms-3 whitespace-nowrap text-text">Se déconnecter</span>
+                        <span class="ms-3">Se déconnecter</span>
                     </button>
                 </form>
             </li>
