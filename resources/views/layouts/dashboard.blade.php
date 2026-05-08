@@ -16,4 +16,5 @@
 <main class="md:ml-90 p-4">
     {{ $slot }}
 </main>
+@livewireScripts
 </body>

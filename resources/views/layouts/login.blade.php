@@ -13,4 +13,5 @@
 <main>
     {{ $slot }}
 </main>
+@livewireScripts
 </body>
