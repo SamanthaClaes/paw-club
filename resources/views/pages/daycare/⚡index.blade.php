@@ -51,47 +51,56 @@ class extends Component {
             rounded-full
             absolute top-45 right-150 border-15 border-white">
         </div>
-        <div class="grid lg:grid-cols-2 justify-center justify-items-center gap-8 items-stretch auto-rows-fr ml-12">
-            <div class="flex flex-col justify-center items-center bg-card-pink  mr-12 lg:mr-0  rounded-lg h-full ">
-                <div class="mt-5 lg:mb-3">
+        <div class="grid lg:grid-cols-2 gap-8 items-stretch auto-rows-fr">
+
+            <div class="group flex flex-col justify-center items-center bg-card-pink rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+                <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
                     <x-svg.icons.icons1/>
                 </div>
                 <div>
                     <p class="text-center text-sm/8 mb-5 lg:mb-20 pl-5 pr-5 pt-2 font-medium text-text-pink lg:text-xl/10 ">
                         PawClub met à disposition un espace vert sécurisé où les chiens peuvent se dépenser et profiter
-                        des beaux jours.</p>
+                        des beaux jours.
+                    </p>
                 </div>
             </div>
-            <div class="flex flex-col justify-center items-center bg-card-orange  mr-12 lg:ml-0 rounded-lg h-full ">
-                <div class="mt-5 lg:mb-3">
+
+            <div class="group flex flex-col justify-center items-center bg-card-orange rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+                <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
                     <x-svg.icons.bell/>
                 </div>
                 <div>
                     <p class="text-center text-sm/8 mb-5 lg:mb-20 pl-5 pr-5 pt-2 font-medium text-text-orange lg:text-xl/10 ">
                         Nous proposons une alimentation adaptée, recommandée par nos vétérinaires, ou utilisons celle
-                        que vous fournissez.</p>
+                        que vous fournissez.
+                    </p>
                 </div>
             </div>
-            <div class="flex flex-col justify-center items-center bg-card-blue  mr-12 lg:mr-0 rounded-lg h-full">
-                <div class="mt-5 lg:mb-3">
+
+            <div class="group flex flex-col justify-center items-center bg-card-blue rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+                <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
                     <x-svg.icons.health/>
                 </div>
                 <div>
                     <p class="text-center text-sm/8 mb-5 lg:mb-20 pl-5 pr-5 pt-2 font-medium text-text lg:text-xl/10 ">
                         Pour les séjours de plusieurs jours, votre compagnon est accueilli dans un espace adapté à la
-                        saison.</p>
+                        saison.
+                    </p>
                 </div>
             </div>
-            <div class="flex flex-col justify-center items-center bg-card-green  mr-12 lg:ml-0 rounded-lg h-full ">
-                <div class="mt-5 lg:mb-3">
+
+            <div class="group flex flex-col justify-center items-center bg-card-green rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+                <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
                     <x-svg.icons.home/>
                 </div>
                 <div>
                     <p class="text-center text-sm/8 mb-5 lg:mb-20 pl-5 pr-5 pt-2 font-medium text-cta lg:text-xl/10 ">
                         Nous proposons une alimentation adaptée, recommandée par nos vétérinaires, ou utilisons celle
-                        que vous fournissez.</p>
+                        que vous fournissez.
+                    </p>
                 </div>
             </div>
+
         </div>
     </section>
     <section>
@@ -99,22 +108,22 @@ class extends Component {
             vacances</h2>
         <div class="overflow-x-auto flex md:grid lg:grid-cols-2 justify-center justify-items-center gap-8 mb-10 lg:mb-20 snap-x snap-mandatory pb-4 scrollbar-hide">
             <div class="w-[85%] md:w-auto shrink-0 md:shrink snap-center">
-                <img src="{{ asset('img/food_dog.jpeg')}}" alt="homme remplissant une gamelle de croquette" height="308" width="552"  class=" aspect-3/2 object-cover rounded-lg">
+                <img src="{{ asset('img/food_dog.jpeg')}}" alt="homme remplissant une gamelle de croquette" height="308" width="552"  class=" aspect-3/2 object-cover rounded-lg transition duration-300 hover:scale-105 hover:shadow-xl">
             </div>
             <div class="w-[85%] md:w-auto shrink-0 md:shrink snap-center">
-                <img src="{{ asset('img/playground.jpeg') }}" alt="chiens en train de jouer à la plaine de jeux pour chien" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg">
+                <img src="{{ asset('img/playground.jpeg') }}" alt="chiens en train de jouer à la plaine de jeux pour chien" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg transition duration-300 hover:scale-105 hover:shadow-xl">
             </div>
             <div class="w-[85%] md:w-auto shrink-0 md:shrink snap-center">
-                <img src="{{ asset('img/woman_dog.jpeg') }}" alt="femme en train de jouer avec un chien dans un enclos" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg">
+                <img src="{{ asset('img/woman_dog.jpeg') }}" alt="femme en train de jouer avec un chien dans un enclos" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg transition duration-300 hover:scale-105 hover:shadow-xl">
             </div>
             <div class="w-[85%] md:w-auto shrink-0 md:shrink snap-center">
-                <img src="{{ asset('img/run_dogs.jpeg') }}" alt="chiens en train de courir dans un vaste terrain d’herbe" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg">
+                <img src="{{ asset('img/run_dogs.jpeg') }}" alt="chiens en train de courir dans un vaste terrain d’herbe" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg transition duration-300 hover:scale-105 hover:shadow-xl">
             </div>
             <div class="w-[85%] md:w-auto shrink-0 md:shrink snap-center">
-                <img src="{{ asset('img/dogs.jpeg') }}" alt="chiens coucher sur des gros coussins" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg">
+                <img src="{{ asset('img/dogs.jpeg') }}" alt="chiens coucher sur des gros coussins" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg transition duration-300 hover:scale-105 hover:shadow-xl">
             </div>
             <div class="w-[85%] md:w-auto shrink-0 md:shrink snap-center">
-                <img src="{{ asset('img/playground_dogs2.jpeg') }}" alt="chiens en train de jouer à la plaine de jeux pour chien" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg">
+                <img src="{{ asset('img/playground_dogs2.jpeg') }}" alt="chiens en train de jouer à la plaine de jeux pour chien" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg transition duration-300 hover:scale-105 hover:shadow-xl">
             </div>
         </div>
     </section>

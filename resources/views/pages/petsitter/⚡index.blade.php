@@ -48,7 +48,7 @@ class extends Component {
 
         <div class="grid lg:grid-cols-2 gap-8 items-stretch auto-rows-fr">
 
-            <div class="flex items-center gap-4 bg-card-orange rounded-lg p-5 h-full relative overflow-hidden lg:ml-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icons.svg)] bg-repeat bg-center shadow-lg">
+            <div class="flex items-center gap-4 bg-card-orange rounded-lg p-5 h-full relative overflow-hidden lg:ml-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icons.svg)] bg-repeat bg-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
             <span class="text-7xl font-bold text-text-orange leading-none shrink-0 [text-shadow:0_4px_4px_rgba(0,0,0,0.25)]">
                 1
             </span>
@@ -64,7 +64,7 @@ class extends Component {
 
             </div>
 
-            <div class="flex items-center gap-4 bg-card-pink rounded-lg p-5 h-full relative overflow-hidden lg:mr-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icons_rose.svg)] bg-repeat bg-center shadow-lg">
+            <div class="flex items-center gap-4 bg-card-pink rounded-lg p-5 h-full relative overflow-hidden lg:mr-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icons_rose.svg)] bg-repeat bg-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
 
             <span class="text-7xl font-bold text-text-pink leading-none shrink-0 [text-shadow:0_4px_4px_rgba(0,0,0,0.25)]">
                 2
@@ -81,7 +81,7 @@ class extends Component {
 
             </div>
 
-            <div class="flex items-center gap-4 bg-element rounded-lg p-5 h-full relative overflow-hidden lg:ml-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icon_blue.svg)] bg-repeat bg-center shadow-lg">
+            <div class="flex items-center gap-4 bg-element rounded-lg p-5 h-full relative overflow-hidden lg:ml-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icon_blue.svg)] bg-repeat bg-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
 
             <span class="text-7xl font-bold text-text leading-none shrink-0 [text-shadow:0_4px_4px_rgba(0,0,0,0.25)]">
                 3
@@ -99,7 +99,7 @@ class extends Component {
             </div>
 
 
-            <div class="flex items-center gap-4 bg-card-green rounded-lg p-5 h-full relative overflow-hidden lg:mr-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icon_green.svg)] bg-repeat bg-center shadow-lg">
+            <div class="flex items-center gap-4 bg-card-green rounded-lg p-5 h-full relative overflow-hidden lg:mr-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icon_green.svg)] bg-repeat bg-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
 
             <span class="text-7xl font-bold text-cta leading-none shrink-0 [text-shadow:0_4px_4px_rgba(0,0,0,0.25)]">
                 4
@@ -140,7 +140,7 @@ class extends Component {
             Envie de vous occuper d’animaux ? Rejoignez PawClub et devenez petsitter en proposant un service adapté à vos disponibilités.
         </p>
 
-        <a href="" class="text-lg lg:text-3xl text-center w-full lg:w-1/2 bg-white lg:py-4 lg:px-18 rounded-lg uppercase font-bold text-text">
+        <a href="" class="text-lg lg:text-3xl text-center w-full lg:w-1/2 bg-white lg:py-4 lg:px-18 rounded-lg uppercase font-bold text-text ">
             Devenir petsitter
         </a>
 
