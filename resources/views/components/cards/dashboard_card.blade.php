@@ -12,7 +12,7 @@
             <div class=" flex justify-center pt-4">
                 <p class="text-xl md:text-2xl font-bold text-text">{!! $number !!}</p>
             </div>
-            <div class=" text-sm flex justify-center md:text-2xl text-text font-bold uppercase ">
+            <div class=" text-sm flex justify-center md:text-xl text-text font-bold uppercase ">
                 {!! $title !!}
             </div>
         </div>

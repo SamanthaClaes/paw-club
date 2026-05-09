@@ -14,36 +14,36 @@
                 <x-svg.logo/>
             </li>
             <li class="w-full">
-                <a href=""
-                   class="flex items-center p-2 w-full rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group font-text   ">
+                <a href="{{ route('dashboard.index') }}"
+                   class="flex items-center p-2 w-full rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group font-text   ">
                     <x-svg.icons.dashboard/>
                     <span class="ms-3">Dashboard</span>
                 </a>
             </li>
             <li class="w-full">
-                <a href=""
-                   class="flex items-center   p-2 w-full  rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group font-text   ">
+                <a href="{{ route('dashboard.petsitter') }}"
+                   class="flex items-center   p-2 w-full  rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group font-text   ">
                     <x-svg.icons.user/>
                     <span class="ms-3">Nos petsitters</span>
                 </a>
             </li>
             <li class="w-full">
                 <a href=""
-                   class="flex items-center    p-2 w-full text-text rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group font-text">
+                   class="flex items-center    p-2 w-full text-text rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group font-text">
                     <x-svg.icons.animal/>
                     <span class="ms-3">Nos chiens</span>
                 </a>
             </li>
             <li class="w-full">
                 <a href=""
-                   class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group font-text">
+                   class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group font-text">
                     <x-svg.icons.msg/>
                     <span class="ms-3">Messages</span>
                 </a>
             </li>
             <li class="w-full">
                 <a href=""
-                   class="flex items-center  p-2 text-text rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group font-text">
+                   class="flex items-center  p-2 text-text rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group font-text">
                     <x-svg.icons.schedule/>
                     <span class="ms-3">Mes demandes</span>
                 </a>
@@ -52,7 +52,7 @@
                 <form method="POST" action="">
                     @csrf
                     <button type="submit"
-                            class="flex items-center p-2 w-full text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer">
+                            class="flex items-center p-2 w-full text-gray-900 rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group cursor-pointer">
                         <x-svg.icons.logout/>
                         <span class="ms-3">Se déconnecter</span>
                     </button>
