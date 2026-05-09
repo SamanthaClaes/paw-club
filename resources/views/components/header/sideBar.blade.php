@@ -28,21 +28,21 @@
                 </a>
             </li>
             <li class="w-full">
-                <a href=""
+                <a href="{{ route('dashboard.dogs') }}"
                    class="flex items-center    p-2 w-full text-text rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group font-text">
                     <x-svg.icons.animal/>
                     <span class="ms-3">Nos chiens</span>
                 </a>
             </li>
             <li class="w-full">
-                <a href=""
+                <a href="{{ route('dashboard.messages') }}"
                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group font-text">
                     <x-svg.icons.msg/>
                     <span class="ms-3">Messages</span>
                 </a>
             </li>
             <li class="w-full">
-                <a href=""
+                <a href="{{ route('dashboard.request') }}"
                    class="flex items-center  p-2 text-text rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group font-text">
                     <x-svg.icons.schedule/>
                     <span class="ms-3">Mes demandes</span>

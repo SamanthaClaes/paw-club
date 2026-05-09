@@ -9,7 +9,7 @@
            value="{{ old($name, $value) }}"
            placeholder="{{$placeholder}}"
            required
-           class="w-full border-2 border-black bg-white rounded-lg px-3 py-2"
+           class="w-full border-2 border-element bg-white rounded-lg px-3 py-2"
            @if($required) required @endif>
     @error($name)
     <p class="text-red-500"> {{ $message }}</p>

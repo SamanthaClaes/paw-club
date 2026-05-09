@@ -27,7 +27,7 @@
                 <a href="/#contact" class="hover:underline">Contact</a>
             </li>
             <li>
-                <a href="/" class="hover:underline">Me connecter</a>
+                <a href="{{ route('login') }}" class="hover:underline">Me connecter</a>
             </li>
         </ul>
     </div>

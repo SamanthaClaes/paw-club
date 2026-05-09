@@ -58,8 +58,8 @@ class extends Component {
             <div>
                 <label class="block text-sm  text-text uppercase font-bold mb-1"  for="password">Mot de passe</label>
                 <div class="relative w-full">
-                    <input type="{{ $type  }}" wire:model="password" placeholder="entrez votre mot de passe"
-                           class="w-full border-2 border-black bg-white rounded-lg px-3 py-2">
+                    <input type="{{ $type  }}" wire:model="password" placeholder="Entrez votre mot de passe"
+                           class="w-full  bg-white rounded-lg px-3 py-2">
                     <button type="button"  wire:click="togglePassword" class="absolute inset-y-0 right-2 flex  items-center text-sm cursor-pointer">
                         <img src="{{ $type === 'password' ? asset('svg/v.svg') : asset('svg/v_off.svg') }}" alt="">
                     </button>
