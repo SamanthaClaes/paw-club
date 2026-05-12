@@ -9,6 +9,10 @@
 @theme {
     --font-sans: 'Quicksand', ui-sans-serif, system-ui, sans-serif;
     --color-element: #C0E2E5;
+    --color-card: #F5FFFF;
+    --color-btn-green: #82BE8F;
+    --color-btn-red: #FF4C53;
+    --color-text-red: #620000;
     --color-stroke: #88C4C9;
     --color-text: #000633;
     --color-card-pink: #FF7176;
