@@ -31,7 +31,7 @@ class extends Component {
                      class="
             absolute
             bottom-0 right-72
-            lg:right-295
+            lg:right-415
             w-30 sm:w-40 md:w-56 lg:w-64 xl:w-72
             translate-x-1/4 translate-y-1/4">
                 <div class="flex justify-center">
@@ -49,7 +49,7 @@ class extends Component {
             <img src="{{ asset('img/chihuahua.jpeg') }}" alt="chihuahua" height="150" width="150" class=" hidden object-cover
             lg:block
             rounded-full
-            absolute top-45 right-150 border-15 border-white">
+            absolute top-45 right-150 lg:right-216 border-15 border-white">
         </div>
         <div class="grid lg:grid-cols-2 gap-8 items-stretch auto-rows-fr">
 

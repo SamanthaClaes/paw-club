@@ -20,8 +20,8 @@
         <h1 class="text-3xl font-bold text-text mb-8 uppercase">
             Connectez vous
         </h1>
-        <form wire:submit.prevent class="w-full max-w-md flex flex-col gap-4">
-
+        <form action="{{ route('login') }}" method="POST" class="w-full max-w-md flex flex-col gap-4">
+            @csrf
             <x-forms.input-label
                 label="Email"
                 name="email"
