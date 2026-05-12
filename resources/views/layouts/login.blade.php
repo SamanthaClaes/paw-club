@@ -11,7 +11,8 @@
 </head>
 <body class="dark:bg-gray-700 bg-element">
 <main>
-    {{ $slot }}
+   @yield( 'content')
 </main>
 @livewireScripts
 </body>
+</html>
