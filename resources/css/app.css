@@ -9,6 +9,7 @@
 @theme {
     --font-sans: 'Quicksand', ui-sans-serif, system-ui, sans-serif;
     --color-element: #C0E2E5;
+    --color-stroke: #88C4C9;
     --color-text: #000633;
     --color-card-pink: #FF7176;
     --color-card-orange: #FF8000;

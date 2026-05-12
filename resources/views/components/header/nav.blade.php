@@ -36,7 +36,7 @@
                     @endif
                     @if( auth()->user()->role === UserRole::PETSITTER)
                 <li>
-                        <a href="">Petsitter</a>
+                        <a href="{{ route( 'petsitter.request' ) }}">Mon espace</a>
                 </li>
                     @endif
                 @if( auth()->user()->role === UserRole::ADMIN)
