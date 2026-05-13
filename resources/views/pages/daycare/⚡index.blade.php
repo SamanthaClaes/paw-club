@@ -49,7 +49,7 @@ class extends Component {
             <img src="{{ asset('img/chihuahua.jpeg') }}" alt="chihuahua" height="150" width="150" class=" hidden object-cover
             lg:block
             rounded-full
-            absolute top-45 right-150 lg:right-216 border-15 border-white">
+            absolute top-45 right-155 border-15 border-white">
         </div>
         <div class="grid lg:grid-cols-2 gap-8 items-stretch auto-rows-fr">
 

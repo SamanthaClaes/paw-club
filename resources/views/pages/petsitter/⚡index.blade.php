@@ -1,11 +1,19 @@
 <?php
 
+use App\enum\UserRole;
+use App\Models\User;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
 new #[Title('Petsitter')]
 class extends Component {
     public string $title = 'Vous chercher un petsitter ?';
+    public $petsitters;
+
+    public function mount(): void
+    {
+        $this->petsitters = User::where('role', UserRole::PETSITTER)->get();
+    }
 };
 ?>
 
@@ -34,7 +42,7 @@ class extends Component {
             w-30 sm:w-40 md:w-56 lg:w-64 xl:w-72
             translate-x-1/4 translate-y-1/4">
                 <div class="flex justify-center">
-                    <a href="{{ route('daycare.create') }}"
+                    <a href="{{ route('petsitter.create') }}"
                        class="bg-card-green text-cta hover:bg-hover p-3 lg:p-6 rounded-lg font-bold lg:w-1/2 lg:text-center lg:text-2xl uppercase">Réserver
                         un petsitter</a>
                 </div>
@@ -48,8 +56,10 @@ class extends Component {
 
         <div class="grid lg:grid-cols-2 gap-8 items-stretch auto-rows-fr">
 
-            <div class="flex items-center gap-4 bg-card-orange rounded-lg p-5 h-full relative overflow-hidden lg:ml-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icons.svg)] bg-repeat bg-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
-            <span class="text-7xl font-bold text-text-orange leading-none shrink-0 [text-shadow:0_4px_4px_rgba(0,0,0,0.25)]">
+            <div
+                class="flex items-center gap-4 bg-card-orange rounded-lg p-5 h-full relative overflow-hidden lg:ml-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icons.svg)] bg-repeat bg-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+            <span
+                class="text-7xl font-bold text-text-orange leading-none shrink-0 [text-shadow:0_4px_4px_rgba(0,0,0,0.25)]">
                 1
             </span>
 
@@ -64,9 +74,11 @@ class extends Component {
 
             </div>
 
-            <div class="flex items-center gap-4 bg-card-pink rounded-lg p-5 h-full relative overflow-hidden lg:mr-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icons_rose.svg)] bg-repeat bg-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+            <div
+                class="flex items-center gap-4 bg-card-pink rounded-lg p-5 h-full relative overflow-hidden lg:mr-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icons_rose.svg)] bg-repeat bg-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
 
-            <span class="text-7xl font-bold text-text-pink leading-none shrink-0 [text-shadow:0_4px_4px_rgba(0,0,0,0.25)]">
+            <span
+                class="text-7xl font-bold text-text-pink leading-none shrink-0 [text-shadow:0_4px_4px_rgba(0,0,0,0.25)]">
                 2
             </span>
 
@@ -81,7 +93,8 @@ class extends Component {
 
             </div>
 
-            <div class="flex items-center gap-4 bg-element rounded-lg p-5 h-full relative overflow-hidden lg:ml-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icon_blue.svg)] bg-repeat bg-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+            <div
+                class="flex items-center gap-4 bg-element rounded-lg p-5 h-full relative overflow-hidden lg:ml-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icon_blue.svg)] bg-repeat bg-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
 
             <span class="text-7xl font-bold text-text leading-none shrink-0 [text-shadow:0_4px_4px_rgba(0,0,0,0.25)]">
                 3
@@ -99,7 +112,8 @@ class extends Component {
             </div>
 
 
-            <div class="flex items-center gap-4 bg-card-green rounded-lg p-5 h-full relative overflow-hidden lg:mr-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icon_green.svg)] bg-repeat bg-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+            <div
+                class="flex items-center gap-4 bg-card-green rounded-lg p-5 h-full relative overflow-hidden lg:mr-25 min-h-40 lg:min-h-50 bg-[url(/public/svg/paws_icon_green.svg)] bg-repeat bg-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
 
             <span class="text-7xl font-bold text-cta leading-none shrink-0 [text-shadow:0_4px_4px_rgba(0,0,0,0.25)]">
                 4
@@ -118,29 +132,33 @@ class extends Component {
         </div>
     </section>
     <section>
-        <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6 mt-6"> Découvrez nos petsitters</h2>
-        {{--@foreach($petsitters as $petsitter)
-            <x-card
+        <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6 mt-6"> Découvrez nos
+            petsitters</h2>
+        @foreach($petsitters as $petsitter)
+            <x-cards.petsitter_card
                 :name="$petsitter->name"
                 :image="$petsitter->image"
                 :description="$petsitter->description"
                 :tags="$petsitter->tags"
-                :choose-url="route('ajouter la route', $petsitter)"
-                :contact-url="route('ajouter la route', $petsitter)"
+                :choose-url=" route('petsitter.profile', $petsitter)"
+                :contact-url=" route('petsitter.request', $petsitter)"
             />
-        @endforeach--}}
+        @endforeach
     </section>
-    <section class="relative flex flex-col items-center gap-4 bg-card-green rounded-lg p-4 lg:p-5 ml-4 mr-4 lg:ml-25 lg:mr-25 min-h-40 lg:min-h-50 mb-20 shadow">
+    <section
+        class="relative flex flex-col items-center gap-4 bg-card-green rounded-lg p-4 lg:p-5 ml-4 mr-4 lg:ml-25 lg:mr-25 min-h-40 lg:min-h-50 my-20 shadow">
 
         <h3 class="mt-16 mb-8 text-text lg:text-3xl font-semibold text-center">
             Vous souhaitez devenir petsitter ?
         </h3>
 
         <p class="lg:w-1/2 my-12 text-center">
-            Envie de vous occuper d’animaux ? Rejoignez PawClub et devenez petsitter en proposant un service adapté à vos disponibilités.
+            Envie de vous occuper d’animaux ? Rejoignez PawClub et devenez petsitter en proposant un service adapté à
+            vos disponibilités.
         </p>
 
-        <a href="" class="text-lg lg:text-3xl text-center w-full lg:w-1/2 bg-white lg:py-4 lg:px-18 rounded-lg uppercase font-bold text-text ">
+        <a href=""
+           class="text-lg lg:text-3xl text-center w-full lg:w-1/2 bg-white lg:py-4 lg:px-18 rounded-lg uppercase font-bold text-text ">
             Devenir petsitter
         </a>
 

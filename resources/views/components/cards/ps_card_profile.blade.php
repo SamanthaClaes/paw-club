@@ -8,7 +8,6 @@
 <section>
     <h1>Informations personnelles</h1>
     <div>
-    <div>
         <img src="" alt="Image de profile">
     </div>
     <div>
@@ -24,5 +23,4 @@
     <div>
         <p>Adresse postale : {{ $adress }}</p>
     </div>
-        
 </section>
