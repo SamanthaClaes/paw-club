@@ -11,6 +11,7 @@ Route::middleware('auth')->group(function () {
     Route::livewire('/dashboard/messages', 'pages::dashboard.messages')->name('dashboard.messages');
     Route::livewire('/dashboard/request', 'pages::dashboard.request')->name('dashboard.request');
     Route::livewire('/petsitter/request', 'pages::petsitter.request')->name('petsitter.request');
+    Route::livewire('/petsitter/profile', 'pages::petsitter.profile')->name('petsitter.profile');
 });
 
 Route::livewire('/daycare/create', 'pages::daycare.create')->name('daycare.create');

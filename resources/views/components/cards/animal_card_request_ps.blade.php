@@ -51,7 +51,7 @@
                 </p>
             </div>
         </div>
-        
+
         <div class="flex flex-col items-center">
 
             <img

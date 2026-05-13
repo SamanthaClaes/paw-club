@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             'name'=>'Julie',
             'email'=>'julie@mail.be',
             'password'=>'julieTest',
+            'phone'=>'0499 90 90 91',
+            'adress'=>'route de Napoleon 15',
             'role'=>UserRole::OWNER
         ]);
 
@@ -28,6 +30,8 @@ class DatabaseSeeder extends Seeder
             'name'=>'Clement',
             'email'=>'clem@mail.be',
             'password'=>'clemTest',
+            'phone'=>'0499 90 90 90',
+            'adress'=>'route de Napoleon 150',
             'role'=>UserRole::PETSITTER
         ]);
 
@@ -35,6 +39,8 @@ class DatabaseSeeder extends Seeder
             'name'=>'Norbert',
             'email'=>'nono@mail.be',
             'password'=>'nonoTest',
+            'phone'=>'0499 90 90 92',
+            'adress'=>'route de Napoleon 1',
             'role'=>UserRole::ADMIN,
         ]);
     }
