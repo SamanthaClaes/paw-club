@@ -1,18 +1,33 @@
-@props(['type', 'name', 'label', 'value' => '', 'required'=>null, 'placeholder'=>'',])
+@props([
+    'type',
+    'name',
+    'label',
+    'required' => null,
+    'placeholder' => '',
+])
 
-<div {{ $attributes->merge(['class' => "w-full"])}} >
-    {{$slot}}
-    <label class="block text-sm  text-text uppercase font-bold mb-1" for="{{$name}}">{{$label}}</label>
-    <input {{ $attributes->merge(['class' => "w-full border-2 border-element bg-white rounded-lg px-3 py-2 mb-6"]) }}
-           type="{{$type}}"
-           id="{{$name}}"
-           name="{{$name}}"
-           value="{{ old($name, $value) }}"
-           placeholder="{{$placeholder}}"
-           required
-           @if($required) required @endif>
+<div class="w-full">
+
+    <label
+        class="block text-sm text-text uppercase font-bold mb-1"
+        for="{{ $name }}"
+    >
+        {{ $label }}
+    </label>
+
+    <input
+        {{ $attributes->merge([
+            'class' => 'w-full border-2 border-element bg-white rounded-lg px-3 py-2 mb-6'
+        ]) }}
+        type="{{ $type }}"
+        id="{{ $name }}"
+        name="{{ $name }}"
+        placeholder="{{ $placeholder }}"
+        @if($required) required @endif
+    >
+
     @error($name)
-    <p class="text-red-500"> {{ $message }}</p>
+    <p class="text-red-500">{{ $message }}</p>
     @enderror
-</div>
 
+</div>

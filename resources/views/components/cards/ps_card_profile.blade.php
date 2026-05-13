@@ -6,7 +6,7 @@
  'adress',
 ])
 
-<section class="border-4 border-stroke rounded-lg bg-card p-6 max-w-4xl mx-auto">
+<section x-data="{ open: false }" class="border-4 border-stroke rounded-lg bg-card p-6 max-w-4xl mx-auto">
     <div class="flex flex-col lg:flex-row gap-6 items-center lg:items-start">
 
         <div class="shrink-0">
@@ -44,12 +44,12 @@
             </div>
 
             <div class="mt-8">
-                <button
-                    class="w-full bg-btn-green hover:bg-green-800 text-white font-extrabold uppercase rounded-lg py-3 transition">
+                <button type="button"  @click="$dispatch('open-password-modal')"
+                        class="w-full bg-btn-green hover:bg-green-800 text-white font-extrabold uppercase rounded-lg py-3 transition">
                     Modifier mes informations
                 </button>
             </div>
-        </div>
+    </div>
 
     </div>
 </section>
