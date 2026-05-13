@@ -1,11 +1,15 @@
 <?php
 
 use App\enum\UserRole;
+use App\Models\AnimalType;
+use App\Models\Habitations;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new class extends Component {
+new  #[Title('Devenir petsitter')]
+class extends Component {
     public string $last_name = '';
     public string $first_name = '';
     public string $email = '';
@@ -13,6 +17,16 @@ new class extends Component {
     public string $zip = '';
     public string $home = '';
     public string $animals = '';
+    public $types = [];
+    public $habitations = [];
+
+
+    public function mount()
+    {
+        $this->types = AnimalType::all();
+        $this->habitations = Habitations::all();
+    }
+
 
     public function store(): void
     {
@@ -40,32 +54,28 @@ new class extends Component {
         <form wire:submit.prevent="store" class="w-8/10 mx-auto mt-6">
             @csrf
             <div class="flex gap-6 justify-between">
-                <x-forms.input-label wire:model="last_name" type="text" name="last_name" label="Nom"/>
-                <x-forms.input-label wire:model="first_name" type="text" name="first_name" label="Prenom"/>
+                <x-forms.input-label wire:model="last_name" type="text" name="last_name" label="Nom *"/>
+                <x-forms.input-label wire:model="first_name" type="text" name="first_name" label="Prénom *"/>
             </div>
             <div>
-                <x-forms.input-label wire:model="email" type="email" name="email" label="Email"/>
+                <x-forms.input-label wire:model="email" type="email" name="email" label="Email *"/>
             </div>
             <div class="flex gap-6 justify-between">
-                <x-forms.input-label wire:model="adress" type="text" name="adress" label="Adresse postale"/>
-                <x-forms.input-label wire:model="zip" type="number" name="zip" label="Code Postal"/>
+                <x-forms.input-label wire:model="adress" type="text" name="adress" label="Adresse postale *"/>
+                <x-forms.input-label wire:model="zip" type="number" name="zip" label="Code Postal *"/>
             </div>
             <div class="flex gap-6">
-                <x-forms.select-option wire:model="home" label="Type d'habitation" name="home">
+                <x-forms.select-option wire:model="home" label="Type d'habitation *" name="home">
                     <option value="">Choisir votre lieu d'habitation</option>
-                    <option value="home">Maison</option>
-                    <option value="flat">Appartement</option>
-                    <option value="duplex">Studio</option>
-                    <option value="farm">Ferme</option>
+                    @foreach($habitations as $habitation)
+                        <option value="{{ $habitation->id }}">{{ $habitation->name }}</option>
+                    @endforeach
                 </x-forms.select-option>
-                <x-forms.select-option wire:model="animals" label="Type d'animaux" name="animals">
+                <x-forms.select-option wire:model="animals" label="Type d'animaux *" name="animals">
                     <option value="">Choisir votre type d'animaux à garder</option>
-                    <option value="dog">Chien</option>
-                    <option value="cat">Chat</option>
-                    <option value="rabbit">Lapin</option>
-                    <option value="ferret">Furet</option>
-                    <option value="hamster">Hamster</option>
-                    <option value="snake">Serpent</option>
+                    @foreach($types as $type)
+                        <option value="{{ $type->id }}">{{ $type->type }}</option>
+                    @endforeach
                 </x-forms.select-option>
 
             </div>
