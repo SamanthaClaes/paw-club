@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
     {
 
         User::create([
-            'name'=>'Julie',
+            'last_name'=>'Juju',
+            'first_name'=>'Julie',
             'email'=>'julie@mail.be',
             'password'=>'julieTest',
             'phone'=>'0499 90 90 91',
@@ -30,7 +31,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name'=>'Clement',
+            'last_name'=>'clem',
+            'first_name'=>'Clement',
             'email'=>'clem@mail.be',
             'password'=>'clemTest',
             'phone'=>'0499 90 90 90',
@@ -40,7 +42,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name'=>'Norbert',
+            'last_name'=>'Nono',
+            'first_name'=>'Norbert',
             'email'=>'nono@mail.be',
             'password'=>'nonoTest',
             'phone'=>'0499 90 90 92',

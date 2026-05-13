@@ -12,6 +12,7 @@ new  #[Title('Devenir petsitter')]
 class extends Component {
     public string $last_name = '';
     public string $first_name = '';
+    public string $phone = '';
     public string $email = '';
     public string $adress = '';
     public string $zip = '';
@@ -34,13 +35,14 @@ class extends Component {
             'last_name' => 'required|string',
             'first_name' => 'required|string',
             'email' => 'required|email|unique:users,email',
+            'phone' => 'required|string',
             'adress' => 'required|string',
             'zip' => 'required|integer',
             'home' => 'required|string',
             'animals' => 'required|string',
         ]);
 
-        User::create([...$validated, 'role' => UserRole::PETSITTER]);
+        User::create([...$validated, 'password' => Hash::make('password'), 'role' => UserRole::PETSITTER]);
     }
 };
 ?>
@@ -57,8 +59,9 @@ class extends Component {
                 <x-forms.input-label wire:model="last_name" type="text" name="last_name" label="Nom *"/>
                 <x-forms.input-label wire:model="first_name" type="text" name="first_name" label="Prénom *"/>
             </div>
-            <div>
+            <div class="flex gap-6 justify-between">
                 <x-forms.input-label wire:model="email" type="email" name="email" label="Email *"/>
+                <x-forms.input-label wire:model="phone" type="text" name="phone" label="Numéro de téléphone *"/>
             </div>
             <div class="flex gap-6 justify-between">
                 <x-forms.input-label wire:model="adress" type="text" name="adress" label="Adresse postale *"/>

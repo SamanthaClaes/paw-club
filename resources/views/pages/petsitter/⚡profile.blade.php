@@ -5,11 +5,11 @@ use App\Models\User;
 use Livewire\Component;
 
 new class extends Component {
-    public $petsitters;
+    public User $petsitter;
 
     public function mount(): void
     {
-        $this->petsitters = User::where('role', UserRole::PETSITTER)->get();
+        $this->petsitter = Auth::user();
     }
 };
 ?>
@@ -17,13 +17,12 @@ new class extends Component {
 <div>
     <x-header.PetsitterNav/>
     <section>
-        @foreach($petsitters as $petsitter)
         <x-cards.ps_card_profile
-            :name="$petsitter->name"
+            :last_name="$petsitter->last_name"
+            :first_name="$petsitter->first_name"
             :email="$petsitter->email"
             :phone="$petsitter->phone"
             :adress="$petsitter->adress"
         />
-        @endforeach
     </section>
 </div>
