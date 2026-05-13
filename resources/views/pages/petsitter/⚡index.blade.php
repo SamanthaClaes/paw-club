@@ -157,7 +157,7 @@ class extends Component {
             vos disponibilités.
         </p>
 
-        <a href=""
+        <a href="{{ route('petsitter.create') }}"
            class="text-lg lg:text-3xl text-center w-full lg:w-1/2 bg-white lg:py-4 lg:px-18 rounded-lg uppercase font-bold text-text ">
             Devenir petsitter
         </a>

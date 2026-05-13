@@ -177,7 +177,7 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
                 <div class="mt-6 mb-6">
                     <label for="msg" class="text-text font-bold uppercase">Message</label>
                     <textarea name="msg" id="" cols="30" rows="10"
-                              class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background"></textarea>
+                              class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none"></textarea>
                 </div>
                 <div class="mb-20">
                     <x-forms.button>
