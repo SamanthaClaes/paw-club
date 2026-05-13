@@ -1,11 +1,32 @@
 <?php
 
+use App\enum\UserRole;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 new class extends Component {
-    public function store()
-    {
+    public string $last_name = '';
+    public string $first_name = '';
+    public string $email = '';
+    public string $adress = '';
+    public string $zip = '';
+    public string $home = '';
+    public string $animals = '';
 
+    public function store(): void
+    {
+        $validated = $this->validate([
+            'last_name' => 'required|string',
+            'first_name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'adress' => 'required|string',
+            'zip' => 'required|integer',
+            'home' => 'required|string',
+            'animals' => 'required|string',
+        ]);
+
+        User::create([...$validated, 'role' => UserRole::PETSITTER]);
     }
 };
 ?>
@@ -19,25 +40,25 @@ new class extends Component {
         <form wire:submit.prevent="store" class="w-8/10 mx-auto mt-6">
             @csrf
             <div class="flex gap-6 justify-between">
-                <x-forms.input-label type="text" name="last_name" label="Nom"/>
-                <x-forms.input-label type="text" name="first_name" label="Prenom"/>
+                <x-forms.input-label wire:model="last_name" type="text" name="last_name" label="Nom"/>
+                <x-forms.input-label wire:model="first_name" type="text" name="first_name" label="Prenom"/>
             </div>
             <div>
-                <x-forms.input-label type="email" name="email" label="Email"/>
+                <x-forms.input-label wire:model="email" type="email" name="email" label="Email"/>
             </div>
             <div class="flex gap-6 justify-between">
-                <x-forms.input-label type="text" name="adress" label="Adresse postale"/>
-                <x-forms.input-label type="number" name="zip" label="Code Postal"/>
+                <x-forms.input-label wire:model="adress" type="text" name="adress" label="Adresse postale"/>
+                <x-forms.input-label wire:model="zip" type="number" name="zip" label="Code Postal"/>
             </div>
             <div class="flex gap-6">
-                <x-forms.select-option label="Type d'habitation" name="home">
+                <x-forms.select-option wire:model="home" label="Type d'habitation" name="home">
                     <option value="">Choisir votre lieu d'habitation</option>
                     <option value="home">Maison</option>
                     <option value="flat">Appartement</option>
                     <option value="duplex">Studio</option>
                     <option value="farm">Ferme</option>
                 </x-forms.select-option>
-                <x-forms.select-option label="Type d'animaux" name="animals">
+                <x-forms.select-option wire:model="animals" label="Type d'animaux" name="animals">
                     <option value="">Choisir votre type d'animaux à garder</option>
                     <option value="dog">Chien</option>
                     <option value="cat">Chat</option>
@@ -49,8 +70,9 @@ new class extends Component {
 
             </div>
             <div class="mt-6 mb-6">
-                <label  class="text-text font-bold uppercase" for="infos">Informations supplémentaires</label>
-                <textarea name="infos" id="infos" cols="30" rows="10"  class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none"></textarea>
+                <label class="text-text font-bold uppercase" for="infos">Informations supplémentaires</label>
+                <textarea wire:model="infos" name="infos" id="infos" cols="30" rows="10"
+                          class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none"></textarea>
             </div>
             <div>
                 <x-forms.button>
