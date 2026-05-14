@@ -1,7 +1,20 @@
+@props([
+    'animal_name',
+    'name',
+    'type',
+    'start_date',
+    'end_date',
+    'description',
+    'email',
+    'animal_age',
+    'breed',
+    'image',
+])
+
 <section class="grid grid-cols-2">
     <section class="border-4 border-stroke rounded-lg p-6 ml-25 bg-card max-w-4xl mx-auto">
     <h1 class="text-center text-3xl font-extrabold uppercase text-text mb-10">
-        Balthazar chat de Nathalie
+        {{ $animal_name }}, {{ $type }} de {{$name}}
     </h1>
 
     <div class="grid grid-cols-3 gap-10">
@@ -10,21 +23,11 @@
 
             <div>
                 <p class="font-bold text-text text-xl">
-                    Type de surveillance
-                </p>
-
-                <p class="text-text italic">
-                    Visite ponctuelle
-                </p>
-            </div>
-
-            <div>
-                <p class="font-bold text-text text-xl">
                     Dates de garde
                 </p>
 
                 <p class="text-text">
-                    10/06/2026 - 17/06/2026
+                    {{ $start_date }} - {{ $end_date }}
                 </p>
             </div>
 
@@ -34,10 +37,7 @@
                 </p>
 
                 <p class="text-text max-w-md">
-                    Balthazar me demande peu d’attention.
-                    Deux visites quotidiennes sont suffisantes
-                    pour assurer son alimentation, vérifier son état général
-                    et entretenir sa litière.
+                    {{ $description }}
                 </p>
             </div>
 
@@ -47,7 +47,7 @@
                 </p>
 
                 <p class="text-text">
-                    Rue des pommiers 45, 4000 Liège.
+                    {{ $email }}
                 </p>
             </div>
         </div>
@@ -55,7 +55,7 @@
         <div class="flex flex-col items-center">
 
             <img
-                src="{{ asset('img/login/cat.jpg') }}"
+                src="{{\Illuminate\Support\Facades\Storage::url($image)  }}"
                 alt="Image de l'animal"
                 class="w-full max-w-55 h-80 object-cover rounded-xl mb-4"
             >
@@ -66,15 +66,15 @@
                 </p>
 
                 <p class="text-text">
-                    Chat
+                    {{ $type }}
                 </p>
 
                 <p class="text-text">
-                    1 an
+                    {{ $animal_age }} ans
                 </p>
 
                 <p class="text-text">
-                    Maine Coon
+                    {{ $breed }}
                 </p>
             </div>
         </div>

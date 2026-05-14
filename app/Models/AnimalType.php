@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AnimalType extends Model
 {
@@ -15,8 +16,8 @@ class AnimalType extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public function petSittingRequests(): BelongsToMany
+    public function petSittingRequests(): HasMany
     {
-        return $this->belongsToMany(PetSittingRequest::class);
+        return $this->hasMany(PetSittingRequest::class);
     }
 }

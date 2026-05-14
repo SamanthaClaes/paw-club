@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -14,12 +15,18 @@ class PetSittingRequest extends Model
         'last_name',
         'first_name',
         'email',
-        'image',
+        'animal_type_id',
         'description',
+        'animal_name',
+        'animal_age',
+        'breed',
+        'start_date',
+        'end_date',
+        'image'
     ];
 
-    public function animalTypes(): BelongsToMany
+    public function animalType(): BelongsTo
     {
-        return $this->belongsToMany(AnimalType::class);
+        return $this->belongsTo(AnimalType::class);
     }
 }

@@ -8,12 +8,17 @@ use Livewire\WithFileUploads;
 new class extends Component {
     use WithFileUploads;
 
+    public string $animal_name = '';
+    public string $animal_age = '';
+    public string $breed = '';
+    public string $start_date = '';
+    public string $end_date = '';
     public string $last_name = '';
     public string $first_name = '';
     public string $email = '';
     public string $description = '';
     public $types = [];
-    public $animals = [];
+    public string $animal_type_id = '';
     public $image;
 
     public function mount()
@@ -28,14 +33,17 @@ new class extends Component {
             'first_name' => 'required|string',
             'email' => 'required|email',
             'image' => 'nullable|image',
+            'animal_age'=>'required|integer',
+            'animal_name'=>'required|string',
+            'start_date'=>'required|date',
+            'end_date'=>'required|date|after:start_date',
+            'breed'=>'required|string',
             'description' => 'nullable|string',
-            'animals'=> 'required|array',
+            'animal_type_id' => 'required|exists:animal_types,id',
         ]);
 
         $request = PetSittingRequest::create($validated);
-        $this->reset();
 
-        $request->animalTypes()->sync($this->animals);
         if ($this->image) {
 
             $path = $this->image->store('animals', 'public');
@@ -44,6 +52,7 @@ new class extends Component {
 
             $request->save();
         }
+        $this->reset();
     }
 };
 ?>
@@ -65,32 +74,41 @@ new class extends Component {
             <x-forms.input-label wire:model="email" label="Email *" type="email" name="email" placeholder="mail@test.be" value=""
                                  required class="w-full"/>
         </div>
-        <label class="block text-sm text-text uppercase font-bold mb-3">
-            Choisissez votre animal
-        </label>
-
         <div class="flex flex-col gap-3">
+                <x-forms.select-option wire:model="animal_type_id" name="animal_type_id" label="Choisissez votre animal">
+                    <option value="">Choisissez un animal</option>
+                    @foreach($types as $type)
+                    <option value="{{ $type->id }}">
+                            {{ $type->type  }}
+                    </option>
+                    @endforeach
+                </x-forms.select-option>
 
-            @foreach($types as $type)
+            <div class="flex gap-6">
+                <x-forms.input-label wire:model="animal_name" name="animal_name" type="text" label="Nom de votre animal"/>
+                <x-forms.input-label wire:model="animal_age" name="animal_age" type="number" label="Age de votre animal"/>
+                <x-forms.select-option name="breed" wire:model="breed" label="Race de votre animal">
+                    <option value=""> Race de votre animal</option>
+                    <option value="golden_retriever">Golden Retriever</option>
+                    <option value="berger_allemand">Berger Allemand</option>
+                    <option value="bouledogue_francais">Bouledogue Français</option>
 
-                <label class="flex items-center gap-3 cursor-pointer">
+                    <option value="maine_coon">Maine Coon</option>
+                    <option value="persan">Persan</option>
+                    <option value="siamois">Siamois</option>
 
-                    <input
-                        type="checkbox"
-                        wire:model="animals"
-                        value="{{ $type->id }}"
-                        class="w-4 h-4 accent-btn-green"
-                    >
-
-                    <span class="text-text">
-                        {{ ucfirst($type->type) }}
-                    </span>
-
-                </label>
-            @endforeach
+                    <option value="lapin_nain">Lapin nain</option>
+                    <option value="belier_hollandais">Bélier hollandais</option>
+                    <option value="rex">Rex</option>
+                </x-forms.select-option>
+            </div>
             <div class="mt-6">
                 <x-forms.input-label wire:model="image"  name="image" label="Photo de l’animal" type="file"/>
             </div>
+                <div class="flex gap-6">
+                    <x-forms.input-label type="date" wire:model="start_date" name="start_date" label="Date de début de garde"/>
+                    <x-forms.input-label type="date" wire:model="end_date" name="end_date" label="Date de fin de garde"/>
+                </div>
             <div class="mt-6">
                 <label for="description" class="block text-sm  text-text uppercase font-bold mb-1">Besoins spécifiques de
                     l'animal</label>
