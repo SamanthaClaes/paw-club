@@ -61,7 +61,7 @@ new class extends Component {
     />
 
     <x-cards.ps_card_profile_info
-        :type="$petsitter->type"
+        :type="$petsitter->animalTypes->pluck('type')->join(', ')"
         :nbr="2"
         :visit="0"
 

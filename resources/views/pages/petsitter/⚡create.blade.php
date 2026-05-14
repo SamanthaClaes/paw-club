@@ -18,12 +18,12 @@ class extends Component {
     public string $adress = '';
     public string $zip = '';
     public string $home = '';
-    public string $animals = '';
+    public $animals = [];
     public $types = [];
     public $habitations = [];
 
 
-    public function mount()
+    public function mount(): void
     {
         $this->types = AnimalType::all();
         $this->habitations = Habitations::all();
@@ -43,7 +43,8 @@ class extends Component {
             'animals' => 'required|string',
         ]);
 
-        User::create([...$validated, 'password' => Hash::make('password'), 'role' => UserRole::PETSITTER]);
+        $user = User::create([...$validated, 'password' => Hash::make('password'), 'role' => UserRole::PETSITTER]);
+        $user->animalTypes()->sync($this->animals);
 
         return redirect()->route('petsitter.create')->with('success', 'Demande envoyée avec succès');
     }
@@ -70,19 +71,70 @@ class extends Component {
                 <x-forms.input-label wire:model="adress" type="text" name="adress" label="Adresse postale *"/>
                 <x-forms.input-label wire:model="zip" type="number" name="zip" label="Code Postal *"/>
             </div>
-            <div class="flex gap-6">
-                <x-forms.select-option wire:model="home" label="Type d'habitation *" name="home">
-                    <option value="">Choisir votre lieu d'habitation</option>
-                    @foreach($habitations as $habitation)
-                        <option value="{{ $habitation->id }}">{{ $habitation->name }}</option>
-                    @endforeach
-                </x-forms.select-option>
-                <x-forms.select-option wire:model="animals" label="Type d'animaux *" name="animals">
-                    <option value="">Choisir votre type d'animaux à garder</option>
-                    @foreach($types as $type)
-                        <option value="{{ $type->id }}">{{ $type->type }}</option>
-                    @endforeach
-                </x-forms.select-option>
+            <div class="flex gap-12 justify-between">
+
+                <div class="w-1/2">
+
+                    <label class="block text-sm text-text uppercase font-bold mb-3">
+                        Type d'habitation *
+                    </label>
+
+                    <div class="flex flex-col gap-3">
+
+                        @foreach($habitations as $habitation)
+
+                            <label class="flex items-center gap-3 cursor-pointer">
+
+                                <input
+                                    type="radio"
+                                    wire:model="home"
+                                    name="home"
+                                    value="{{ $habitation->id }}"
+                                    class="w-4 h-4 accent-btn-green"
+                                >
+
+                                <span class="text-text">
+                        {{ $habitation->name }}
+                    </span>
+
+                            </label>
+
+                        @endforeach
+
+                    </div>
+
+                </div>
+
+                <div class="w-1/2">
+
+                    <label class="block text-sm text-text uppercase font-bold mb-3">
+                        Choisissez votre type d’animal
+                    </label>
+
+                    <div class="flex flex-col gap-3">
+
+                        @foreach($types as $type)
+
+                            <label class="flex items-center gap-3 cursor-pointer">
+
+                                <input
+                                    type="checkbox"
+                                    wire:model="animals"
+                                    value="{{ $type->id }}"
+                                    class="w-4 h-4 accent-btn-green"
+                                >
+
+                                <span class="text-text">
+                        {{ $type->type }}
+                    </span>
+
+                            </label>
+
+                        @endforeach
+
+                    </div>
+
+                </div>
 
             </div>
             <div class="mt-6 mb-6">
@@ -96,27 +148,27 @@ class extends Component {
                 </x-forms.button>
             </div>
         </form>
-{{--      @if(session('success'))--}}
-            <div v
-                 x-data="{ show: false }"
-                 x-init="
+        {{--      @if(session('success'))--}}
+        <div v
+             x-data="{ show: false }"
+             x-init="
         setTimeout(() => show = true, 100);
         setTimeout(() => show = false, 4000);
     "
-                 x-show="show"
-                 x-cloak
-                 x-transition:enter="transform transition duration-700 ease-out"
-                 x-transition:enter-start="opacity-0 -translate-y-10 scale-95"
-                 x-transition:enter-end="opacity-100 translate-y-0 scale-100"
-                 x-transition:leave="transform transition duration-500 ease-in"
-                 x-transition:leave-start="opacity-100 translate-y-0 scale-100"
-                 x-transition:leave-end="opacity-0 -translate-y-10 scale-95"
-                class="bg-green-100 border border-green-400 text-green-800 text-center font-bold px-4 py-3 rounded-lg mb-6 w-1/2 mx-auto">
-               <p>
-{{--                   {{ session('success') }}--}}
-                   Texte de succès !!
-               </p>
-            </div>
-{{--     @endif--}}
+             x-show="show"
+             x-cloak
+             x-transition:enter="transform transition duration-700 ease-out"
+             x-transition:enter-start="opacity-0 -translate-y-10 scale-95"
+             x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+             x-transition:leave="transform transition duration-500 ease-in"
+             x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+             x-transition:leave-end="opacity-0 -translate-y-10 scale-95"
+             class="bg-green-100 border border-green-400 text-green-800 text-center font-bold px-4 py-3 rounded-lg mb-6 w-1/2 mx-auto">
+            <p>
+                {{--                   {{ session('success') }}--}}
+                Texte de succès !!
+            </p>
+        </div>
+        {{--     @endif--}}
     </section>
 </div>
