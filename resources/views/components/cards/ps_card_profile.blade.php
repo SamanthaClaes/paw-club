@@ -4,6 +4,9 @@
  'email',
  'phone',
  'adress',
+ 'zip',
+ 'location',
+ 'image',
 ])
 
 <section class="border-4 border-stroke rounded-lg bg-card p-6 max-w-4xl mx-auto">
@@ -11,9 +14,9 @@
 
         <div class="shrink-0">
             <img
-                src="{{ asset($image ?? 'img/default-profile.jpg') }}"
+                src="{{ \Illuminate\Support\Facades\Storage::url($image)  }}"
                 alt="Image de profile"
-                class="w-44 h-44 rounded-lg object-cover">
+                class=" w-44 h-full rounded-lg object-cover">
         </div>
 
         <div class="flex-1 w-full">
@@ -39,7 +42,7 @@
 
                 <p>
                     <span class="font-extrabold">Adresse :</span>
-                    {{ $adress }}
+                    {{ $adress }} {{ $zip }} {{ $location }}
                 </p>
             </div>
 

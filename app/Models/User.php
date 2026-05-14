@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['last_name','first_name', 'email', 'password', 'role', 'phone', 'adress', 'zip'])]
+#[Fillable(['last_name','first_name', 'email', 'password', 'role', 'phone', 'adress', 'zip', 'image', 'location'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -40,6 +40,6 @@ class User extends Authenticatable
 
     public function visitTypes(): BelongsToMany
     {
-        return $this->belongsToMany(VisitType::class);
+        return $this->belongsToMany(VisitType::class, 'visit_type_user');
     }
 }

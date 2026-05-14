@@ -9,9 +9,15 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 new  #[Title('Devenir petsitter')]
 class extends Component {
+
+    use WithFileUploads;
+
     public string $last_name = '';
     public string $first_name = '';
     public string $phone = '';
@@ -23,13 +29,17 @@ class extends Component {
     public $types = [];
     public $habitations = [];
     public $visits = [];
+    public $visitTypes = [];
+    public $image;
+    public string $location;
+
 
 
     public function mount(): void
     {
         $this->types = AnimalType::all();
         $this->habitations = Habitation::all();
-        $this->visits = VisitType::all();
+        $this->visitTypes = VisitType::all();
     }
 
 
@@ -39,24 +49,32 @@ class extends Component {
             'last_name' => 'required|string',
             'first_name' => 'required|string',
             'email' => 'required|email|unique:users,email',
+            'image' => 'image',
             'phone' => 'required|string',
             'adress' => 'required|string',
-            'zip' => 'required|integer|max:5',
+            'zip' => 'required|integer|max_digits:5',
             'location' => 'required|string',
-            'home' => 'required|string',
-            'animals' => 'required|string',
-            'visits' => 'required|string',
+            'home' => 'required',
+            'animals' => 'required|array',
+            'visits' => 'required|array',
         ]);
 
         $user = User::create([...$validated, 'password' => Hash::make('password'), 'role' => UserRole::PETSITTER]);
         $user->animalTypes()->sync($this->animals);
         $user->visitTypes()->sync($this->visits);
+        if ($this->image) {
+
+            $path = $this->image->store('petsitters', 'public');
+
+            $user->image = $path;
+
+            $user->save();
+        }
 
         return redirect()->route('petsitter.create')->with('success', 'Demande envoyée avec succès');
     }
 };
 ?>
-
 <div>
     <section>
         <h1 class="text-text text-2xl font-bold uppercase text-center mt-20">S'inscrire pour devenir petsitter</h1>
@@ -65,6 +83,9 @@ class extends Component {
             candidature.</p>
         <form wire:submit.prevent="store" class="w-8/10 mx-auto mt-6">
             @csrf
+            <div>
+                <x-forms.input-label type="file" name="image" label="Photo de profil" wire:model="image"/>
+            </div>
             <div class="flex gap-6 justify-between">
                 <x-forms.input-label wire:model="last_name" type="text" name="last_name" label="Nom *"/>
                 <x-forms.input-label wire:model="first_name" type="text" name="first_name" label="Prénom *"/>
@@ -77,20 +98,12 @@ class extends Component {
                 <x-forms.input-label wire:model="adress" type="text" name="adress" label="Adresse postale *"/>
                 <x-forms.input-label wire:model="zip" type="number" name="zip" label="Code Postal *"/>
             </div>
-            <div class="flex gap-6 justify-between">
+            <div>
                 <x-forms.input-label wire:model="location" type="text" name="location" label="Localité"/>
-                <x-forms.select-option wire:model="visits" label="Choisissez votre type de visite" name="visits">
-                    <option value="">Choisissez votre type de visite</option>
-                    @foreach( $visits as $visit)
-                        <option value="{{ $visit->id }}">
-                            {{ $visit->name }}
-                        </option>
-                    @endforeach
-                </x-forms.select-option>
             </div>
             <div class="flex gap-12 justify-between">
 
-                <div class="w-1/2">
+                <div class="w-1/3">
 
                     <label class="block text-sm text-text uppercase font-bold mb-3">
                         Type d'habitation *
@@ -121,7 +134,7 @@ class extends Component {
                     </div>
 
                 </div>
-                <div class="w-1/2">
+                <div class="w-1/3">
                     <label class="block text-sm text-text uppercase font-bold mb-3">
                         Choisissez votre type d’animal
                     </label>
@@ -149,7 +162,35 @@ class extends Component {
 
                     </div>
                 </div>
+                <div class="w-1/3">
+                    <label class="block text-sm text-text uppercase font-bold mb-3">
+                        Choisissez votre type de visites
+                    </label>
+
+                    <div class="flex flex-col gap-3">
+
+                        @foreach($visitTypes as $visit)
+
+                            <label class="flex items-center gap-3 cursor-pointer">
+
+                                <input
+                                    type="checkbox"
+                                    wire:model="visits"
+                                    value="{{ $visit->id }}"
+                                    class="w-4 h-4 accent-btn-green"
+                                >
+
+                                <span class="text-text">
+                        {{ ucfirst($visit->name) }}
+                    </span>
+
+                            </label>
+
+                        @endforeach
+
+                    </div>
                 </div>
+            </div>
 
             <div class="mt-6 mb-6">
                 <label class="text-text font-bold uppercase" for="infos">Informations supplémentaires</label>

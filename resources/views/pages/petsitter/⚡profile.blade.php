@@ -58,11 +58,14 @@ new class extends Component {
         :email="$petsitter->email"
         :phone="$petsitter->phone"
         :adress="$petsitter->adress"
+        :zip="$petsitter->zip"
+        :location="$petsitter->location"
+        :image="$petsitter->image"
     />
 
     <x-cards.ps_card_profile_info
         :type="$petsitter->animalTypes->pluck('type')->join(', ')"
-        :visit="$petsitter->visitTypes->pluck('visit')->join(',')"
+        :visit="$petsitter->visitTypes->pluck('name')->join(', ')"
 
     />
 </section>

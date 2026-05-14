@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             'phone'=>'0499 90 90 91',
             'adress'=>'route de Napoleon 15',
             'zip'=>4550,
+            'location'=>'nandrin',
             'role'=>UserRole::OWNER
         ]);
 
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder
             'phone'=>'0499 90 90 90',
             'adress'=>'route de Napoleon 150',
             'zip'=>4000,
+            'location'=>'liege',
             'role'=>UserRole::PETSITTER
         ]);
 
@@ -49,6 +51,7 @@ class DatabaseSeeder extends Seeder
             'phone'=>'0499 90 90 92',
             'adress'=>'route de Napoleon 1',
             'zip'=>4400,
+            'location'=>'flemalle',
             'role'=>UserRole::ADMIN,
         ]);
 
