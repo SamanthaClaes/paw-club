@@ -11,7 +11,7 @@
 
     <div class="flex flex-col lg:flex-row gap-8">
         <div class="shrink-0 flex justify-center">
-            <img src="{{ asset($image) }}"
+            <img src="{{ \Illuminate\Support\Facades\Storage::url($image)  }}"
                  alt="{{ $name }}"
                  class="rounded-full object-cover w-32 h-32">
         </div>

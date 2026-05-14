@@ -19,6 +19,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
+        DB::table('habitations')->insert([
+            ['name'=>'maison'],
+            ['name'=>'studio'],
+            ['name'=>'appartement'],
+            ['name'=>'ferme'],
+        ]);
+
+
         User::create([
             'last_name'=>'Juju',
             'first_name'=>'Julie',
@@ -28,6 +36,7 @@ class DatabaseSeeder extends Seeder
             'adress'=>'route de Napoleon 15',
             'zip'=>4550,
             'location'=>'nandrin',
+            'habitation_id'=>'1',
             'role'=>UserRole::OWNER
         ]);
 
@@ -40,6 +49,7 @@ class DatabaseSeeder extends Seeder
             'adress'=>'route de Napoleon 150',
             'zip'=>4000,
             'location'=>'liege',
+            'habitation_id'=>'2',
             'role'=>UserRole::PETSITTER
         ]);
 
@@ -52,6 +62,7 @@ class DatabaseSeeder extends Seeder
             'adress'=>'route de Napoleon 1',
             'zip'=>4400,
             'location'=>'flemalle',
+            'habitation_id'=>'3',
             'role'=>UserRole::ADMIN,
         ]);
 
@@ -63,12 +74,6 @@ class DatabaseSeeder extends Seeder
             ['type'=>'serpent'],
             ['type'=>'hamster'],
 
-    ]);
-        DB::table('habitations')->insert([
-            ['name'=>'maison'],
-            ['name'=>'studio'],
-            ['name'=>'appartement'],
-            ['name'=>'ferme'],
     ]);
 
         DB::table('visit_types')->insert([

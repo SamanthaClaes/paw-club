@@ -42,7 +42,7 @@ class extends Component {
             w-30 sm:w-40 md:w-56 lg:w-64 xl:w-72
             translate-x-1/4 translate-y-1/4">
                 <div class="flex justify-center">
-                    <a href="{{ route('petsitter.booking.create') }}"
+                    <a href="{{ route('petsitter.index') }}#petsitters_list"
                        class="bg-card-green text-cta hover:bg-hover p-3 lg:p-6 rounded-lg font-bold lg:w-1/2 lg:text-center lg:text-2xl uppercase">Réserver
                         un petsitter</a>
                 </div>
@@ -132,16 +132,17 @@ class extends Component {
         </div>
     </section>
     <section>
-        <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6 mt-6"> Découvrez nos
+        <h2 id="petsitters_list"
+            class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6 mt-6"> Découvrez nos
             petsitters</h2>
         @foreach($petsitters as $petsitter)
             <x-cards.petsitter_card
-                :name="$petsitter->name"
+                :name="$petsitter->first_name"
                 :image="$petsitter->image"
                 :description="$petsitter->description"
-                :tags="$petsitter->tags"
-                :choose-url=" route('petsitter.profile', $petsitter)"
-                :contact-url=" route('petsitter.request', $petsitter)"
+                :tags="[...$petsitter->animalTypes->pluck('type')->toArray(),$petsitter->habitation?->name]"
+                :choose-url="route('petsitter.booking.create', $petsitter)"
+                :contact-url="route('petsitter.request', $petsitter)"
             />
         @endforeach
     </section>

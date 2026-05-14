@@ -8,11 +8,12 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['last_name','first_name', 'email', 'password', 'role', 'phone', 'adress', 'zip', 'image', 'location'])]
+#[Fillable(['last_name','first_name', 'email', 'password', 'role', 'phone', 'adress', 'zip', 'image', 'location', 'description', 'habitation_id'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -41,5 +42,9 @@ class User extends Authenticatable
     public function visitTypes(): BelongsToMany
     {
         return $this->belongsToMany(VisitType::class, 'visit_type_user');
+    }
+    public function habitation(): BelongsTo
+    {
+        return $this->belongsTo(Habitation::class);
     }
 }

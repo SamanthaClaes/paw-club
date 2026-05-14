@@ -67,7 +67,7 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
             translate-x-1/4 translate-y-1/4">
             </div>
             <div class="flex justify-center mt-6">
-                <a href="#"
+                <a href="{{ route('petsitter.index') }}#petsitters_list"
                    class=" text-cta  font-bold uppercase bg-card-green hover:bg-hover hover:text-white p-5 lg:w-1/2 rounded-lg mb-6  text-center shadow-md/10">Découvrir
                     nos petsitters</a>
             </div>

@@ -24,7 +24,7 @@ class extends Component {
     public string $email = '';
     public string $adress = '';
     public string $zip = '';
-    public string $home = '';
+    public string $habitation_id = '';
     public $animals = [];
     public $types = [];
     public $habitations = [];
@@ -32,6 +32,7 @@ class extends Component {
     public $visitTypes = [];
     public $image;
     public string $location;
+    public string $description;
 
 
 
@@ -54,9 +55,10 @@ class extends Component {
             'adress' => 'required|string',
             'zip' => 'required|integer|max_digits:5',
             'location' => 'required|string',
-            'home' => 'required',
+            'habitation_id' => 'required|exists:habitations,id',
             'animals' => 'required|array',
             'visits' => 'required|array',
+            'description' => 'nullable|string',
         ]);
 
         $user = User::create([...$validated, 'password' => Hash::make('password'), 'role' => UserRole::PETSITTER]);
@@ -117,7 +119,7 @@ class extends Component {
 
                                 <input
                                     type="radio"
-                                    wire:model="home"
+                                    wire:model="habitation_id"
                                     name="home"
                                     value="{{ $habitation->id }}"
                                     class="w-4 h-4 accent-btn-green"
@@ -194,7 +196,7 @@ class extends Component {
 
             <div class="mt-6 mb-6">
                 <label class="text-text font-bold uppercase" for="infos">Informations supplémentaires</label>
-                <textarea wire:model="infos" name="infos" id="infos" cols="30" rows="10"
+                <textarea wire:model="description" name="description" id="description" cols="30" rows="10"
                           class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none"></textarea>
             </div>
             <div>
