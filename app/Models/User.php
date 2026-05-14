@@ -37,4 +37,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(AnimalType::class);
     }
+
+    public function visitTypes(): BelongsToMany
+    {
+        return $this->belongsToMany(VisitType::class);
+    }
 }

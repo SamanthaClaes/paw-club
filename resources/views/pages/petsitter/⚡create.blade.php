@@ -2,8 +2,9 @@
 
 use App\enum\UserRole;
 use App\Models\AnimalType;
-use App\Models\Habitations;
+use App\Models\Habitation;
 use App\Models\User;
+use App\Models\VisitType;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Livewire\Attributes\Title;
@@ -21,12 +22,14 @@ class extends Component {
     public $animals = [];
     public $types = [];
     public $habitations = [];
+    public $visits = [];
 
 
     public function mount(): void
     {
         $this->types = AnimalType::all();
-        $this->habitations = Habitations::all();
+        $this->habitations = Habitation::all();
+        $this->visits = VisitType::all();
     }
 
 
@@ -38,9 +41,11 @@ class extends Component {
             'email' => 'required|email|unique:users,email',
             'phone' => 'required|string',
             'adress' => 'required|string',
-            'zip' => 'required|integer',
+            'zip' => 'required|integer|max:4',
+            'location' => 'required|string',
             'home' => 'required|string',
             'animals' => 'required|string',
+            'visits'=> 'required|string',
         ]);
 
         $user = User::create([...$validated, 'password' => Hash::make('password'), 'role' => UserRole::PETSITTER]);
@@ -71,6 +76,15 @@ class extends Component {
                 <x-forms.input-label wire:model="adress" type="text" name="adress" label="Adresse postale *"/>
                 <x-forms.input-label wire:model="zip" type="number" name="zip" label="Code Postal *"/>
             </div>
+            <div>
+                <x-forms.input-label wire:model="location" type="text" name="location" label="Localité"/>
+                <x-forms.select-option wire:model="visits" label="Choisissez votre type de visite">
+                    <option value="">Choisissez votre type de visite</option>
+                    @foreach( $visits as $visit)
+                        {{ $visit->name }}
+                    @endforeach
+                </x-forms.select-option>
+            </div>
             <div class="flex gap-12 justify-between">
 
                 <div class="w-1/2">
@@ -94,7 +108,7 @@ class extends Component {
                                 >
 
                                 <span class="text-text">
-                        {{ $habitation->name }}
+                        {{ ucfirst($habitation->name ) }}
                     </span>
 
                             </label>
@@ -125,7 +139,7 @@ class extends Component {
                                 >
 
                                 <span class="text-text">
-                        {{ $type->type }}
+                        {{ ucfirst($type->type) }}
                     </span>
 
                             </label>

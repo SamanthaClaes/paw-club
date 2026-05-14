@@ -67,5 +67,12 @@ class DatabaseSeeder extends Seeder
             ['name'=>'appartement'],
             ['name'=>'ferme'],
     ]);
+
+        DB::table('visit_types')->insert([
+            ['name'=>'ponctuelle'],
+            ['name'=>'à domicile'],
+            ['name'=>'chez le propriétaire'],
+            ['name'=>'toutes les visites'],
+        ]);
     }
 }
