@@ -50,6 +50,7 @@ class extends Component {
 
         $user = User::create([...$validated, 'password' => Hash::make('password'), 'role' => UserRole::PETSITTER]);
         $user->animalTypes()->sync($this->animals);
+        $user->visitTypes()->sync($this->visits);
 
         return redirect()->route('petsitter.create')->with('success', 'Demande envoyée avec succès');
     }
