@@ -77,12 +77,14 @@ class extends Component {
                 <x-forms.input-label wire:model="adress" type="text" name="adress" label="Adresse postale *"/>
                 <x-forms.input-label wire:model="zip" type="number" name="zip" label="Code Postal *"/>
             </div>
-            <div>
+            <div class="flex gap-6 justify-between">
                 <x-forms.input-label wire:model="location" type="text" name="location" label="Localité"/>
-                <x-forms.select-option wire:model="visits" label="Choisissez votre type de visite">
+                <x-forms.select-option wire:model="visits" label="Choisissez votre type de visite" name="visits">
                     <option value="">Choisissez votre type de visite</option>
                     @foreach( $visits as $visit)
+                    <option value="{{ $visit->id }}">
                         {{ $visit->name }}
+                    </option>
                     @endforeach
                 </x-forms.select-option>
             </div>
