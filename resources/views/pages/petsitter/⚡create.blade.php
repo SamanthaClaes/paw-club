@@ -41,11 +41,11 @@ class extends Component {
             'email' => 'required|email|unique:users,email',
             'phone' => 'required|string',
             'adress' => 'required|string',
-            'zip' => 'required|integer|max:4',
+            'zip' => 'required|integer|max:5',
             'location' => 'required|string',
             'home' => 'required|string',
             'animals' => 'required|string',
-            'visits'=> 'required|string',
+            'visits' => 'required|string',
         ]);
 
         $user = User::create([...$validated, 'password' => Hash::make('password'), 'role' => UserRole::PETSITTER]);
@@ -82,9 +82,9 @@ class extends Component {
                 <x-forms.select-option wire:model="visits" label="Choisissez votre type de visite" name="visits">
                     <option value="">Choisissez votre type de visite</option>
                     @foreach( $visits as $visit)
-                    <option value="{{ $visit->id }}">
-                        {{ $visit->name }}
-                    </option>
+                        <option value="{{ $visit->id }}">
+                            {{ $visit->name }}
+                        </option>
                     @endforeach
                 </x-forms.select-option>
             </div>
@@ -121,9 +121,7 @@ class extends Component {
                     </div>
 
                 </div>
-
                 <div class="w-1/2">
-
                     <label class="block text-sm text-text uppercase font-bold mb-3">
                         Choisissez votre type d’animal
                     </label>
@@ -150,10 +148,9 @@ class extends Component {
                         @endforeach
 
                     </div>
-
+                </div>
                 </div>
 
-            </div>
             <div class="mt-6 mb-6">
                 <label class="text-text font-bold uppercase" for="infos">Informations supplémentaires</label>
                 <textarea wire:model="infos" name="infos" id="infos" cols="30" rows="10"

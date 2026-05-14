@@ -1,6 +1,5 @@
 @props([
  'type',
- 'nbr',
  'visit',
 ])
 
@@ -24,12 +23,6 @@
                     <span class="font-extrabold">Types d’animaux gardés :</span>
                     {{ $type }}
                 </p>
-
-                <p>
-                    <span class="font-extrabold">Maximum d'animaux gardés :</span>
-                    {{ $nbr }}
-                </p>
-
                 <p>
                     <span class="font-extrabold">Types de visites effectuées :</span>
                     {{ $visit }}
