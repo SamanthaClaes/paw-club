@@ -14,4 +14,9 @@ class AnimalType extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function petSittingRequests(): BelongsToMany
+    {
+        return $this->belongsToMany(PetSittingRequest::class);
+    }
 }
