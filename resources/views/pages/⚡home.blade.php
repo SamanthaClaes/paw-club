@@ -175,18 +175,18 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
             class="text-center block mb-6">Une question ? Notre équipe est là pour vous répondre et vous conseiller
         </span>
         <div class="flex justify-center">
-            <form id="contact" action="" method="GET" class="w-8/10">
+            <form wire:submit.prevent="store" id="contact"  class="w-8/10">
                 <div class="flex gap-6 mt-6 justify-between">
-                    <x-forms.input-label type="text" label="Prénom *" name="first_name" placeholder="Nicole" required/>
-                    <x-forms.input-label type="text" label="Nom de famille *" name="last_name" placeholder="Kidman" required/>
+                    <x-forms.input-label wire:model="first_name" type="text" label="Prénom *" name="first_name" placeholder="Nicole" required/>
+                    <x-forms.input-label wire:model="last_name" type="text" label="Nom de famille *" name="last_name" placeholder="Kidman" required/>
                 </div>
                 <div class="flex gap-6 mt-6 justify-between">
-                    <x-forms.input-label type="email" label="Email *" name="email" placeholder="nk@mail.com" required/>
-                    <x-forms.input-label type="tel" label="Téléphone" name="phone"/>
+                    <x-forms.input-label wire:model="email" type="email" label="Email *" name="email" placeholder="nk@mail.com" required/>
+                    <x-forms.input-label wire:model="phone" type="tel" label="Téléphone" name="phone"/>
                 </div>
                 <div class="mt-6 mb-6">
                     <label for="msg" class="text-text font-bold uppercase">Message</label>
-                    <textarea name="msg" id="" cols="30" rows="10"
+                    <textarea wire:model="message" name="message" id="" cols="30" rows="10"
                               class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none"></textarea>
                 </div>
                 <div class="mb-20">
