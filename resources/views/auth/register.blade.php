@@ -36,13 +36,35 @@
                     placeholder="Martin"
                 />
             </div>
+
+                <x-forms.input-label
+                    label="Adresse *"
+                    name="adress"
+                    type="text"
+                    placeholder="adresse et numéro"
+                />
+            <div class="flex gap-8">
+                <x-forms.input-label
+                    label="Code postal*"
+                    name="zip"
+                    type="number"
+                    placeholder="1234"
+                />
+                <x-forms.input-label
+                    label="Localité"
+                    name="location"
+                    type="text"
+                    placeholder="Liege"
+                />
+            </div>
+            <div>
             <x-forms.input-label
                 label="Email"
                 name="email"
                 type="email"
                 placeholder="user@mail.be"
             />
-
+            </div>
             <div x-data="{ type: 'password' }">
                 <label
                     class="block text-sm text-text uppercase font-bold mb-1"
@@ -74,7 +96,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="bg-text text-white py-3 rounded-lg font-bold uppercase">
+            <button type="submit" class="bg-text text-white py-3 rounded-lg font-bold uppercase mt-6">
                 Se connecter
             </button>
 
@@ -89,7 +111,7 @@
         </form>
     </section>
 
-    <div class=" hidden lg:block h-screen">
+    <div class=" hidden lg:block h-full">
         <img src="{{ asset($image) }}" alt="plusieurs images de chiens ou de chats"
              class="w-full h-full object-cover">
     </div>
