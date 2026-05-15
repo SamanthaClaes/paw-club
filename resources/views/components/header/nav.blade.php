@@ -31,7 +31,7 @@
             @auth
                     @if( auth()->user()->role === UserRole::OWNER)
                 <li>
-                        <a href="">Propriétaire</a>
+                        <a href="{{ route('owner.profile') }}">Mon espace</a>
                 </li>
                     @endif
                     @if( auth()->user()->role === UserRole::PETSITTER)

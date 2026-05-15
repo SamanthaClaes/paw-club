@@ -18,10 +18,24 @@
             <x-svg.logo class="w-89 h-89 mb-8"/>
         </div>
         <h1 class="text-3xl font-bold text-text mb-8 uppercase">
-            Connectez vous
+            Enregistrez vous
         </h1>
-        <form action="{{ route('login') }}" method="POST" class="w-full max-w-md flex flex-col gap-4">
+        <form action="{{ route('register') }}" method="POST" class="w-full max-w-md flex flex-col gap-4">
             @csrf
+            <div class="flex gap-8">
+            <x-forms.input-label
+                label="Nom *"
+                name="last_name"
+                type="text"
+                placeholder="Jean"
+            />
+                <x-forms.input-label
+                    label="Prénom *"
+                    name="first_name"
+                    type="text"
+                    placeholder="Martin"
+                />
+            </div>
             <x-forms.input-label
                 label="Email"
                 name="email"
@@ -65,7 +79,7 @@
             </button>
 
             <div class="text-sm text-center mt-2">
-                <a href="{{ route('register') }}" class="underline">Pas encore de compte ?</a>
+                <a href="#" class="underline">Pas encore de compte ?</a>
             </div>
 
             <div class="text-sm text-center">
