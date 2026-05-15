@@ -20,6 +20,7 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
             'phone'=>'nullable|max_digits:10',
             'message'=>'nullable|string',
         ]);
+        return redirect()->route('home')->with('success', 'Demande envoyée avec succès');
     }
 };
 ?>
@@ -196,5 +197,6 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
                 </div>
             </form>
         </div>
+        <x-message_success/>
     </section>
 </div>
