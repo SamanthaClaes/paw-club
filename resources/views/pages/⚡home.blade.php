@@ -11,6 +11,16 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
         return $this->view()->title('Paw Club Accueil');
     }
 
+    public function store()
+    {
+        $validated = $this->validate([
+            'first_name'=> 'required|string',
+            'last_name'=> 'required|string',
+            'email'=> 'required|email',
+            'phone'=>'nullable|max_digits:10',
+            'message'=>'nullable|string',
+        ]);
+    }
 };
 ?>
 

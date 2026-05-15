@@ -7,7 +7,7 @@
     'contactUrl' => '#',
 ])
 
-<div {{ $attributes->merge(['class' => 'border-4 border-[#7EB8BE] bg-[#EDF7F8] rounded-lg p-8 max-w-6xl mx-auto']) }}>
+<div {{ $attributes->merge(['class' => 'border-5 border-stroke bg-card rounded-lg p-8 max-w-6xl mx-auto mb-8']) }}>
 
     <div class="flex flex-col lg:flex-row gap-8">
         <div class="shrink-0 flex justify-center">
