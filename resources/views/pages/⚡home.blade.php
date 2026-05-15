@@ -116,7 +116,7 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
                         class="
                         pointer-events-none
                         absolute
-                        bottom-0 right-0
+                        bottom-0 right-5
                         w-40 sm:w-32 md:w-40 lg:w-70
                         translate-x-1/4 translate-y-1/4
                     "
@@ -124,7 +124,7 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
 
                     <div class="flex justify-center">
                         <a href="#"
-                           class="text-text-orange font-bold uppercase bg-card-orange hover:bg-hover-orange hover:text-white p-5 lg:w-2/3 rounded-lg mb-6 shadow-md/10 text-center">
+                           class="text-text-orange font-bold uppercase bg-card-orange hover:bg-hover-orange hover:text-white p-5 lg:w-2/3 rounded-lg mb-6 shadow-md/10 ">
                             Réserver une garde
                         </a>
                     </div>
@@ -160,8 +160,8 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
                     >
 
                     <div class="flex justify-center">
-                        <a href="#"
-                           class="shadow-md/10 text-text-pink font-bold uppercase bg-card-pink hover:bg-hover-pink hover:text-white p-5 lg:w-2/3 rounded-lg mb-6 text-center">
+                        <a href="{{ route('petsitter.index') }}#petsitters_list"
+                           class="shadow-md/10 text-text-pink font-bold uppercase bg-card-pink hover:bg-hover-pink hover:text-white p-5 lg:w-2/3 rounded-lg mb-6">
                             Réserver un petsitter
                         </a>
                     </div>
