@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->string('breed');
             $table->integer('age');
             $table->string('description');
-            $table->string('image')->nullable();
+            $table->string('pet_image')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();

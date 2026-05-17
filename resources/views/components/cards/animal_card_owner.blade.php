@@ -1,12 +1,9 @@
-
-
-
 @props([
     'name',
     'breed',
     'age',
-    'info',
-    'image',
+    'description',
+    'petImage',
 ])
 
 <section class="border-5 border-stroke rounded-md overflow-hidden bg-card max-w-xl w-full mt-30 mx-auto">
@@ -14,11 +11,11 @@
     <div class="flex flex-row h-full">
 
         <div class="w-1/3">
-           {{-- <img
-                src="{{ \Illuminate\Support\Facades\Storage::url($image) }}"
+            <img
+                src="{{ \Illuminate\Support\Facades\Storage::url($petImage) }}"
                 alt="photo de mon animal"
                 class="w-full h-full object-cover"
-            >--}}
+            >
         </div>
 
         <div class="w-2/3 p-6 flex flex-col justify-between">
@@ -33,22 +30,22 @@
 
                     <p>
                         <span class="font-extrabold">Nom :</span>
-                       {{-- {{ $name }}--}}
+                        {{ $name }}
                     </p>
 
                     <p>
                         <span class="font-extrabold">Race :</span>
-                      {{--  {{ $breed }}--}}
+                        {{ $breed }}
                     </p>
 
                     <p>
                         <span class="font-extrabold">Âge :</span>
-{{--                        {{ $age }}--}}
+                        {{ $age }}
                     </p>
 
                     <p class="leading-snug">
                         <span class="font-extrabold">Besoins spécifiques :</span>
-{{--                      {{ $info }}--}}
+                          {{ $description }}
                     </p>
 
                 </div>

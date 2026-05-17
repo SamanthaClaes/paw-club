@@ -11,11 +11,16 @@ class extends Component {
     use WithFileUploads;
 
     public User $owner;
-    public $image;
+    public $pet_image;
     public string $email;
     public string $adress;
-    public string $phone;
+    public  $phone;
     public $pets = [];
+    public $name;
+    public $age;
+    public $breed;
+    public $description;
+    public $user_id;
 
     public function mount(): void
     {
@@ -29,21 +34,25 @@ class extends Component {
     public function storePet(): void
     {
         $validated = $this->validate([
-            'name'=>'required|string',
-            'age'=>'required|max_digits:2',
-            'breed'=>'required|string',
-            'image'=>'nullable|image'
+            'name' => 'required|string',
+            'age' => 'required',
+            'breed' => 'required|string',
+            'pet_image' => 'nullable|image',
+            'description' => 'required|string',
         ]);
 
-        $pet = Pet::create($validated);
-        if ($this->image) {
+        $validated['user_id'] = $this->owner->id;
 
-            $path = $this->image->store('pets', 'public');
-
-            $pet->image = $path;
-
-            $pet->save();
+        if ($this->pet_image) {
+            $validated['pet_image'] = $this->pet_image->store('pets', 'public');
         }
+
+        Pet::create($validated);
+
+        $this->owner->refresh();
+
+        $this->pets = $this->owner->pets;
+        $this->dispatch('pet-created');
     }
 
     public function store(): void
@@ -119,12 +128,20 @@ class extends Component {
         <h2 class="text-text text-2xl sm:text-3xl uppercase font-bold ml-25 mt-30">Tous mes animaux</h2>
         <div class=" flex justify-end mt-6 mr-25">
             <x-cta.add title="+ Ajouter un chien"/>
+            <x-modale.pets_modale/>
         </div>
-        <div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 px-10 pb-20">
             @foreach($pets as $pet)
                 <x-cards.animal_card_owner
+                    :name="$pet->name"
+                    :age="$pet->age"
+                    :breed="$pet->breed"
+                    :description="$pet->description"
+                    :pet-image="$pet->pet_image"
+
                 />
             @endforeach
         </div>
+
     </section>
 </div>
