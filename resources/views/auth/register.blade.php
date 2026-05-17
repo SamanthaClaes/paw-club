@@ -20,7 +20,7 @@
         <h1 class="text-3xl font-bold text-text mb-8 uppercase">
             Enregistrez vous
         </h1>
-        <form action="{{ route('register.store') }}" method="POST" class="w-full max-w-md flex flex-col gap-4">
+        <form action="{{ route('register.store') }}" method="POST" class="w-full max-w-md flex flex-col gap-4" enctype="multipart/form-data">
             @csrf
             <div>
                 <x-forms.input-label
@@ -34,22 +34,31 @@
                 label="Nom *"
                 name="last_name"
                 type="text"
-                placeholder="Jean"
+                placeholder="Martin"
             />
                 <x-forms.input-label
                     label="Prénom *"
                     name="first_name"
                     type="text"
-                    placeholder="Martin"
+                    placeholder="Jean"
                 />
             </div>
-
+            <div>
                 <x-forms.input-label
                     label="Adresse *"
                     name="adress"
                     type="text"
                     placeholder="adresse et numéro"
                 />
+            </div>
+            <div>
+                <x-forms.input-label
+                    label="Votre numéro de téléphone"
+                    type="tel"
+                    name="phone"
+                    placeholder="0498 xx.xx.xx"
+                />
+            </div>
             <div class="flex gap-8">
                 <x-forms.input-label
                     label="Code postal*"

@@ -33,16 +33,23 @@ class CreateNewUser implements CreatesNewUsers
                 'max:255',
                 Rule::unique(User::class),
             ],
+            'image'=>['nullable', 'image'],
             'adress'=>['required', 'string', 'max:255'],
             'zip'=>['required', 'max_digits:5'],
             'location'=>['required', 'string', 'max:255'],
             'password' => $this->passwordRules(),
 
         ])->validate();
+        $imagePath = null;
+
+        if (isset($input['image'])) {
+            $imagePath = $input['image']->store('owner', 'public');
+        }
          return (User::create([
             'last_name' => $input['last_name'],
             'first_name' => $input['first_name'],
             'email' => $input['email'],
+            'image'=>$imagePath,
             'adress' => $input['adress'],
             'zip' => $input['zip'],
             'location' => $input['location'],
