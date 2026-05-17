@@ -20,7 +20,7 @@
         <h1 class="text-3xl font-bold text-text mb-8 uppercase">
             Enregistrez vous
         </h1>
-        <form action="{{ route('register') }}" method="POST" class="w-full max-w-md flex flex-col gap-4">
+        <form action="{{ route('register.store') }}" method="POST" class="w-full max-w-md flex flex-col gap-4">
             @csrf
             <div class="flex gap-8">
             <x-forms.input-label
@@ -95,9 +95,16 @@
                     </button>
                 </div>
             </div>
-
+            <div>
+            <x-forms.input-label
+                type="password"
+                label="Confirmer votre mot de passe"
+                name="password_confirmation"
+                placeholder="Confirmez votre mot de passe"
+            />
+            </div>
             <button type="submit" class="bg-text text-white py-3 rounded-lg font-bold uppercase mt-6">
-                Se connecter
+                S'enregistrer
             </button>
 
             <div class="text-sm text-center mt-2">

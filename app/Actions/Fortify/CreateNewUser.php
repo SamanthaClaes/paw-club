@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\enum\UserRole;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -23,7 +24,8 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input): User
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
                 'string',
@@ -31,13 +33,21 @@ class CreateNewUser implements CreatesNewUsers
                 'max:255',
                 Rule::unique(User::class),
             ],
+            'adress'=>['required', 'string', 'max:255'],
+            'zip'=>['required', 'max_digits:5'],
+            'location'=>['required', 'string', 'max:255'],
             'password' => $this->passwordRules(),
-        ])->validate();
 
-        return User::create([
-            'name' => $input['name'],
+        ])->validate();
+         return (User::create([
+            'last_name' => $input['last_name'],
+            'first_name' => $input['first_name'],
             'email' => $input['email'],
+            'adress' => $input['adress'],
+            'zip' => $input['zip'],
+            'location' => $input['location'],
             'password' => Hash::make($input['password']),
-        ]);
+            'role' => UserRole::OWNER->value,
+        ]));
     }
 }
