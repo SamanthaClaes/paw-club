@@ -9,7 +9,7 @@
  'image',
 ])
 
-<section class="border-4 border-stroke rounded-lg bg-card p-6 max-w-4xl mx-auto">
+<section class="border-4 border-stroke rounded-lg bg-card p-6 max-w-6xl ml-25 mr-25 mt-20">
     <div class="flex flex-col gap-8">
 
         <h1 class="uppercase font-extrabold text-text text-3xl text-center">

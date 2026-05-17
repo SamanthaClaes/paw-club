@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Pet;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use App\Models\User;
@@ -11,20 +12,43 @@ class extends Component {
 
     public User $owner;
     public $image;
-    public $email;
-    public $adress;
-    public $phone;
+    public string $email;
+    public string $adress;
+    public string $phone;
+    public $pets = [];
 
-    public function mount()
+    public function mount(): void
     {
         $this->owner = Auth::user();
         $this->email = $this->owner->email;
         $this->adress = $this->owner->adress;
         $this->phone = $this->owner->phone;
+        $this->pets = $this->owner->pets;
     }
 
-    public function store()
+    public function storePet(): void
     {
+        $validated = $this->validate([
+            'name'=>'required|string',
+            'age'=>'required|max_digits:2',
+            'breed'=>'required|string',
+            'image'=>'nullable|image'
+        ]);
+
+        $pet = Pet::create($validated);
+        if ($this->image) {
+
+            $path = $this->image->store('pets', 'public');
+
+            $pet->image = $path;
+
+            $pet->save();
+        }
+    }
+
+    public function store(): void
+    {
+
         if ($this->image) {
 
             $path = $this->image->store('owner', 'public');
@@ -61,7 +85,7 @@ class extends Component {
         $this->dispatch('password-updated');
     }
 
-    public function updateData()
+    public function updateData(): void
     {
         $this->validate([
             'email' => 'required',
@@ -91,10 +115,16 @@ class extends Component {
         :phone="$phone"
         :image="$owner->image"
     />
-    @foreach($pets as $pet)
-
-
-    <x-cards.animal_card_owner
-    />
-    @endforeach
+    <section>
+        <h2 class="text-text text-2xl sm:text-3xl uppercase font-bold ml-25 mt-30">Tous mes animaux</h2>
+        <div class=" flex justify-end mt-6 mr-25">
+            <x-cta.add title="+ Ajouter un chien"/>
+        </div>
+        <div>
+            @foreach($pets as $pet)
+                <x-cards.animal_card_owner
+                />
+            @endforeach
+        </div>
+    </section>
 </div>
