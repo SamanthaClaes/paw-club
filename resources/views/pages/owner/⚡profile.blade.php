@@ -91,4 +91,10 @@ class extends Component {
         :phone="$phone"
         :image="$owner->image"
     />
+    @foreach($pets as $pet)
+
+
+    <x-cards.animal_card_owner
+    />
+    @endforeach
 </div>
