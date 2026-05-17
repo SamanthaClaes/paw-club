@@ -22,6 +22,13 @@
         </h1>
         <form action="{{ route('register.store') }}" method="POST" class="w-full max-w-md flex flex-col gap-4">
             @csrf
+            <div>
+                <x-forms.input-label
+                    label="Votre photo de profil"
+                    type="file"
+                    name="image"
+                />
+            </div>
             <div class="flex gap-8">
             <x-forms.input-label
                 label="Nom *"
