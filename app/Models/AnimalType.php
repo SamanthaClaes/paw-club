@@ -20,4 +20,9 @@ class AnimalType extends Model
     {
         return $this->hasMany(PetSittingRequest::class);
     }
+
+    public function breeds(): HasMany
+    {
+        return $this->hasMany(Breed::class);
+    }
 }

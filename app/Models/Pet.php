@@ -38,4 +38,14 @@ class Pet extends Model
         return $years . ' ' . ($years === 1 ? 'an' : 'ans');
 
     }
+    // Pet.php
+    public function animalType(): BelongsTo
+    {
+        return $this->belongsTo(AnimalType::class);
+    }
+
+    public function breed(): BelongsTo
+    {
+        return $this->belongsTo(Breed::class);
+    }
 }

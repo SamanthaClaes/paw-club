@@ -23,6 +23,8 @@ class extends Component {
     public $user_id;
     public ?Pet $pet = null;
     public int $petId;
+    public $animal_type_id;
+    public $breed_id;
 
 
     public function mount(): void
@@ -41,9 +43,10 @@ class extends Component {
         $validated = $this->validate([
             'name' => 'required|string',
             'birth_date' => 'required|date',
-            'breed' => 'required|string',
             'pet_image' => 'nullable|image',
             'description' => 'required|string',
+            'animal_type_id' => 'required|exists:animal_types,id',
+            'breed_id' => 'nullable|exists:breeds,id',
         ]);
 
         $validated['user_id'] = $this->owner->id;
@@ -65,7 +68,8 @@ class extends Component {
         $pet = Pet::findOrFail($petId);
         $this->pet = $pet;
         $this->name = $pet->name;
-        $this->breed = $pet->breed;
+        $this->animal_type_id = $pet->animal_type_id;
+        $this->breed_id = $pet->breed_id;
         $this->birth_date = $pet->birth_date;
         $this->description = $pet->description;
 
@@ -76,13 +80,15 @@ class extends Component {
     {
         $this->validate([
             'name' => 'required|string',
-            'breed' => 'required|string',
+            'animal_type_id' => 'required|exists:animal_types,id',
+            'breed_id' => 'nullable|exists:breeds,id',
             'birth_date' => 'required|date',
             'description' => 'string',
         ]);
 
         $this->pet->name = $this->name;
-        $this->pet->breed = $this->breed;
+        $this->pet->animal_type_id = $this->animal_type_id;
+        $this->pet->breed_id = $this->breed_id;
         $this->pet->birth_date = $this->birth_date;
         $this->pet->description = $this->description;
 
