@@ -21,7 +21,7 @@
             <div class="shrink-0">
                 <img
                     src="{{ \Illuminate\Support\Facades\Storage::url($image) }}"
-                    alt="Image de profile"
+                    alt="Image de profile de {{ Auth::user()->first_name }}"
                     class="w-44 h-44 rounded-lg object-cover"
                 >
             </div>

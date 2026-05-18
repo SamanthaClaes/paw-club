@@ -1,3 +1,7 @@
+@props([
+    'animalTypes',
+    'breeds',
+])
 
 <dialog
     wire:ignore.self
@@ -62,13 +66,33 @@
                 placeholder="Entrez le nom de votre animal"
             />
 
-            <x-forms.input-label
-                wire:model="breed"
-                label="Race"
-                name="breed"
-                type="text"
-                placeholder="Entrez la race de votre animal"
-            />
+            <x-forms.select-option
+                wire:model="animal_type_id"
+                name="animal_type_id"
+                label="Choisissez un type d’animal"
+            >
+                <option value="">Choisissez un type d’animal</option>
+
+                @foreach($animalTypes as $animalType)
+                    <option value="{{ $animalType->id }}">
+                        {{ $animalType->type }}
+                    </option>
+                @endforeach
+            </x-forms.select-option>
+
+            <x-forms.select-option
+                wire:model="breed_id"
+                name="breed_id"
+                label="Choisissez la race de votre animal"
+            >
+                <option value="">Choisissez la race de votre animal</option>
+
+                @foreach($breeds as $breed)
+                    <option value="{{ $breed->id }}">
+                        {{ $breed->name }}
+                    </option>
+                @endforeach
+            </x-forms.select-option>
 
             <x-forms.input-label
                 wire:model="birth_date"
@@ -77,10 +101,19 @@
                 type="date"
                 placeholder="L’age de votre animal"
             />
-            <label  class="block text-sm text-text uppercase font-bold mb-1" for="description">Description</label>
-            <textarea  wire:model="description" name="description" id="description" cols="30" rows="10" class="resize-none w-full border-2 border-element rounded-lg px-3 py-2 ">
 
-            </textarea>
+            <label class="block text-sm text-text uppercase font-bold mb-1" for="description">
+                Description
+            </label>
+
+            <textarea
+                wire:model="description"
+                name="description"
+                id="description"
+                cols="30"
+                rows="10"
+                class="resize-none w-full border-2 border-element rounded-lg px-3 py-2 "
+            ></textarea>
 
             <div class="flex justify-end pt-4">
                 <button

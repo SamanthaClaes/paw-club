@@ -18,6 +18,8 @@ class Pet extends Model
         'description',
         'user_id',
         'pet_image',
+        'animal_type_id',
+        'breed_id',
     ];
 
     public function user(): BelongsTo

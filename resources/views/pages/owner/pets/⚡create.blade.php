@@ -2,31 +2,36 @@
 
 use App\enum\UserRole;
 use App\Models\AnimalType;
+use App\Models\Breed;
 use App\Models\Pet;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use Livewire\Attributes\On;
 
 new class extends Component {
+
+    use WithFileUploads;
 
     public $pets = [];
     public $animalTypes = [];
     public $breeds = [];
     public $owner;
-    public string $name;
-    public string $description;
-    public string $pet_image;
+    public $name;
+    public $description;
+    public $pet_image;
     public $birth_date;
-    public $breed;
     public ?Pet $pet = null;
     public int $petId;
-    public int $animal_type_id;
-    public int $breed_id;
+    public  $animal_type_id;
+    public  $breed_id;
 
     public function mount(): void
     {
         $this->owner = Auth::user();
-
         $this->pets = $this->owner->pets;
         $this->animalTypes = AnimalType::all();
+        $this->breeds = Breed::all();
+
     }
 
     function storePet(): void
@@ -47,11 +52,23 @@ new class extends Component {
         }
 
         Pet::create($validated);
+        $this->reset([
+            'name',
+            'birth_date',
+            'description',
+            'pet_image',
+            'animal_type_id',
+            'breed_id',
+        ]);
 
         $this->owner->refresh();
-
         $this->pets = $this->owner->pets;
         $this->dispatch('pet-created');
+    }
+    #[On('update-dog')]
+    public function refreshPets(): void
+    {
+        $this->pets = $this->owner->fresh()->pets;
     }
 
     public function delete($petId): void
@@ -73,6 +90,8 @@ new class extends Component {
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mx-25">
         <x-modale.pets_modale
             :animal-types="$animalTypes"
+            :breeds="$breeds"
+            :pet-id="$petId"
         />
         @foreach($pets as $pet)
             <x-cards.animal_card_owner

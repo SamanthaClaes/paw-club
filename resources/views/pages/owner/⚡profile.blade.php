@@ -15,10 +15,7 @@ class extends Component {
     public string $email;
     public string $adress;
     public $phone;
-    public $pets = [];
     public $name;
-
-
     public $description;
     public $user_id;
 
@@ -30,7 +27,7 @@ class extends Component {
         $this->email = $this->owner->email;
         $this->adress = $this->owner->adress;
         $this->phone = $this->owner->phone;
-        $this->pets = $this->owner->pets;
+
 
 
     }

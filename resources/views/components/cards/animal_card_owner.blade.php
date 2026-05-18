@@ -57,7 +57,7 @@
 
             </div>
             <button
-                wire:click="editPet({{ $petId }})"
+                @click="$dispatch('edit-pet', { petId: {{ $petId }} })"
                 class="bg-btn-green hover:bg-[#7DA27D] text-[#1F3B1F] font-extrabold uppercase px-6 py-3 rounded-md transition w-full cursor-pointer mt-6"
             >
                 Modifier les informations

@@ -4,6 +4,7 @@ use App\Models\AnimalType;
 use App\Models\Breed;
 use App\Models\Pet;
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 new class extends Component {
     public $owner;
@@ -36,7 +37,7 @@ new class extends Component {
 
         $this->breeds = Breed::all();
     }
-
+    #[On('edit-pet')]
     public function editPet($petId): void
     {
         $pet = Pet::findOrFail($petId);
@@ -70,10 +71,14 @@ new class extends Component {
         $this->pet->refresh();
         $this->pets = $this->owner->fresh()->pets;
         $this->dispatch('update-dog');
+        $this->dispatch('update-dog');
     }
 };
 ?>
 
 <div>
-    <x-modale.pets_edit_modale/>
+    <x-modale.pets_edit_modale
+        :animal-types="$animalTypes"
+        :breeds="$breeds"
+    />
 </div>

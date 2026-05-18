@@ -14,7 +14,6 @@ return new class extends Migration {
             $table->foreignId('animal_type_id')->constrained()->cascadeOnDelete();
             $table->foreignId('breed_id')->nullable()->constrained()->nullOnDelete();
             $table->string('name');
-            $table->string('breed');
             $table->date('birth_date');
             $table->string('description');
             $table->string('pet_image')->nullable();
