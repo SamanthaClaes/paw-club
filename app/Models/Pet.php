@@ -25,7 +25,7 @@ class Pet extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function birthDateFormat()
+    public function birthDateFormat(): string
     {
         $birthdate = Carbon::parse($this->birth_date);
         $months = floor($birthdate->diffInMonths(Carbon::now()));

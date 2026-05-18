@@ -8,6 +8,7 @@
     'birthDate',
     'description',
     'petImage',
+    'petId',
 ])
 
 <section class="border-5 border-stroke rounded-md overflow-hidden bg-card max-w-xl w-full mt-30">
@@ -55,16 +56,12 @@
                 </div>
 
             </div>
-
-            <form wire:submit.prevent="updateAnimalDatas" class="mt-8">
                 <button
-                    type="submit"
-                    class="bg-[#95B895] hover:bg-[#7DA27D] text-[#1F3B1F] font-extrabold uppercase px-6 py-3 rounded-md transition w-full"
+                    wire:click="editPet({{ $petId }})"
+                    class="bg-btn-green hover:bg-[#7DA27D] text-[#1F3B1F] font-extrabold uppercase px-6 py-3 rounded-md transition w-full cursor-pointer mt-6"
                 >
                     Modifier les informations
                 </button>
-            </form>
-
         </div>
 
     </div>
