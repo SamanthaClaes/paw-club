@@ -57,7 +57,7 @@
                     <button
                         type="button"
                         @click="$dispatch('open-password-modal')"
-                        class="w-full bg-btn-green hover:bg-green-800 text-white font-extrabold uppercase rounded-lg py-3 transition"
+                        class="w-full bg-btn-green hover:bg-green-800 text-white font-extrabold uppercase rounded-lg py-3 transition cursor-pointer"
                     >
                         Modifier mon mot de passe
                     </button>
@@ -65,7 +65,7 @@
                     <button
                         type="button"
                         @click="$dispatch('open-datas-modal')"
-                        class="w-full bg-btn-green hover:bg-green-800 text-white font-extrabold uppercase rounded-lg py-3 transition"
+                        class="w-full bg-btn-green hover:bg-green-800 text-white font-extrabold uppercase rounded-lg py-3 transition cursor-pointer"
                     >
                         Modifier mes informations
                     </button>
@@ -79,6 +79,7 @@
     </div>
 
     <dialog
+        wire:ignore.self
         x-data="{ open: false }"
         x-on:open-password-modal.window="
         open = true;
@@ -158,7 +159,7 @@
                 <div class="flex justify-end pt-4">
                     <button
                         type="submit"
-                        class="bg-btn-green hover:bg-green-800 text-white px-6 py-3 rounded-lg font-bold uppercase transition"
+                        class="bg-btn-green hover:bg-green-800 text-white px-6 py-3 rounded-lg font-bold uppercase transition cursor-pointer"
                     >
                         Changer mon mot de passe
                     </button>
@@ -171,12 +172,13 @@
     </dialog>
 
     <dialog
+        wire:ignore.self
         x-data="{ open: false }"
         x-on:open-datas-modal.window="
         open = true;
         $el.showModal();
     "
-        x-on:datas-updated.window="
+        x-on:update-data.window="
         open = false;
         $el.close();
     "
@@ -221,7 +223,14 @@
             @endif
 
 
-            <form wire:submit.prevent="updateData" class="space-y-4">
+            <form wire:submit.prevent="updateData" class="space-y-4" enctype="multipart/form-data">
+
+                <x-forms.input-label
+                    wire:model="image"
+                    label="Image"
+                    name="image"
+                    type="file"
+                />
 
                 <x-forms.input-label
                     wire:model="adress"
@@ -250,7 +259,7 @@
                 <div class="flex justify-end pt-4">
                     <button
                         type="submit"
-                        class="bg-btn-green hover:bg-green-800 text-white px-6 py-3 rounded-lg font-bold uppercase transition"
+                        class="bg-btn-green hover:bg-green-800 text-white px-6 py-3 rounded-lg font-bold uppercase transition cursor-pointer"
                     >
                         Changer mes informations
                     </button>

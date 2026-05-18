@@ -103,29 +103,70 @@ class extends Component {
 
         </div>
     </section>
-    <section>
-        <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold mt-10 lg:mt-20 mb-6">Vos compagnons en
-            vacances</h2>
-        <div class="overflow-x-auto flex md:grid lg:grid-cols-2 justify-center justify-items-center gap-8 mb-10 lg:mb-20 snap-x snap-mandatory pb-4 scrollbar-hide">
-            <div class="w-[85%] md:w-auto shrink-0 md:shrink snap-center">
-                <img src="{{ asset('img/food_dog.jpeg')}}" alt="homme remplissant une gamelle de croquette" height="308" width="552"  class=" aspect-3/2 object-cover rounded-lg transition duration-300 hover:scale-105 hover:shadow-xl">
+    <section class="px-6 lg:px-16 overflow-hidden">
+
+        <h2 class="uppercase text-text text-2xl lg:text-5xl text-center font-extrabold mt-14 lg:mt-24 mb-24">
+            Vos compagnons en vacances
+        </h2>
+
+        <div class="hidden lg:flex justify-center items-center">
+
+            <div class="flex items-center py-16">
+
+                <article
+                    class="relative z-10 rotate-[-18deg] transition-all duration-500 ease-out hover:z-50 hover:-translate-y-8 hover:-translate-x-4 hover:mr-8"
+                >
+                    <img
+                        src="{{ asset('img/food_dog.jpeg')}}"
+                        alt="chien mangeant dans une gamelle"
+                        class="w-[270px] h-[520px] rounded-[2.8rem] object-cover shadow-2xl"
+                    >
+                </article>
+
+                <article
+                    class="relative z-20 -ml-20 rotate-[-10deg] transition-all duration-500 ease-out hover:z-50 hover:-translate-y-8 hover:-translate-x-2 hover:ml-4 hover:mr-10"
+                >
+                    <img
+                        src="{{ asset('img/playground.jpeg')}}"
+                        alt="chiens jouant dans une plaine de jeux"
+                        class="w-[300px] h-[580px] rounded-[2.8rem] object-cover shadow-2xl"
+                    >
+                </article>
+
+                <article
+                    class="relative z-30 -ml-20 transition-all duration-500 ease-out hover:z-50 hover:-translate-y-8 hover:mx-8"
+                >
+                    <img
+                        src="{{ asset('img/woman_dog.jpeg')}}"
+                        alt="femme jouant avec un chien"
+                        class="w-[340px] h-[640px] rounded-[3rem] object-cover shadow-2xl"
+                    >
+                </article>
+
+                <article
+                    class="relative z-20 -ml-20 rotate-[10deg] transition-all duration-500 ease-out hover:z-50 hover:-translate-y-8 hover:translate-x-2 hover:ml-10 hover:mr-4"
+                >
+                    <img
+                        src="{{ asset('img/run_dogs.jpeg')}}"
+                        alt="chiens courant dans l’herbe"
+                        class="w-[300px] h-[580px] rounded-[2.8rem] object-cover shadow-2xl"
+                    >
+                </article>
+
+                <article
+                    class="relative z-10 -ml-20 rotate-[18deg] transition-all duration-500 ease-out hover:z-50 hover:-translate-y-8 hover:translate-x-4 hover:ml-8"
+                >
+                    <img
+                        src="{{ asset('img/dogs.jpeg')}}"
+                        alt="chiens couchés sur des coussins"
+                        class="w-[270px] h-[520px] rounded-[2.8rem] object-cover shadow-2xl"
+                    >
+                </article>
+
             </div>
-            <div class="w-[85%] md:w-auto shrink-0 md:shrink snap-center">
-                <img src="{{ asset('img/playground.jpeg') }}" alt="chiens en train de jouer à la plaine de jeux pour chien" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg transition duration-300 hover:scale-105 hover:shadow-xl">
-            </div>
-            <div class="w-[85%] md:w-auto shrink-0 md:shrink snap-center">
-                <img src="{{ asset('img/woman_dog.jpeg') }}" alt="femme en train de jouer avec un chien dans un enclos" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg transition duration-300 hover:scale-105 hover:shadow-xl">
-            </div>
-            <div class="w-[85%] md:w-auto shrink-0 md:shrink snap-center">
-                <img src="{{ asset('img/run_dogs.jpeg') }}" alt="chiens en train de courir dans un vaste terrain d’herbe" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg transition duration-300 hover:scale-105 hover:shadow-xl">
-            </div>
-            <div class="w-[85%] md:w-auto shrink-0 md:shrink snap-center">
-                <img src="{{ asset('img/dogs.jpeg') }}" alt="chiens coucher sur des gros coussins" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg transition duration-300 hover:scale-105 hover:shadow-xl">
-            </div>
-            <div class="w-[85%] md:w-auto shrink-0 md:shrink snap-center">
-                <img src="{{ asset('img/playground_dogs2.jpeg') }}" alt="chiens en train de jouer à la plaine de jeux pour chien" height="308" width="552" class=" aspect-3/2 object-cover rounded-lg transition duration-300 hover:scale-105 hover:shadow-xl">
-            </div>
+
         </div>
+
     </section>
     <section>
         <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold mt-10 lg:mt-20 mb-6"> Où nous trouver ? </h2>

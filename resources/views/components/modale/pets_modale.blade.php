@@ -76,7 +76,7 @@
               <option value=""> Choisissez un type d’animal</option>
               @foreach($animalTypes as $animalType)
                   <option value="{{ $animalType->id }}">
-                      {{ $animalType->type }}
+                      {{ ucfirst($animalType->type) }}
                   </option>
               @endforeach
           </x-forms.select-option>
@@ -106,7 +106,7 @@
             <div class="flex justify-end pt-4">
                 <button
                     type="submit"
-                    class="bg-btn-green hover:bg-green-800 text-white px-6 py-3 rounded-lg font-bold uppercase transition"
+                    class="bg-btn-green hover:bg-green-800 text-white px-6 py-3 rounded-lg font-bold uppercase transition cursor-pointer"
                 >
                     Ajouter mon animal
                 </button>

@@ -20,40 +20,40 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('daycare.index') }}" class="hover:underline">La garderie</a>
+                <a href="{{ route('daycare.index') }}" class="hover:bg-card px-8 py-4 w-full rounded-full cursor-pointer transition-all duration-300 ease-in-out">La garderie</a>
             </li>
             <li>
-                <a href="{{ route('petsitter.index') }}" class="hover:underline">Les petsitters</a>
+                <a href="{{ route('petsitter.index') }}" class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">Les petsitters</a>
             </li>
             <li>
-                <a href="/#contact" class="hover:underline">Contact</a>
+                <a href="/#contact" class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer">Contact</a>
             </li>
             @auth
                     @if( auth()->user()->role === UserRole::OWNER)
                 <li>
-                        <a href="{{ route('owner.profile') }}">Mon espace</a>
+                        <a href="{{ route('owner.profile') }}" class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">Mon espace</a>
                 </li>
                     @endif
                     @if( auth()->user()->role === UserRole::PETSITTER)
                 <li>
-                        <a href="{{ route( 'petsitter.request' ) }}">Mon espace</a>
+                        <a href="{{ route( 'petsitter.request' ) }}" class="hover:bg-card px-8 py-4rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out hover:shadow-sm">Mon espace</a>
                 </li>
                     @endif
                 @if( auth()->user()->role === UserRole::ADMIN)
                     <li>
-                        <a href="">dashboard</a>
+                        <a href="" class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">dashboard</a>
                     </li>
                 @endif
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="text-text uppercase">
+                    <button type="submit" class="text-text uppercase hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">
                         Me déconnecter
                     </button>
                 </form>
             @endauth
             @guest
                 <li>
-                    <a href="{{ route('login') }}" class="hover:underline">Me connecter</a>
+                    <a href="{{ route('login') }}" class="hover:bg-white cursor-pointer transition-all duration-300 ease-in-out">Me connecter</a>
                 </li>
             @endguest
 

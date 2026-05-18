@@ -8,16 +8,17 @@ use Livewire\WithFileUploads;
 
 new  #[Title('Mon profil')]
 class extends Component {
+
     use WithFileUploads;
 
     public User $owner;
-
     public string $email;
     public string $adress;
     public $phone;
     public $name;
     public $description;
     public $user_id;
+    public $image;
 
 
 
@@ -27,6 +28,7 @@ class extends Component {
         $this->email = $this->owner->email;
         $this->adress = $this->owner->adress;
         $this->phone = $this->owner->phone;
+        $this->image = $this->owner->image;
 
 
 
@@ -75,15 +77,22 @@ class extends Component {
     {
         $this->validate([
             'email' => 'required',
+            'image'=>'image',
             'adress' => 'required|string',
             'phone' => 'nullable|max_digits:10',
         ]);
+        if ($this->image) {
+            $path = $this->image->store('owner', 'public');
+
+            $this->owner->image = $path;
+        }
         $this->owner->email = $this->email;
         $this->owner->adress = $this->adress;
         $this->owner->phone = $this->phone;
-
         $this->owner->save();
         $this->owner->refresh();
+
+        $this->dispatch('update-data');
     }
 };
 
