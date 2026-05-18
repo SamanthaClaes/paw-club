@@ -1,3 +1,7 @@
+@props([
+    'animalTypes'
+])
+
 <dialog
     wire:ignore.self
     x-data="{ open: false }"
@@ -36,7 +40,7 @@
         </button>
 
         <h2 class="text-2xl font-extrabold text-text uppercase mb-8">
-            Ajouter un chien
+            Ajouter un animal
         </h2>
 
         @if ($errors->any())
@@ -66,14 +70,23 @@
                 type="text"
                 placeholder="Entrez le nom de votre animal"
             />
+          <x-forms.select-option wire:model="animalTypes" name="animalTypes" label="Choisissez un type d’animal">
+              <option value=""> Choisissez un type d’animal</option>
+              @foreach($animalTypes as $animalType)
+                  <option value="{{ $animalType->id }}">
+                      {{ $animalType->type }}
+                  </option>
+              @endforeach
+          </x-forms.select-option>
 
-            <x-forms.input-label
-                wire:model="breed"
-                label="Race"
-                name="breed"
-                type="text"
-                placeholder="Entrez la race de votre animal"
-            />
+            <x-forms.select-option wire:model="breed" name="breed" label="Choisissez la race de votre animal">
+              <option value=""> Choisissez la race de votre animal</option>
+              @foreach($animalTypes as $animalType)
+                  <option value="{{ $animalType->id }}">
+                      {{ $animalType->type }}
+                  </option>
+              @endforeach
+          </x-forms.select-option>
 
             <x-forms.input-label
                 wire:model="birth_date"
