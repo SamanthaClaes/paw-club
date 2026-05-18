@@ -11,7 +11,7 @@
     "
 
     x-cloak
-    class="rounded-2xl p-0 backdrop:bg-black/50 w-full mx-auto mt-20 max-w-2xl shadow-xl"
+    class="rounded-2xl p-0 backdrop:bg-black/50 w-full mx-auto max-w-2xl m-auto"
 >
 
     <div
@@ -52,7 +52,7 @@
 
         <form wire:submit.prevent="storePet" class="space-y-4" enctype="multipart/form-data">
 
-           <x-forms.input-label
+            <x-forms.input-label
                 wire:model="pet_image"
                 label="Photo de votre animal"
                 name="pet_image"
@@ -82,8 +82,9 @@
                 type="date"
                 placeholder="L’age de votre animal"
             />
-            <label  class="block text-sm text-text uppercase font-bold mb-1" for="description">Description</label>
-            <textarea  wire:model="description" name="description" id="description" cols="30" rows="10" class="resize-none w-full border-2 border-element rounded-lg px-3 py-2 ">
+            <label class="block text-sm text-text uppercase font-bold mb-1" for="description">Description</label>
+            <textarea wire:model="description" name="description" id="description" cols="30" rows="10"
+                      class="resize-none w-full border-2 border-element rounded-lg px-3 py-2 ">
 
             </textarea>
 
@@ -92,7 +93,7 @@
                     type="submit"
                     class="bg-btn-green hover:bg-green-800 text-white px-6 py-3 rounded-lg font-bold uppercase transition"
                 >
-                   Ajouter mon animal
+                    Ajouter mon animal
                 </button>
             </div>
 

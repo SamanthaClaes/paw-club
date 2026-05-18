@@ -5,6 +5,7 @@
     x-on:edit-dog.window="
         open = true;
         $el.showModal();
+
     "
     x-on:close="open = false"
     x-on:update-dog.window=" open = false;
@@ -12,7 +13,7 @@
     "
 
     x-cloak
-    class="rounded-2xl p-0 backdrop:bg-black/50 w-full mx-auto max-w-2xl shadow-xl"
+    class="rounded-2xl p-0 backdrop:bg-black/50 w-full mx-auto max-w-2xl m-auto"
 >
 
     <div

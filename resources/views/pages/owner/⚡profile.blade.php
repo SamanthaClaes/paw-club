@@ -92,6 +92,18 @@ class extends Component {
         $this->dispatch('update-dog');
     }
 
+    public function delete($petId): void
+    {
+        $pet = Pet::findOrFail($petId);
+        if (!Auth::user()){
+            abort(403);
+        }
+        $this->name = $pet->name;
+        $pet->delete();
+        $this->pets = $this->owner->fresh()->pets;
+        $this->dispatch('dog-deleted');
+
+    }
 
     public function store(): void
     {
@@ -168,7 +180,7 @@ class extends Component {
             <x-cta.add title="+ Ajouter un chien"/>
             <x-modale.pets_modale/>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mx-25 pb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mx-25">
             @foreach($pets as $pet)
                 <x-cards.animal_card_owner
                     :pet-id="$pet->id"
@@ -177,11 +189,15 @@ class extends Component {
                     :breed="$pet->breed"
                     :description="$pet->description"
                     :pet-image="$pet->pet_image"
-
+                />
+                <x-modale.pets_delete_modale
+                    :pet-id="$pet->id"
+                    :name="$pet->name"
                 />
             @endforeach
 
         </div>
         <x-modale.pets_edit_modale/>
+
     </section>
 </div>
