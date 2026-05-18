@@ -55,7 +55,7 @@ class extends Component {
         $this->dispatch('pet-created');
     }
 
-    
+
 
     public function store(): void
     {

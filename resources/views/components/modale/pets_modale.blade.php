@@ -6,7 +6,7 @@
         $el.showModal();
     "
     x-on:close="open = false"
-    x-on:pet-created.windows=" open = false;
+    x-on:pet-created.window=" open = false;
     $el.close()
     "
 
