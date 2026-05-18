@@ -141,7 +141,7 @@ class extends Component {
                 :image="$petsitter->image"
                 :description="$petsitter->description"
                 :tags="[...$petsitter->animalTypes->pluck('type')->toArray(),$petsitter->habitation?->name]"
-                :choose-url="route('petsitter.booking.create', $petsitter)"
+                :choose-url="route('petsitter.booking.create', ['user' => $petsitter->id])"
                 :contact-url="route('petsitter.request', $petsitter)"
             />
         @endforeach
