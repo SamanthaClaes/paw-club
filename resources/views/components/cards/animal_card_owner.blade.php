@@ -1,12 +1,16 @@
+@php
+    use Carbon\Carbon;
+ @endphp
+
 @props([
     'name',
     'breed',
-    'age',
+    'birthDate',
     'description',
     'petImage',
 ])
 
-<section class="border-5 border-stroke rounded-md overflow-hidden bg-card max-w-xl w-full mt-30 mx-auto">
+<section class="border-5 border-stroke rounded-md overflow-hidden bg-card max-w-xl w-full mt-30">
 
     <div class="flex flex-row h-full">
 
@@ -40,7 +44,7 @@
 
                     <p>
                         <span class="font-extrabold">Âge :</span>
-                        {{ $age }}
+                       {{ $birthDate }}
                     </p>
 
                     <p class="leading-snug">

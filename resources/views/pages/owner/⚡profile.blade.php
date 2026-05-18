@@ -17,7 +17,7 @@ class extends Component {
     public  $phone;
     public $pets = [];
     public $name;
-    public $age;
+    public $birth_date;
     public $breed;
     public $description;
     public $user_id;
@@ -35,7 +35,7 @@ class extends Component {
     {
         $validated = $this->validate([
             'name' => 'required|string',
-            'age' => 'required',
+            'birth_date' => 'required|date',
             'breed' => 'required|string',
             'pet_image' => 'nullable|image',
             'description' => 'required|string',
@@ -54,6 +54,8 @@ class extends Component {
         $this->pets = $this->owner->pets;
         $this->dispatch('pet-created');
     }
+
+    
 
     public function store(): void
     {
@@ -125,16 +127,16 @@ class extends Component {
         :image="$owner->image"
     />
     <section>
-        <h2 class="text-text text-2xl sm:text-3xl uppercase font-bold ml-25 mt-30">Tous mes animaux</h2>
-        <div class=" flex justify-end mt-6 mr-25">
+        <div class=" flex justify-between items-center mr-25">
+        <h2 class="text-text text-2xl sm:text-3xl uppercase font-bold ml-25">Tous mes animaux</h2>
             <x-cta.add title="+ Ajouter un chien"/>
             <x-modale.pets_modale/>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 px-10 pb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mx-25 pb-20">
             @foreach($pets as $pet)
                 <x-cards.animal_card_owner
                     :name="$pet->name"
-                    :age="$pet->age"
+                    :birth-date="$pet->birthDateFormat()"
                     :breed="$pet->breed"
                     :description="$pet->description"
                     :pet-image="$pet->pet_image"

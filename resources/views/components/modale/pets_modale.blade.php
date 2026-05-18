@@ -76,10 +76,10 @@
             />
 
             <x-forms.input-label
-                wire:model="age"
-                label="Age"
-                name="age"
-                type="text"
+                wire:model="birth_date"
+                label="Date de naissance"
+                name="birth_date"
+                type="date"
                 placeholder="L’age de votre animal"
             />
             <label  class="block text-sm text-text uppercase font-bold mb-1" for="description">Description</label>
