@@ -53,7 +53,8 @@ class extends Component {
         </div>
         <div class="grid lg:grid-cols-2 gap-8 items-stretch auto-rows-fr">
 
-            <div class="group flex flex-col justify-center items-center bg-card-pink rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+            <div
+                class="group flex flex-col justify-center items-center bg-card-pink rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
                 <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
                     <x-svg.icons.icons1/>
                 </div>
@@ -65,7 +66,8 @@ class extends Component {
                 </div>
             </div>
 
-            <div class="group flex flex-col justify-center items-center bg-card-orange rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+            <div
+                class="group flex flex-col justify-center items-center bg-card-orange rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
                 <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
                     <x-svg.icons.bell/>
                 </div>
@@ -77,7 +79,8 @@ class extends Component {
                 </div>
             </div>
 
-            <div class="group flex flex-col justify-center items-center bg-card-blue rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+            <div
+                class="group flex flex-col justify-center items-center bg-card-blue rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
                 <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
                     <x-svg.icons.health/>
                 </div>
@@ -89,7 +92,8 @@ class extends Component {
                 </div>
             </div>
 
-            <div class="group flex flex-col justify-center items-center bg-card-green rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+            <div
+                class="group flex flex-col justify-center items-center bg-card-green rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
                 <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
                     <x-svg.icons.home/>
                 </div>
@@ -103,63 +107,208 @@ class extends Component {
 
         </div>
     </section>
-    <section class="px-6 lg:px-16 overflow-hidden">
+    <section>
 
-        <h2 class="uppercase text-text text-2xl lg:text-5xl text-center font-extrabold mt-14 lg:mt-24 mb-24">
+        <h2 class="uppercase text-text text-2xl lg:text-5xl text-center font-extrabold mt-14 lg:mt-30 mb-6">
             Vos compagnons en vacances
         </h2>
 
-        <div class="hidden lg:flex justify-center items-center">
+        <div class="flex justify-center items-center overflow-hidden">
 
-            <div class="flex items-center py-16">
+            <div
+                class="
+                flex items-center py-16
+                transition-all duration-700 ease-out
+
+                motion-safe:animate-[cardsReveal_1.2s_ease-out]
+            "
+            >
 
                 <article
-                    class="relative z-10 rotate-[-18deg] transition-all duration-500 ease-out hover:z-50 hover:-translate-y-8 hover:-translate-x-4 hover:mr-8"
+                    class="
+                    relative z-10
+
+                    -mr-16
+                    rotate-[-10deg]
+
+                    sm:-mr-22
+                    sm:rotate-[-14deg]
+
+                    lg:mr-0
+                    lg:rotate-[-18deg]
+
+                    transition-all duration-500 ease-out
+
+                    hover:z-50
+                    hover:-translate-y-8
+                    hover:-translate-x-4
+                    hover:mr-8
+                "
                 >
                     <img
                         src="{{ asset('img/food_dog.jpeg')}}"
                         alt="chien mangeant dans une gamelle"
-                        class="w-[270px] h-[520px] rounded-[2.8rem] object-cover shadow-2xl"
+                        class="
+                        w-32 h-56
+                        sm:w-38 sm:h-70
+                        lg:w-67.5 lg:h-130
+
+                        rounded-4xl
+                        lg:rounded-xl
+
+                        object-cover
+                        shadow-2xl
+                    "
                     >
                 </article>
 
                 <article
-                    class="relative z-20 -ml-20 rotate-[-10deg] transition-all duration-500 ease-out hover:z-50 hover:-translate-y-8 hover:-translate-x-2 hover:ml-4 hover:mr-10"
+                    class="
+                    relative z-20
+
+                    -ml-10 -mr-16
+                    rotate-[-5deg]
+
+                    sm:-ml-16 sm:-mr-22
+                    sm:rotate-[-8deg]
+
+                    lg:-ml-20 lg:mr-0
+                    lg:-rotate-10
+
+                    transition-all duration-500 ease-out
+
+                    hover:z-50
+                    hover:-translate-y-8
+                    hover:-translate-x-2
+                    hover:ml-4
+                    hover:mr-10
+                "
                 >
                     <img
                         src="{{ asset('img/playground.jpeg')}}"
                         alt="chiens jouant dans une plaine de jeux"
-                        class="w-[300px] h-[580px] rounded-[2.8rem] object-cover shadow-2xl"
+                        class="
+                        w-36 h-64
+                        sm:w-42 sm:h-78
+                        lg:w-75 lg:h-145
+
+                        rounded-4xl
+                        lg:rounded-xl
+
+                        object-cover
+                        shadow-2xl
+                    "
                     >
                 </article>
 
                 <article
-                    class="relative z-30 -ml-20 transition-all duration-500 ease-out hover:z-50 hover:-translate-y-8 hover:mx-8"
+                    class="
+                    relative z-30
+
+                    -ml-10 -mr-10
+
+                    sm:-ml-16 sm:-mr-16
+
+                    lg:-ml-20 lg:mr-0
+
+                    transition-all duration-500 ease-out
+
+                    hover:z-50
+                    hover:-translate-y-8
+                    hover:mx-8
+                "
                 >
                     <img
                         src="{{ asset('img/woman_dog.jpeg')}}"
                         alt="femme jouant avec un chien"
-                        class="w-[340px] h-[640px] rounded-[3rem] object-cover shadow-2xl"
+                        class="
+                        w-40 h-72
+                        sm:w-48 sm:h-88
+                        lg:w-85 lg:h-160
+
+                       rounded-4xl
+lg:rounded-4xl
+
+                        object-cover
+                        shadow-2xl
+                    "
                     >
                 </article>
 
                 <article
-                    class="relative z-20 -ml-20 rotate-[10deg] transition-all duration-500 ease-out hover:z-50 hover:-translate-y-8 hover:translate-x-2 hover:ml-10 hover:mr-4"
+                    class="
+                    relative z-20
+
+                    -ml-10 -mr-16
+                    rotate-[5deg]
+
+                    sm:-ml-16 sm:-mr-22
+                    sm:rotate-[8deg]
+
+                    lg:-ml-20 lg:mr-0
+                    lg:rotate-10
+
+                    transition-all duration-500 ease-out
+
+                    hover:z-50
+                    hover:-translate-y-8
+                    hover:translate-x-2
+                    hover:ml-10
+                    hover:mr-4
+                "
                 >
                     <img
                         src="{{ asset('img/run_dogs.jpeg')}}"
                         alt="chiens courant dans l’herbe"
-                        class="w-[300px] h-[580px] rounded-[2.8rem] object-cover shadow-2xl"
+                        class="
+                        w-36 h-64
+                        sm:w-42 sm:h-78
+                        lg:w-75 lg:h-145
+
+                        rounded-4xl
+                        lg:rounded-xl
+
+                        object-cover
+                        shadow-2xl
+                    "
                     >
                 </article>
 
                 <article
-                    class="relative z-10 -ml-20 rotate-[18deg] transition-all duration-500 ease-out hover:z-50 hover:-translate-y-8 hover:translate-x-4 hover:ml-8"
+                    class="
+                    relative z-10
+
+                    -ml-10
+                    rotate-[10deg]
+
+                    sm:-ml-16
+                    sm:rotate-[14deg]
+
+                    lg:-ml-20
+                    lg:rotate-[18deg]
+
+                    transition-all duration-500 ease-out
+
+                    hover:z-50
+                    hover:-translate-y-8
+                    hover:translate-x-4
+                    hover:ml-8
+                "
                 >
                     <img
                         src="{{ asset('img/dogs.jpeg')}}"
                         alt="chiens couchés sur des coussins"
-                        class="w-[270px] h-[520px] rounded-[2.8rem] object-cover shadow-2xl"
+                        class="
+                        w-32 h-56
+                        sm:w-38 sm:h-70
+                        lg:w-67.5 lg:h-130
+
+                        rounded-4xl
+                        lg:rounded-xl
+
+                        object-cover
+                        shadow-2xl
+                    "
                     >
                 </article>
 
@@ -169,6 +318,7 @@ class extends Component {
 
     </section>
     <section>
-        <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold mt-10 lg:mt-20 mb-6"> Où nous trouver ? </h2>
+        <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold mt-10 lg:mt-20 mb-6"> Où nous trouver
+            ? </h2>
     </section>
 </div>
