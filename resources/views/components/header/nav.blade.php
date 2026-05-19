@@ -42,7 +42,7 @@
                     @endif
                 @if( auth()->user()->role === UserRole::ADMIN)
                     <li>
-                        <a href="" class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">dashboard</a>
+                        <a href="{{ route('dashboard.index') }}" class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">dashboard</a>
                     </li>
                 @endif
                 <form action="{{ route('logout') }}" method="POST">
@@ -54,7 +54,7 @@
             @endauth
             @guest
                 <li>
-                    <a href="{{ route('login') }}" class="hover:bg-white cursor-pointer transition-all duration-300 ease-in-out">Me connecter</a>
+                    <a href="{{ route('login') }}" class="text-text uppercase hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">Me connecter</a>
                 </li>
             @endguest
 

@@ -60,7 +60,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="bg-text text-white py-3 rounded-lg font-bold uppercase">
+            <button type="submit" class="bg-text text-white py-3 rounded-lg font-bold uppercase cursor-pointer">
                 Se connecter
             </button>
 

@@ -3,12 +3,21 @@
 use App\Http\Controllers\DayCareController;
 
 Route::livewire('/', 'pages::home')->name('home');
-Route::middleware('auth')->group(function () {
+
+Route::middleware(['auth', 'admin'])->group(function () {
+
     Route::livewire('/dashboard', 'pages::dashboard')->name('dashboard.index');
+
     Route::livewire('/dashboard/petsitter', 'pages::dashboard.petsitter')->name('dashboard.petsitter');
+
     Route::livewire('/dashboard/dogs', 'pages::dashboard.dogs')->name('dashboard.dogs');
+
     Route::livewire('/dashboard/messages', 'pages::dashboard.messages')->name('dashboard.messages');
+
     Route::livewire('/dashboard/request', 'pages::dashboard.request')->name('dashboard.request');
+
+});
+Route::middleware('auth')->group(function () {
     Route::livewire('/petsitter/request', 'pages::petsitter.request')->name('petsitter.request');
     Route::livewire('/petsitter/profile', 'pages::petsitter.profile')->name('petsitter.profile');
     Route::livewire('/owner/profile', 'pages::owner.profile')->name('owner.profile');
