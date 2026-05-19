@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use App\enum\UserRole;
+use App\Models\AnimalType;
+use App\Models\Breed;
+use App\Models\Pet;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -189,4 +192,5 @@ class DatabaseSeeder extends Seeder
             ['name' => 'toutes les visites'],
         ]);
     }
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,6 +11,7 @@ use Carbon\Carbon;
 class Pet extends Model
 {
     use SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
         'name',
@@ -40,7 +42,6 @@ class Pet extends Model
         return $years . ' ' . ($years === 1 ? 'an' : 'ans');
 
     }
-    // Pet.php
     public function animalType(): BelongsTo
     {
         return $this->belongsTo(AnimalType::class);
@@ -50,4 +51,5 @@ class Pet extends Model
     {
         return $this->belongsTo(Breed::class);
     }
+
 }

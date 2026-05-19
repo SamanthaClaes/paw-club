@@ -30,14 +30,22 @@ new class extends Component {
     public function mount(): void
     {
         $this->owner = Auth::user();
-        $this->pets = $this->owner->pets;
-        $this->animalTypes = AnimalType::all();
+        $this->pets = $this->owner
+            ->pets()
+            ->with([
+                'breed',
+                'animalType',
+            ])
+            ->get();
         $this->animalTypes = AnimalType::with('breeds')->get();
     }
     #[On('edit-pet')]
     public function editPet($petId): void
     {
-        $pet = Pet::findOrFail($petId);
+        $pet = Pet::with([
+            'breed',
+            'animalType',
+        ])->findOrFail($petId);
         $this->pet = $pet;
         $this->name = $pet->name;
         $this->animal_type_id = $pet->animal_type_id;
@@ -66,8 +74,14 @@ new class extends Component {
 
         $this->pet->save();
         $this->pet->refresh();
-        $this->pets = $this->owner->fresh()->pets;
-        $this->dispatch('update-dog');
+        $this->pets = $this->owner
+            ->fresh()
+            ->pets()
+            ->with([
+                'breed',
+                'animalType',
+            ])
+            ->get();
         $this->dispatch('update-dog');
     }
 };

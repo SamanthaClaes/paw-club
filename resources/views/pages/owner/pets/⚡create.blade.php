@@ -4,11 +4,13 @@ use App\enum\UserRole;
 use App\Models\AnimalType;
 use App\Models\Breed;
 use App\Models\Pet;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\On;
 
-new class extends Component {
+new #[Title('Créer un animal')]
+class extends Component {
 
     use WithFileUploads;
 
@@ -22,14 +24,19 @@ new class extends Component {
     public $birth_date;
     public ?Pet $pet = null;
     public int $petId;
-    public  $animal_type_id;
-    public  $breed_id;
+    public $animal_type_id;
+    public $breed_id;
 
     public function mount(): void
     {
         $this->owner = Auth::user();
-        $this->pets = $this->owner->pets;
-        $this->animalTypes = AnimalType::all();
+        $this->pets = $this->owner
+            ->pets()
+            ->with([
+                'breed',
+                'animalType',
+            ])
+            ->get();
         $this->animalTypes = AnimalType::with('breeds')->get();
     }
 
@@ -61,10 +68,17 @@ new class extends Component {
             'breed_id',
         ]);
 
-        $this->owner->refresh();
-        $this->pets = $this->owner->pets;
+        $this->pets = $this->owner
+            ->fresh()
+            ->pets()
+            ->with([
+                'breed',
+                'animalType',
+            ])
+            ->get();
         $this->dispatch('pet-created');
     }
+
     #[On('update-dog')]
     public function refreshPets(): void
     {
@@ -79,7 +93,14 @@ new class extends Component {
         }
         $this->name = $pet->name;
         $pet->delete();
-        $this->pets = $this->owner->fresh()->pets;
+        $this->pets = $this->owner
+            ->fresh()
+            ->pets()
+            ->with([
+                'breed',
+                'animalType',
+            ])
+            ->get();
         $this->dispatch('dog-deleted');
 
     }
@@ -87,7 +108,7 @@ new class extends Component {
 ?>
 
 <div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mx-25">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <x-modale.pets_modale
             :animal-types="$animalTypes"
             :animal-types-id="$animal_type_id"
