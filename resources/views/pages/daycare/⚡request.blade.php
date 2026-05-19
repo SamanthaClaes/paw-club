@@ -22,6 +22,8 @@ class extends Component {
     public $image;
     public $infos;
     public $user_id;
+    public string $start_date = '';
+    public string $end_date = '';
 
     public function mount(): void
     {
@@ -41,6 +43,8 @@ class extends Component {
             'image' => 'nullable|image',
             'infos' => 'nullable|string',
             'pet_id' => 'required|exists:pets,id',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
         ]);
         $pet = $this->user
             ->pets()
@@ -92,8 +96,10 @@ class extends Component {
                 label="Photo de l’animal"
             />
         </div>
-        <div>
-
+        <div class="flex gap-6">
+            <x-forms.input-label type="date" wire:model="start_date" name="start_date"
+                                 label="Date de début de garde"/>
+            <x-forms.input-label type="date" wire:model="end_date" name="end_date" label="Date de fin de garde"/>
         </div>
         <div>
             <label for="infos" class="text-text font-bold uppercase">Informations supplémentaires</label>

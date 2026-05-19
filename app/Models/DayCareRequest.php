@@ -15,6 +15,8 @@ class DayCareRequest extends Model
         'infos',
         'user_id',
         'pet_id',
+        'start_date',
+        'end_date'
     ];
 
     public function user(): BelongsTo
