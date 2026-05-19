@@ -11,7 +11,7 @@ return new class extends Migration {
     {
         Schema::create('day_care_requests', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('infos')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('pet_id')->constrained()->cascadeOnDelete();
