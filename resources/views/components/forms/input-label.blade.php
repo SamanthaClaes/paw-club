@@ -12,7 +12,11 @@
         class="block text-sm text-text uppercase font-bold mb-1"
         for="{{ $name }}"
     >
+
         {{ $label }}
+        @if($required)
+            <abbr title="champ obligatoire">*</abbr>
+        @endif
     </label>
 
     <input
