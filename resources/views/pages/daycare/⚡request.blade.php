@@ -1,11 +1,28 @@
 <?php
 
+use App\Models\Pet;
 use App\Models\User;
 use Livewire\Component;
 
 new class extends Component {
     public User $user;
     public $first_name;
+    public $last_name;
+    public $pet_id;
+    public $pets = [];
+    public $selectedPet = null;
+
+    public function mount()
+    {
+        $this->first_name = Auth::user()->first_name;
+        $this->last_name = Auth::user()->last_name;
+        $this->pets = Auth::user()->pets;
+    }
+
+    public function updatedPetId($value)
+    {
+        $this->selectedPet = Pet::with('breed')->find($value);
+    }
 };
 ?>
 
@@ -24,23 +41,34 @@ new class extends Component {
                 type="text"
                 wire:model="last_name"
                 label="Nom de famille *"
-                value="{{ Auth::user()->last_name  }}"
             />
             <x-forms.input-label
                 name="first_name"
                 type="text"
                 wire:model="first_name"
                 label="Prénom *"
-                value="{{ Auth::user()->first_name }}"
             />
         </div>
         <div class="flex gap-6">
-           <x-forms.select-option wire:model="animalName" label="Nom de l’animal" name="animalName">
-               <option value="">Nom de l’animal</option>
-           </x-forms.select-option>
-            <x-forms.select-option wire:model="breed" label="Race de l’animal" name="breed">
-               <option value="">Race de l'animal</option>
-           </x-forms.select-option>
+            <x-forms.select-option wire:model.live="pet_id" label="Nom de l’animal" name="pet_id">
+                <option value="">Nom de l’animal</option>
+                @foreach( Auth::user()->pets as $pet)
+                    <option value="{{ $pet->id }}">
+                        {{ $pet->name }}
+                    </option>
+                @endforeach
+            </x-forms.select-option>
+            @if($selectedPet == 1)
+
+                <x-forms.input-label
+                    name="breed"
+                    type="text"
+                    label="Race de l’animal"
+                    value="{{ $selectedPet->breed?->name }}"
+                    disabled
+                />
+
+            @endif
         </div>
         <div>
             <x-forms.input-label
