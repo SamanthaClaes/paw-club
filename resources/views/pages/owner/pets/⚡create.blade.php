@@ -59,15 +59,6 @@ class extends Component {
         }
 
         Pet::create($validated);
-        $this->reset([
-            'name',
-            'birth_date',
-            'description',
-            'pet_image',
-            'animal_type_id',
-            'breed_id',
-        ]);
-
         $this->pets = $this->owner
             ->fresh()
             ->pets()
@@ -76,6 +67,17 @@ class extends Component {
                 'animalType',
             ])
             ->get();
+
+
+        $this->reset([
+            'name',
+            'birth_date',
+            'description',
+            'pet_image',
+            'animal_type_id',
+            'breed_id',
+        ]);
+        $this->dispatch('reset-breed-search');
         $this->dispatch('pet-created');
     }
 

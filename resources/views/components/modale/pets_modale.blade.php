@@ -72,6 +72,7 @@
                 type="text"
                 placeholder="Entrez le nom de votre animal"
             />
+
             <x-forms.select-option
                 wire:model.live="animal_type_id"
                 name="animal_type_id"
@@ -86,29 +87,67 @@
                 @endforeach
             </x-forms.select-option>
 
-            <x-forms.select-option
-                wire:model="breed_id"
-                name="breed_id"
-                label="Choisissez la race de votre animal"
+            <div
+                x-data="{
+            search: '',
+            open: false
+        }"
+                x-on:reset-breed-search.window="
+        search = '';
+    "
+                @click.outside="open = false"
+                class="relative"
             >
-                <option value="">Choisissez la race de votre animal</option>
 
-                @foreach($animalTypes as $animalType)
+                <label class="block text-sm text-text uppercase font-bold mb-1">
+                    Choisissez la race de votre animal
+                </label>
 
-                    @if($animalType->id == $animalTypesId)
+                <input
+                    type="text"
+                    x-model="search"
+                    @focus="open = true"
+                    placeholder="Rechercher une race..."
+                    class="w-full border-2 border-element rounded-lg px-3 py-2"
+                >
 
-                        @foreach($animalType->breeds as $breed)
+                <div
+                    x-show="open"
+                    x-transition
+                    x-cloak
+                    class="absolute left-0 top-full w-full bg-white border-2 border-element rounded-lg mt-1 max-h-48 overflow-y-auto z-50 shadow-lg"
+                >
 
-                            <option value="{{ $breed->id }}">
-                                {{ $breed->name }}
-                            </option>
+                    @foreach($animalTypes as $animalType)
 
-                        @endforeach
+                        @if($animalType->id == $animalTypesId)
 
-                    @endif
+                            @foreach($animalType->breeds as $breed)
 
-                @endforeach
-            </x-forms.select-option>
+                                <div
+                                    x-show="'{{ strtolower($breed->name) }}'
+                                .includes(search.toLowerCase())"
+
+                                    @click="
+                                $wire.set('breed_id', {{ $breed->id }});
+                                search = '{{ $breed->name }}';
+                                open = false;
+                            "
+
+                                    class="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                                >
+                                    {{ $breed->name }}
+                                </div>
+
+                            @endforeach
+
+                        @endif
+
+                    @endforeach
+
+                </div>
+
+            </div>
 
             <x-forms.input-label
                 wire:model="birth_date"
@@ -117,11 +156,19 @@
                 type="date"
                 placeholder="L’age de votre animal"
             />
-            <label class="block text-sm text-text uppercase font-bold mb-1" for="description">Description</label>
-            <textarea wire:model="description" name="description" id="description" cols="30" rows="10"
-                      class="resize-none w-full border-2 border-element rounded-lg px-3 py-2 ">
 
-            </textarea>
+            <label class="block text-sm text-text uppercase font-bold mb-1" for="description">
+                Description
+            </label>
+
+            <textarea
+                wire:model="description"
+                name="description"
+                id="description"
+                cols="30"
+                rows="10"
+                class="resize-none w-full border-2 border-element rounded-lg px-3 py-2 "
+            ></textarea>
 
             <div class="flex justify-end pt-4">
                 <button
