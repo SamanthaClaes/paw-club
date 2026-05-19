@@ -49,9 +49,10 @@ new class extends Component {
     }
 };
 ?>
-<section class="grid grid-cols-2 mt-20 mb-20 gap-8">
-
-
+<section>
+    <h1 class=" text-text text-2xl text-center font-bold mb-4 lg:text-3xl mt-20">Mes informations</h1>
+    <x-header.PetsitterNav/>
+    <div class="grid grid-cols-2 mt-20 mb-20 gap-8">
     <x-cards.ps_card_profile
         :last_name="$petsitter->last_name"
         :first_name="$petsitter->first_name"
@@ -68,4 +69,5 @@ new class extends Component {
         :visit="$petsitter->visitTypes->pluck('name')->join(', ')"
 
     />
+    </div>
 </section>

@@ -1,5 +1,6 @@
 @php use App\enum\UserRole; @endphp
 <nav class="bg-element p-2 text-text relative z-9999">
+    <h1 class="sr-only">Navigation principale</h1>
     <input type="checkbox" id="menu-toggle" class="peer hidden">
 
     <div class="flex items-center justify-between">

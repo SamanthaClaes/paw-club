@@ -1,6 +1,6 @@
 <footer class="bg-element px-6 py-8">
-
     <nav class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 items-start">
+        <h1 class="sr-only">Navigation de fin de page</h1>
         <div class="sm:col-span-2 lg:col-span-1 justify-items-center">
             <a href="{{ route('home') }}">
                 <x-svg.logo/>

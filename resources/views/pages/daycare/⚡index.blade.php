@@ -124,7 +124,7 @@ class extends Component {
             "
             >
 
-                <article
+                <div
                     class="
                     relative z-10
 
@@ -160,9 +160,9 @@ class extends Component {
                         shadow-2xl
                     "
                     >
-                </article>
+                </div>
 
-                <article
+                <div
                     class="
                     relative z-20
 
@@ -199,9 +199,9 @@ class extends Component {
                         shadow-2xl
                     "
                     >
-                </article>
+                </div>
 
-                <article
+                <div
                     class="
                     relative z-30
 
@@ -233,17 +233,17 @@ lg:rounded-4xl
                         shadow-2xl
                     "
                     >
-                </article>
+                </div>
 
-                <article
+                <div
                     class="
                     relative z-20
 
                     -ml-10 -mr-16
-                    rotate-[5deg]
+                    rotate-5
 
                     sm:-ml-16 sm:-mr-22
-                    sm:rotate-[8deg]
+                    sm:rotate-8
 
                     lg:-ml-20 lg:mr-0
                     lg:rotate-10
@@ -272,20 +272,20 @@ lg:rounded-4xl
                         shadow-2xl
                     "
                     >
-                </article>
+                </div>
 
-                <article
+                <div
                     class="
                     relative z-10
 
                     -ml-10
-                    rotate-[10deg]
+                    rotate-10
 
                     sm:-ml-16
-                    sm:rotate-[14deg]
+                    sm:rotate-14
 
                     lg:-ml-20
-                    lg:rotate-[18deg]
+                    lg:rotate-18
 
                     transition-all duration-500 ease-out
 
@@ -310,7 +310,7 @@ lg:rounded-4xl
                         shadow-2xl
                     "
                     >
-                </article>
+                </div>
 
             </div>
 

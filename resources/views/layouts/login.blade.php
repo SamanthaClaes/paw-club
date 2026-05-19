@@ -11,7 +11,8 @@
 </head>
 <body class="dark:bg-gray-700 bg-element">
 <main>
-   @yield( 'content')
+    <h1 class="sr-only">Page de connexion</h1>
+    @yield( 'content')
 </main>
 @livewireScripts
 </body>

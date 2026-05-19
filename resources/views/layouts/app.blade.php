@@ -10,6 +10,7 @@
     @livewireStyles
 </head>
 <body>
+<h1 class="sr-only">Pages principales</h1>
 <header>
     <x-header.nav/>
 </header>

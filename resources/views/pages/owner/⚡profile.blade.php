@@ -111,8 +111,8 @@ class extends Component {
         :image="$owner->image"
     />
     <section>
-        <div class=" flex justify-between items-center mr-25">
-            <h2 class="text-text text-2xl sm:text-3xl uppercase font-bold ml-25">Tous mes animaux</h2>
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <h2 class="text-text lg:text-2xl text-lg uppercase font-bold ml-50">Tous mes animaux</h2>
             <x-cta.add title="+ Ajouter un animal"/>
         </div>
         <livewire:pages::owner.pets.create/>

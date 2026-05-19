@@ -6,10 +6,10 @@
     'chooseUrl' => '#',
     'contactUrl' => '#',
 ])
+<div x-data="{shown : false}" x-intersect.full="shown = true">
+<div x-show="shown" x-transition  {{ $attributes->merge(['class' => 'border-2 border-stroke bg-card rounded-lg p-4 max-w-4xl mx-auto mb-8']) }}>
 
-<div {{ $attributes->merge(['class' => 'border-5 border-stroke bg-card rounded-lg p-8 max-w-6xl mx-auto mb-8']) }}>
-
-    <div class="flex flex-col lg:flex-row gap-8">
+    <div  class="flex flex-col lg:flex-row gap-8">
         <div class="shrink-0 flex justify-center">
             <img src="{{ \Illuminate\Support\Facades\Storage::url($image)  }}"
                  alt="{{ $name }}"
@@ -22,7 +22,7 @@
                     {{ $name }}
                 </h2>
 
-                <p class="text-[#060B3F] text-lg leading-10 max-w-4xl">
+                <p class="text-text text-lg leading-10 max-w-4xl">
                     {{ $description }}
                 </p>
             </div>
@@ -39,16 +39,17 @@
 
             <div class="flex flex-col lg:flex-row gap-6 pt-6">
                 <a href="{{ $chooseUrl }}"
-                   class="bg-[#FF8900] hover:bg-[#e67b00] text-[#060B3F] font-extrabold text-xl text-center py-3 rounded-xl flex-1 transition">
+                   class="bg-card-orange hover:bg-hover-orange text-text font-extrabold text-xl text-center py-3 rounded-xl flex-1 transition shadow-sm">
                     Choisir {{ $name }}
                 </a>
 
                 <a href="{{ $contactUrl }}"
-                   class="bg-[#F86E78] hover:bg-[#eb5d67] text-[#060B3F] font-extrabold text-xl text-center py-3 rounded-xl flex-1 transition">
+                   class="bg-card-pink hover:bg-hover-pink text-text font-extrabold text-xl text-center py-3 rounded-xl flex-1 transition shadow-sm">
                     Contacter {{ $name }}
                 </a>
             </div>
         </div>
     </div>
 
+</div>
 </div>
