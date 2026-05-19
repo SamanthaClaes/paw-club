@@ -27,11 +27,11 @@
 
             <div>
 
-                <h1 class="uppercase font-extrabold text-[#2D1B46] text-lg sm:text-xl mb-4 sm:mb-6">
+                <h1 class="uppercase font-extrabold text-text text-lg sm:text-xl mb-4 sm:mb-6">
                     Informations de l’animal
                 </h1>
 
-                <div class="space-y-3 sm:space-y-4 text-[#2D1B46] text-sm sm:text-base">
+                <div class="space-y-3 sm:space-y-4 text-text text-sm sm:text-base">
 
                     <p>
                         <span class="font-extrabold">Nom :</span>

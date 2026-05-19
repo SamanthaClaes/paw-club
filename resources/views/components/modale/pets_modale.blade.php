@@ -1,6 +1,7 @@
 @props([
     'animalTypes',
-    'breeds',
+    'animalTypesId'
+
 ])
 
 <dialog
@@ -71,24 +72,43 @@
                 type="text"
                 placeholder="Entrez le nom de votre animal"
             />
-          <x-forms.select-option  wire:model="animal_type_id"
-                                  name="animal_type_id" label="Choisissez un type d’animal">
-              <option value=""> Choisissez un type d’animal</option>
-              @foreach($animalTypes as $animalType)
-                  <option value="{{ $animalType->id }}">
-                      {{ ucfirst($animalType->type) }}
-                  </option>
-              @endforeach
-          </x-forms.select-option>
+            <x-forms.select-option
+                wire:model.live="animal_type_id"
+                name="animal_type_id"
+                label="Choisissez un type d’animal"
+            >
+                <option value="">Choisissez un type d’animal</option>
 
-            <x-forms.select-option wire:model="breed_id" name="breed_id" label="Choisissez la race de votre animal">
-              <option value=""> Choisissez la race de votre animal</option>
-              @foreach($breeds as $breed)
-                  <option value="{{ $breed->id }}">
-                      {{ $breed->name}}
-                  </option>
-              @endforeach
-          </x-forms.select-option>
+                @foreach($animalTypes as $animalType)
+                    <option value="{{ $animalType->id }}">
+                        {{ ucfirst($animalType->type) }}
+                    </option>
+                @endforeach
+            </x-forms.select-option>
+
+            <x-forms.select-option
+                wire:model="breed_id"
+                name="breed_id"
+                label="Choisissez la race de votre animal"
+            >
+                <option value="">Choisissez la race de votre animal</option>
+
+                @foreach($animalTypes as $animalType)
+
+                    @if($animalType->id == $animalTypesId)
+
+                        @foreach($animalType->breeds as $breed)
+
+                            <option value="{{ $breed->id }}">
+                                {{ $breed->name }}
+                            </option>
+
+                        @endforeach
+
+                    @endif
+
+                @endforeach
+            </x-forms.select-option>
 
             <x-forms.input-label
                 wire:model="birth_date"

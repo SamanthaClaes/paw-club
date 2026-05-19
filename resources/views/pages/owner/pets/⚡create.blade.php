@@ -30,9 +30,9 @@ new class extends Component {
         $this->owner = Auth::user();
         $this->pets = $this->owner->pets;
         $this->animalTypes = AnimalType::all();
-        $this->breeds = Breed::all();
-
+        $this->animalTypes = AnimalType::with('breeds')->get();
     }
+
 
     function storePet(): void
     {
@@ -90,8 +90,8 @@ new class extends Component {
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mx-25">
         <x-modale.pets_modale
             :animal-types="$animalTypes"
-            :breeds="$breeds"
-            :pet-id="$petId"
+            :animal-types-id="$animal_type_id"
+
         />
         @foreach($pets as $pet)
             <x-cards.animal_card_owner

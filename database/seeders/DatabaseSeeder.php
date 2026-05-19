@@ -73,10 +73,11 @@ class DatabaseSeeder extends Seeder
             ['type' => 'furet'],
             ['type' => 'serpent'],
             ['type' => 'hamster'],
-
         ]);
 
         DB::table('breeds')->insert([
+
+            // CHIENS
             [
                 'animal_type_id' => 1,
                 'name' => 'Berger Allemand',
@@ -106,6 +107,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Shiba Inu',
             ],
 
+            // CHATS
             [
                 'animal_type_id' => 2,
                 'name' => 'Maine Coon',
@@ -127,31 +129,56 @@ class DatabaseSeeder extends Seeder
                 'name' => 'British Shorthair',
             ],
 
+            // LAPINS
             [
                 'animal_type_id' => 3,
-                'name' => 'Python Royal',
-            ],
-            [
-                'animal_type_id' => 3,
-                'name' => 'Boa Constrictor',
-            ],
-            [
-                'animal_type_id' => 3,
-                'name' => 'Couleuvre des Blés',
-            ],
-
-            [
-                'animal_type_id' => 4,
                 'name' => 'Bélier Hollandais',
             ],
             [
-                'animal_type_id' => 4,
+                'animal_type_id' => 3,
                 'name' => 'Lapin Nain',
             ],
-            ['animal_type_id' => 5, 'name' => 'Perruche Ondulée',],
+            [
+                'animal_type_id' => 3,
+                'name' => 'Rex',
+            ],
+
+            // FURETS
+            [
+                'animal_type_id' => 4,
+                'name' => 'Furet Albinos',
+            ],
+            [
+                'animal_type_id' => 4,
+                'name' => 'Furet Putoisé',
+            ],
+
+            // SERPENTS
             [
                 'animal_type_id' => 5,
-                'name' => 'Canari',
+                'name' => 'Python Royal',
+            ],
+            [
+                'animal_type_id' => 5,
+                'name' => 'Boa Constrictor',
+            ],
+            [
+                'animal_type_id' => 5,
+                'name' => 'Couleuvre des Blés',
+            ],
+
+            // HAMSTERS
+            [
+                'animal_type_id' => 6,
+                'name' => 'Hamster Syrien',
+            ],
+            [
+                'animal_type_id' => 6,
+                'name' => 'Hamster Russe',
+            ],
+            [
+                'animal_type_id' => 6,
+                'name' => 'Hamster Roborovski',
             ],
         ]);
 
