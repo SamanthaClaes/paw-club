@@ -30,12 +30,9 @@ new class extends Component {
     public function mount(): void
     {
         $this->owner = Auth::user();
-
         $this->pets = $this->owner->pets;
-
         $this->animalTypes = AnimalType::all();
-
-        $this->breeds = Breed::all();
+        $this->animalTypes = AnimalType::with('breeds')->get();
     }
     #[On('edit-pet')]
     public function editPet($petId): void
@@ -79,6 +76,6 @@ new class extends Component {
 <div>
     <x-modale.pets_edit_modale
         :animal-types="$animalTypes"
-        :breeds="$breeds"
+        :animal-types-id="$animal_type_id"
     />
 </div>

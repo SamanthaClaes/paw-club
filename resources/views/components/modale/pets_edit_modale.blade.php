@@ -1,6 +1,6 @@
 @props([
     'animalTypes',
-    'breeds',
+    'animalTypesId',
 ])
 
 <dialog
@@ -86,11 +86,14 @@
                 label="Choisissez la race de votre animal"
             >
                 <option value="">Choisissez la race de votre animal</option>
-
-                @foreach($breeds as $breed)
-                    <option value="{{ $breed->id }}">
-                        {{ $breed->name }}
-                    </option>
+                @foreach($animalTypes as $animalType)
+                    @if($animalType->id == $animalTypesId)
+                        @foreach($animalType->breeds as $breed)
+                            <option value="{{ $breed->id }}">
+                                {{ $breed->name }}
+                            </option>
+                        @endforeach
+                    @endif
                 @endforeach
             </x-forms.select-option>
 
@@ -118,7 +121,7 @@
             <div class="flex justify-end pt-4">
                 <button
                     type="submit"
-                    class="bg-btn-green hover:bg-green-800 text-white px-6 py-3 rounded-lg font-bold uppercase transition"
+                    class="bg-btn-green hover:bg-green-800 text-white px-6 py-3 rounded-lg font-bold uppercase transition cursor-pointer"
                 >
                     Modifier mon animal
                 </button>

@@ -44,11 +44,11 @@
         </button>
 
         <h2 class="text-2xl font-extrabold text-text uppercase mb-6">
-            Supprimer {{ $name }}
+            Supprimer la fiche de :  {{ $name }}
         </h2>
 
         <p class="text-text text-lg mb-10">
-            Êtes-vous sûr de vouloir supprimer
+            Êtes-vous sûr de vouloir supprimer la fiche de :
             <span class="font-bold">{{ $name }}</span> ?
         </p>
 

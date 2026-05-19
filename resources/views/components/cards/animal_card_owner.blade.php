@@ -70,7 +70,7 @@
                     @click="$dispatch('open-delete-dog-modal')"
                     class="bg-btn-red hover:bg-red-700 text-red-950 hover:text-white font-extrabold uppercase px-4 sm:px-6 py-3 rounded-md transition w-full cursor-pointer"
                 >
-                    Supprimer le chien
+                    Supprimer la fiche
                 </button>
 
             </div>

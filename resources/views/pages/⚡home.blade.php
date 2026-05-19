@@ -123,7 +123,7 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
                     >
 
                     <div class="flex justify-center">
-                        <a href="#"
+                        <a href="{{ route('daycare.request') }}"
                            class="text-text-orange font-bold uppercase bg-card-orange hover:bg-hover-orange hover:text-white p-5 lg:w-2/3 rounded-lg mb-6 shadow-md/10 ">
                             Réserver une garde
                         </a>
