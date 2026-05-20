@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('infos')->nullable();
             $table->date('start_date');
             $table->date('end_date');
+            $table->string('status');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('pet_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
