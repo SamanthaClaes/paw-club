@@ -15,13 +15,30 @@ class extends Component {
 
     public function mount(): void
     {
+        $this->loadPendingRequests();
+    }
+    public function loadPendingRequests(): void
+    {
         $this->requests = DayCareRequest::with([
             'user',
             'pet',
             'pet.animalType',
             'pet.breed',
-        ])->get();
+        ])
+            ->where('status', DayCareRequestStatus::PENDING)
+            ->get();
     }
+    public function acceptRequest($requestId): void
+    {
+        $request = DayCareRequest::findOrFail($requestId);
+
+        $request->status = DayCareRequestStatus::ACCEPTED;
+
+        $request->save();
+
+        $this->loadPendingRequests();
+    }
+
 
     #[On('open-owner-modal')]
     public function loadOwner($userId): void
@@ -33,23 +50,7 @@ class extends Component {
         ])->findOrFail($userId);
     }
 
-    public function acceptRequest($requestId): void
-    {
-        $request = DayCareRequest::findOrFail($requestId);
 
-        $request->status = DayCareRequestStatus::ACCEPTED;
-
-        $request->save();
-
-        $this->requests = DayCareRequest::with([
-            'user',
-            'pet',
-            'pet.animalType',
-            'pet.breed',
-        ])
-            ->where('status', DayCareRequestStatus::PENDING)
-            ->get();
-    }
 };
 ?>
 
