@@ -23,17 +23,25 @@ new class extends Component {
     public string $animal_type_id = '';
     public $image;
     public User $petsitter;
+    public $gender;
+    public $pets = [];
+    public $user;
 
     public function mount(User $user): void
     {
         abort_if($user->role !== UserRole::PETSITTER, 404);
 
         $this->petsitter = $user;
+        $this->user = Auth::user();
 
         $this->types = AnimalType::all();
+        $this->pets = $this->user
+            ->pets()
+            ->with('breed')
+            ->get();
     }
 
-    public function store()
+    public function store(): void
     {
         $validated = $this->validate([
             'last_name' => 'required|string',
@@ -45,6 +53,7 @@ new class extends Component {
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
             'breed' => 'required|string',
+            'gender'=>'required|boolean',
             'description' => 'nullable|string',
             'animal_type_id' => 'required|exists:animal_types,id',
         ]);
@@ -72,49 +81,16 @@ new class extends Component {
         <span class="block text-text text-sm text-center mb-6">En remplissant ce formulaire, vous envoyez une demande au petsitter choisis, celui-ci répondra à votre demande dans les plus brefs délais.</span>
     </section>
     <form wire:submit.prevent="store" class="w-8/10 mx-auto" enctype="multipart/form-data">
-        <div class="flex gap-6 mt-6 justify-between">
-            <x-forms.input-label wire:model="last_name" label="Nom de famille *" name="last_name" type="text"
-                                 placeholder="Dupont" value=""
-                                 required class="w-1/2"/>
-            <x-forms.input-label wire:model="first_name" label="Prénom *" name="first_name" type="text"
-                                 placeholder="Julie" value="" required
-                                 class="w-1/2"/>
-        </div>
-        <div class="mt-6">
-            <x-forms.input-label wire:model="email" label="Email *" type="email" name="email" placeholder="mail@test.be"
-                                 value=""
-                                 required class="w-full"/>
-        </div>
+        @csrf
         <div class="flex flex-col gap-3">
-            <x-forms.select-option wire:model="animal_type_id" name="animal_type_id" label="Choisissez votre animal">
-                <option value="">Choisissez un animal</option>
-                @foreach($types as $type)
-                    <option value="{{ $type->id }}">
-                        {{ $type->type  }}
+            <x-forms.select-option wire:model.live="pet_id" label="Nom et race de l'animal" name="pet_id">
+                <option value="">Choisir mon animal</option>
+                @foreach( $pets as $pet)
+                    <option value="{{ $pet->id }}">
+                        {{ $pet->name }} - {{$pet->breed->name}}
                     </option>
                 @endforeach
             </x-forms.select-option>
-
-            <div class="flex gap-6">
-                <x-forms.input-label wire:model="animal_name" name="animal_name" type="text"
-                                     label="Nom de votre animal"/>
-                <x-forms.input-label wire:model="animal_age" name="animal_age" type="number"
-                                     label="Age de votre animal"/>
-                <x-forms.select-option name="breed" wire:model="breed" label="Race de votre animal">
-                    <option value=""> Race de votre animal</option>
-                    <option value="golden_retriever">Golden Retriever</option>
-                    <option value="berger_allemand">Berger Allemand</option>
-                    <option value="bouledogue_francais">Bouledogue Français</option>
-
-                    <option value="maine_coon">Maine Coon</option>
-                    <option value="persan">Persan</option>
-                    <option value="siamois">Siamois</option>
-
-                    <option value="lapin_nain">Lapin nain</option>
-                    <option value="belier_hollandais">Bélier hollandais</option>
-                    <option value="rex">Rex</option>
-                </x-forms.select-option>
-            </div>
             <div class="mt-6">
                 <x-forms.input-label wire:model="image" name="image" label="Photo de l’animal" type="file"/>
             </div>
