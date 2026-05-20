@@ -5,13 +5,10 @@ use App\Models\AnimalType;
 use App\Models\Habitation;
 use App\Models\User;
 use App\Models\VisitType;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 new  #[Title('Devenir petsitter')]
 class extends Component {
@@ -204,6 +201,6 @@ class extends Component {
                 </x-forms.button>
             </div>
         </form>
-     <x-message_success/>
+        <x-message_success/>
     </section>
 </div>

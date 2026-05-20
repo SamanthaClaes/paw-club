@@ -9,9 +9,10 @@
     'description',
     'petImage',
     'petId',
+    'gender',
 ])
 
-<section class="border-5 border-stroke rounded-md overflow-hidden bg-card w-full mt-6 lg:max-w-xl ml-25">
+<section class="border-5 border-stroke rounded-md overflow-hidden bg-card w-full mt-6 lg:max-w-2xl ml-25">
 
     <div class="flex flex-col sm:flex-row h-full">
 
@@ -41,6 +42,10 @@
                     <p>
                         <span class="font-extrabold">Race :</span>
                         {{ $breed }}
+                    </p>
+                    <p>
+                        <span class="font-extrabold">Race :</span>
+                        {{ $gender }}
                     </p>
 
                     <p>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\DayCareRequestStatus;
 use App\Models\DayCareRequest;
 use App\Models\User;
 use Carbon\Carbon;
@@ -30,6 +31,24 @@ class extends Component {
             'pets.breed',
             'pets.animalType',
         ])->findOrFail($userId);
+    }
+
+    public function acceptRequest($requestId): void
+    {
+        $request = DayCareRequest::findOrFail($requestId);
+
+        $request->status = DayCareRequestStatus::ACCEPTED;
+
+        $request->save();
+
+        $this->requests = DayCareRequest::with([
+            'user',
+            'pet',
+            'pet.animalType',
+            'pet.breed',
+        ])
+            ->where('status', DayCareRequestStatus::PENDING)
+            ->get();
     }
 };
 ?>
@@ -94,6 +113,7 @@ class extends Component {
                     <div class="flex  gap-4 mt-6">
 
                         <button
+                            wire:click="acceptRequest({{$request->id}})"
                             class="bg-btn-green hover:bg-hover text-cta text-sm font-extrabold uppercase px-4 sm:px-6 py-3 rounded-md transition w-full cursor-pointer"
                         >
                             Accepter la demande
@@ -112,20 +132,31 @@ class extends Component {
             </div>
         </section>
         <dialog
-        wire:ignore.self
-        x-data="{ open: false }"
+            wire:ignore.self
+            x-data="{ open: false }"
 
-        x-on:open-owner-modal.window="
+            x-on:open-owner-modal.window="
         open = true;
         $el.showModal();
         "
 
-        x-on:close="
+            x-on:close="
         open = false;
         "
 
-        x-cloak
-        class="rounded-2xl p-0 backdrop:bg-black/50 w-full mx-auto mt-20 max-w-xl shadow-xl"
+            x-cloak
+            class="rounded-2xl
+    backdrop:bg-black/50
+    w-full
+    max-w-2xl
+    shadow-xl
+    fixed
+    top-1/2
+    left-1/2
+    -translate-x-1/2
+    -translate-y-1/2
+    m-0
+"
         >
 
             <div
@@ -154,11 +185,11 @@ class extends Component {
                 </h2>
                 <p class="text-text text-lg mb-10">
                     Prénom :
-                 <span class="text-text font-bold">{{ $selectedOwner?->first_name }}</span>
+                    <span class="text-text font-bold">{{ $selectedOwner?->first_name }}</span>
                 </p>
                 <p class="text-text text-lg mb-10">
                     Nom :
-                   <span class="text-text font-bold"> {{ $selectedOwner?->last_name }}</span>
+                    <span class="text-text font-bold"> {{ $selectedOwner?->last_name }}</span>
                 </p>
                 <p class="text-text text-lg mb-10">
                     Email :

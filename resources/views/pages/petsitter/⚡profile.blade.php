@@ -1,18 +1,17 @@
 <?php
 
-use App\enum\UserRole;
 use App\Models\AnimalType;
 use App\Models\User;
-use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Component;
 
 new class extends Component {
     public User $petsitter;
     public string $current_password = '';
     public string $password = '';
     public string $password_confirmation = '';
-    public  $types = [];
+    public $types = [];
 
     public function mount(): void
     {
@@ -53,21 +52,21 @@ new class extends Component {
     <h1 class=" text-text text-2xl text-center font-bold mb-4 lg:text-3xl mt-20">Mes informations</h1>
     <x-header.PetsitterNav/>
     <div class="grid grid-cols-2 mt-20 mb-20 gap-8">
-    <x-cards.ps_card_profile
-        :last_name="$petsitter->last_name"
-        :first_name="$petsitter->first_name"
-        :email="$petsitter->email"
-        :phone="$petsitter->phone"
-        :adress="$petsitter->adress"
-        :zip="$petsitter->zip"
-        :location="$petsitter->location"
-        :image="$petsitter->image"
-    />
+        <x-cards.ps_card_profile
+            :last_name="$petsitter->last_name"
+            :first_name="$petsitter->first_name"
+            :email="$petsitter->email"
+            :phone="$petsitter->phone"
+            :adress="$petsitter->adress"
+            :zip="$petsitter->zip"
+            :location="$petsitter->location"
+            :image="$petsitter->image"
+        />
 
-    <x-cards.ps_card_profile_info
-        :type="$petsitter->animalTypes->pluck('type')->join(', ')"
-        :visit="$petsitter->visitTypes->pluck('name')->join(', ')"
+        <x-cards.ps_card_profile_info
+            :type="$petsitter->animalTypes->pluck('type')->join(', ')"
+            :visit="$petsitter->visitTypes->pluck('name')->join(', ')"
 
-    />
+        />
     </div>
 </section>

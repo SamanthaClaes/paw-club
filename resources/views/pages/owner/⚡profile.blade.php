@@ -79,7 +79,7 @@ class extends Component {
             'email' => 'required',
             'image'=>'image',
             'adress' => 'required|string',
-            'phone' => 'nullable|max_digits:10',
+            'phone' => 'nullable',
         ]);
         if ($this->image) {
             $path = $this->image->store('owner', 'public');

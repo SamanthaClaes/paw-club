@@ -1,13 +1,11 @@
 <?php
 
-use App\enum\UserRole;
 use App\Models\AnimalType;
-use App\Models\Breed;
 use App\Models\Pet;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Livewire\Attributes\On;
 
 new #[Title('Créer un animal')]
 class extends Component {
@@ -26,6 +24,7 @@ class extends Component {
     public int $petId;
     public $animal_type_id;
     public $breed_id;
+    public $gender;
 
     public function mount(): void
     {
@@ -48,6 +47,7 @@ class extends Component {
             'birth_date' => 'required|date',
             'pet_image' => 'nullable|image',
             'description' => 'required|string',
+            'gender'=>'required|boolean',
             'animal_type_id' => 'required|exists:animal_types,id',
             'breed_id' => 'nullable|exists:breeds,id',
         ]);
@@ -124,6 +124,7 @@ class extends Component {
                 :breed="$pet->breed?->name"
                 :description="$pet->description"
                 :pet-image="$pet->pet_image"
+                :gender="$pet->gender"
             />
             <x-modale.pets_delete_modale
                 :pet-id="$pet->id"

@@ -1,6 +1,7 @@
 @props([
     'animalTypes',
-    'animalTypesId'
+    'animalTypesId',
+    'genders',
 
 ])
 
@@ -85,6 +86,23 @@
                         {{ ucfirst($animalType->type) }}
                     </option>
                 @endforeach
+            </x-forms.select-option>
+
+            <x-forms.select-option
+                wire:model="gender"
+                name="gender"
+                label="Genre"
+            >
+                <option value="">Choisissez un genre</option>
+
+                <option value="1">
+                    Mâle
+                </option>
+
+                <option value="0">
+                    Femelle
+                </option>
+
             </x-forms.select-option>
 
             <div
