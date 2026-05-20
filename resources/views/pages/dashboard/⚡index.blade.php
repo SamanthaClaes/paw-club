@@ -174,9 +174,9 @@ class extends Component {
                 </x-table.table-data>
             </tr>
             @empty
-            {{--<tr>
+            <tr>
                 <td colspan="6" class="bg-white p-3">Pas d’animaux trouvés</td>
-            </tr>--}}
+            </tr>
             @endforelse
             </tbody>
         </table>
@@ -243,11 +243,11 @@ class extends Component {
             </p>
             <p class="text-text text-lg mb-10">
                 Email :
-                <a href="mailto:{{ $selectedOwner?->email }}" class="font-bold">{{ $request->user->email }}</a>
+                <a href="mailto:{{ $selectedOwner?->email }}" class="font-bold">{{ $selectedOwner?->email }}</a>
             </p>
             <p class="text-text text-lg mb-10">
                 Télépone :
-                <a href="tel:{{ $selectedOwner?->phone }}" class="font-bold">{{ $request->user->phone }}</a>
+                <a href="tel:{{ $selectedOwner?->phone }}" class="font-bold">{{ $selectedOwner?->phone }}</a>
             </p>
 
             <div class="flex justify-end gap-4">

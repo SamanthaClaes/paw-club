@@ -37,6 +37,8 @@ class extends Component {
         $request->save();
 
         $this->loadPendingRequests();
+
+        $request->refresh();
     }
 
 

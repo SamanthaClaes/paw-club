@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\enum\UserRole;
+use Auth;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
@@ -52,5 +53,18 @@ class User extends Authenticatable
     public function pets(): HasMany
     {
         return $this->hasMany(Pet::class);
+    }
+
+    public function redirectRoute(): string
+    {
+        if ($this->role === UserRole::ADMIN) {
+            return route('dashboard.index');
+        }
+
+        if ($this->role === UserRole::PETSITTER) {
+            return route('petsitter.profile');
+        }
+
+        return route('owner.profile');
     }
 }

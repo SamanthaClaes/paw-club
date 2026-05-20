@@ -71,7 +71,13 @@ class extends Component {
 
             $request->save();
         }
-        $this->reset();
+        $this->reset([
+            'image',
+            'infos',
+            'pet_id',
+            'start_date',
+            'end_date',
+        ]);
 
     }
 };
