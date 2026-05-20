@@ -12,21 +12,32 @@ class PetSittingRequest extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'last_name',
-        'first_name',
-        'email',
-        'animal_type_id',
         'description',
-        'animal_name',
-        'animal_age',
-        'breed',
         'start_date',
         'end_date',
-        'image'
+        'image',
+        'status',
+        'pet_id',
+        'user_id',
+        'petsitter_id',
     ];
 
     public function animalType(): BelongsTo
     {
         return $this->belongsTo(AnimalType::class);
+    }
+
+    public function pet(): BelongsTo
+    {
+        return $this->belongsTo(Pet::class);
+    }
+
+    public function user(): BelongsTo
+    {
+      return  $this->belongsTo(User::class);
+    }
+    public function petsitter(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'petsitter_id');
     }
 }

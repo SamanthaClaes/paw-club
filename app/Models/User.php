@@ -55,6 +55,16 @@ class User extends Authenticatable
         return $this->hasMany(Pet::class);
     }
 
+    public function petSittingRequests(): HasMany
+    {
+        return $this->hasMany(PetSittingRequest::class);
+    }
+
+    public function receivedPetSittingRequests(): HasMany
+    {
+        return $this->hasMany(PetSittingRequest::class, 'petsitter_id');
+    }
+
     public function redirectRoute(): string
     {
         if ($this->role === UserRole::ADMIN) {

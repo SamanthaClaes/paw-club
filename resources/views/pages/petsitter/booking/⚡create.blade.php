@@ -1,6 +1,7 @@
 <?php
 
 use App\enum\UserRole;
+use App\Enums\PetsitterRequestStatus;
 use App\Models\AnimalType;
 use App\Models\PetSittingRequest;
 use App\Models\User;
@@ -10,30 +11,24 @@ use Livewire\WithFileUploads;
 new class extends Component {
     use WithFileUploads;
 
-    public string $animal_name = '';
-    public string $animal_age = '';
-    public string $breed = '';
+
     public string $start_date = '';
     public string $end_date = '';
-    public string $last_name = '';
-    public string $first_name = '';
     public string $email = '';
     public string $description = '';
-    public $types = [];
-    public string $animal_type_id = '';
     public $image;
     public User $petsitter;
-    public $gender;
     public $pets = [];
     public $user;
+    public $pet_id;
+    public $status;
+    public $user_id;
+    public $petsitter_id;
 
     public function mount(User $user): void
     {
-        abort_if($user->role !== UserRole::PETSITTER, 404);
-
         $this->petsitter = $user;
         $this->user = Auth::user();
-
         $this->types = AnimalType::all();
         $this->pets = $this->user
             ->pets()
@@ -44,20 +39,16 @@ new class extends Component {
     public function store(): void
     {
         $validated = $this->validate([
-            'last_name' => 'required|string',
-            'first_name' => 'required|string',
-            'email' => 'required|email',
             'image' => 'nullable|image',
-            'animal_age' => 'required|integer',
-            'animal_name' => 'required|string',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
-            'breed' => 'required|string',
-            'gender'=>'required|boolean',
             'description' => 'nullable|string',
-            'animal_type_id' => 'required|exists:animal_types,id',
+            'pet_id' => 'required|exists:pets,id',
         ]);
 
+        $validated['user_id'] = Auth::id();
+        $validated['petsitter_id'] = $this->petsitter->id;
+        $validated['status'] = PetsitterRequestStatus::PENDING;
         $request = PetSittingRequest::create($validated);
 
         if ($this->image) {
@@ -68,22 +59,28 @@ new class extends Component {
 
             $request->save();
         }
-        $this->reset();
+
+        $this->reset([
+            'image',
+            'start_date',
+            'end_date',
+            'description',
+            'pet_id',
+        ]);
     }
-};
+}
 ?>
 
 <div>
     <section>
-        {{$petsitter->id}}
         <h1 class=" text-text text-2xl text-center font-bold mb-4 mt-4 lg:text-3xl lg:mt-20">Envoyez une demande
             à {{ $petsitter->first_name }}</h1>
         <span class="block text-text text-sm text-center mb-6">En remplissant ce formulaire, vous envoyez une demande au petsitter choisis, celui-ci répondra à votre demande dans les plus brefs délais.</span>
     </section>
-    <form wire:submit.prevent="store" class="w-8/10 mx-auto" enctype="multipart/form-data">
+    <form wire:submit="store" class="w-8/10 mx-auto" enctype="multipart/form-data">
         @csrf
         <div class="flex flex-col gap-3">
-            <x-forms.select-option wire:model.live="pet_id" label="Nom et race de l'animal" name="pet_id">
+            <x-forms.select-option wire:model="pet_id" label="Nom et race de l'animal" name="pet_id">
                 <option value="">Choisir mon animal</option>
                 @foreach( $pets as $pet)
                     <option value="{{ $pet->id }}">
