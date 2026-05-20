@@ -40,6 +40,7 @@ class extends Component {
             ->get();
     }
 
+
     public function store(): void
     {
         $validated = $this->validate([
@@ -71,6 +72,7 @@ class extends Component {
             $request->save();
         }
         $this->reset();
+
     }
 };
 ?>
@@ -136,4 +138,5 @@ class extends Component {
             </x-forms.button>
         </div>
     </form>
+<x-message_success/>
 </div>

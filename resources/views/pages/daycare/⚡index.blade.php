@@ -35,7 +35,7 @@ class extends Component {
             w-30 sm:w-40 md:w-56 lg:w-64 xl:w-72
             translate-x-1/4 translate-y-1/4">
                 <div class="flex justify-center">
-                    <a href="{{ route('daycare.create') }}"
+                    <a href="{{ route('daycare.request') }}"
                        class="bg-card-green text-cta hover:bg-hover p-3 lg:p-6 rounded-lg font-bold lg:w-1/2 lg:text-center lg:text-2xl uppercase">Réserver
                         une garde</a>
                 </div>

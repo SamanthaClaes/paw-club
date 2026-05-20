@@ -2,8 +2,10 @@
 
 use App\Enums\DayCareRequestStatus;
 use App\Models\DayCareRequest;
+use App\Models\Pet;
 use App\Models\User;
 use Carbon\Carbon;
+use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -33,17 +35,28 @@ class extends Component {
             'pets.animalType',
         ])->findOrFail($userId);
     }
+
+    #[Computed]
+    public function petsCount(): int
+    {
+        return DayCareRequest::where('status', DayCareRequestStatus::ACCEPTED)->count();
+    }
+    #[Computed]
+    public function requestPending(): int
+    {
+        return DayCareRequest::where('status', DayCareRequestStatus::PENDING)->count();
+    }
 };
 ?>
 
 <div>
     <div class=" md:ml-25 grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
-            <x-cards.dashboard_card :number="2" title="Chiens présents"
+            <x-cards.dashboard_card :number="$this->petsCount" title="Chiens présents"
                                     route=""/>
         </div>
         <div>
-            <x-cards.dashboard_card :number="3" title="Demandes non traitées"
+            <x-cards.dashboard_card :number="$this->requestPending" title="Demandes non traitées"
                                     route=""/>
         </div>
         <div>
