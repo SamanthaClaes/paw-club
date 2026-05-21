@@ -14,6 +14,7 @@ class extends Component {
     public function mount(): void
     {
         $this->requests = PetSittingRequest::with('animalType')->get();
+        $this->loadPendingRequests();
     }
 
     public function loadPendingRequests(): void

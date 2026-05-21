@@ -28,12 +28,15 @@
     --color-text-pink:#4A0F14;
 }
 .fc {
-    --fc-button-bg-color: #82BE8F;
-    --fc-button-border-color: #82BE8F;
-    --fc-button-hover-bg-color: #6FBFA4;
-    --fc-button-hover-border-color: #6FBFA4;
-    --fc-button-active-bg-color: #6FBFA4;
-    --fc-button-active-border-color: #6FBFA4;
-    --fc-button-text-color: #003B00;
+    --fc-button-bg-color: #1BA0AC;
+    --fc-button-border-color: #1BA0AC;
+
+    --fc-button-hover-bg-color: #15909A;
+    --fc-button-hover-border-color: #15909A;
+
+    --fc-button-active-bg-color: #117983;
+    --fc-button-active-border-color: #117983;
+
+    --fc-button-text-color: #FFFFFF;
 }
 

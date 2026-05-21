@@ -29,6 +29,7 @@ class extends Component {
 ?>
 
 <div>
+    <x-header.PetsitterNav/>
     <div wire:ignore>
         <div id="calendar" data-events='@json($this->getEvents())' class="max-w-5xl mx-auto mt-20 mb-20">
 

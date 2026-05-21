@@ -320,5 +320,6 @@ lg:rounded-4xl
     <section>
         <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold mt-10 lg:mt-20 mb-6"> Où nous trouver
             ? </h2>
+        <x-maps.maps/>
     </section>
 </div>
