@@ -11,7 +11,9 @@
     <div class="h-full px-3 py-4">
         <ul class="flex flex-col items-center gap-12">
             <li class="flex justify-center">
+                <a href="/">
                 <x-svg.logo/>
+                </a>
             </li>
             <li class="w-full">
                 <a href="{{ route('dashboard.index') }}"
