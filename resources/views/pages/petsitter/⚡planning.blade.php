@@ -18,7 +18,7 @@ class extends Component {
                 return [
                     'title' => $request->pet->name,
                     'start' => $request->start_date,
-                    'end' => $request->end_date,
+                    'end' => \Carbon\Carbon::parse($request->end_date)->addDay()->toDateString(),
                     'backgroundColor' => '#50C878',
                 ];
             })
