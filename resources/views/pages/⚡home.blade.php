@@ -39,7 +39,7 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
     <section class="px-6 py-12">
         <div class="relative mx-auto max-w-6xl border-5 border-element rounded-lg px-4 sm:px-6 lg:px-8 py-8">
 
-            <div class="flex justify-center">
+            <div class="flex justify-center" id="about">
                 <h2 class="text-text text-2xl sm:text-3xl uppercase font-bold mb-6 text-center ">
                     A propos de nous
                 </h2>

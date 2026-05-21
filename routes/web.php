@@ -30,5 +30,6 @@ Route::livewire('/daycare/create', 'pages::daycare.create')->name('daycare.creat
 Route::livewire('/petsitter', 'pages::petsitter')->name('petsitter.index');
 Route::livewire('/petsitter/booking/create/{user}', 'pages::petsitter.booking.create')->name('petsitter.booking.create');
 Route::livewire('/petsitter/create', 'pages::petsitter.create')->name('petsitter.create');
-Route::livewire('/conditions-generales', 'pages::legal.terms')->name('terms');
+Route::livewire('/terms', 'pages::legal.terms')->name('terms');
+Route::livewire('/confidentiality', 'pages::legal.confidentiality')->name('confidentiality');
 
