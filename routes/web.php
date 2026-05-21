@@ -20,6 +20,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware('auth')->group(function () {
     Route::livewire('/petsitter/request', 'pages::petsitter.request')->name('petsitter.request');
     Route::livewire('/petsitter/profile', 'pages::petsitter.profile')->name('petsitter.profile');
+    Route::livewire('/petsitter/planning', 'pages::petsitter.planning')->name('petsitter.planning');
     Route::livewire('/owner/profile', 'pages::owner.profile')->name('owner.profile');
     Route::livewire('/daycare/request', 'pages::daycare.request')->name('daycare.request');
 

@@ -27,4 +27,13 @@
     --color-text-orange: #4A1F00;
     --color-text-pink:#4A0F14;
 }
+.fc {
+    --fc-button-bg-color: #82BE8F;
+    --fc-button-border-color: #82BE8F;
+    --fc-button-hover-bg-color: #6FBFA4;
+    --fc-button-hover-border-color: #6FBFA4;
+    --fc-button-active-bg-color: #6FBFA4;
+    --fc-button-active-border-color: #6FBFA4;
+    --fc-button-text-color: #003B00;
+}
 

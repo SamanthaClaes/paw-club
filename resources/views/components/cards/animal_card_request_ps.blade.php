@@ -81,6 +81,7 @@
 
         <div class="grid grid-cols-2 gap-6 mt-12">
             <button
+                wire:click="acceptRequest({{$request->id}})"
                 class="bg-btn-green hover:bg-green-500 transition rounded-lg py-3 font-bold text-cta"
             >
                 Accepter la demande

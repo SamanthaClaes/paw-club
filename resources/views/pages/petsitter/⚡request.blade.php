@@ -1,11 +1,14 @@
 <?php
 
 use App\Enums\DayCareRequestStatus;
+use App\Enums\PetsitterRequestStatus;
 use App\Models\DayCareRequest;
 use App\Models\PetSittingRequest;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new class extends Component {
+new #[Title('Mes demandes')]
+class extends Component {
     public $requests;
 
     public function mount(): void
@@ -13,7 +16,30 @@ new class extends Component {
         $this->requests = PetSittingRequest::with('animalType')->get();
     }
 
+    public function loadPendingRequests(): void
+    {
+        $this->requests = PetSittingRequest::with([
+            'user',
+            'pet',
+            'pet.animalType',
+            'pet.breed',
+        ])
+            ->where('status', PetsitterRequestStatus::PENDING)
+            ->get();
+    }
 
+    public function acceptRequest($requestId): void
+    {
+        $request = PetSittingRequest::findOrFail($requestId);
+
+        $request->status = PetsitterRequestStatus::ACCEPTED;
+
+        $request->save();
+
+        $this->loadPendingRequests();
+
+        $request->refresh();
+    }
 };
 ?>
 
@@ -28,7 +54,7 @@ new class extends Component {
     @foreach($requests as $request)
 
         <x-cards.animal_card_request_ps
-           :request="$request"
+            :request="$request"
         />
 
     @endforeach

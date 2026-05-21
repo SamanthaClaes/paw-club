@@ -44,7 +44,7 @@
                 @if( auth()->user()->role === UserRole::PETSITTER)
                     <li>
                         <a href="{{ route( 'petsitter.request' ) }}"
-                           class="hover:bg-card px-8 py-4rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out hover:shadow-sm">Mon
+                           class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">Mon
                             espace</a>
                     </li>
                 @endif

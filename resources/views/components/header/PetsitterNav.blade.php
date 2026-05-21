@@ -5,7 +5,7 @@
             <a href="{{ route('petsitter.request') }}">Mes demandes</a>
         </li>
         <li class="border-2 border-stroke py-2 px-18 rounded-lg   {{ request()->routeIs('petsitter.planning') ? 'bg-stroke text-white font-bold' : '' }}">
-            <a href="">Mon planning</a>
+            <a href="{{ route('petsitter.planning') }}">Mon planning</a>
         </li>
         <li class="border-2 border-stroke py-2 px-18 rounded-lg   {{ request()->routeIs('petsitter.history') ? 'bg-stroke text-white font-bold' : '' }}">
             <a href="">Historique</a>
