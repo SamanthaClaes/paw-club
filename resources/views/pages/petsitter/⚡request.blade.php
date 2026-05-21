@@ -13,6 +13,7 @@ new class extends Component {
         $this->requests = PetSittingRequest::with('animalType')->get();
     }
 
+
 };
 ?>
 
@@ -27,16 +28,7 @@ new class extends Component {
     @foreach($requests as $request)
 
         <x-cards.animal_card_request_ps
-            :animal_name="$request->animal_name"
-            :type="$request->animalType?->type"
-            :name="$request->first_name . ' ' . $request->last_name"
-            :start_date="$request->start_date"
-            :end_date="$request->end_date"
-            :description="$request->description"
-            :email="$request->email"
-            :animal_age="$request->animal_age"
-            :breed="$request->breed"
-            :image="$request->image"
+           :request="$request"
         />
 
     @endforeach

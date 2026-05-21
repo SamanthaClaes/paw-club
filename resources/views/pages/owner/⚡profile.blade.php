@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Pet;
+use App\Models\PetSittingRequest;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use App\Models\User;
@@ -21,7 +22,6 @@ class extends Component {
     public $image;
 
 
-
     public function mount(): void
     {
         $this->owner = Auth::user();
@@ -29,8 +29,6 @@ class extends Component {
         $this->adress = $this->owner->adress;
         $this->phone = $this->owner->phone;
         $this->image = $this->owner->image;
-
-
 
     }
 
@@ -44,6 +42,7 @@ class extends Component {
             $this->owner->image = $path;
             $this->owner->save();
             $this->owner->refresh();
+
         }
     }
 
@@ -77,7 +76,7 @@ class extends Component {
     {
         $this->validate([
             'email' => 'required',
-            'image'=>'image',
+            'image' => 'image',
             'adress' => 'required|string',
             'phone' => 'nullable',
         ]);
@@ -91,7 +90,6 @@ class extends Component {
         $this->owner->phone = $this->phone;
         $this->owner->save();
         $this->owner->refresh();
-
         $this->dispatch('update-data');
     }
 };
@@ -116,6 +114,6 @@ class extends Component {
             <x-cta.add title="+ Ajouter un animal"/>
         </div>
         <livewire:pages::owner.pets.create/>
-        <livewire:pages::owner.pets.edit />
+        <livewire:pages::owner.pets.edit/>
     </section>
 </div>

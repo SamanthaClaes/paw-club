@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\AnimalType;
+use App\Models\PetSittingRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -18,6 +19,17 @@ new class extends Component {
         $this->petsitter = Auth::user();
         $this->types = AnimalType::all();
 
+    }
+
+    public function store()
+    {
+        PetSittingRequest::with([
+            'user',
+            'pet',
+            'pet.breed',
+            'pet.animalType'
+        ])
+            ->where('petsitter_id', Auth::id())->get();
     }
 
 
