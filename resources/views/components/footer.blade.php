@@ -23,7 +23,7 @@
         <ul class="space-y-2">
             <li class="font-bold uppercase text-sm">Informations</li>
             <li><a href="" class="text-xs">À propos</a></li>
-            <li><a href="" class="text-xs">Conditions générales</a></li>
+            <li><a href="{{ route('terms') }}" class="text-xs">Conditions générales</a></li>
             <li><a href="" class="text-xs">Politique de confidentialité</a></li>
         </ul>
         <ul class="space-y-2">
