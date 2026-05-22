@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\DayCareRequestStatus;
+use App\Models\ContactMessage;
 use App\Models\DayCareRequest;
 use App\Models\Pet;
 use App\Models\User;
@@ -64,6 +65,12 @@ class extends Component {
     }
 
     #[Computed]
+    public function unreadMessageCount(): int
+    {
+        return ContactMessage::where('is_read', false)->count();
+    }
+
+    #[Computed]
     public function requestPending(): int
     {
         return DayCareRequest::where('status', DayCareRequestStatus::PENDING)->count();
@@ -82,7 +89,7 @@ class extends Component {
                                     route=""/>
         </div>
         <div>
-            <x-cards.dashboard_card :number="4" title="Messages non lus"
+            <x-cards.dashboard_card :number="$this->unreadMessageCount" title="Messages non lus"
                                     route=""/>
         </div>
     </div>
@@ -121,7 +128,8 @@ class extends Component {
                         - {{ Carbon::parse($request->end_date)->format('d/m/Y')  }}
                     </x-table.table-data>
                     <x-table.table-data>
-                        <button class="cursor-pointer" wire:click="$dispatch('open-owner-modal', { userId: {{ $request->user->id }} })">
+                        <button class="cursor-pointer"
+                                wire:click="$dispatch('open-owner-modal', { userId: {{ $request->user->id }} })">
                             Voir la fiche du propriétaire
                         </button>
                     </x-table.table-data>
@@ -155,28 +163,29 @@ class extends Component {
             <tbody>
             <tr>
                 @forelse($lastWeekRequests as $request)
-                <x-table.table-data>
-                    {{ $request->pet->name }}
-                </x-table.table-data>
-                <x-table.table-data>
-                    {{ $request->pet->breed->name }}
-                </x-table.table-data>
-                <x-table.table-data>
-                    {{ $request->pet->gender ? 'Mâle' : 'Femelle' }}
-                </x-table.table-data>
-                <x-table.table-data>
-                    {{ Carbon::parse( $request->start_date )->format('d/m/Y')}} - {{ Carbon::parse($request->end_date)->format('d/m/Y')  }}
-                </x-table.table-data>
-                <x-table.table-data>
-                    <button wire:click="$dispatch('open-owner-modal', { userId: {{ $request->user->id }} })">
-                        Voir la fiche du propriétaire
-                    </button>
-                </x-table.table-data>
+                    <x-table.table-data>
+                        {{ $request->pet->name }}
+                    </x-table.table-data>
+                    <x-table.table-data>
+                        {{ $request->pet->breed->name }}
+                    </x-table.table-data>
+                    <x-table.table-data>
+                        {{ $request->pet->gender ? 'Mâle' : 'Femelle' }}
+                    </x-table.table-data>
+                    <x-table.table-data>
+                        {{ Carbon::parse( $request->start_date )->format('d/m/Y')}}
+                        - {{ Carbon::parse($request->end_date)->format('d/m/Y')  }}
+                    </x-table.table-data>
+                    <x-table.table-data>
+                        <button wire:click="$dispatch('open-owner-modal', { userId: {{ $request->user->id }} })">
+                            Voir la fiche du propriétaire
+                        </button>
+                    </x-table.table-data>
             </tr>
             @empty
-            <tr>
-                <td colspan="6" class="bg-white p-3">Pas d’animaux trouvés</td>
-            </tr>
+                <tr>
+                    <td colspan="6" class="bg-white p-3">Pas d’animaux trouvés</td>
+                </tr>
             @endforelse
             </tbody>
         </table>

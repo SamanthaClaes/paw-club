@@ -29,6 +29,7 @@ class extends Component {
         $this->loadMessages();
     }
 
+
     public function loadMessages(): void
     {
         $this->unreadMessages = ContactMessage::where('is_read', false)->latest()->get();
@@ -45,7 +46,7 @@ class extends Component {
         <table class="min-w-full border dark:border-none">
             <thead class="bg-element">
             <tr class="bg-background border-b">
-                <th>Marquer comme lu</th>
+                <th class="border-r">Marquer comme lu</th>
                 <th class="border-r">Nom</th>
                 <th class="border-r">Prénom</th>
                 <th class="border-r">Email</th>
@@ -57,7 +58,7 @@ class extends Component {
             @forelse($unreadMessages as $message)
                 <tr>
                     <x-table.table-data>
-                        <button wire:click="markAsRead({{ $message->id }})"> lu</button>
+                        <button class="cursor-pointer" wire:click="markAsRead({{ $message->id }})"> lu</button>
                     </x-table.table-data>
                     <x-table.table-data>
                         {{ $message->last_name }}
