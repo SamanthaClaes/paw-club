@@ -1,26 +1,30 @@
 <?php
 
+use App\Models\ContactMessage;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
 
-new class extends Component { //on peut mettre #[Title('title')] entre le new et le class pour que ça fonctionne aussi
+new #[Title('Paw club accueil')]
+class extends Component {
 
-    public function render()
-    {
-        return $this->view()->title('Paw Club Accueil');
-    }
+    public $first_name;
+    public $last_name;
+    public $email;
+    public $phone;
+    public $message;
 
-    public function store()
+    public function store(): void
     {
         $validated = $this->validate([
-            'first_name'=> 'required|string',
-            'last_name'=> 'required|string',
-            'email'=> 'required|email',
-            'phone'=>'nullable|max_digits:10',
-            'message'=>'nullable|string',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'nullable|max_digits:10',
+            'message' => 'nullable|string',
         ]);
-        return redirect()->route('home')->with('success', 'Demande envoyée avec succès');
+        ContactMessage::create($validated);
+        $this->reset();
     }
 };
 ?>
@@ -176,13 +180,17 @@ new class extends Component { //on peut mettre #[Title('title')] entre le new et
             class="text-center block mb-6">Une question ? Notre équipe est là pour vous répondre et vous conseiller
         </span>
         <div class="flex justify-center">
-            <form wire:submit.prevent="store" id="contact"  class="w-8/10">
+            <form wire:submit="store" id="contact" class="w-8/10">
+                @csrf
                 <div class="flex gap-6 mt-6 justify-between">
-                    <x-forms.input-label wire:model="first_name" type="text" label="Prénom" name="first_name" placeholder="Nicole" required/>
-                    <x-forms.input-label wire:model="last_name" type="text" label="Nom de famille" name="last_name" placeholder="Kidman" required/>
+                    <x-forms.input-label wire:model="first_name" type="text" label="Prénom" name="first_name"
+                                         placeholder="Nicole" required/>
+                    <x-forms.input-label wire:model="last_name" type="text" label="Nom de famille" name="last_name"
+                                         placeholder="Kidman" required/>
                 </div>
                 <div class="flex gap-6 mt-6 justify-between">
-                    <x-forms.input-label wire:model="email" type="email" label="Email" name="email" placeholder="nk@mail.com" required/>
+                    <x-forms.input-label wire:model="email" type="email" label="Email" name="email"
+                                         placeholder="nk@mail.com" required/>
                     <x-forms.input-label wire:model="phone" type="tel" label="Téléphone" name="phone"/>
                 </div>
                 <div class="mt-6 mb-6">
