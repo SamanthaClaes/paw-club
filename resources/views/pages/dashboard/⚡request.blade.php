@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\DayCareRequestStatus;
+use App\Mail\PetsitterAcceptedMail;
 use App\Models\DayCareRequest;
 use App\Models\User;
 use Carbon\Carbon;
@@ -17,6 +18,7 @@ class extends Component {
     {
         $this->loadPendingRequests();
     }
+
     public function loadPendingRequests(): void
     {
         $this->requests = DayCareRequest::with([
@@ -28,6 +30,7 @@ class extends Component {
             ->where('status', DayCareRequestStatus::PENDING)
             ->get();
     }
+
     public function acceptRequest($requestId): void
     {
         $request = DayCareRequest::findOrFail($requestId);

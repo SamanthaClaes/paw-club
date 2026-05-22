@@ -2,6 +2,7 @@
 
 use App\enum\UserRole;
 use App\Enums\PetsitterStatus;
+use App\Mail\PetsitterAcceptedMail;
 use App\Models\User;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -37,9 +38,11 @@ class extends Component {
         $petsitter = User::findOrFail($requestId);
         $petsitter->petsitter_status = PetsitterStatus::ACCEPTED;
         $petsitter->save();
+        Mail::to($petsitter->email)->queue(new PetsitterAcceptedMail($petsitter));
         $this->loadingPendingRequest();
         $petsitter->refresh();
     }
+
     public function rejectPetsitterRequest($requestId): void
     {
         $petsitter = User::findOrFail($requestId);
@@ -130,17 +133,17 @@ class extends Component {
                         {{ $petsitter->habitation->name }}
                     </x-table.table-data>
                     <x-table.table-data>
-                       @foreach($petsitter->animalTypes as $animalType)
-                           {{ $animalType->type }}
-                       @endforeach
+                        @foreach($petsitter->animalTypes as $animalType)
+                            {{ $animalType->type }}
+                        @endforeach
                     </x-table.table-data>
                     <x-table.table-data>
                         <div class="flex gap-2 items-center justify-center">
                             <div>
-                                <x-table.accept-button/>
+                                <x-table.accept-button wire:click="acceptPetsitterRequest({{ $petsitter->id }})"/>
                             </div>
                             <div>
-                                <x-table.refuse-button/>
+                                <x-table.refuse-button wire:click="rejectPetsitterRequest({{ $petsitter->id }})"/>
                             </div>
                         </div>
                     </x-table.table-data>

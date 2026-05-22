@@ -40,6 +40,7 @@ class extends Component {
             absolute
             bottom-10 left-260
             lg:right-295
+            xl:left-150
             w-30 sm:w-40 md:w-56 lg:w-64 xl:w-72
             translate-x-1/4 translate-y-1/4">
                 <div class="flex justify-center">

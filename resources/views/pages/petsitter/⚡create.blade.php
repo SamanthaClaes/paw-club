@@ -73,7 +73,22 @@ class extends Component {
             $user->save();
         }
 
-        session()->flash('success', 'Message envoyé avec succès');
+
+        session()->flash('success', 'Demande envoyée avec succès');
+        $this->reset([
+            'last_name',
+            'first_name',
+            'phone',
+            'email',
+            'adress',
+            'zip',
+            'habitation_id',
+            'animals',
+            'visits',
+            'image',
+            'location',
+            'description',
+        ]);
     }
 };
 ?>
@@ -205,6 +220,8 @@ class extends Component {
                 </x-forms.button>
             </div>
         </form>
+        @if('success')
         <x-message_success/>
+        @endif
     </section>
 </div>
