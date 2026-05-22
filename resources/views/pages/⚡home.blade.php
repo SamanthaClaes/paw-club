@@ -13,18 +13,27 @@ class extends Component {
     public $email;
     public $phone;
     public $message;
+    public $submit = false;
 
-    public function store(): void
+    public function store()
     {
         $validated = $this->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|email',
             'phone' => 'nullable|max_digits:10',
-            'message' => 'nullable|string',
+            'message' => 'string',
         ]);
         ContactMessage::create($validated);
+        $this->submit = true;
         $this->reset();
+       session()->flash('success', 'Message envoyé avec succès');
+
+    }
+
+    public function showForm()
+    {
+        $this->submit = false;
     }
 };
 ?>
@@ -179,7 +188,14 @@ class extends Component {
         <span
             class="text-center block mb-6">Une question ? Notre équipe est là pour vous répondre et vous conseiller
         </span>
+
         <div class="flex justify-center">
+        @if( session('success'))
+                <div class="flex flex-col justify-center gap-6">
+            <x-message_success/>
+                    <button wire:click="showForm" class="w-full bg-element mb-6 rounded-lg text-text uppercase font-bold p-5 hover:bg-hover-element cursor-pointer mt-6">Envoyer un autre message</button>
+                </div>
+          @else
             <form wire:submit="store" id="contact" class="w-8/10">
                 @csrf
                 <div class="flex gap-6 mt-6 justify-between">
@@ -204,7 +220,7 @@ class extends Component {
                     </x-forms.button>
                 </div>
             </form>
+          @endif
         </div>
-        <x-message_success/>
     </section>
 </div>
