@@ -1,6 +1,7 @@
 <?php
 
 use App\enum\UserRole;
+use App\Enums\PetsitterStatus;
 use App\Models\User;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -12,7 +13,7 @@ class extends Component {
 
     public function mount(): void
     {
-        $this->petsitters = User::where('role', UserRole::PETSITTER)->get();
+        $this->petsitters = User::where('role', UserRole::PETSITTER)->where('petsitter_status', PetsitterStatus::ACCEPTED)->get();
     }
 };
 ?>

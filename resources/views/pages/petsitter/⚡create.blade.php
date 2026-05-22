@@ -1,6 +1,7 @@
 <?php
 
 use App\enum\UserRole;
+use App\Enums\PetsitterStatus;
 use App\Models\AnimalType;
 use App\Models\Habitation;
 use App\Models\User;
@@ -30,6 +31,7 @@ class extends Component {
     public $image;
     public string $location;
     public string $description;
+    public $petsitter;
 
 
     public function mount(): void
@@ -37,6 +39,8 @@ class extends Component {
         $this->types = AnimalType::all();
         $this->habitations = Habitation::all();
         $this->visitTypes = VisitType::all();
+        $this->petsitter = User::where('role', UserRole::PETSITTER)
+            ->where('petsitter_status', PetsitterStatus::PENDING)->get();
     }
 
 
@@ -57,7 +61,7 @@ class extends Component {
             'description' => 'nullable|string',
         ]);
 
-        $user = User::create([...$validated, 'password' => Hash::make('password'), 'role' => UserRole::PETSITTER]);
+        $user = User::create([...$validated, 'password' => Hash::make('password'), 'role' => UserRole::PETSITTER, 'petsitter_status'=>PetsitterStatus::PENDING]);
         $user->animalTypes()->sync($this->animals);
         $user->visitTypes()->sync($this->visits);
         if ($this->image) {
@@ -69,7 +73,7 @@ class extends Component {
             $user->save();
         }
 
-        return redirect()->route('petsitter.create')->with('success', 'Demande envoyée avec succès');
+        session()->flash('success', 'Message envoyé avec succès');
     }
 };
 ?>

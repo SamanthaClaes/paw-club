@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('role');
             $table->string('description')->nullable();
+            $table->string('petsitter_status')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
