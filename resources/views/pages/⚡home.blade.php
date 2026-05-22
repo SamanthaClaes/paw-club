@@ -1,8 +1,10 @@
 <?php
 
+use App\Mail\ContactMessageMail;
 use App\Models\ContactMessage;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Illuminate\Support\Facades\Mail;
 
 
 new #[Title('Paw club accueil')]
@@ -25,9 +27,16 @@ class extends Component {
             'message' => 'string',
         ]);
         ContactMessage::create($validated);
+        Mail::to('contact@pawclub.be')->queue(new ContactMessageMail($validated));
+        session()->flash('success', 'Message envoyé avec succès');
         $this->submit = true;
-        $this->reset();
-       session()->flash('success', 'Message envoyé avec succès');
+        $this->reset(['first_name',
+            'last_name',
+            'email',
+            'phone',
+            'message',]);
+
+
 
     }
 
@@ -190,37 +199,40 @@ class extends Component {
         </span>
 
         <div class="flex justify-center">
-        @if( session('success'))
+            @if( session('success'))
                 <div class="flex flex-col justify-center gap-6">
-            <x-message_success/>
-                    <button wire:click="showForm" class="w-full bg-element mb-6 rounded-lg text-text uppercase font-bold p-5 hover:bg-hover-element cursor-pointer mt-6">Envoyer un autre message</button>
+                    <x-message_success/>
+                    <button wire:click="showForm"
+                            class="w-full bg-element mb-6 rounded-lg text-text uppercase font-bold p-5 hover:bg-hover-element cursor-pointer mt-6">
+                        Envoyer un autre message
+                    </button>
                 </div>
-          @else
-            <form wire:submit="store" id="contact" class="w-8/10">
-                @csrf
-                <div class="flex gap-6 mt-6 justify-between">
-                    <x-forms.input-label wire:model="first_name" type="text" label="Prénom" name="first_name"
-                                         placeholder="Nicole" required/>
-                    <x-forms.input-label wire:model="last_name" type="text" label="Nom de famille" name="last_name"
-                                         placeholder="Kidman" required/>
-                </div>
-                <div class="flex gap-6 mt-6 justify-between">
-                    <x-forms.input-label wire:model="email" type="email" label="Email" name="email"
-                                         placeholder="nk@mail.com" required/>
-                    <x-forms.input-label wire:model="phone" type="tel" label="Téléphone" name="phone"/>
-                </div>
-                <div class="mt-6 mb-6">
-                    <label for="msg" class="text-text font-bold uppercase">Message</label>
-                    <textarea wire:model="message" name="message" id="" cols="30" rows="10"
-                              class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none"></textarea>
-                </div>
-                <div class="mb-20">
-                    <x-forms.button>
-                        Envoyer un message
-                    </x-forms.button>
-                </div>
-            </form>
-          @endif
+            @else
+                <form wire:submit="store" id="contact" class="w-8/10">
+                    @csrf
+                    <div class="flex gap-6 mt-6 justify-between">
+                        <x-forms.input-label wire:model="first_name" type="text" label="Prénom" name="first_name"
+                                             placeholder="Nicole" required/>
+                        <x-forms.input-label wire:model="last_name" type="text" label="Nom de famille" name="last_name"
+                                             placeholder="Kidman" required/>
+                    </div>
+                    <div class="flex gap-6 mt-6 justify-between">
+                        <x-forms.input-label wire:model="email" type="email" label="Email" name="email"
+                                             placeholder="nk@mail.com" required/>
+                        <x-forms.input-label wire:model="phone" type="tel" label="Téléphone" name="phone"/>
+                    </div>
+                    <div class="mt-6 mb-6">
+                        <label for="msg" class="text-text font-bold uppercase">Message</label>
+                        <textarea wire:model="message" name="message" id="" cols="30" rows="10"
+                                  class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none"></textarea>
+                    </div>
+                    <div class="mb-20">
+                        <x-forms.button>
+                            Envoyer un message
+                        </x-forms.button>
+                    </div>
+                </form>
+            @endif
         </div>
     </section>
 </div>
