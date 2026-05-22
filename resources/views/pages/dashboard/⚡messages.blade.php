@@ -78,8 +78,9 @@ class extends Component {
                                 <x-table.mail-button :email="$message->email"/>
                             </div>
                             <div>
-                                <x-table.delete-button wire:confirm="Etes vous sur de vouloir supprimer le message ? "
-                                                       wire:click="deleteMessage($message->id)"/>
+                                <x-table.delete-button
+                                    wire:confirm="Etes vous sur de vouloir supprimer le message ? "
+                                    wire:click="deleteMessage( {{ $message->id }} )"/>
                             </div>
                         </div>
                     </x-table.table-data>
@@ -131,7 +132,7 @@ class extends Component {
                                 <div>
                                     <x-table.delete-button
                                         wire:confirm="Etes vous sur de vouloir supprimer le message ? "
-                                        wire:click="deleteMessage($message->id)"/>
+                                        wire:click="deleteMessage( {{$message->id}} )"/>
                                 </div>
                             </div>
                         </x-table.table-data>

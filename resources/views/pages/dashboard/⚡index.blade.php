@@ -82,15 +82,15 @@ class extends Component {
     <div class=" md:ml-25 grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
             <x-cards.dashboard_card :number="$this->petsCount" title="Chiens présents"
-                                    route=""/>
+                                    route="{{ 'dashboard/dogs' }}"/>
         </div>
         <div>
             <x-cards.dashboard_card :number="$this->requestPending" title="Demandes non traitées"
-                                    route=""/>
+                                    route="{{ 'dashboard/request' }}"/>
         </div>
         <div>
             <x-cards.dashboard_card :number="$this->unreadMessageCount" title="Messages non lus"
-                                    route=""/>
+                                    route="{{ 'dashboard/messages' }}"/>
         </div>
     </div>
     <div>

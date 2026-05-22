@@ -11,11 +11,34 @@ use Carbon\Carbon;
 new #[Layout('layouts::dashboard', ['title' => 'Nos chiens'])]
 class extends Component {
     public $requests = [];
+    public $lastweekRequests = [];
+    public $lastMonthRequests = [];
+    public $currentWeekRequests = [];
     public $selectedOwner = null;
     public $animalTypes;
 
+
     public function mount(): void
     {
+        $startLastWeek = Carbon::now()->subWeek()->startOfWeek();
+        $endLastWeek = Carbon::now()->subWeek()->endOfWeek();
+        $startCurrentWeek = Carbon::now()->startOfWeek();
+        $endCurrentWeek = Carbon::now()->endOfWeek();
+        $startLastMonth = Carbon::now()->subMonth()->startOfMonth();
+        $endLastMonth = Carbon::now()->subMonth()->endOfMonth();
+
+        $this->currentWeekRequests = DayCareRequest::with([
+            'user',
+            'pet',
+            'pet.animalType',
+            'pet.breed'
+        ])
+            ->where('status', DayCareRequestStatus::ACCEPTED)
+            ->whereBetween('start_date', [
+                $startCurrentWeek,
+                $endCurrentWeek,
+            ])->get();
+
         $this->requests = DayCareRequest::with([
             'user',
             'pet',
@@ -23,6 +46,28 @@ class extends Component {
             'pet.breed'
         ])->where('status', DayCareRequestStatus::ACCEPTED)
             ->get();
+
+        $this->lastWeekRequests = DayCareRequest::with([
+            'user',
+            'pet',
+            'pet.animalType',
+            'pet.breed'
+        ])->where('status', DayCareRequestStatus::ACCEPTED)
+            ->whereBetween('start_date', [
+                $startLastWeek,
+                $endLastWeek,
+            ])->get();
+
+        $this->lastMonthRequests = DayCareRequest::with([
+            'user',
+            'pet',
+            'pet.animalType',
+            'pet.breed',
+        ])->where('status', DayCareRequestStatus::ACCEPTED)
+            ->whereBetween('start_date', [
+                $startLastMonth,
+                $endLastMonth,
+            ])->get();
     }
 
     #[On('open-owner-modal')]
@@ -55,7 +100,7 @@ class extends Component {
             </thead>
             <tbody>
             <tr>
-            @forelse($requests as $request)
+            @forelse($currentWeekRequests as $request)
                 <tr>
                     <x-table.table-data>
                         {{$request->pet->name}}
@@ -105,28 +150,29 @@ class extends Component {
             </tr>
             </thead>
             <tbody>
+            @forelse($lastweekRequests as $request)
             <tr>
                 <x-table.table-data>
-                    Max
+                    {{$request->pet->name}}
                 </x-table.table-data>
                 <x-table.table-data>
-                    Labrador
+                    {{ $request->breed->name }}
                 </x-table.table-data>
                 <x-table.table-data>
-                    Mâle
+                    {{ $request->pet->gender ? 'Mâle' : 'Femelle' }}
                 </x-table.table-data>
                 <x-table.table-data>
-                    8 juin 2026 - 10 juin 2026
+                    {{ Carbon::parse($request->start_date)->format('d/m/Y')  }} - {{Carbon::parse($request->end_date)->format('d/m/Y')  }}
                 </x-table.table-data>
                 <x-table.table-data>
                     Voir la fiche du propriétaire
                 </x-table.table-data>
             </tr>
-
+            @empty
             <tr>
                 <td colspan="6" class="bg-white p-3">Pas d’animaux trouvés</td>
             </tr>
-
+            @endforelse
             </tbody>
         </table>
     </div>
@@ -146,28 +192,29 @@ class extends Component {
             </tr>
             </thead>
             <tbody>
+            @forelse($lastMonthRequests as $request)
             <tr>
                 <x-table.table-data>
-                    Max
+                    {{ $request->pet->name }}
                 </x-table.table-data>
                 <x-table.table-data>
-                    Labrador
+                    {{ $request->pet->breed->name }}
                 </x-table.table-data>
                 <x-table.table-data>
-                    Mâle
+                    {{ $request->pet->gender ? 'Mâle' : 'Femelle' }}
                 </x-table.table-data>
                 <x-table.table-data>
-                    8 juin 2026 - 10 juin 2026
+                  {{ Carbon::parse( $request->start_date )->format('d/m/Y') }} - {{ Carbon::parse( $request->end_date)->format('d/m/Y') }}
                 </x-table.table-data>
                 <x-table.table-data>
                     Voir la fiche du propriétaire
                 </x-table.table-data>
             </tr>
-
-            {{--<tr>
+            @empty
+            <tr>
                 <td colspan="6" class="bg-white p-3">Pas d’animaux trouvés</td>
-            </tr>--}}
-
+            </tr>
+            @endforelse
             </tbody>
         </table>
     </div>
