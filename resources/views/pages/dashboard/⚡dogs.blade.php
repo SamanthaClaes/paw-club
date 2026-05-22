@@ -123,9 +123,9 @@ class extends Component {
                 </x-table.table-data>
             </tr>
 
-            {{--<tr>
+            <tr>
                 <td colspan="6" class="bg-white p-3">Pas d’animaux trouvés</td>
-            </tr>--}}
+            </tr>
 
             </tbody>
         </table>

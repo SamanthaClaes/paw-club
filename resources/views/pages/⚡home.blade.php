@@ -26,7 +26,7 @@ class extends Component {
             'phone' => 'nullable|max_digits:10',
             'message' => 'string',
         ]);
-        ContactMessage::create($validated);
+        ContactMessage::create([...$validated, 'is_read'=>false,]);
         Mail::to('contact@pawclub.be')->queue(new ContactMessageMail($validated));
         session()->flash('success', 'Message envoyé avec succès');
         $this->submit = true;
@@ -35,12 +35,9 @@ class extends Component {
             'email',
             'phone',
             'message',]);
-
-
-
     }
 
-    public function showForm()
+    public function showForm(): void
     {
         $this->submit = false;
     }
