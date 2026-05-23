@@ -104,19 +104,19 @@ class extends Component {
                 <x-forms.input-label type="file" name="image" label="Photo de profil" wire:model="image"/>
             </div>
             <div class="flex gap-6 justify-between">
-                <x-forms.input-label wire:model="last_name" type="text" name="last_name" label="Nom *"/>
-                <x-forms.input-label wire:model="first_name" type="text" name="first_name" label="Prénom *"/>
+                <x-forms.input-label wire:model="last_name" type="text" name="last_name" label="{{ __('form.last_name') }} *"/>
+                <x-forms.input-label wire:model="first_name" type="text" name="first_name" label="{{ __('form.first_name') }} *"/>
             </div>
             <div class="flex gap-6 justify-between">
-                <x-forms.input-label wire:model="email" type="email" name="email" label="Email *"/>
-                <x-forms.input-label wire:model="phone" type="text" name="phone" label="Numéro de téléphone *"/>
+                <x-forms.input-label wire:model="email" type="email" name="email" label="{{ __('form.email') }} *"/>
+                <x-forms.input-label wire:model="phone" type="text" name="phone" label="{{ __('form.phone') }} *"/>
             </div>
             <div class="flex gap-6 justify-between">
-                <x-forms.input-label wire:model="adress" type="text" name="adress" label="Adresse postale *"/>
-                <x-forms.input-label wire:model="zip" type="number" name="zip" label="Code Postal *"/>
+                <x-forms.input-label wire:model="adress" type="text" name="adress" label="{{ __('form.address') }} *"/>
+                <x-forms.input-label wire:model="zip" type="number" name="zip" label=" {{ __('form.zip') }} *"/>
             </div>
             <div>
-                <x-forms.input-label wire:model="location" type="text" name="location" label="Localité"/>
+                <x-forms.input-label wire:model="location" type="text" name="location" label="{{ __('form.location') }}"/>
             </div>
             <div class="flex gap-12 justify-between">
 

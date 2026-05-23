@@ -8,4 +8,7 @@ return [
     'message'=>'Message',
     'sent'=>' Envoyer un message',
     'resent'=>'Envoyer un autre message',
+    'address'=>'Adresse postale',
+    'zip'=>'Code Postal',
+    'location'=>'Localité',
 ];
