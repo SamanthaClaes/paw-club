@@ -86,17 +86,15 @@ class extends Component {
 <div>
     <section>
         <h1 class=" text-text text-2xl text-center font-bold mb-4 mt-4 lg:text-3xl lg:mt-20">
-            Bonjour {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} </h1>
-        <p class="block text-text text-sm text-center mb-6 w-1/2 mx-auto">En remplissant ce formulaire, vous envoyez une
-            demande de
-            garde à notre garderie, une réponse vous sera envoyée dans les plus brefs délais.
-            <span class="font-bold text-text">N’oubliez pas que notre garderie ne s’occupe que des chiens</span></p>
+            {{ __('formDaycare.title') }} {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} </h1>
+        <p class="block text-text text-sm text-center mb-6 w-1/2 mx-auto"> {{ __('formDaycare.subtitle') }}
+            <span class="font-bold text-text"> {{ __('formDaycare.advice') }} </span></p>
     </section>
     <form wire:submit="store" class="w-8/10 mx-auto" enctype="multipart/form-data">
         @csrf
         <div class="flex gap-6">
-            <x-forms.select-option wire:model.live="pet_id" label="Nom et race de l'animal" name="pet_id">
-                <option value="">Choisir mon animal</option>
+            <x-forms.select-option wire:model.live="pet_id" label="{{ __('formDaycare.nameAndBreed') }}" name="pet_id">
+                <option value="">{{ __('formDaycare.chooseAnimal') }}</option>
                 @foreach( $this->pets as $pet)
                     <option value="{{ $pet->id }}">
                         {{ $pet->name }} - {{$pet->breed->name}}
@@ -107,40 +105,40 @@ class extends Component {
                 wire:model="image"
                 name="image"
                 type="file"
-                label="Photo de l’animal"
+                label="{{ __('formDaycare.animalPicture') }}"
             />
         </div>
         <div>
             <x-forms.select-option
                 wire:model="gender"
                 name="gender"
-                label="Genre"
+                label="{{ __('formDaycare.gender') }}"
             >
-                <option value="">Choisissez un genre</option>
+                <option value="">{{ __('formDaycare.chooseGender') }}</option>
 
                 <option value="1">
-                    Mâle
+                    {{ __('formDaycare.male') }}
                 </option>
 
                 <option value="0">
-                    Femelle
+                    {{ __('formDaycare.female') }}
                 </option>
 
             </x-forms.select-option>
         </div>
         <div class="flex gap-6">
             <x-forms.input-label type="date" wire:model="start_date" name="start_date"
-                                 label="Date de début de garde"/>
-            <x-forms.input-label type="date" wire:model="end_date" name="end_date" label="Date de fin de garde"/>
+                                 label="{{ __('formDaycare.startDate') }}"/>
+            <x-forms.input-label type="date" wire:model="end_date" name="end_date" label="{{ __('formDaycare.endDate') }}"/>
         </div>
         <div>
-            <label for="infos" class="text-text font-bold uppercase">Informations supplémentaires</label>
+            <label for="infos" class="text-text font-bold uppercase">{{ __('formDaycare.infos') }}</label>
             <textarea wire:model="infos" name="infos" id="" cols="30" rows="10"
                       class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none"></textarea>
         </div>
         <div>
             <x-forms.button>
-                Envoyez ma demande
+                {{ __('formDaycare.sent') }}
             </x-forms.button>
         </div>
     </form>

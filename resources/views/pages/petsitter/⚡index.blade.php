@@ -28,12 +28,10 @@ class extends Component {
             <div class="border-5 border-element rounded-lg py-10">
                 <h1 class=" text-text text-2xl text-center font-bold mb-4 lg:text-3xl">{{ $title }}</h1>
                 <span class="block text-text text-sm text-center mb-5 lg:m-10">
-                    La garderie qui fait sentir vos compagnons comme à la maison, même en votre absence
+                        {{ __('petsitter.subtitle') }}
                 </span>
                 <p class="text-center text-sm text-text mb-5 line-clamp-2 lg:mb-10 lg:line-clamp-none">
-                    PawClub est une garderie canine pensée pour offrir à votre compagnon un environnement sécurisé,
-                    encadré et adapté à ses besoins. Chaque chien y est accueilli avec attention, dans un cadre
-                    favorisant son bien-être et sa socialisation.
+                    {{ __('petsitter.description') }}
                 </p>
                 <img src=" {{ asset('svg/illu_5.svg') }}" alt="homme et femme donnant à manger à un chat"
                      class="
@@ -45,15 +43,14 @@ class extends Component {
             translate-x-1/4 translate-y-1/4">
                 <div class="flex justify-center">
                     <a href="{{ route('petsitter.index') }}#petsitters_list"
-                       class="bg-card-green text-cta hover:bg-hover p-3 lg:p-6 rounded-lg font-bold lg:w-1/2 lg:text-center lg:text-2xl uppercase">Réserver
-                        un petsitter</a>
+                       class="bg-card-green text-cta hover:bg-hover p-3 lg:p-6 rounded-lg font-bold lg:w-1/2 lg:text-center lg:text-2xl uppercase">{{ __('petsitter.schedulePetsitter') }}</a>
                 </div>
             </div>
         </div>
     </section>
     <section>
         <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6">
-            Comment cela fonctionne ?
+            {{ __('petsitter.fonction') }}
         </h2>
 
         <div class="grid lg:grid-cols-2 gap-8 items-stretch auto-rows-fr">
@@ -67,10 +64,10 @@ class extends Component {
 
                 <div>
                     <p class="text-text-orange font-bold text-base lg:text-lg">
-                        Choisissez votre petsitter
+                            {{ __('petsitter.choosePetsitter') }}
                     </p>
                     <p class="text-text-orange text-sm lg:text-base font-medium">
-                        Prenez contact avec le PetSitter de votre choix
+                            {{ __('petsitter.cardText') }}
                     </p>
                 </div>
 
@@ -86,10 +83,10 @@ class extends Component {
 
                 <div>
                     <p class="text-text-pink font-bold text-base lg:text-lg">
-                        Rencontre avec le petsitter
+                        {{ __('petsitter.meetPetsitter') }}
                     </p>
                     <p class="text-text-pink text-sm lg:text-base font-medium">
-                        Après l’acceptation, une rencontre est prévue pour remettre les clés et les consignes.
+                            {{ __('petsitter.cardTextTwo') }}
                     </p>
                 </div>
 
@@ -104,10 +101,10 @@ class extends Component {
 
                 <div>
                     <p class="text-text font-bold text-base lg:text-lg">
-                        Petsitting
+                            {{ __('petsitter.petsitting') }}
                     </p>
                     <p class="text-text text-sm lg:text-base font-medium">
-                        Restez en contact avec le petsitter pendant la garde pour suivre le bon déroulement de celle-ci.
+                            {{ __('petsitter.cardTextThree') }}
                     </p>
                 </div>
 
@@ -123,10 +120,10 @@ class extends Component {
 
                 <div>
                     <p class="text-cta font-bold text-base lg:text-lg">
-                        Paiement
+                        {{ __('petsitter.paid') }}
                     </p>
                     <p class="text-cta text-sm lg:text-base font-medium">
-                        Le paiement est effectué avant la garde directement auprès de votre petsitter.
+                        {{ __('petsitter.cardTextFour') }}
                     </p>
                 </div>
             </div>
@@ -135,8 +132,7 @@ class extends Component {
     </section>
     <section>
         <h2 id="petsitters_list"
-            class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6 mt-6"> Découvrez nos
-            petsitters</h2>
+            class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6 mt-6"> {{ __('petsitter.discoverPetsitter') }}</h2>
         @foreach($petsitters as $petsitter)
             <x-cards.petsitter_card
                 :name="$petsitter->first_name"
@@ -152,17 +148,16 @@ class extends Component {
         class="relative flex flex-col items-center gap-4 bg-card-green rounded-lg p-4 lg:p-5 ml-4 mr-4 lg:ml-25 lg:mr-25 min-h-40 lg:min-h-50 my-20 shadow">
 
         <h3 class="mt-16 mb-8 text-text lg:text-3xl font-semibold text-center">
-            Vous souhaitez devenir petsitter ?
+                {{ __('petsitter.cardTitle') }}
         </h3>
 
         <p class="lg:w-1/2 my-12 text-center">
-            Envie de vous occuper d’animaux ? Rejoignez PawClub et devenez petsitter en proposant un service adapté à
-            vos disponibilités.
+                {{ __('petsitter.cardSubtitle') }}
         </p>
 
         <a href="{{ route('petsitter.create') }}"
            class="text-lg lg:text-3xl text-center w-full lg:w-1/2 bg-white lg:py-4 lg:px-18 rounded-lg uppercase font-bold text-text ">
-            Devenir petsitter
+                {{ __('petsitter.cardCta') }}
         </a>
 
         <img src="{{ asset('svg/ill_6.svg') }}" alt="illustration d'une femme qui caresse un chat"
