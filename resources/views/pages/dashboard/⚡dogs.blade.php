@@ -11,7 +11,7 @@ use Carbon\Carbon;
 new #[Layout('layouts::dashboard', ['title' => 'Nos chiens'])]
 class extends Component {
     public $requests = [];
-    public $lastweekRequests = [];
+    public $lastWeekRequests = [];
     public $lastMonthRequests = [];
     public $currentWeekRequests = [];
     public $selectedOwner = null;
@@ -34,10 +34,9 @@ class extends Component {
             'pet.breed'
         ])
             ->where('status', DayCareRequestStatus::ACCEPTED)
-            ->whereBetween('start_date', [
-                $startCurrentWeek,
-                $endCurrentWeek,
-            ])->get();
+            ->where('start_date', '<=', $endCurrentWeek)
+            ->where('end_date', '>=', $startCurrentWeek)
+            ->get();
 
         $this->requests = DayCareRequest::with([
             'user',
@@ -52,22 +51,23 @@ class extends Component {
             'pet',
             'pet.animalType',
             'pet.breed'
-        ])->where('status', DayCareRequestStatus::ACCEPTED)
-            ->whereBetween('start_date', [
-                $startLastWeek,
-                $endLastWeek,
-            ])->get();
+        ])
+            ->where('status', DayCareRequestStatus::ACCEPTED)
+            ->where('start_date', '<=', $endLastWeek)
+            ->where('end_date', '>=', $startLastWeek)
+            ->get();
 
         $this->lastMonthRequests = DayCareRequest::with([
             'user',
             'pet',
             'pet.animalType',
             'pet.breed',
-        ])->where('status', DayCareRequestStatus::ACCEPTED)
-            ->whereBetween('start_date', [
-                $startLastMonth,
-                $endLastMonth,
-            ])->get();
+        ])
+            ->where('status', DayCareRequestStatus::ACCEPTED)
+            ->where('start_date', '<=', $endLastMonth)
+            ->where('end_date', '>=', $startLastMonth)
+            ->get();
+
     }
 
     #[On('open-owner-modal')]
@@ -150,13 +150,13 @@ class extends Component {
             </tr>
             </thead>
             <tbody>
-            @forelse($lastweekRequests as $request)
+            @forelse($lastWeekRequests as $request)
             <tr>
                 <x-table.table-data>
                     {{$request->pet->name}}
                 </x-table.table-data>
                 <x-table.table-data>
-                    {{ $request->breed->name }}
+                    {{ $request->pet->breed->name }}
                 </x-table.table-data>
                 <x-table.table-data>
                     {{ $request->pet->gender ? 'Mâle' : 'Femelle' }}

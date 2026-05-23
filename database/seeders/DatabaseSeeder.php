@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\enum\UserRole;
+use App\Models\DayCareRequest;
+use App\Models\Pet;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -187,6 +189,6 @@ class DatabaseSeeder extends Seeder
             ['name' => 'chez le propriétaire'],
             ['name' => 'toutes les visites'],
         ]);
-    }
+            }
 
 }

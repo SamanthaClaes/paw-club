@@ -31,21 +31,20 @@ class extends Component {
             'pet.breed'
         ])
             ->where('status', DayCareRequestStatus::ACCEPTED)
-            ->whereBetween('start_date', [
-                $startCurrentWeek,
-                $endCurrentWeek,
-            ])->get();
+            ->where('start_date', '<=', $endCurrentWeek)
+            ->where('end_date', '>=', $startCurrentWeek)
+            ->get();
 
         $this->lastWeekRequests = DayCareRequest::with([
             'user',
             'pet',
             'pet.animalType',
             'pet.breed'
-        ])->where('status', DayCareRequestStatus::ACCEPTED)
-            ->whereBetween('start_date', [
-                $startLastWeek,
-                $endLastWeek,
-            ])->get();
+        ])
+            ->where('status', DayCareRequestStatus::ACCEPTED)
+            ->where('start_date', '<=', $endLastWeek)
+            ->where('end_date', '>=', $startLastWeek)
+            ->get();
     }
 
     #[On('open-owner-modal')]
@@ -61,7 +60,12 @@ class extends Component {
     #[Computed]
     public function petsCount(): int
     {
-        return DayCareRequest::where('status', DayCareRequestStatus::ACCEPTED)->count();
+        $startCurrentWeek = Carbon::now()->startOfWeek();
+        $endCurrentWeek = Carbon::now()->endOfWeek();
+        return DayCareRequest::where('status', DayCareRequestStatus::ACCEPTED)
+            ->where('start_date', '<=', $endCurrentWeek)
+            ->where('end_date', '>=', $startCurrentWeek)
+            ->count();
     }
 
     #[Computed]

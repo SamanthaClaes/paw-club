@@ -165,10 +165,10 @@ class extends Component {
             Devenir petsitter
         </a>
 
-        <img src="{{ asset('svg/ill_6.svg') }}" alt=""
-             class="hidden sm:block absolute bottom-5 right-255 w-30 sm:w-40 md:w-56 lg:w-80 translate-x-1/4 translate-y-1/4">
-        <img src="{{ asset('svg/ill_7.svg') }}" alt=""
-             class="hidden sm:block absolute bottom-5 left-220 w-30 sm:w-40 md:w-56 lg:w-80 translate-x-1/4 translate-y-1/4">
+        <img src="{{ asset('svg/ill_6.svg') }}" alt="illustration d'une femme qui caresse un chat"
+             class="hidden sm:block absolute bottom-5 right-255 xl:right-390 w-30 sm:w-40 md:w-56 lg:w-80 translate-x-1/4 translate-y-1/4">
+        <img src="{{ asset('svg/ill_7.svg') }}" alt=" illustration d'une femme en train de promener un chien brun"
+             class="hidden sm:block absolute bottom-5 left-220 xl:left-350 w-30 sm:w-40 md:w-56 lg:w-80 translate-x-1/4 translate-y-1/4">
     </section>
 </div>
 

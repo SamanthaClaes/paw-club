@@ -65,7 +65,7 @@ class extends Component {
             garde</h1>
     </section>
     @foreach($requests as $request)
-        <section class="border-5 border-stroke rounded-md overflow-hidden bg-card w-full mt-6 lg:max-w-3xl ml-25">
+        <section class="border-5 border-stroke rounded-md overflow-hidden bg-card w-full mt-6 lg:max-w-7xl ml-25">
             <div class="flex flex-col sm:flex-row h-full">
                 <div class="w-full h-64 sm:h-auto sm:w-1/3">
                     <img
