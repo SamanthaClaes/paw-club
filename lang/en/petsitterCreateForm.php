@@ -1,13 +1,7 @@
 <?php
 
 return [
-    'first_name' => 'First name',
-    'last_name' => 'Last name',
-    'email' => 'Email',
-    'phone' => 'Phone number',
-    'message' => 'Message',
-    'sent' => 'Send a message',
-    'resent' => 'Send another message',
+    'picture'=>'Profil picture',
     'address' => 'Postal address',
     'zip' => 'Postal code',
     'location' => 'City',

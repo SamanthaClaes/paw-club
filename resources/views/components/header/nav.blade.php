@@ -1,6 +1,6 @@
 @php use App\enum\UserRole; @endphp
 <nav class="bg-element p-2 text-text relative z-9999">
-    <h1 class="sr-only">Navigation principale</h1>
+    <h1 class="sr-only">{{ __('nav.title') }}</h1>
     <input type="checkbox" id="menu-toggle" class="peer hidden">
 
     <div class="flex items-center justify-between">
@@ -22,51 +22,53 @@
             </li>
             <li>
                 <a href="{{ route('daycare.index') }}"
-                   class="hover:bg-card px-8 py-4 w-full rounded-full cursor-pointer transition-all duration-300 ease-in-out">La
-                    garderie</a>
+                   class="hover:bg-card px-8 py-4 w-full rounded-full cursor-pointer transition-all duration-300 ease-in-out">
+                    {{ __('nav.daycare') }}</a>
             </li>
             <li>
                 <a href="{{ route('petsitter.index') }}"
-                   class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">Les
-                    petsitters</a>
+                   class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out"> {{ __('nav.petsitter') }}</a>
             </li>
             <li>
-                <a href="/#contact" class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer">Contact</a>
+                <a href="/#contact" class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer">{{ __('nav.contact') }}</a>
             </li>
             @auth
                 @if( auth()->user()->role === UserRole::OWNER)
                     <li>
                         <a href="{{ route('owner.profile') }}"
-                           class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">Mon
-                            espace</a>
+                           class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">{{ __('nav.mySpace') }}</a>
                     </li>
                 @endif
                 @if( auth()->user()->role === UserRole::PETSITTER)
                     <li>
                         <a href="{{ route( 'petsitter.request' ) }}"
-                           class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">Mon
-                            espace</a>
+                           class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">
+                            {{ __('nav.mySpace') }}
+                        </a>
                     </li>
                 @endif
                 @if( auth()->user()->role === UserRole::ADMIN)
                     <li>
                         <a href="{{ route('dashboard.index') }}"
-                           class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">dashboard</a>
+                           class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">
+                            {{ __('nav.dashboard') }}
+                        </a>
                     </li>
                 @endif
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit"
                             class="text-text uppercase hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">
-                        Me déconnecter
+                        {{ __('nav.logout') }}
                     </button>
                 </form>
             @endauth
             @guest
                 <li>
                     <a href="{{ route('login') }}"
-                       class="text-text uppercase hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">Me
-                        connecter</a>
+                       class="text-text uppercase hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">
+                            {{ __('nav.login') }}
+                    </a>
                 </li>
             @endguest
 

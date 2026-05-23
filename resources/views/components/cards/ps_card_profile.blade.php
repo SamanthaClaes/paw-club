@@ -15,33 +15,33 @@
         <div class="shrink-0">
             <img
                 src="{{ \Illuminate\Support\Facades\Storage::url($image)  }}"
-                alt="Image de profile"
+                alt="{{ __('petsitterProfile.profileImageAlt') }}"
                 class=" w-44 h-full rounded-lg object-cover">
         </div>
 
         <div class="flex-1 w-full">
             <h1 class="uppercase font-extrabold text-text text-2xl mb-6">
-                Informations personnelles
+                {{ __('petsitterProfile.personalInfos') }}
             </h1>
 
             <div class="space-y-4 text-text text-lg">
                 <p>
-                    <span class="font-extrabold">Nom & Prénom :</span>
+                    <span class="font-extrabold">{{__('petsitterProfile.fullname')}} :</span>
                     {{ $last_name }} {{ $first_name }}
                 </p>
 
                 <p>
-                    <span class="font-extrabold">Email :</span>
+                    <span class="font-extrabold">{{ __('petsitterProfile.email') }} :</span>
                     {{ $email }}
                 </p>
 
                 <p>
-                    <span class="font-extrabold">Téléphone :</span>
+                    <span class="font-extrabold">{{ __('petsitterProfile.phone') }} :</span>
                     {{ $phone }}
                 </p>
 
                 <p>
-                    <span class="font-extrabold">Adresse :</span>
+                    <span class="font-extrabold">{{ __('petsitterProfile.address') }} :</span>
                     {{ $adress }} {{ $zip }} {{ $location }}
                 </p>
             </div>
@@ -52,7 +52,7 @@
                     @click="$dispatch('open-password-modal')"
                     class="w-full bg-btn-green hover:bg-green-800 text-white font-extrabold uppercase rounded-lg py-3 transition"
                 >
-                    Modifier mes informations
+                    {{ __('petsitterProfile.editInfos') }}
                 </button>
             </div>
         </div>
@@ -96,7 +96,7 @@
             </button>
 
             <h2 class="text-2xl font-extrabold text-text uppercase mb-8">
-                Modifier mon mot de passe
+                {{ __('petsitterProfile.editPassword') }}
             </h2>
 
             @if ($errors->any())
@@ -113,26 +113,26 @@
 
                 <x-forms.input-label
                     wire:model="current_password"
-                    label="Mot de passe actuel"
+                    label="{{ __('petsitterProfile.currentPassword') }}"
                     name="current_password"
                     type="password"
-                    placeholder="Entrez votre mot de passe actuel"
+                    placeholder="{{ __('petsitterProfile.currentPasswordPlaceholder') }}"
                 />
 
                 <x-forms.input-label
                     wire:model="password"
-                    label="Nouveau mot de passe"
+                    label="{{ __('petsitterProfile.newPassword') }}"
                     name="password"
                     type="password"
-                    placeholder="Entrez votre nouveau mot de passe"
+                    placeholder="{{ __('petsitterProfile.newPasswordPlaceholder') }}"
                 />
 
                 <x-forms.input-label
                     wire:model="password_confirmation"
-                    label="Confirmer le nouveau mot de passe"
+                    label="{{ __('petsitterProfile.confirmPassword') }}"
                     name="password_confirmation"
                     type="password"
-                    placeholder="Confirmez votre nouveau mot de passe"
+                    placeholder="{{ __('petsitterProfile.confirmPasswordPlaceholder') }}"
                 />
 
                 <div class="flex justify-end pt-4">
@@ -140,7 +140,7 @@
                         type="submit"
                         class="bg-btn-green hover:bg-green-800 text-white px-6 py-3 rounded-lg font-bold uppercase transition"
                     >
-                        Changer mon mot de passe
+                        {{ __('petsitterProfile.changePassword') }}
                     </button>
                 </div>
 
