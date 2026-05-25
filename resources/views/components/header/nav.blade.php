@@ -20,34 +20,48 @@
                     <x-svg.logo/>
                 </a>
             </li>
+
             <li>
                 <a href="{{ route('daycare.index') }}"
                    class="hover:bg-card px-8 py-4 w-full rounded-full cursor-pointer transition-all duration-300 ease-in-out">
-                    {{ __('nav.daycare') }}</a>
+                    {{ __('nav.daycare') }}
+                </a>
             </li>
+
             <li>
                 <a href="{{ route('petsitter.index') }}"
-                   class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out"> {{ __('nav.petsitter') }}</a>
+                   class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">
+                    {{ __('nav.petsitter') }}
+                </a>
             </li>
+
             <li>
-                <a href="/#contact" class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer">{{ __('nav.contact') }}</a>
+                <a href="/#contact"
+                   class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer">
+                    {{ __('nav.contact') }}
+                </a>
             </li>
+
             @auth
-                @if( auth()->user()->role === UserRole::OWNER)
+                @if(auth()->user()->role === UserRole::OWNER)
                     <li>
                         <a href="{{ route('owner.profile') }}"
-                           class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">{{ __('nav.mySpace') }}</a>
-                    </li>
-                @endif
-                @if( auth()->user()->role === UserRole::PETSITTER)
-                    <li>
-                        <a href="{{ route( 'petsitter.request' ) }}"
                            class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">
                             {{ __('nav.mySpace') }}
                         </a>
                     </li>
                 @endif
-                @if( auth()->user()->role === UserRole::ADMIN)
+
+                @if(auth()->user()->role === UserRole::PETSITTER)
+                    <li>
+                        <a href="{{ route('petsitter.request') }}"
+                           class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">
+                            {{ __('nav.mySpace') }}
+                        </a>
+                    </li>
+                @endif
+
+                @if(auth()->user()->role === UserRole::ADMIN)
                     <li>
                         <a href="{{ route('dashboard.index') }}"
                            class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">
@@ -55,6 +69,7 @@
                         </a>
                     </li>
                 @endif
+
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit"
@@ -63,15 +78,16 @@
                     </button>
                 </form>
             @endauth
+
             @guest
                 <li>
                     <a href="{{ route('login') }}"
                        class="text-text uppercase hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-all duration-300 ease-in-out">
-                            {{ __('nav.login') }}
+                        {{ __('nav.login') }}
                     </a>
                 </li>
             @endguest
-
+            <x-header.languageMenu/>
         </ul>
     </div>
 </nav>

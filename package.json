@@ -15,6 +15,7 @@
     },
     "dependencies": {
         "@alpinejs/intersect": "^3.15.12",
-        "alpinejs": "^3.15.12"
+        "alpinejs": "^3.15.12",
+        "flag-icons": "^7.5.0"
     }
 }

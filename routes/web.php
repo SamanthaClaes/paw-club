@@ -4,6 +4,17 @@ use App\Http\Controllers\DayCareController;
 
 Route::livewire('/', 'pages::home')->name('home');
 
+
+Route::get('/lang/{locale}', function (string $locale) {
+    if (! in_array($locale, ['fr' , 'en'])) {
+        abort(400);
+    }
+
+    Session::put('locale', $locale);
+
+    return redirect()->back();
+})->name('language.switch');
+
 Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::livewire('/dashboard', 'pages::dashboard')->name('dashboard.index');
