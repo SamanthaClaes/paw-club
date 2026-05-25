@@ -22,7 +22,7 @@ class extends Component {
                 <span class="block text-text text-sm text-center mb-5 lg:m-10">
                         {{ __('daycare.subtitle') }}
                 </span>
-                <p class="text-center text-sm text-text mb-5 line-clamp-2 lg:mb-10 lg:line-clamp-none">
+                <p class="text-center text-sm text-text mb-5 line-clamp-2 lg:mb-10 lg:line-clamp-none w-1/2 mx-auto">
                     {{ __('daycare.about') }}
                 </p>
                 <img src=" {{ asset('svg/illu_2.svg') }}" alt="petite fille qui carresse un chat"
@@ -44,10 +44,14 @@ class extends Component {
     <section>
         <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6">{{ __('daycare.going') }} </h2>
         <div class="relative">
-            <img src="{{ asset('img/chihuahua.jpeg') }}" alt="chihuahua" height="150" width="150" class=" hidden object-cover
-            lg:block
-            rounded-full
-            absolute top-45 right-155 xl:right-216 border-15 border-white">
+            <img src="{{ asset('img/chihuahua.jpeg') }}"
+                 alt="chihuahua"
+                 height="200"
+                 width="200"
+                 class="hidden lg:block object-cover
+     rounded-full
+     absolute top-35 left-1/2 -translate-x-1/2
+     border-15 border-white z-20">
         </div>
         <div class="grid lg:grid-cols-2 gap-8 items-stretch auto-rows-fr">
 

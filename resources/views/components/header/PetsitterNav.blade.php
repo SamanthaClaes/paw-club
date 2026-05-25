@@ -12,7 +12,7 @@
             </a>
         </li>
         <li class="border-2 border-stroke py-2 px-18 rounded-lg cursor-pointer  {{ request()->routeIs('petsitter.history') ? 'bg-stroke text-white font-bold' : '' }}">
-            <a href="">
+            <a href="{{ route('petsitter.history') }}">
                 {{ __('petsitterNav.history') }}
             </a>
         </li>

@@ -20,6 +20,7 @@ class PetSittingRequest extends Model
         'pet_id',
         'user_id',
         'petsitter_id',
+        'note',
     ];
 
     public function animalType(): BelongsTo
