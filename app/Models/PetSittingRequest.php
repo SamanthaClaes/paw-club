@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\PetsitterRequestStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -21,6 +22,9 @@ class PetSittingRequest extends Model
         'user_id',
         'petsitter_id',
         'note',
+    ];
+    protected $casts = [
+        'status' => PetsitterRequestStatus::class,
     ];
 
     public function animalType(): BelongsTo

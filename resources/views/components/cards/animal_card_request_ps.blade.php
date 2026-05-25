@@ -1,97 +1,169 @@
-@php use Carbon\Carbon; @endphp
+@php
+    use Carbon\Carbon;
+    use App\Enums\PetsitterRequestStatus;
+@endphp
+
 @props([
    'request'
 ])
 
-<section class="grid grid-cols-2">
-    <section class="border-4 border-stroke rounded-lg p-6 ml-25 bg-card max-w-4xl mx-auto">
-        <h1 class="text-center text-3xl font-extrabold uppercase text-text mb-10">
-            {{ $request->pet->name }} {{ $request->pet->animalType->type}} de {{$request->user->first_name}}
-        </h1>
+<section class="bg-card border border-stroke rounded-3xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 max-w-6xl min-h-128 mx-auto">
 
-        <div class="grid grid-cols-3 gap-10">
+    <div class="flex justify-between items-start gap-6 mb-7">
 
-            <div class="col-span-2 space-y-10">
+        <div>
 
-                <div>
-                    <p class="font-bold text-text text-xl">
-                        Dates de garde
-                    </p>
+            <h1 class="text-2xl font-extrabold uppercase text-text leading-tight">
+                {{ $request->pet->name }}
+            </h1>
 
-                    <p class="text-text">
-                        {{ Carbon::parse($request->start_date)->format('d/m/Y')  }} - {{ $request->end_date }}
-                    </p>
-                </div>
+            <p class="text-base text-text mt-2">
+                {{ $request->pet->animalType->type }}
+                -
+                {{ $request->pet->breed->name }}
+                -
+                {{ $request->pet->birthDateFormat() }}
+            </p>
 
-                <div>
-                    <p class="font-bold text-text text-xl">
-                       Indications
-                    </p>
-
-                    <p class="text-text max-w-md">
-                        {{ $request->pet->description }}
-                    </p>
-                </div>
-
-                <div>
-                    <p class="font-bold text-text text-xl">
-                        Informations du propriétaire
-                    </p>
-                    <div class="flex flex-col gap-3">
-                    <p class="text-text">
-                       {{ $request->user->email }}
-                    </p>
-                        <p class="text-text">
-                            {{ $request->user->adress }}
-                        </p>
-                        <p class="text-text">
-                            {{ $request->user->zip }} - {{ $request->user->location }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex flex-col items-center">
-
-                <img
-                     src="{{\Illuminate\Support\Facades\Storage::url($request->pet->pet_image)  }}"
-                     alt="Image de {{ $request->pet->name }}"
-                     class="w-full max-w-55 h-80 object-cover rounded-xl mb-4"
-                 >
-
-                <div class="w-full">
-                    <p class="font-bold text-text text-lg mb-2">
-                        Informations de l’animal
-                    </p>
-
-                    <p class="text-text">
-                        {{ $request->pet->animalType->type }}
-                    </p>
-
-                    <p class="text-text">
-                        {{ $request->pet->birthDateFormat() }}
-                    </p>
-
-                    <p class="text-text">
-                        {{  $request->pet->breed->name }}
-                    </p>
-                </div>
-            </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-6 mt-12">
+        <div class="text-right">
+
+            @if($request->status == PetsitterRequestStatus::PENDING)
+
+                <span class="bg-yellow-100 text-yellow-700 px-4 py-1.5 rounded-full font-bold uppercase text-xs">
+                En attente
+            </span>
+
+            @elseif($request->status == PetsitterRequestStatus::ACCEPTED)
+
+                <span class="bg-green-100 text-green-700 px-4 py-1.5 rounded-full font-bold uppercase text-xs">
+                Acceptée
+            </span>
+
+            @elseif($request->status == PetsitterRequestStatus::REFUSED)
+
+                <span class="bg-red-100 text-red-600 px-4 py-1.5 rounded-full font-bold uppercase text-xs">
+                Refusée
+            </span>
+
+            @endif
+
+            <div class="mt-3">
+
+                <p class="font-bold uppercase text-sm mb-1 text-gray-500">
+                    Dates
+                </p>
+
+                <p class="text-base text-text">
+                    {{ Carbon::parse($request->start_date)->format('d/m/Y') }}
+                    →
+                    {{ Carbon::parse($request->end_date)->format('d/m/Y') }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="flex gap-8 mb-7">
+
+        <img
+            src="{{ \Illuminate\Support\Facades\Storage::url($request->pet->pet_image) }}"
+            alt="Image de {{ $request->pet->name }}"
+            class="w-52 h-52 object-cover rounded-2xl shrink-0"
+        >
+
+        <div class="grid grid-cols-2 gap-x-10 gap-y-6 text-base text-text w-full">
+
+            <div>
+
+                <p class="font-bold uppercase text-sm mb-1 text-gray-500">
+                    Propriétaire
+                </p>
+
+                <p>
+                    {{ $request->user->first_name }}
+                    {{ $request->user->last_name }}
+                </p>
+
+            </div>
+
+            <div>
+
+                <p class="font-bold uppercase text-sm mb-1 text-gray-500">
+                    Email
+                </p>
+
+                <a href="mailto:{{ $request->user->mail }}" class="break-all">
+                    {{ $request->user->email }}
+                </a>
+
+            </div>
+
+            <div>
+
+                <p class="font-bold uppercase text-sm mb-1 text-gray-500">
+                    Adresse
+                </p>
+
+                <p>
+                    {{ $request->user->adress }}
+                </p>
+
+            </div>
+
+            <div>
+
+                <p class="font-bold uppercase text-sm mb-1 text-gray-500">
+                    Ville
+                </p>
+
+                <p>
+                    {{ $request->user->zip }}
+                    -
+                    {{ $request->user->location }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bg-background border border-element rounded-2xl p-5 mb-6">
+
+        <p class="font-bold uppercase text-sm text-gray-500 mb-3">
+            Indications
+        </p>
+
+        <p class="text-base text-text leading-7">
+            {{ $request->pet->description }}
+        </p>
+
+    </div>
+
+    @if($request->status == PetsitterRequestStatus::PENDING)
+
+        <div class="grid grid-cols-2 gap-4">
+
             <button
-                wire:click="acceptRequest({{$request->id}})"
-                class="bg-btn-green hover:bg-green-500 transition rounded-lg py-3 font-bold text-cta"
+                wire:click="acceptRequest({{ $request->id }})"
+                class="bg-btn-green hover:bg-green-500 transition rounded-xl py-3 text-base font-bold text-cta cursor-pointer"
             >
-                Accepter la demande
+                Accepter
             </button>
 
             <button
-                class="bg-btn-red hover:bg-red-500 transition rounded-lg py-3 font-bold text-text-red"
+                wire:click="refusedRequest({{ $request->id }})"
+                class="bg-btn-red hover:bg-red-500 transition rounded-xl py-3 text-base font-bold text-text-red cursor-pointer"
             >
-                Refuser la demande
+                Refuser
             </button>
+
         </div>
-    </section>
+
+    @endif
+
 </section>
