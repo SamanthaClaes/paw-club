@@ -1,3 +1,7 @@
+
+@props([
+    'request'
+])
 <dialog
     wire:ignore.self
     x-data="{ open: false }"
@@ -7,9 +11,10 @@
         $el.showModal();
     "
 
-    x-on:close="
-        open = false;
-    "
+    x-on:close-note-modal.window="
+    open = false;
+    $el.close();
+"
 
     x-cloak
 
@@ -63,7 +68,7 @@
 
         </div>
 
-        <form wire:submit="storeNote">
+        <form wire:submit="storeNote({{ $request->id }})">
 
             <div class="mb-6">
 
@@ -111,7 +116,6 @@
 
                 <button
                     type="submit"
-
                     class="bg-card-green hover:bg-hover text-text font-bold px-6 py-3 rounded-lg uppercase transition cursor-pointer"
                 >
                     Ajouter ma note

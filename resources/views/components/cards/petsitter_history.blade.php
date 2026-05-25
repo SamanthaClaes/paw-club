@@ -183,6 +183,7 @@
 
                 <button
                     type="button"
+                    x-on:click="$dispatch('open-note-modal')"
                     class="flex-1 border-2 border-card-green text-card-green hover:bg-card-green hover:text-white font-bold text-base py-3 rounded-2xl transition-all duration-300 cursor-pointer"
                 >
                     Ajouter une note

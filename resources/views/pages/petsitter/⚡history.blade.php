@@ -33,8 +33,8 @@ new class extends Component {
         $request->note = $validated['note'];
         $request->save();
         $this->reset('note');
-
         $this->dispatch('close-note-modal');
+
     }
 
 
@@ -50,5 +50,8 @@ new class extends Component {
           :request="$request"
       />
     @endforeach
+        <x-modale.petsitter_notes_modal
+            :request="$request"
+        />
     </section>
 </div>
