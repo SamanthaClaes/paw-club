@@ -52,22 +52,22 @@
         </button>
 
         <h2 class="text-2xl font-extrabold text-text uppercase mb-6">
-            Information du propriétaire
+            {{ __('ownerModale.title') }}
         </h2>
         <p class="text-text text-lg mb-10">
-            Prénom :
+            {{ __('ownerModale.firstName') }} :
             <span class="text-text font-bold">{{ $selectedOwner?->first_name }}</span>
         </p>
         <p class="text-text text-lg mb-10">
-            Nom :
+            {{ __('ownerModale.lastName') }} :
             <span class="text-text font-bold"> {{ $selectedOwner?->last_name }}</span>
         </p>
         <p class="text-text text-lg mb-10">
-            Email :
+            {{ __('ownerModale.email') }} :
             <a href="mailto:{{ $selectedOwner?->email }}" class="font-bold">{{ $selectedOwner?->email }}</a>
         </p>
         <p class="text-text text-lg mb-10">
-            Télépone :
+            {{ __('ownerModale.phone') }} :
             <a href="tel:{{ $selectedOwner?->phone }}" class="font-bold">{{ $selectedOwner?->phone }}</a>
         </p>
 
@@ -82,7 +82,7 @@
                 "
                 class="border-2 border-gray-300 px-6 py-3 rounded-lg font-bold uppercase hover:bg-gray-100 transition cursor-pointer"
             >
-                Fermer la modale
+                {{ __('ownerModale.close') }}
             </button>
 
         </div>

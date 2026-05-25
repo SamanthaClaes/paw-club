@@ -46,6 +46,7 @@ class extends Component {
         }
     }
 
+
     public function updatePw(): void
     {
         $this->validate([

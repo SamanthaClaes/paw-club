@@ -36,7 +36,7 @@
         </button>
 
         <h2 class="text-2xl font-extrabold text-text uppercase mb-8">
-            Modifier mon mot de passe
+            {{ __('passwordModale.title') }}
         </h2>
 
         @if ($errors->any())
@@ -54,26 +54,26 @@
 
             <x-forms.input-label
                 wire:model="current_password"
-                label="Mot de passe actuel"
+                label="{{ __('passwordModale.currentPassword') }}"
                 name="current_password"
                 type="password"
-                placeholder="Entrez votre mot de passe actuel"
+                placeholder="{{ __('passwordModale.currentPasswordPlaceholder') }}"
             />
 
             <x-forms.input-label
                 wire:model="password"
-                label="Nouveau mot de passe"
+                label="{{ __('passwordModale.newPassword') }}"
                 name="password"
                 type="password"
-                placeholder="Entrez votre nouveau mot de passe"
+                placeholder=" {{ __('passwordModale.newPasswordPlaceholder') }}"
             />
 
             <x-forms.input-label
                 wire:model="password_confirmation"
-                label="Confirmer le nouveau mot de passe"
+                label="{{ __('passwordModale.confirmPassword') }}"
                 name="password_confirmation"
                 type="password"
-                placeholder="Confirmez votre nouveau mot de passe"
+                placeholder="{{ __('passwordModale.confirmPasswordPlaceholder') }}"
             />
 
             <div class="flex justify-end pt-4">
@@ -81,7 +81,7 @@
                     type="submit"
                     class="bg-btn-green hover:bg-green-800 text-white px-6 py-3 rounded-lg font-bold uppercase transition cursor-pointer"
                 >
-                    Changer mon mot de passe
+                    {{ __('passwordModale.changePassword') }}
                 </button>
             </div>
 

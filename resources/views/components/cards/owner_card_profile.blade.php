@@ -13,7 +13,7 @@
     <div class="flex flex-col gap-8">
 
         <h1 class="uppercase font-extrabold text-text lg:text-3xl text-center">
-            Informations personnelles
+            {{ __('ownerProfile.personalInfos') }}
         </h1>
 
         <div class="flex flex-col lg:flex-row gap-10 items-center lg:items-start">
@@ -21,7 +21,7 @@
             <div class="shrink-0">
                 <img
                     src="{{ \Illuminate\Support\Facades\Storage::url($image) }}"
-                    alt="Image de profile de {{ Auth::user()->first_name }}"
+                    alt="{{ __('ownerProfile.profileImageAlt') }}{{ Auth::user()->first_name }}"
                     class="w-44 h-44 rounded-lg object-cover"
                 >
             </div>
@@ -31,22 +31,22 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6 text-text text-lg">
 
                     <p>
-                        <span class="font-extrabold">Nom & Prénom :</span><br>
+                        <span class="font-extrabold">{{ __('ownerProfile.fullname') }} :</span><br>
                         {{ $last_name }} {{ $first_name }}
                     </p>
 
                     <p>
-                        <span class="font-extrabold">Email :</span><br>
+                        <span class="font-extrabold">{{ __('ownerProfile.email') }} :</span><br>
                         {{ $email }}
                     </p>
 
                     <p>
-                        <span class="font-extrabold">Téléphone :</span><br>
+                        <span class="font-extrabold">{{ __('ownerProfile.phone') }}:</span><br>
                         {{ $phone }}
                     </p>
 
                     <p>
-                        <span class="font-extrabold">Adresse :</span><br>
+                        <span class="font-extrabold">{{ __('ownerProfile.address') }} :</span><br>
                         {{ $adress }} {{ $zip }} {{ $location }}
                     </p>
 
@@ -59,7 +59,7 @@
                         @click="$dispatch('open-password-modal')"
                         class="w-full bg-btn-green hover:bg-green-800 text-white font-extrabold uppercase rounded-lg py-3 transition cursor-pointer"
                     >
-                        Modifier mon mot de passe
+                        {{ __('ownerProfile.editPassword') }}
                     </button>
 
                     <button
@@ -67,7 +67,7 @@
                         @click="$dispatch('open-datas-modal')"
                         class="w-full bg-btn-green hover:bg-green-800 text-white font-extrabold uppercase rounded-lg py-3 transition cursor-pointer"
                     >
-                        Modifier mes informations
+                        {{ __('ownerProfile.editInfos') }}
                     </button>
 
                 </div>

@@ -18,26 +18,26 @@
             <x-svg.logo class="w-89 h-89 mb-8"/>
         </div>
         <h1 class="text-3xl font-bold text-text mb-8 uppercase">
-            Enregistrez vous
+            {{ __('registerForm.title') }}
         </h1>
         <form action="{{ route('register.store') }}" method="POST" class="w-full max-w-md flex flex-col gap-4" enctype="multipart/form-data">
             @csrf
             <div>
                 <x-forms.input-label
-                    label="Votre photo de profil"
+                    label=" {{ __('registerForm.profilePicture') }}"
                     type="file"
                     name="image"
                 />
             </div>
             <div class="flex gap-8">
             <x-forms.input-label
-                label="Nom *"
+                label="{{ __('registerForm.lastName') }}"
                 name="last_name"
                 type="text"
                 placeholder="Martin"
             />
                 <x-forms.input-label
-                    label="Prénom *"
+                    label=" {{ __('registerForm.firstName') }}"
                     name="first_name"
                     type="text"
                     placeholder="Jean"
@@ -45,7 +45,7 @@
             </div>
             <div>
                 <x-forms.input-label
-                    label="Adresse *"
+                    label="{{ __('registerForm.address') }}"
                     name="adress"
                     type="text"
                     placeholder="adresse et numéro"
@@ -53,7 +53,7 @@
             </div>
             <div>
                 <x-forms.input-label
-                    label="Votre numéro de téléphone"
+                    label=" {{ __('registerForm.phone') }}"
                     type="tel"
                     name="phone"
                     placeholder="0498 xx.xx.xx"
@@ -61,13 +61,13 @@
             </div>
             <div class="flex gap-8">
                 <x-forms.input-label
-                    label="Code postal*"
+                    label="{{ __('registerForm.zip') }}"
                     name="zip"
                     type="number"
                     placeholder="1234"
                 />
                 <x-forms.input-label
-                    label="Localité"
+                    label="{{ __('registerForm.location') }}"
                     name="location"
                     type="text"
                     placeholder="Liege"
@@ -75,7 +75,7 @@
             </div>
             <div>
             <x-forms.input-label
-                label="Email"
+                label="{{ __('registerForm.email') }}"
                 name="email"
                 type="email"
                 placeholder="user@mail.be"
@@ -86,14 +86,14 @@
                     class="block text-sm text-text uppercase font-bold mb-1"
                     for="password"
                 >
-                    Mot de passe
+                    {{ __('registerForm.password') }}
                 </label>
 
                 <div class="relative w-full">
                     <input
                         :type="type"
                         name="password"
-                        placeholder="Entrez votre mot de passe"
+                        placeholder="{{ __('registerForm.passwordPlaceholder') }}"
                         class="w-full bg-white rounded-lg px-3 py-2"
                     >
 
@@ -106,7 +106,7 @@
                             :src="type === 'password'
                     ? '{{ asset('svg/v.svg') }}'
                     : '{{ asset('svg/v_off.svg') }}'"
-                            alt="Afficher et cacher le mot de passe"
+                            alt="{{ __('registerForm.passwordAlt') }}"
                         >
                     </button>
                 </div>
@@ -114,28 +114,20 @@
             <div>
             <x-forms.input-label
                 type="password"
-                label="Confirmer votre mot de passe"
+                label="{{ __('registerForm.confirmPassword') }}"
                 name="password_confirmation"
-                placeholder="Confirmez votre mot de passe"
+                placeholder="{{ __('registerForm.confirmPasswordPlaceholder') }}"
             />
             </div>
-            <button type="submit" class="bg-text text-white py-3 rounded-lg font-bold uppercase mt-6">
-                S'enregistrer
+            <button type="submit" class="bg-text text-white py-3 rounded-lg font-bold uppercase mt-6 cursor-pointer mb-20">
+                {{ __('registerForm.submit') }}
             </button>
-
-            <div class="text-sm text-center mt-2">
-                <a href="#" class="underline">Pas encore de compte ?</a>
-            </div>
-
-            <div class="text-sm text-center">
-                <a href="#" class="underline">Mot de passe oublié ?</a>
-            </div>
 
         </form>
     </section>
 
     <div class=" hidden lg:block h-full">
-        <img src="{{ asset($image) }}" alt="plusieurs images de chiens ou de chats"
+        <img src="{{ asset($image) }}" alt="  {{ __('registerForm.imageAlt') }}"
              class="w-full h-full object-cover">
     </div>
 

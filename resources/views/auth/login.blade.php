@@ -18,7 +18,7 @@
             <x-svg.logo class="w-89 h-89 mb-8"/>
         </div>
         <h1 class="text-3xl font-bold text-text mb-8 uppercase">
-            Connectez vous
+            {{ __('login.title') }}
         </h1>
         <form action="{{ route('login') }}" method="POST" class="w-full max-w-md flex flex-col gap-4">
             @csrf
@@ -34,14 +34,14 @@
                     class="block text-sm text-text uppercase font-bold mb-1"
                     for="password"
                 >
-                    Mot de passe
+                   {{ __('login.password') }}
                 </label>
 
                 <div class="relative w-full">
                     <input
                         :type="type"
                         name="password"
-                        placeholder="Entrez votre mot de passe"
+                        placeholder="{{ __('login.passwordPlaceholder') }}"
                         class="w-full bg-white rounded-lg px-3 py-2"
                     >
 
@@ -61,15 +61,15 @@
             </div>
 
             <button type="submit" class="bg-text text-white py-3 rounded-lg font-bold uppercase cursor-pointer">
-                Se connecter
+                {{ __('login.submit') }}
             </button>
 
             <div class="text-sm text-center mt-2">
-                <a href="{{ route('register') }}" class="underline">Pas encore de compte ?</a>
+                <a href="{{ route('register') }}" class="underline">{{ __('login.noAccount') }}</a>
             </div>
 
             <div class="text-sm text-center">
-                <a href="#" class="underline">Mot de passe oublié ?</a>
+                <a href="#" class="underline"> {{ __('login.forgotPassword') }}</a>
             </div>
 
         </form>
