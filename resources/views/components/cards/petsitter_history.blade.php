@@ -1,5 +1,5 @@
 <div
-    class="max-w-5xl mx-auto mt-10 rounded-3xl bg-card border border-element shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-1 ">
+    class="mb-20 mt-10 rounded-lg bg-card border border-element shadow-lg overflow-hidden transition-all duration-300 hover:-translate-y-1 ">
 
     <div class="grid grid-cols-1 lg:grid-cols-3 p-6 gap-6">
 

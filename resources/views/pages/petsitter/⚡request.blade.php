@@ -68,7 +68,7 @@ class extends Component {
 };
 ?>
 
-<div class="pb-20">
+<div class="max-w-7xl mx-auto px-6 pb-20">
 
     <x-header.PetsitterNav/>
 
@@ -77,17 +77,18 @@ class extends Component {
         <h1 class="sr-only">
             L'espace du petsitter
         </h1>
+
         <div class="mb-20">
 
-            <div class="flex items-center gap-4 ml-25 mb-8">
+            <div class="flex items-center gap-4 mb-8">
 
-                <h2 class="text-text uppercase text-3xl font-extrabold">
+                <h2 class="text-text uppercase text-3xl font-extrabold" id="pending">
                     Mes demandes en attente
                 </h2>
 
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
 
                 @forelse($requests as $request)
 
@@ -97,13 +98,14 @@ class extends Component {
 
                 @empty
 
-                    <div class="bg-card border-2 border-element rounded-2xl p-8 max-w-3xl mx-auto">
+                    <div class="bg-card border-2 border-element rounded-2xl p-8 w-full">
 
                         <p class="text-center text-text text-lg font-semibold">
                             Aucune demande en attente
                         </p>
 
                     </div>
+
                 @endforelse
 
             </div>
@@ -112,15 +114,15 @@ class extends Component {
 
         <div class="mb-20">
 
-            <div class="flex items-center gap-4 ml-25 mb-8">
+            <div class="flex items-center gap-4 mb-8">
 
-                <h2 class="text-text uppercase text-3xl font-extrabold">
+                <h2 class="text-text uppercase text-3xl font-extrabold" id="accepted">
                     Mes demandes acceptées
                 </h2>
 
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
 
                 @forelse($acceptedRequest as $request)
 
@@ -130,7 +132,7 @@ class extends Component {
 
                 @empty
 
-                    <div class="bg-card border-2 border-element rounded-2xl p-8 max-w-3xl mx-auto">
+                    <div class="bg-card border-2 border-element rounded-2xl p-8 w-full">
 
                         <p class="text-center text-text text-lg font-semibold">
                             Aucune demande acceptée
@@ -146,15 +148,15 @@ class extends Component {
 
         <div>
 
-            <div class="flex items-center gap-4 ml-25 mb-8">
+            <div class="flex items-center gap-4 mb-8">
 
-                <h2 class="text-text uppercase text-3xl font-extrabold">
+                <h2 class="text-text uppercase text-3xl font-extrabold" id="refused">
                     Mes demandes refusées
                 </h2>
 
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
 
                 @forelse($refusedRequests as $request)
 
@@ -164,7 +166,7 @@ class extends Component {
 
                 @empty
 
-                    <div class="bg-card border-2 border-element rounded-2xl p-8 max-w-3xl mx-auto">
+                    <div class="bg-card border-2 border-element rounded-2xl p-8 w-full">
 
                         <p class="text-center text-text text-lg font-semibold">
                             Aucune demande refusée

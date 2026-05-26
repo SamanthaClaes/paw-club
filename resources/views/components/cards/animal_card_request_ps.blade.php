@@ -7,9 +7,9 @@
    'request'
 ])
 
-<section class="bg-card border border-stroke rounded-3xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 max-w-6xl min-h-128 mx-auto">
+<section class="bg-card border border-stroke rounded-3xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 h-full">
 
-    <div class="flex justify-between items-start gap-6 mb-7">
+    <div class="flex flex-col xl:flex-row gap-8 mb-7">
 
         <div>
 
@@ -55,7 +55,7 @@
                     Dates
                 </p>
 
-                <p class="text-base text-text">
+                <p class="text-base text-text wrap-break-word">
                     {{ Carbon::parse($request->start_date)->format('d/m/Y') }}
                     →
                     {{ Carbon::parse($request->end_date)->format('d/m/Y') }}
@@ -67,15 +67,15 @@
 
     </div>
 
-    <div class="flex gap-8 mb-7">
+    <div class="flex flex-col 2xl:flex-row gap-8 mb-7">
 
         <img
             src="{{ \Illuminate\Support\Facades\Storage::url($request->pet->pet_image) }}"
             alt="Image de {{ $request->pet->name }}"
-            class="w-52 h-52 object-cover rounded-2xl shrink-0"
+            class="w-full max-w-52 h-52 object-cover rounded-2xl shrink-0"
         >
 
-        <div class="grid grid-cols-2 gap-x-10 gap-y-6 text-base text-text w-full">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6 text-base text-text w-full">
 
             <div>
 
@@ -96,7 +96,7 @@
                     Email
                 </p>
 
-                <a href="mailto:{{ $request->user->mail }}" class="break-all">
+                <a href="mailto:{{ $request->user->mail }}">
                     {{ $request->user->email }}
                 </a>
 

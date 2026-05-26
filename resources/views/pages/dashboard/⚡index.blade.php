@@ -83,24 +83,21 @@ class extends Component {
 ?>
 
 <div>
-    <div class=" md:ml-25 grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class=" mt-20 md:ml-25 grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
             <x-cards.dashboard_card :number="$this->petsCount" title="Chiens présents"
-                                    route="{{ 'dashboard/dogs' }}"/>
+                                    route="{{ 'dashboard/dogs' }}" class="bg-element"/>
         </div>
         <div>
             <x-cards.dashboard_card :number="$this->requestPending" title="Demandes non traitées"
-                                    route="{{ 'dashboard/request' }}"/>
+                                    route="{{ 'dashboard/request' }}" class="bg-element"/>
         </div>
         <div>
             <x-cards.dashboard_card :number="$this->unreadMessageCount" title="Messages non lus"
-                                    route="{{ 'dashboard/messages' }}"/>
+                                    route="{{ 'dashboard/messages' }}" class="bg-element"/>
         </div>
     </div>
-    <div>
-
-    </div>
-    <section class="md:ml-25 mb-6 text-text text-2xl uppercase font-bold">
+    <section class="md:ml-25 mb-6 mt-20 text-text text-2xl uppercase font-bold">
         <h2 class="text-xl mt-6 font-bold text-text md:text-2xl md:mt-0 dark:text-white">Chiens présents cette
             semaine</h2>
     </section>

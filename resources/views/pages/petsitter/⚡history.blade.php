@@ -41,15 +41,17 @@ new class extends Component {
 };
 ?>
 
-<div>
+<div class="max-w-7xl mx-auto px-6">
     <x-header.PetsitterNav/>
-    <section>
-        <h1 class="text-text lg:text-2xl text-lg uppercase font-bold ml-50"> Mon historique</h1>
+    <section class="mt-20">
+        <h1 class="text-text lg:text-2xl text-lg uppercase font-bold mb-10"> Mon historique</h1>
+        <div class="space-y-10">
     @foreach($requests as $request)
       <x-cards.petsitter_history
           :request="$request"
       />
     @endforeach
+        </div>
         <x-modale.petsitter_notes_modal
             :request="$request"
         />

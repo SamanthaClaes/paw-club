@@ -9,7 +9,7 @@
  'image',
 ])
 
-<section class="border-4 border-stroke rounded-lg bg-card p-6 max-w-4xl mx-auto">
+<section class="border-2 border-stroke rounded-lg bg-card p-6 h-full">
     <div class="flex flex-col lg:flex-row gap-6 items-center lg:items-start">
 
         <div class="shrink-0">

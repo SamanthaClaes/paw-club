@@ -1,13 +1,17 @@
 <?php
 
+use App\Enums\PetsitterRequestStatus;
 use App\Models\AnimalType;
 use App\Models\PetSittingRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Attributes\Computed;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new class extends Component {
+new #[Title('Mon profil')]
+class extends Component {
     public User $petsitter;
     public string $current_password = '';
     public string $password = '';
@@ -58,12 +62,64 @@ new class extends Component {
         ]);
         $this->dispatch('password-updated');
     }
+
+    #[Computed]
+    public function countRequestPending(): int
+    {
+        return PetSittingRequest::where('status', PetsitterRequestStatus::PENDING)->count();
+    }
+
+    #[Computed]
+    public function countRequestAccepted(): int
+    {
+        return PetSittingRequest::where('status', PetsitterRequestStatus::ACCEPTED)->count();
+    }
+
+    #[Computed]
+    public function countRequestRefused(): int
+    {
+        return PetSittingRequest::where('status', PetsitterRequestStatus::REFUSED)->count();
+    }
 };
 ?>
-<section>
-    <h1 class=" text-text text-2xl text-center font-bold mb-4 lg:text-3xl mt-20">Mes informations</h1>
+<section class="max-w-7xl mx-auto px-6">
+    <h1 class=" text-text text-2xl text-center font-bold mb-4 lg:text-3xl mt-20 uppercase">Mes informations</h1>
     <x-header.PetsitterNav/>
-    <div class="grid grid-cols-2 mt-20 mb-20 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-16">
+        <div>
+            <x-cards.dashboard_card
+                title="Messages non lus"
+                :number="2"
+                route=""
+                class="bg-element"
+            />
+        </div>
+        <div>
+            <x-cards.dashboard_card
+                title="Demandes en attente"
+                :number="$this->countRequestPending"
+                route="{{ route('petsitter.request') }}#pending"
+                class="bg-yellow-100"
+            />
+        </div>
+        <div>
+            <x-cards.dashboard_card
+                title="Demandes acceptées"
+                :number="$this->countRequestAccepted"
+                route="{{ route('petsitter.request') }}#accepted"
+                class="bg-green-100"
+            />
+        </div>
+        <div>
+            <x-cards.dashboard_card
+                title="Demandes refusées"
+                :number="$this->countRequestRefused"
+                route="{{ route('petsitter.request') }}#refused"
+                class="bg-red-100"
+            />
+        </div>
+    </div>
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-10 mt-20 mb-20 items-start">
         <x-cards.ps_card_profile
             :last_name="$petsitter->last_name"
             :first_name="$petsitter->first_name"

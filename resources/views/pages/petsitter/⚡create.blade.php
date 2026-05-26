@@ -113,7 +113,7 @@ class extends Component {
                 <x-forms.input-label wire:model="zip" type="number" name="zip" label=" {{ __('petsitterCreateForm.zip') }} *"/>
             </div>
             <div>
-                <x-forms.input-label wire:model="location" type="text" name="location" label="{{ __('petsitterCreatetForm.location') }}"/>
+                <x-forms.input-label wire:model="location" type="text" name="location" label="{{ __('petsitterCreateForm.location') }}"/>
             </div>
             <div class="flex gap-12 justify-between">
 
