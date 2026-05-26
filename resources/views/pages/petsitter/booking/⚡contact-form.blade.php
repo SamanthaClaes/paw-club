@@ -32,8 +32,9 @@ class extends Component {
         ]);
 
         PetsitterMessages::create([...$validated, 'petsitter_id' => $this->user->id, 'is_read' => false]);
-        Mail::to($this->user->email)->queue(new PetsitterMessageMail($this->petsitter, $validated));
+        Mail::to($this->user->email)->queue(new PetsitterMessageMail($this->user, $validated));
         session()->flash('success', 'Message envoyé avec succès');
+        $this->reset();
     }
 };
 ?>
@@ -64,8 +65,7 @@ class extends Component {
 
        </form>
        @if( session('success'))
-
-           
+           <x-message_success/>
        @endif
    </section>
 </div>
