@@ -77,4 +77,9 @@ class User extends Authenticatable
 
         return route('owner.profile');
     }
+
+    public function petsitterMessages(): HasMany
+    {
+        return  $this->hasMany(PetsitterMessages::class, 'petsitter_id');
+    }
 }
