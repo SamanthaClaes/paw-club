@@ -3,7 +3,7 @@
  'visit',
 ])
 
-<section class="border-4 border-stroke rounded-lg bg-card p-6 h-full">
+<section class="border-2 border-stroke rounded-lg bg-card p-6 h-full">
     <div>
 
         <div>

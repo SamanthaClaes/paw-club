@@ -2,6 +2,7 @@
 
 use App\Enums\PetsitterRequestStatus;
 use App\Models\AnimalType;
+use App\Models\PetsitterMessages;
 use App\Models\PetSittingRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -9,23 +10,42 @@ use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 new #[Title('Mon profil')]
 class extends Component {
+
+    use WithFileUploads;
+
     public User $petsitter;
     public string $current_password = '';
     public string $password = '';
     public string $password_confirmation = '';
     public $types = [];
+    public string $first_name = '';
+    public string $last_name = '';
+    public string $email = '';
+    public string $adress = '';
+    public string $phone = '';
+    public string $location = '';
+    public string $zip = '';
+    public $image;
 
     public function mount(): void
     {
         $this->petsitter = Auth::user();
         $this->types = AnimalType::all();
+        $this->first_name = $this->petsitter->first_name;
+        $this->last_name = $this->petsitter->last_name;
+        $this->email = $this->petsitter->email;
+        $this->adress = $this->petsitter->adress;
+        $this->phone = $this->petsitter->phone;
+        $this->location = $this->petsitter->location;
+        $this->zip = $this->petsitter->zip;
 
     }
 
-    public function store()
+    public function store(): void
     {
         PetSittingRequest::with([
             'user',
@@ -35,6 +55,29 @@ class extends Component {
         ])
             ->where('petsitter_id', Auth::id())->get();
     }
+
+    public function updateData(): void
+    {
+        $validated = $this->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email',
+            'adress' => 'required|string',
+            'phone' => 'nullable|string',
+            'location' => 'required|string',
+            'zip' => 'required',
+            'image' => 'nullable|image',
+        ]);
+        if ($this->image) {
+            $validated['image'] = $this->image->store('petsitter', 'public');
+        }
+
+        $this->petsitter->update($validated);
+        $this->dispatch('update-data');
+        session()->flash('success', 'Informations mises à jour');
+    }
+
+
 
 
     public function updatePw(): void
@@ -90,7 +133,7 @@ class extends Component {
             <x-cards.dashboard_card
                 title="Messages non lus"
                 :number="2"
-                route=""
+                route="{{ route('petsitter.messages') }}"
                 class="bg-element"
             />
         </div>
