@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Fortify\Contracts\LoginResponse;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +15,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse
+        {
+            public function toResponse($request): Redirector|RedirectResponse
+            {
+                return redirect(Auth::user()->redirectRoute());
+            }
+        });
     }
 
     /**

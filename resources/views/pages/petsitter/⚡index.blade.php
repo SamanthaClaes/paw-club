@@ -32,16 +32,20 @@ class extends Component {
                 <p class="text-center text-sm text-text mb-5 line-clamp-2 lg:mb-10 lg:line-clamp-none w-1/2 mx-auto">
                     {{ __('petsitter.description') }}
                 </p>
-                <img src=" {{ asset('svg/illu_5.svg') }}" alt="homme et femme donnant à manger à un chat"
-                     class="
-                     hidden
-                     lg:block
-            absolute
-            bottom-10
-          lg:right-160
-          xl:right-160
-            w-30 sm:w-40 md:w-56 lg:w-64 xl:w-72
-             translate-y-1/4">
+                <img
+                    src="{{ asset('svg/illu_5.svg') }}"
+                    alt="homme et femme donnant à manger à un chat"
+                    class="
+        hidden
+        lg:block
+        absolute
+        bottom-10
+        left-95
+        w-30 sm:w-40 md:w-56 lg:w-64 xl:w-72
+        translate-y-1/4
+    "
+                >
+
                 <div class="flex justify-center">
                     <a href="{{ route('petsitter.index') }}#petsitters_list"
                        class="bg-card-green text-cta hover:bg-hover p-3 lg:p-6 rounded-lg font-bold lg:w-1/2 lg:text-center lg:text-2xl uppercase">{{ __('petsitter.schedulePetsitter') }}</a>

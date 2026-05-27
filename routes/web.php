@@ -35,14 +35,15 @@ Route::middleware('auth')->group(function () {
     Route::livewire('/petsitter/history', 'pages::petsitter.history')->name('petsitter.history');
     Route::livewire('/owner/profile', 'pages::owner.profile')->name('owner.profile');
     Route::livewire('/daycare/request', 'pages::daycare.request')->name('daycare.request');
+    Route::livewire('/petsitter/contact/{user}', 'pages::petsitter.booking.contact-form')->name('petsitter.contact');
+    Route::livewire('/petsitter/booking/create/{user}', 'pages::petsitter.booking.create')->name('petsitter.booking.create');
+
 
 });
 Route::livewire('/daycare', 'pages::daycare')->name('daycare.index');
 Route::livewire('/daycare/create', 'pages::daycare.create')->name('daycare.create');
 Route::livewire('/petsitter', 'pages::petsitter')->name('petsitter.index');
-Route::livewire('/petsitter/booking/create/{user}', 'pages::petsitter.booking.create')->name('petsitter.booking.create');
 Route::livewire('/petsitter/create', 'pages::petsitter.create')->name('petsitter.create');
-Route::livewire('/petsitter/contact/{user}', 'pages::petsitter.booking.contact-form')->name('petsitter.contact');
 Route::livewire('/terms', 'pages::legal.terms')->name('terms');
 Route::livewire('/confidentiality', 'pages::legal.confidentiality')->name('confidentiality');
 
