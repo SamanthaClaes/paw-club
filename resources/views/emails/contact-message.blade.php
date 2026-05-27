@@ -1,17 +1,36 @@
-<h1 class="text-text">
-    Nouveau message de la part de
-    {{ $data['first_name'] }}
-    {{ $data['last_name'] }}
-</h1>
+@extends('layouts.mail')
 
-<p class="font-bold">
-    Email : {{ $data['email'] }}
-</p>
+@section('content')
 
-<p class="font-bold text-text">
-    Message :
-</p>
+    <h1>
+        Nouveau message reçu
+    </h1>
 
-<p>
-    {{ $data['message'] }}
-</p>
+    <p>
+        Vous avez reçu un nouveau message depuis PawClub.
+    </p>
+
+    <div class="card">
+
+        <p>
+            <span class="label">Nom :</span>
+            {{ $data['first_name'] }}
+            {{ $data['last_name'] }}
+        </p>
+
+        <p>
+            <span class="label">Email :</span>
+            {{ $data['email'] }}
+        </p>
+
+        <p>
+            <span class="label">Message :</span>
+        </p>
+
+        <p>
+            {{ $data['message'] }}
+        </p>
+
+    </div>
+
+@endsection

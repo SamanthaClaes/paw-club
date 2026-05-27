@@ -1,21 +1,45 @@
-<h1>Nouveau message</h1>
+@extends('layouts.mail')
 
-<p>
-    De : {{ $data['first_name'] }} {{ $data['last_name'] }}
-</p>
+@section('content')
 
-<p>
-    Email : {{ $data['email'] }}
-</p>
+    <section>
+        <h1>
+            Nouveau message reçu
+        </h1>
 
-<p>
-    Téléphone : {{ $data['phone'] }}
-</p>
+        <p>
+            Vous avez reçu un nouveau message depuis le formulaire de contact PawClub.
+        </p>
 
-<p>
-    Message :
-</p>
+        <div class="card">
 
-<p>
-    {{ $data['message'] }}
-</p>
+            <p>
+                <span class="label">Nom :</span>
+                {{ $data['first_name'] }}
+                {{ $data['last_name'] }}
+            </p>
+
+            <p>
+                <span class="label">Email :</span>
+                {{ $data['email'] }}
+            </p>
+
+            <p>
+                <span class="label">Téléphone :</span>
+                {{ $data['phone'] }}
+            </p>
+
+            <p>
+                <span class="label">Message :</span>
+            </p>
+
+            <p>
+                {{ $data['message'] }}
+            </p>
+
+        </div>
+        ```
+
+    </section>
+
+@endsection
