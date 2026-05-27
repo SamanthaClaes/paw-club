@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['last_name','first_name', 'email', 'password', 'role', 'phone', 'adress', 'zip', 'image', 'location', 'description', 'habitation_id', 'petsitter_status'])]
+#[Fillable(['last_name', 'first_name', 'email', 'password', 'role', 'phone', 'adress', 'zip', 'image', 'location', 'description', 'habitation_id', 'petsitter_status', 'is_petsitter'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -71,7 +71,7 @@ class User extends Authenticatable
             return route('dashboard.index');
         }
 
-        if ($this->role === UserRole::PETSITTER) {
+        if ($this->is_petsitter) {
             return route('petsitter.profile');
         }
 

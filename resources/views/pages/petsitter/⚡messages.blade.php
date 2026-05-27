@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\PetsitterMessages;
-use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,13 +14,17 @@ new class extends Component {
 
     public function deleteMessage($messageId): void
     {
-        $message = PetsitterMessages::findOrFail($messageId)->delete();
+        $message = PetsitterMessages::where('petsitter_id', Auth::id())
+            ->findOrFail($messageId);
+
+        $message->delete();
         $this->loadMessages();
     }
 
     public function markAsRead($messageId): void
     {
-        $message = PetsitterMessages::findOrFail($messageId);
+        $message = PetsitterMessages::where('petsitter_id', Auth::id())
+            ->findOrFail($messageId);
         $message->is_read = true;
         $message->save();
         $this->loadMessages();
@@ -131,7 +134,7 @@ new class extends Component {
                     <div class="bg-card border border-element rounded-3xl p-8">
 
                         <p class="text-center text-text font-semibold">
-                            Aucun message non lu
+                            Vous n’avez encore reçu aucun message.
                         </p>
 
                     </div>

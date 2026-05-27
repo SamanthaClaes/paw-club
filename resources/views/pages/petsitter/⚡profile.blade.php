@@ -1,7 +1,6 @@
 <?php
 
 use App\Enums\PetsitterRequestStatus;
-use App\Models\AnimalType;
 use App\Models\PetsitterMessages;
 use App\Models\PetSittingRequest;
 use App\Models\User;
@@ -21,20 +20,18 @@ class extends Component {
     public string $current_password = '';
     public string $password = '';
     public string $password_confirmation = '';
-    public $types = [];
     public string $first_name = '';
     public string $last_name = '';
     public string $email = '';
     public string $adress = '';
-    public string $phone = '';
+    public ?string $phone = null;
     public string $location = '';
     public string $zip = '';
-    public $image;
+    public $image = null;
 
     public function mount(): void
     {
         $this->petsitter = Auth::user();
-        $this->types = AnimalType::all();
         $this->first_name = $this->petsitter->first_name;
         $this->last_name = $this->petsitter->last_name;
         $this->email = $this->petsitter->email;
@@ -43,17 +40,6 @@ class extends Component {
         $this->location = $this->petsitter->location;
         $this->zip = $this->petsitter->zip;
 
-    }
-
-    public function store(): void
-    {
-        PetSittingRequest::with([
-            'user',
-            'pet',
-            'pet.breed',
-            'pet.animalType'
-        ])
-            ->where('petsitter_id', Auth::id())->get();
     }
 
     public function updateData(): void
@@ -76,8 +62,6 @@ class extends Component {
         $this->dispatch('update-data');
         session()->flash('success', 'Informations mises à jour');
     }
-
-
 
 
     public function updatePw(): void
@@ -109,25 +93,33 @@ class extends Component {
     #[Computed]
     public function countRequestPending(): int
     {
-        return PetSittingRequest::where('status', PetsitterRequestStatus::PENDING)->count();
+        return PetSittingRequest::where('petsitter_id', $this->petsitter->id)
+            ->where('status', PetsitterRequestStatus::PENDING)
+            ->count();
     }
 
     #[Computed]
     public function countRequestAccepted(): int
     {
-        return PetSittingRequest::where('status', PetsitterRequestStatus::ACCEPTED)->count();
+        return PetSittingRequest::where('petsitter_id', $this->petsitter->id)
+            ->where('status', PetsitterRequestStatus::ACCEPTED)
+            ->count();
     }
 
     #[Computed]
     public function countRequestRefused(): int
     {
-        return PetSittingRequest::where('status', PetsitterRequestStatus::REFUSED)->count();
+        return PetSittingRequest::where('petsitter_id', $this->petsitter->id)
+            ->where('status', PetsitterRequestStatus::REFUSED)
+            ->count();
     }
 
     #[Computed]
     public function unreadMessageCount(): int
     {
-        return PetsitterMessages::where('is_read', false)->count();
+        return PetsitterMessages::where('petsitter_id', $this->petsitter->id)
+            ->where('is_read', false)
+            ->count();
     }
 };
 ?>

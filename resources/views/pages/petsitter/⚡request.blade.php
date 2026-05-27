@@ -1,8 +1,6 @@
 <?php
 
-use App\Enums\DayCareRequestStatus;
 use App\Enums\PetsitterRequestStatus;
-use App\Models\DayCareRequest;
 use App\Models\PetSittingRequest;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -11,11 +9,10 @@ new #[Title('Mes demandes')]
 class extends Component {
     public $requests;
     public $refusedRequests;
-    public $acceptedRequest;
+    public $acceptedRequests;
 
     public function mount(): void
     {
-        $this->requests = PetSittingRequest::with('animalType')->get();
         $this->loadPendingRequests();
     }
 
@@ -27,26 +24,38 @@ class extends Component {
             'pet.animalType',
             'pet.breed',
         ])
-            ->where('status', PetsitterRequestStatus::PENDING)
-            ->get();
-
-        $this->refusedRequests = PetSittingRequest::where(
-            'status',
-            PetsitterRequestStatus::REFUSED
-        )
             ->where('petsitter_id', Auth::id())
+            ->where('status', PetsitterRequestStatus::PENDING)
             ->latest()
             ->get();
 
-        $this->acceptedRequest = PetSittingRequest::where( 'status' , PetsitterRequestStatus::ACCEPTED)
+        $this->refusedRequests = PetSittingRequest::with([
+            'user',
+            'pet',
+            'pet.animalType',
+            'pet.breed',
+        ])
             ->where('petsitter_id', Auth::id())
+            ->where('status', PetsitterRequestStatus::REFUSED)
+            ->latest()
+            ->get();
+
+        $this->acceptedRequests = PetSittingRequest::with([
+            'user',
+            'pet',
+            'pet.animalType',
+            'pet.breed',
+        ])
+            ->where('petsitter_id', Auth::id())
+            ->where('status', PetsitterRequestStatus::ACCEPTED)
             ->latest()
             ->get();
     }
 
     public function acceptRequest($requestId): void
     {
-        $request = PetSittingRequest::findOrFail($requestId);
+        $request = PetSittingRequest::where('petsitter_id', Auth::id())
+            ->findOrFail($requestId);
 
         $request->status = PetsitterRequestStatus::ACCEPTED;
 
@@ -54,16 +63,15 @@ class extends Component {
 
         $this->loadPendingRequests();
 
-        $request->refresh();
     }
 
     public function refusedRequest($requestId): void
     {
-        $request = PetSittingRequest::findOrFail($requestId);
+        $request = PetSittingRequest::where('petsitter_id', Auth::id())
+            ->findOrFail($requestId);
         $request->status = PetsitterRequestStatus::REFUSED;
         $request->save();
         $this->loadPendingRequests();
-        $request->refresh();
     }
 };
 ?>
@@ -124,7 +132,7 @@ class extends Component {
 
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
 
-                @forelse($acceptedRequest as $request)
+                @forelse($acceptedRequests as $request)
 
                     <x-cards.animal_card_request_ps
                         :request="$request"

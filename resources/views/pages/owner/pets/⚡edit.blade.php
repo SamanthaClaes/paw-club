@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\AnimalType;
-use App\Models\Breed;
 use App\Models\Pet;
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -42,17 +41,19 @@ new class extends Component {
     #[On('edit-pet')]
     public function editPet($petId): void
     {
-        $pet = Pet::with([
-            'breed',
-            'animalType',
-        ])->findOrFail($petId);
+        $pet = $this->owner
+            ->pets()
+            ->with([
+                'breed',
+                'animalType',
+            ])
+            ->findOrFail($petId);
         $this->pet = $pet;
         $this->name = $pet->name;
         $this->animal_type_id = $pet->animal_type_id;
         $this->breed_id = $pet->breed_id;
         $this->birth_date = $pet->birth_date;
         $this->description = $pet->description;
-
         $this->dispatch('edit-dog');
     }
 
@@ -63,7 +64,7 @@ new class extends Component {
             'animal_type_id' => 'required|exists:animal_types,id',
             'breed_id' => 'nullable|exists:breeds,id',
             'birth_date' => 'required|date',
-            'description' => 'string',
+            'description' => 'nullable|string',
         ]);
 
         $this->pet->name = $this->name;
@@ -73,7 +74,14 @@ new class extends Component {
         $this->pet->description = $this->description;
 
         $this->pet->save();
-        $this->pet->refresh();
+        $this->reset([
+            'name',
+            'animal_type_id',
+            'breed_id',
+            'birth_date',
+            'description',
+        ]);
+        $this->pet = null;
         $this->pets = $this->owner
             ->fresh()
             ->pets()

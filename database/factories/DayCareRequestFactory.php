@@ -18,9 +18,17 @@ class DayCareRequestFactory extends Factory
     public function definition(): array
     {
         $startDate = now()->addDays(rand(1, 30));
+
         $endDate = (clone $startDate)->addDays(rand(1, 10));
 
+        $pet = Pet::inRandomOrder()->first();
+
         return [
+
+            'user_id' => $pet->user_id,
+
+            'pet_id' => $pet->id,
+
             'image' => null,
 
             'infos' => fake()->sentence(10),
@@ -30,6 +38,7 @@ class DayCareRequestFactory extends Factory
             'end_date' => $endDate,
 
             'status' => DayCareRequestStatus::ACCEPTED,
+
         ];
     }
 

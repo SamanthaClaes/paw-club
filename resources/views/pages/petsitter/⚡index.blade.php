@@ -1,6 +1,5 @@
 <?php
 
-use App\enum\UserRole;
 use App\Enums\PetsitterStatus;
 use App\Models\User;
 use Livewire\Attributes\Title;
@@ -12,7 +11,13 @@ class extends Component {
 
     public function mount(): void
     {
-        $this->petsitters = User::where('role', UserRole::PETSITTER)->where('petsitter_status', PetsitterStatus::ACCEPTED)->get();
+        $this->petsitters = User::with([
+            'animalTypes',
+            'habitation',
+        ])
+            ->where('is_petsitter', true)
+            ->where('petsitter_status', PetsitterStatus::ACCEPTED)
+            ->get();
     }
 };
 ?>
@@ -145,7 +150,7 @@ class extends Component {
                 :description="$petsitter->description"
                 :tags="[...$petsitter->animalTypes->pluck('type')->toArray(),$petsitter->habitation?->name]"
                 :choose-url=" route('petsitter.booking.create', ['user' => $petsitter->id])"
-                :contact-url=" route('petsitter.contact', $petsitter)"
+                :contact-url=" route('petsitter.contact', ['user' => $petsitter->id])"
             />
         @endforeach
     </section>

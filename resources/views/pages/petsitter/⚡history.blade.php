@@ -1,7 +1,6 @@
 <?php
 
 use App\Enums\PetsitterStatus;
-use App\Models\Pet;
 use App\Models\PetSittingRequest;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -33,9 +32,10 @@ class extends Component {
     public function storeNote($requestId): void
     {
         $validated = $this->validate([
-            'note' => 'string'
+            'note' => 'nullable|string'
         ]);
-        $request = PetSittingRequest::findOrFail($requestId);
+        $request = PetSittingRequest::where('petsitter_id', Auth::id())
+            ->findOrFail($requestId);
 
         $request->note = $validated['note'];
         $request->save();

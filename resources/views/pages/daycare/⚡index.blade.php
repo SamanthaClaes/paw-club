@@ -22,7 +22,7 @@ class extends Component {
                 <span class="block text-text text-sm text-center mb-5 lg:m-10">
                         {{ __('daycare.subtitle') }}
                 </span>
-                <p class="text-center text-sm text-text mb-5 line-clamp-2 lg:mb-10 lg:line-clamp-none w-1/2 mx-auto">
+                <p class="text-center text-sm text-text mb-5 line-clamp-2 lg:mb-10 lg:line-clamp-none max-w-2xl px-6">
                     {{ __('daycare.about') }}
                 </p>
                 <img src=" {{ asset('svg/illu_2.svg') }}" alt="petite fille qui carresse un chat"
@@ -56,7 +56,7 @@ class extends Component {
         <div class="grid lg:grid-cols-2 gap-8 items-stretch auto-rows-fr">
 
             <div
-                class="group flex flex-col justify-center items-center bg-card-pink rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+                class="group flex flex-col justify-center items-center bg-card-pink rounded-lg h-full transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
                 <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
                     <x-svg.icons.icons1/>
                 </div>
@@ -68,7 +68,7 @@ class extends Component {
             </div>
 
             <div
-                class="group flex flex-col justify-center items-center bg-card-orange rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+                class="group flex flex-col justify-center items-center bg-card-orange rounded-lg h-full transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
                 <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
                     <x-svg.icons.bell/>
                 </div>
@@ -80,7 +80,7 @@ class extends Component {
             </div>
 
             <div
-                class="group flex flex-col justify-center items-center bg-card-blue rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+                class="group flex flex-col justify-center items-center bg-card-blue rounded-lg h-full transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
                 <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
                     <x-svg.icons.health/>
                 </div>
@@ -92,7 +92,7 @@ class extends Component {
             </div>
 
             <div
-                class="group flex flex-col justify-center items-center bg-card-green rounded-lg h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+                class="group flex flex-col justify-center items-center bg-card-green rounded-lg h-full transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
                 <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
                     <x-svg.icons.home/>
                 </div>
@@ -116,7 +116,7 @@ class extends Component {
             <div
                 class="
                 flex items-center py-16
-                transition-all duration-700 ease-out
+                transition-transform duration-700 ease-out
 
                 motion-safe:animate-[cardsReveal_1.2s_ease-out]
             "
@@ -135,7 +135,7 @@ class extends Component {
                     lg:mr-0
                     lg:rotate-[-18deg]
 
-                    transition-all duration-500 ease-out
+                    transition-transform duration-500 ease-out
 
                     hover:z-50
                     hover:-translate-y-8
@@ -173,7 +173,7 @@ class extends Component {
                     lg:-ml-20 lg:mr-0
                     lg:-rotate-10
 
-                    transition-all duration-500 ease-out
+                    transition-transform duration-500 ease-out
 
                     hover:z-50
                     hover:-translate-y-8
@@ -209,7 +209,7 @@ class extends Component {
 
                     lg:-ml-20 lg:mr-0
 
-                    transition-all duration-500 ease-out
+                    transition-transform duration-500 ease-out
 
                     hover:z-50
                     hover:-translate-y-8
@@ -246,7 +246,7 @@ lg:rounded-4xl
                     lg:-ml-20 lg:mr-0
                     lg:rotate-10
 
-                    transition-all duration-500 ease-out
+                    transition-transform duration-500 ease-out
 
                     hover:z-50
                     hover:-translate-y-8
@@ -285,7 +285,7 @@ lg:rounded-4xl
                     lg:-ml-20
                     lg:rotate-18
 
-                    transition-all duration-500 ease-out
+                    transition-transform duration-500 ease-out
 
                     hover:z-50
                     hover:-translate-y-8

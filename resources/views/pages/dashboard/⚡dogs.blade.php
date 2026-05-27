@@ -10,64 +10,49 @@ use Carbon\Carbon;
 
 new #[Layout('layouts::dashboard', ['title' => 'Nos chiens'])]
 class extends Component {
-    public $requests = [];
     public $lastWeekRequests = [];
     public $lastMonthRequests = [];
     public $currentWeekRequests = [];
     public $selectedOwner = null;
-    public $animalTypes;
 
 
     public function mount(): void
     {
         $startLastWeek = Carbon::now()->subWeek()->startOfWeek();
         $endLastWeek = Carbon::now()->subWeek()->endOfWeek();
+
         $startCurrentWeek = Carbon::now()->startOfWeek();
         $endCurrentWeek = Carbon::now()->endOfWeek();
+
         $startLastMonth = Carbon::now()->subMonth()->startOfMonth();
         $endLastMonth = Carbon::now()->subMonth()->endOfMonth();
 
-        $this->currentWeekRequests = DayCareRequest::with([
-            'user',
-            'pet',
-            'pet.animalType',
-            'pet.breed'
-        ])
-            ->where('status', DayCareRequestStatus::ACCEPTED)
+        $this->currentWeekRequests = $this->daycareRequests()
             ->where('start_date', '<=', $endCurrentWeek)
             ->where('end_date', '>=', $startCurrentWeek)
             ->get();
 
-        $this->requests = DayCareRequest::with([
-            'user',
-            'pet',
-            'pet.animalType',
-            'pet.breed'
-        ])->where('status', DayCareRequestStatus::ACCEPTED)
-            ->get();
-
-        $this->lastWeekRequests = DayCareRequest::with([
-            'user',
-            'pet',
-            'pet.animalType',
-            'pet.breed'
-        ])
-            ->where('status', DayCareRequestStatus::ACCEPTED)
+        $this->lastWeekRequests = $this->daycareRequests()
             ->where('start_date', '<=', $endLastWeek)
             ->where('end_date', '>=', $startLastWeek)
             ->get();
 
-        $this->lastMonthRequests = DayCareRequest::with([
+        $this->lastMonthRequests = $this->daycareRequests()
+            ->where('start_date', '<=', $endLastMonth)
+            ->where('end_date', '>=', $startLastMonth)
+            ->get();
+
+    }
+
+    public function daycareRequests()
+    {
+        return DayCareRequest::with([
             'user',
             'pet',
             'pet.animalType',
             'pet.breed',
         ])
-            ->where('status', DayCareRequestStatus::ACCEPTED)
-            ->where('start_date', '<=', $endLastMonth)
-            ->where('end_date', '>=', $startLastMonth)
-            ->get();
-
+            ->where('status', DayCareRequestStatus::ACCEPTED);
     }
 
     #[On('open-owner-modal')]
@@ -83,142 +68,27 @@ class extends Component {
 ?>
 
 <div>
-    <section class="md:ml-25 mb-6 text-text text-2xl uppercase font-bold">
-        <h2 class="text-xl mt-6 font-bold text-text md:text-2xl md:mt-20 dark:text-white">Chiens présents cette
-            semaine</h2>
-    </section>
     <div class="ml-25">
-        <table class="min-w-full border dark:border-none">
-            <thead class="bg-element">
-            <tr class="bg-background border-b">
-                <th class="border-r">Nom</th>
-                <th class="border-r">Race</th>
-                <th class="border-r">Genre</th>
-                <th class="border-r">Date de garde</th>
-                <th class="border-r">Fiche du propriétaire</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-            @forelse($currentWeekRequests as $request)
-                <tr>
-                    <x-table.table-data>
-                        {{$request->pet->name}}
-                    </x-table.table-data>
-                    <x-table.table-data>
-                        {{$request->pet->breed->name}}
-                    </x-table.table-data>
-                    <x-table.table-data>
-                        {{$request->pet->gender ? 'Mâle' : 'Femelle'}}
-                    </x-table.table-data>
-                    <x-table.table-data>
-                        {{ Carbon::parse($request->start_date)->format('d/m/Y')  }}
-                        - {{ Carbon::parse($request->end_date)->format('d/m/Y')  }}
-                    </x-table.table-data>
-                    <x-table.table-data>
-                        <button wire:click="$dispatch('open-owner-modal', { userId: {{ $request->user->id }} })">
-                            Voir la fiche du propriétaire
-                        </button>
-                    </x-table.table-data>
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="6" class="bg-white p-3">Pas d’animaux trouvés</td>
-                </tr>
-            @endforelse
-            </tbody>
-        </table>
-        <div class=" flex justify-end mt-6">
-            <x-cta.add title="+ Ajouter un chien"/>
+        <div>
+            <x-dashboard.daycare-table
+                title="Chiens présents cette semaine"
+                :requests="$currentWeekRequests"
+            />
         </div>
-    </div>
-
-
-    <section class="md:ml-25 mb-6 text-text text-2xl uppercase font-bold">
-        <h2 class="text-xl mt-6 font-bold text-text md:text-2xl md:mt-20 dark:text-white">Chiens présents la semaine
-            dernière</h2>
-    </section>
-    <div class="ml-25">
-        <table class="min-w-full border dark:border-none">
-            <thead class="bg-element">
-            <tr class="bg-background border-b">
-                <th class="border-r">Nom</th>
-                <th class="border-r">Race</th>
-                <th class="border-r">Genre</th>
-                <th class="border-r">Date de garde</th>
-                <th class="border-r">Fiche du propriétaire</th>
-            </tr>
-            </thead>
-            <tbody>
-            @forelse($lastWeekRequests as $request)
-            <tr>
-                <x-table.table-data>
-                    {{$request->pet->name}}
-                </x-table.table-data>
-                <x-table.table-data>
-                    {{ $request->pet->breed->name }}
-                </x-table.table-data>
-                <x-table.table-data>
-                    {{ $request->pet->gender ? 'Mâle' : 'Femelle' }}
-                </x-table.table-data>
-                <x-table.table-data>
-                    {{ Carbon::parse($request->start_date)->format('d/m/Y')  }} - {{Carbon::parse($request->end_date)->format('d/m/Y')  }}
-                </x-table.table-data>
-                <x-table.table-data>
-                    Voir la fiche du propriétaire
-                </x-table.table-data>
-            </tr>
-            @empty
-            <tr>
-                <td colspan="6" class="bg-white p-3">Pas d’animaux trouvés</td>
-            </tr>
-            @endforelse
-            </tbody>
-        </table>
-    </div>
-    <section class="md:ml-25 mb-6 text-text text-2xl uppercase font-bold">
-        <h2 class="text-xl mt-6 font-bold text-text md:text-2xl md:mt-20 dark:text-white">Chiens présents le mois
-            dernier</h2>
-    </section>
-    <div class="ml-25">
-        <table class="min-w-full border dark:border-none">
-            <thead class="bg-element">
-            <tr class="bg-background border-b">
-                <th class="border-r">Nom</th>
-                <th class="border-r">Race</th>
-                <th class="border-r">Genre</th>
-                <th class="border-r">Date de garde</th>
-                <th class="border-r">Fiche du propriétaire</th>
-            </tr>
-            </thead>
-            <tbody>
-            @forelse($lastMonthRequests as $request)
-            <tr>
-                <x-table.table-data>
-                    {{ $request->pet->name }}
-                </x-table.table-data>
-                <x-table.table-data>
-                    {{ $request->pet->breed->name }}
-                </x-table.table-data>
-                <x-table.table-data>
-                    {{ $request->pet->gender ? 'Mâle' : 'Femelle' }}
-                </x-table.table-data>
-                <x-table.table-data>
-                  {{ Carbon::parse( $request->start_date )->format('d/m/Y') }} - {{ Carbon::parse( $request->end_date)->format('d/m/Y') }}
-                </x-table.table-data>
-                <x-table.table-data>
-                    Voir la fiche du propriétaire
-                </x-table.table-data>
-            </tr>
-            @empty
-            <tr>
-                <td colspan="6" class="bg-white p-3">Pas d’animaux trouvés</td>
-            </tr>
-            @endforelse
-            </tbody>
-        </table>
-    </div>
+        <div>
+            <x-dashboard.daycare-table
+                title="Chiens présents la semaine dernière"
+                :requests="$lastWeekRequests"
+            />
+        </div>
+        <div>
+            <x-dashboard.daycare-table
+                title="Chiens présents le mois dernier"
+                :requests="$lastMonthRequests"
+            />
+        </div>
         <x-modale.owner_infos_modale
             :selected-owner="$selectedOwner"
         />
+    </div>
 </div>

@@ -17,22 +17,30 @@ class PetFactory extends Factory
 
     public function definition(): array
     {
-        $gender = fake()->boolean();
+        $animalType = AnimalType::inRandomOrder()->first();
+
+        $breed = Breed::where('animal_type_id', $animalType->id)
+            ->inRandomOrder()
+            ->first();
 
         return [
+
             'user_id' => User::inRandomOrder()->first()?->id,
-            'animal_type_id' => AnimalType::inRandomOrder()->first()?->id,
-            'breed_id' => Breed::inRandomOrder()->first()?->id,
+
+            'animal_type_id' => $animalType->id,
+
+            'breed_id' => $breed?->id,
 
             'name' => fake()->firstName(),
 
-            'gender' => $gender,
+            'gender' => fake()->boolean(),
 
             'birth_date' => fake()->dateTimeBetween('-15 years', '-2 months'),
 
             'description' => fake()->sentence(12),
 
             'pet_image' => null,
+
         ];
     }
 }

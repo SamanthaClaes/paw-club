@@ -17,14 +17,14 @@ class extends Component {
     public $message;
     public $submit = false;
 
-    public function store()
+    public function store(): void
     {
         $validated = $this->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|email',
-            'phone' => 'nullable|max_digits:10',
-            'message' => 'string',
+            'phone' => 'nullable|string|max:20',
+            'message' => 'required|string',
         ]);
         ContactMessage::create([...$validated, 'is_read' => false,]);
         Mail::to('contact@pawclub.be')->queue(new ContactMessageMail($validated));
@@ -45,7 +45,7 @@ class extends Component {
 ?>
 
 <div>
-    <section class="h-[20vh] relative w-full lg:h-[50vh] overflow-hidden">
+    <section class="h-[28vh] lg:h-[38vh] relative w-full  overflow-hidden">
         <img src="{{ asset('img/Hero_home.webp') }}" alt="pleins de chiens en balade"
              class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/60"></div>
@@ -161,12 +161,41 @@ class extends Component {
                         </a>
                     </div>
                 </div>
-
             </div>
+            <section
+                class="flex flex-col justify-center items-center gap-4 border-2 border-card-green rounded-2xl px-6 py-10 lg:px-10 lg:py-12 my-14 shadow-sm max-w-6xl mx-auto">
+
+                <h3 class="text-text text-2xl lg:text-3xl font-extrabold text-center leading-tight">
+                    {{ __('petsitter.cardTitle') }}
+                </h3>
+
+                <p class="max-w-2xl text-center text-sm lg:text-base text-text leading-7 mb-6">
+                    {{ __('petsitter.cardSubtitle') }}
+                </p>
+
+                <a
+                    href="{{ route('petsitter.create') }}"
+                    class=" text-cta  font-bold uppercase bg-card-green hover:bg-hover hover:text-white p-5 lg:w-1/2 rounded-lg mb-3  text-center shadow-md/10">
+
+                    {{ __('petsitter.cardCta') }}
+                </a>
+                <img src="{{ asset('svg/ill_6.svg') }}"
+                     alt="illustration d'une femme qui caresse un chat"
+                     class="hidden lg:block absolute bottom-5 left-0 xl:left-95
+     w-30 sm:w-40 md:w-40 lg:w-50 xl:w-60
+     -translate-x-1/4 translate-y-1/4">
+
+                <img src="{{ asset('svg/ill_7.svg') }}"
+                     alt="illustration d'une femme en train de promener un chien brun"
+                     class="hidden lg:block absolute bottom-10 right-0 xl:right-90
+     w-30 sm:w-40 md:w-56 lg:w-50 xl:w-80
+     translate-x-1/4 translate-y-1/4">
+
+            </section>
         </div>
     </section>
     <section>
-        <h2 class="text-text text-2xl sm:text-3xl uppercase font-bold mb-3 text-center mt-30">{{ __('home.contactUs') }} </h2>
+        <h2 class="text-text text-2xl sm:text-3xl uppercase font-bold mb-3 text-center mt-20">{{ __('home.contactUs') }} </h2>
         <span class="text-center block mb-6">
             {{ __('home.contactSubtitle') }}
         </span>
@@ -177,16 +206,17 @@ class extends Component {
                     <x-message_success/>
                     <button wire:click="showForm"
                             class="w-full bg-element mb-6 rounded-lg text-text uppercase font-bold p-5 hover:bg-hover-element cursor-pointer mt-6">
-                                {{ __('form.resent') }}
+                        {{ __('form.resent') }}
                     </button>
                 </div>
             @else
-                <form wire:submit="store" id="contact" class="w-8/10">
-                    @csrf
+                <form wire:submit="store" id="contact" class="w-6/10">
                     <div class="flex gap-6 mt-6 justify-between">
-                        <x-forms.input-label wire:model="first_name" type="text" label="{{ __('form.first_name') }}" name="first_name"
+                        <x-forms.input-label wire:model="first_name" type="text" label="{{ __('form.first_name') }}"
+                                             name="first_name"
                                              placeholder="Nicole" required/>
-                        <x-forms.input-label wire:model="last_name" type="text" label="{{ __('form.last_name') }}" name="last_name" placeholder="Kidman" required/>
+                        <x-forms.input-label wire:model="last_name" type="text" label="{{ __('form.last_name') }}"
+                                             name="last_name" placeholder="Kidman" required/>
                     </div>
                     <div class="flex gap-6 mt-6 justify-between">
                         <x-forms.input-label wire:model="email" type="email" label="{{ __('form.email') }}" name="email"
@@ -195,12 +225,12 @@ class extends Component {
                     </div>
                     <div class="mt-6 mb-6">
                         <label for="msg" class="text-text font-bold uppercase">{{ __('form.message') }}</label>
-                        <textarea wire:model="message" name="message" id="" cols="30" rows="10"
+                        <textarea wire:model="message" name="message" id="message" cols="30" rows="10"
                                   class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none"></textarea>
                     </div>
                     <div class="mb-20">
                         <x-forms.button>
-                                {{ __('form.sent') }}
+                            {{ __('form.sent') }}
                         </x-forms.button>
                     </div>
                 </form>

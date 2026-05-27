@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Pet;
-use App\Models\PetSittingRequest;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use App\Models\User;
@@ -15,11 +13,11 @@ class extends Component {
     public User $owner;
     public string $email;
     public string $adress;
-    public $phone;
-    public $name;
-    public $description;
-    public $user_id;
-    public $image;
+    public ?string $phone = null;
+    public $image = null;
+    public string $current_password = '';
+    public string $password = '';
+    public string $password_confirmation = '';
 
 
     public function mount(): void
@@ -31,21 +29,6 @@ class extends Component {
         $this->image = $this->owner->image;
 
     }
-
-    public function store(): void
-    {
-
-        if ($this->image) {
-
-            $path = $this->image->store('owner', 'public');
-
-            $this->owner->image = $path;
-            $this->owner->save();
-            $this->owner->refresh();
-
-        }
-    }
-
 
     public function updatePw(): void
     {
@@ -75,22 +58,19 @@ class extends Component {
 
     public function updateData(): void
     {
-        $this->validate([
-            'email' => 'required',
-            'image' => 'image',
+        $validated = $this->validate([
+            'email' => 'required|email',
+            'image' => 'nullable|image',
             'adress' => 'required|string',
             'phone' => 'nullable',
         ]);
-        if ($this->image) {
-            $path = $this->image->store('owner', 'public');
 
-            $this->owner->image = $path;
+        if ($this->image) {
+            $validated['image'] = $this->image->store('owner', 'public');
         }
-        $this->owner->email = $this->email;
-        $this->owner->adress = $this->adress;
-        $this->owner->phone = $this->phone;
-        $this->owner->save();
-        $this->owner->refresh();
+
+        $this->owner->update($validated);
+
         $this->dispatch('update-data');
     }
 };

@@ -2,6 +2,8 @@
 
 use App\Models\AnimalType;
 use App\Models\Pet;
+use App\Models\User;
+use Illuminate\Support\Collection;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -12,16 +14,15 @@ class extends Component {
 
     use WithFileUploads;
 
-    public $pets = [];
+    public $pets;
     public $animalTypes = [];
     public $breeds = [];
-    public $owner;
+    public User $owner;
     public $name;
     public $description;
     public $pet_image;
     public $birth_date;
     public ?Pet $pet = null;
-    public int $petId;
     public $animal_type_id;
     public $breed_id;
     public $gender;
@@ -40,14 +41,14 @@ class extends Component {
     }
 
 
-    function storePet(): void
+     public function storePet(): void
     {
         $validated = $this->validate([
             'name' => 'required|string',
             'birth_date' => 'required|date',
             'pet_image' => 'nullable|image',
             'description' => 'required|string',
-            'gender'=>'required|boolean',
+            'gender' => 'required|boolean',
             'animal_type_id' => 'required|exists:animal_types,id',
             'breed_id' => 'nullable|exists:breeds,id',
         ]);
@@ -76,6 +77,7 @@ class extends Component {
             'pet_image',
             'animal_type_id',
             'breed_id',
+            'gender',
         ]);
         $this->dispatch('reset-breed-search');
         $this->dispatch('pet-created');
@@ -84,15 +86,21 @@ class extends Component {
     #[On('update-dog')]
     public function refreshPets(): void
     {
-        $this->pets = $this->owner->fresh()->pets;
+        $this->pets = $this->owner
+            ->fresh()
+            ->pets()
+            ->with([
+                'breed',
+                'animalType',
+            ])
+            ->get();
     }
 
     public function delete($petId): void
     {
-        $pet = Pet::findOrFail($petId);
-        if (!Auth::user()) {
-            abort(403);
-        }
+        $pet = $this->owner
+            ->pets()
+            ->findOrFail($petId);
         $this->name = $pet->name;
         $pet->delete();
         $this->pets = $this->owner

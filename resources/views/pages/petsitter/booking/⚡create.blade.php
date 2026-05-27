@@ -2,7 +2,6 @@
 
 use App\enum\UserRole;
 use App\Enums\PetsitterRequestStatus;
-use App\Models\AnimalType;
 use App\Models\PetSittingRequest;
 use App\Models\User;
 use Livewire\Component;
@@ -14,22 +13,17 @@ new class extends Component {
 
     public string $start_date = '';
     public string $end_date = '';
-    public string $email = '';
     public string $description = '';
     public $image;
     public User $petsitter;
     public $pets = [];
     public $user;
     public $pet_id;
-    public $status;
-    public $user_id;
-    public $petsitter_id;
 
     public function mount(User $user): void
     {
         $this->petsitter = $user;
         $this->user = Auth::user();
-        $this->types = AnimalType::all();
         $this->pets = $this->user
             ->pets()
             ->with('breed')
@@ -46,19 +40,24 @@ new class extends Component {
             'pet_id' => 'required|exists:pets,id',
         ]);
 
-        $validated['user_id'] = Auth::id();
+        $pet = $this->user
+            ->pets()
+            ->findOrFail($validated['pet_id']);
+
+        $validated['pet_id'] = $pet->id;
+
+        $validated['user_id'] = $this->user->id;
+
         $validated['petsitter_id'] = $this->petsitter->id;
+
         $validated['status'] = PetsitterRequestStatus::PENDING;
-        $request = PetSittingRequest::create($validated);
 
         if ($this->image) {
 
-            $path = $this->image->store('animals', 'public');
-
-            $request->image = $path;
-
-            $request->save();
+            $validated['image'] = $this->image->store('animals', 'public');
         }
+
+        PetSittingRequest::create($validated);
 
         $this->reset([
             'image',
@@ -97,7 +96,7 @@ new class extends Component {
             </div>
             <div class="mt-6">
                 <label for="description" class="block text-sm  text-text uppercase font-bold mb-1">{{ __('formDaycare.infos') }}</label>
-                <textarea wire:model="description" name="description" id="" cols="30" rows="10"
+                <textarea wire:model="description" name="description" id="description" cols="30" rows="10"
                           class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none mb-6"></textarea>
             </div>
             <div class="lg:mb-20">

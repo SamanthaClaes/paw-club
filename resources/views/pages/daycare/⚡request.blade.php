@@ -2,10 +2,7 @@
 
 use App\Enums\DayCareRequestStatus;
 use App\Models\DayCareRequest;
-use App\Models\Pet;
 use App\Models\User;
-use LaravelIdea\Helper\App\Models\_IH_Pet_C;
-use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -19,14 +16,11 @@ class extends Component {
     public $last_name;
     public $pet_id;
     public $pets = [];
-    public $selectedPet = null;
     public $image;
     public $infos;
-    public $user_id;
     public $gender;
     public string $start_date = '';
     public string $end_date = '';
-    public $status;
 
     public function mount(): void
     {
@@ -59,18 +53,20 @@ class extends Component {
             ])
             ->where('animal_type_id', 1)
             ->findOrFail($this->pet_id);
-        $validated['user_id'] = Auth::id();
+
+        $validated['pet_id'] = $this->user
+            ->pets()
+            ->where('animal_type_id', 1)
+            ->findOrFail($validated['pet_id'])
+            ->id;
+        if ($this->image) {
+
+            $validated['image'] = $this->image->store('daycare', 'public');
+        }
+        $validated['user_id'] = $this->user->id;
         $validated['status'] = DayCareRequestStatus::PENDING;
         $request = DayCareRequest::create($validated);
 
-        if ($this->image) {
-
-            $path = $this->image->store('daycare', 'public');
-
-            $request->image = $path;
-
-            $request->save();
-        }
         $this->reset([
             'image',
             'infos',
@@ -91,13 +87,12 @@ class extends Component {
             <span class="font-bold text-text"> {{ __('formDaycare.advice') }} </span></p>
     </section>
     <form wire:submit="store" class="w-8/10 mx-auto" enctype="multipart/form-data">
-        @csrf
         <div class="flex gap-6">
             <x-forms.select-option wire:model.live="pet_id" label="{{ __('formDaycare.nameAndBreed') }}" name="pet_id">
                 <option value="">{{ __('formDaycare.chooseAnimal') }}</option>
                 @foreach( $this->pets as $pet)
                     <option value="{{ $pet->id }}">
-                        {{ $pet->name }} - {{$pet->breed->name}}
+                        {{ $pet->name }} - {{$pet->breed?->name}}
                     </option>
                 @endforeach
             </x-forms.select-option>
@@ -109,22 +104,9 @@ class extends Component {
             />
         </div>
         <div>
-            <x-forms.select-option
-                wire:model="gender"
-                name="gender"
-                label="{{ __('formDaycare.gender') }}"
-            >
-                <option value="">{{ __('formDaycare.chooseGender') }}</option>
-
-                <option value="1">
-                    {{ __('formDaycare.male') }}
-                </option>
-
-                <option value="0">
-                    {{ __('formDaycare.female') }}
-                </option>
-
-            </x-forms.select-option>
+            <p>
+                {{ $pet->gender ? __('formDaycare.male') : __('formDaycare.female') }}
+            </p>
         </div>
         <div class="flex gap-6">
             <x-forms.input-label type="date" wire:model="start_date" name="start_date"
@@ -133,7 +115,7 @@ class extends Component {
         </div>
         <div>
             <label for="infos" class="text-text font-bold uppercase">{{ __('formDaycare.infos') }}</label>
-            <textarea wire:model="infos" name="infos" id="" cols="30" rows="10"
+            <textarea wire:model="infos" name="infos" id="infos" cols="30" rows="10"
                       class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none"></textarea>
         </div>
         <div>
@@ -142,5 +124,7 @@ class extends Component {
             </x-forms.button>
         </div>
     </form>
-<x-message_success/>
+    @if(session('success'))
+        <x-message_success/>
+    @endif
 </div>

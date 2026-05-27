@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string('adress');
             $table->integer('zip');
             $table->string('location');
-            $table->string('role');
+            $table->string('role')->nullable();
+            $table->boolean('is_petsitter')->default(false)->after('role');
             $table->string('description')->nullable();
             $table->string('petsitter_status')->nullable();
             $table->timestamp('email_verified_at')->nullable();

@@ -24,33 +24,34 @@ class extends Component {
     public string $zip = '';
     public string $habitation_id = '';
     public $animals = [];
-    public $types = [];
+    public $animalTypes = [];
     public $habitations = [];
     public $visits = [];
     public $visitTypes = [];
     public $image;
     public string $location;
     public string $description;
-    public $petsitter;
+    public $petsitters;
 
 
     public function mount(): void
     {
-        $this->types = AnimalType::all();
+        $this->animalTypes = AnimalType::all();
         $this->habitations = Habitation::all();
         $this->visitTypes = VisitType::all();
-        $this->petsitter = User::where('role', UserRole::PETSITTER)
-            ->where('petsitter_status', PetsitterStatus::PENDING)->get();
+        $this->petsitters = User::where('is_petsitter', true)
+            ->where('petsitter_status', PetsitterStatus::PENDING)
+            ->get();
     }
 
 
-    public function store()
+    public function store(): void
     {
         $validated = $this->validate([
             'last_name' => 'required|string',
             'first_name' => 'required|string',
             'email' => 'required|email|unique:users,email',
-            'image' => 'image',
+            'image' => 'image|nullable',
             'phone' => 'required|string',
             'adress' => 'required|string',
             'zip' => 'required|integer|max_digits:5',
@@ -60,18 +61,17 @@ class extends Component {
             'visits' => 'required|array',
             'description' => 'nullable|string',
         ]);
-
-        $user = User::create([...$validated, 'password' => Hash::make('password'), 'role' => UserRole::PETSITTER, 'petsitter_status'=>PetsitterStatus::PENDING]);
-        $user->animalTypes()->sync($this->animals);
-        $user->visitTypes()->sync($this->visits);
         if ($this->image) {
 
-            $path = $this->image->store('petsitters', 'public');
-
-            $user->image = $path;
-
-            $user->save();
+            $validated['image'] = $this->image->store('petsitters', 'public');
         }
+        $user = User::create([...$validated,
+            'password' => Hash::make('password'),
+            'role' => UserRole::USER,
+            'is_petsitter'=>true,
+            'petsitter_status'=>PetsitterStatus::PENDING]);
+        $user->animalTypes()->sync($this->animals);
+        $user->visitTypes()->sync($this->visits);
         session()->flash('success', 'Demande envoyée avec succès');
 
         $this->reset([
@@ -155,7 +155,7 @@ class extends Component {
 
                     <div class="flex flex-col gap-3">
 
-                        @foreach($types as $type)
+                        @foreach($animalTypes as $type)
 
                             <label class="flex items-center gap-3 cursor-pointer">
 

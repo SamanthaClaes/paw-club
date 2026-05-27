@@ -2,43 +2,62 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Enum\UserRole;
+use App\Enums\PetsitterStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
-/**
- * @extends Factory<User>
- */
 class UserFactory extends Factory
 {
-    /**
-     * The current password being used by the factory.
-     */
-    protected static ?string $password;
-
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
-      /*  return [
-            'name' => fake()->name(),
+        return [
+
+            'last_name' => fake()->lastName(),
+
+            'first_name' => fake()->firstName(),
+
             'email' => fake()->unique()->safeEmail(),
-            'role'=> UserRole::class,
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
-        ];*/
+
+            'password' => Hash::make('password'),
+
+            'phone' => fake()->phoneNumber(),
+
+            'adress' => fake()->streetAddress(),
+
+            'zip' => fake()->numberBetween(1000, 6999),
+
+            'location' => fake()->city(),
+
+            'habitation_id' => fake()->numberBetween(1, 4),
+
+            'role' => null,
+
+            'is_petsitter' => false,
+
+        ];
     }
 
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
-    public function unverified(): static
+    public function petsitter(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
+        return $this->state(fn () => [
+
+            'role' => null,
+            'is_petsitter' => true,
+
+            'petsitter_status' => PetsitterStatus::ACCEPTED,
+
+            'description' => fake()->paragraph(),
+
+        ]);
+    }
+
+    public function admin(): static
+    {
+        return $this->state(fn () => [
+
+            'role' => UserRole::ADMIN,
+
         ]);
     }
 }

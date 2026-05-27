@@ -2,6 +2,7 @@
 
 use App\Enums\PetsitterRequestStatus;
 use App\Models\PetSittingRequest;
+use Carbon\Carbon;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -16,9 +17,9 @@ class extends Component {
             ->map(function ($request) {
 
                 return [
-                    'title' => $request->pet->name,
+                    'title' => $request->pet?->name ?? 'Animal',
                     'start' => $request->start_date,
-                    'end' => \Carbon\Carbon::parse($request->end_date)->addDay()->toDateString(),
+                    'end' => Carbon::parse($request->end_date)->addDay()->toDateString(),
                     'backgroundColor' => '#50C878',
                 ];
             })
