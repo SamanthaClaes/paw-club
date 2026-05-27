@@ -46,7 +46,7 @@ class extends Component {
 
 <div>
     <section class="h-[20vh] relative w-full lg:h-[50vh] overflow-hidden">
-        <img src="{{ asset('img/Hero_home.jpeg') }}" alt="pleins de chiens en balade"
+        <img src="{{ asset('img/Hero_home.webp') }}" alt="pleins de chiens en balade"
              class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/60"></div>
         <div class="absolute inset-0 flex flex-col justify-center items-center gap-4">
@@ -67,7 +67,7 @@ class extends Component {
             <div class="flex flex-col lg:flex-row items-center gap-6 lg:gap-10">
 
                 <img
-                    src="{{ asset('img/picture_card.jpg')}}"
+                    src="{{ asset('img/img_home.webp')}}"
                     alt="chien blanc avec une femme"
                     class="w-full max-w-sm sm:max-w-md lg:max-w-87.5 h-auto rounded-lg object-cover"
                 >
@@ -177,7 +177,7 @@ class extends Component {
                     <x-message_success/>
                     <button wire:click="showForm"
                             class="w-full bg-element mb-6 rounded-lg text-text uppercase font-bold p-5 hover:bg-hover-element cursor-pointer mt-6">
-
+                                {{ __('form.resent') }}
                     </button>
                 </div>
             @else

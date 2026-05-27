@@ -14,7 +14,7 @@ class extends Component {
 <div>
     <section class=" m-5 mx-5  lg:mt-20">
         <div class="flex flex-row-reverse gap-8 relative">
-            <img src="{{ asset('img/hero_image.jpeg') }}"
+            <img src="{{ asset('img/hero_daycare_image.webp') }}"
                  alt="personne assise qui jouent avec des chiens de petites tailles"
                  class=" hidden lg:w-1/2  lg:object-cover lg:rounded-lg lg:block">
             <div class="border-5 border-element rounded-lg py-10">
@@ -44,7 +44,7 @@ class extends Component {
     <section>
         <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6">{{ __('daycare.going') }} </h2>
         <div class="relative">
-            <img src="{{ asset('img/chihuahua.jpeg') }}"
+            <img src="{{ asset('img/chihuahua.webp') }}"
                  alt="chihuahua"
                  height="200"
                  width="200"
@@ -144,7 +144,7 @@ class extends Component {
                 "
                 >
                     <img
-                        src="{{ asset('img/food_dog.jpeg')}}"
+                        src="{{ asset('img/food_dog.webp')}}"
                         alt="chien mangeant dans une gamelle"
                         class="
                         w-32 h-56
@@ -183,7 +183,7 @@ class extends Component {
                 "
                 >
                     <img
-                        src="{{ asset('img/playground.jpeg')}}"
+                        src="{{ asset('img/playground.webp')}}"
                         alt="chiens jouant dans une plaine de jeux"
                         class="
                         w-36 h-64
@@ -217,7 +217,7 @@ class extends Component {
                 "
                 >
                     <img
-                        src="{{ asset('img/woman_dog.jpeg')}}"
+                        src="{{ asset('img/woman_dog.webp')}}"
                         alt="femme jouant avec un chien"
                         class="
                         w-40 h-72
@@ -256,7 +256,7 @@ lg:rounded-4xl
                 "
                 >
                     <img
-                        src="{{ asset('img/run_dogs.jpeg')}}"
+                        src="{{ asset('img/run_dogs.webp')}}"
                         alt="chiens courant dans l’herbe"
                         class="
                         w-36 h-64
@@ -294,7 +294,7 @@ lg:rounded-4xl
                 "
                 >
                     <img
-                        src="{{ asset('img/dogs.jpeg')}}"
+                        src="{{ asset('img/dogs.webp')}}"
                         alt="chiens couchés sur des coussins"
                         class="
                         w-32 h-56

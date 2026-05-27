@@ -21,7 +21,7 @@ class extends Component {
 <div>
     <section class=" m-5 mx-5 lg:mt-20">
         <div class="flex flex-row gap-8 relative">
-            <img src="{{ asset('img/petsitter.jpeg') }}"
+            <img src="{{ asset('img/petsitter.webp') }}"
                  alt="un homme et une femme en train de câliner un chien blanc"
                  class=" hidden lg:w-1/2  lg:object-cover lg:rounded-lg lg:block">
             <div class="border-5 border-element rounded-lg py-10">
@@ -40,7 +40,7 @@ class extends Component {
         lg:block
         absolute
         bottom-10
-        left-95
+        left-160
         w-30 sm:w-40 md:w-56 lg:w-64 xl:w-72
         translate-y-1/4
     "
