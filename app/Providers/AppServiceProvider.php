@@ -5,6 +5,7 @@ namespace App\Providers;
 use Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Contracts\LoginResponse;
 
@@ -29,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+            URL::defaults([
+            'locale' => app()->getLocale()
+        ]);
     }
 }
