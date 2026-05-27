@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\PetsitterMessages;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
@@ -85,7 +86,8 @@ new class extends Component {
 
                             @else
 
-                                <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold uppercase">
+                                <span
+                                    class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold uppercase">
                                 Non lu
                                 </span>
 
@@ -105,7 +107,9 @@ new class extends Component {
 
                             @if(!$message->is_read)
 
-                                <button class="flex-1 bg-btn-green hover:bg-green-700 text-white rounded-xl py-3 font-bold transition " wire:click="markAsRead({{ $message->id }})">
+                                <button
+                                    class="flex-1 bg-btn-green hover:bg-green-700 text-white rounded-xl py-3 font-bold transition "
+                                    wire:click="markAsRead({{ $message->id }})">
                                     Marquer comme lu
                                 </button>
 

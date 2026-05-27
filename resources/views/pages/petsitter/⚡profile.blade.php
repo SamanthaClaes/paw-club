@@ -123,6 +123,12 @@ class extends Component {
     {
         return PetSittingRequest::where('status', PetsitterRequestStatus::REFUSED)->count();
     }
+
+    #[Computed]
+    public function unreadMessageCount(): int
+    {
+        return PetsitterMessages::where('is_read', false)->count();
+    }
 };
 ?>
 <section class="max-w-7xl mx-auto px-6">
@@ -132,7 +138,7 @@ class extends Component {
         <div>
             <x-cards.dashboard_card
                 title="Messages non lus"
-                :number="2"
+                :number="$this->unreadMessageCount"
                 route="{{ route('petsitter.messages') }}"
                 class="bg-element"
             />

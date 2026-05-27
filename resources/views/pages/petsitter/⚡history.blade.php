@@ -3,13 +3,20 @@
 use App\Enums\PetsitterStatus;
 use App\Models\Pet;
 use App\Models\PetSittingRequest;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new class extends Component {
+new #[Title('Mon historique')]
+class extends Component {
     public $requests = [];
     public $note;
 
     public function mount(): void
+    {
+        $this->loadHistoryRequests();
+    }
+
+    public function loadHistoryRequests(): void
     {
         $this->requests = PetSittingRequest::with([
             'user',
@@ -26,12 +33,13 @@ new class extends Component {
     public function storeNote($requestId): void
     {
         $validated = $this->validate([
-            'note'=> 'string'
+            'note' => 'string'
         ]);
         $request = PetSittingRequest::findOrFail($requestId);
 
         $request->note = $validated['note'];
         $request->save();
+        $this->loadHistoryRequests();
         $this->reset('note');
         $this->dispatch('close-note-modal');
 
@@ -46,14 +54,16 @@ new class extends Component {
     <section class="mt-20">
         <h1 class="text-text lg:text-2xl text-lg uppercase font-bold mb-10"> Mon historique</h1>
         <div class="space-y-10">
-    @foreach($requests as $request)
-      <x-cards.petsitter_history
-          :request="$request"
-      />
-    @endforeach
+            @foreach($requests as $request)
+                <x-cards.petsitter_history
+                    :request="$request"
+                />
+            @endforeach
         </div>
-        <x-modale.petsitter_notes_modal
-            :request="$request"
-        />
+        @foreach($requests as $request)
+            <x-modale.petsitter_notes_modal
+                :request="$request"
+            />
+        @endforeach
     </section>
 </div>
