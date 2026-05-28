@@ -12,98 +12,198 @@ class extends Component {
 ?>
 
 <div>
-    <section class=" m-5 mx-5  lg:mt-20">
-        <div class="flex flex-row-reverse gap-8 relative">
-            <img src="{{ asset('img/hero_daycare_image.webp') }}"
-                 alt="personne assise qui jouent avec des chiens de petites tailles"
-                 class=" hidden lg:w-1/2  lg:object-cover lg:rounded-lg lg:block">
-            <div class="border-5 border-element rounded-lg py-10">
-                <h1 class=" text-text text-2xl text-center font-bold mb-4 lg:text-3xl">{{ $title }}</h1>
-                <span class="block text-text text-sm text-center mb-5 lg:m-10">
-                        {{ __('daycare.subtitle') }}
-                </span>
-                <p class="text-center text-sm text-text mb-5 line-clamp-2 lg:mb-10 lg:line-clamp-none max-w-2xl px-6">
+    <section class="mx-5 lg:mt-20">
+
+        <div class="relative flex flex-col lg:flex-row-reverse gap-8 items-stretch">
+
+            <img
+                src="{{ asset('img/hero_daycare_image.webp') }}"
+                alt="personne assise qui jouent avec des chiens de petites tailles"
+                class="hidden lg:block lg:w-1/2 object-cover rounded-3xl shadow-lg"
+            >
+
+            <div
+                class="relative flex flex-col justify-center
+            border-4 border-element
+            rounded-3xl
+            px-6 py-10 lg:px-12 lg:py-14
+            overflow-hidden  shadow-lg lg:w-1/2">
+
+                <div class="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none"></div>
+
+                <h1
+                    class="relative z-10 text-text text-2xl lg:text-4xl text-center font-extrabold leading-tight">
+                    {{ $title }}
+                </h1>
+
+                <span
+                    class="relative z-10 block text-text text-sm lg:text-base text-center mt-6 max-w-2xl mx-auto leading-7">
+                {{ __('daycare.subtitle') }}
+            </span>
+
+                <p
+                    class="relative z-10 text-center text-sm lg:text-base text-text mt-8 mb-10 leading-7 max-w-2xl mx-auto">
                     {{ __('daycare.about') }}
                 </p>
-                <img src=" {{ asset('svg/illu_2.svg') }}" alt="petite fille qui carresse un chat"
-                     class="
-            absolute
-            bottom-0 right-72
-            lg:right-415
-            w-30 sm:w-40 md:w-56 lg:w-64 xl:w-72
-            translate-x-1/4 translate-y-1/4">
-                <div class="flex justify-center">
-                    <a href="{{ route('daycare.request') }}"
-                       class="bg-card-green text-cta hover:bg-hover p-3 lg:p-6 rounded-lg font-bold lg:w-1/2 lg:text-center lg:text-2xl uppercase">
+
+                <img
+                    src="{{ asset('svg/illu_2.svg') }}"
+                    alt="petite fille qui carresse un chat"
+                    class="absolute
+                    hidden
+                    lg:block
+                bottom-0 left-0
+                w-40 xl:w-56
+                translate-x-1/6 translate-y-1/5
+                opacity-95 pointer-events-none"
+                >
+
+                <div class="relative z-10 flex justify-center">
+
+                    <a
+                        href="{{ route('daycare.request') }}"
+                        class="bg-card-green text-cta hover:bg-hover
+                        hover:text-white
+                    px-8 py-4 lg:px-12
+                    rounded-2xl
+                    font-extrabold uppercase tracking-wide
+                    text-sm lg:text-xl
+                    shadow-md hover:shadow-lg hover:-translate-y-1
+                    transition-all duration-300"
+                    >
                         {{ __('daycare.schedule') }}
-                       </a>
+                    </a>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
-    <section>
-        <h2 class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6">{{ __('daycare.going') }} </h2>
-        <div class="relative">
-            <img src="{{ asset('img/chihuahua.webp') }}"
-                 alt="chihuahua"
-                 height="200"
-                 width="200"
-                 class="hidden lg:block object-cover
-     rounded-full
-     absolute top-35 left-1/2 -translate-x-1/2
-     border-15 border-white z-20">
-        </div>
-        <div class="grid lg:grid-cols-2 gap-8 items-stretch auto-rows-fr">
+    <section class="mt-10 lg:mt-0">
 
-            <div
-                class="group flex flex-col justify-center items-center bg-card-pink rounded-lg h-full transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
-                <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
-                    <x-svg.icons.icons1/>
-                </div>
-                <div>
-                    <p class="text-center text-sm/8 mb-5 lg:mb-20 pl-5 pr-5 pt-2 font-medium text-text-pink lg:text-xl/10 ">
+        <h2 class="uppercase text-text text-xl lg:text-4xl text-center font-extrabold lg:mt-20 mb-14">
+            {{ __('daycare.going') }}
+        </h2>
+
+        <div class="relative max-w-7xl mx-auto">
+
+            <img
+                src="{{ asset('img/chihuahua.webp') }}"
+                alt="chihuahua"
+                height="200"
+                width="200"
+                class="hidden lg:block object-cover
+            rounded-full
+            absolute top-1/2 left-1/2
+            -translate-x-1/2 -translate-y-1/2
+            border-12 border-white
+            shadow-2xl z-20"
+            >
+
+            <div class="grid lg:grid-cols-2 gap-4 items-stretch auto-rows-fr">
+
+                <div
+                    class="group flex flex-col justify-center items-center
+                bg-card-pink rounded-3xl
+                min-h-72 lg:min-h-80
+                px-6
+                shadow-lg border border-white/20
+                transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+
+                    <div class="mt-6 lg:mb-5 transition-transform duration-300 group-hover:scale-110">
+                        <x-svg.icons.icons1/>
+                    </div>
+
+                    <div>
+
+                        <p class="text-center text-sm leading-8 lg:text-xl lg:leading-10
+                    pb-8 lg:pb-12
+                    px-4 font-medium text-text-pink">
                             {{ __('daycare.green') }}
-                    </p>
-                </div>
-            </div>
+                        </p>
 
-            <div
-                class="group flex flex-col justify-center items-center bg-card-orange rounded-lg h-full transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
-                <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
-                    <x-svg.icons.bell/>
+                    </div>
+
                 </div>
-                <div>
-                    <p class="text-center text-sm/8 mb-5 lg:mb-20 pl-5 pr-5 pt-2 font-medium text-text-orange lg:text-xl/10 ">
+
+                <div
+                    class="group flex flex-col justify-center items-center
+                bg-card-orange rounded-3xl
+                min-h-72 lg:min-h-80
+                px-6
+                shadow-lg border border-white/20
+                transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+
+                    <div class="mt-6 lg:mb-5 transition-transform duration-300 group-hover:scale-110">
+                        <x-svg.icons.bell/>
+                    </div>
+
+                    <div>
+
+                        <p class="text-center text-sm leading-8 lg:text-xl lg:leading-10
+                    pb-8 lg:pb-12
+                    px-4 font-medium text-text-orange">
                             {{ __('daycare.food') }}
-                    </p>
-                </div>
-            </div>
+                        </p>
 
-            <div
-                class="group flex flex-col justify-center items-center bg-card-blue rounded-lg h-full transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
-                <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
-                    <x-svg.icons.health/>
+                    </div>
+
                 </div>
-                <div>
-                    <p class="text-center text-sm/8 mb-5 lg:mb-20 pl-5 pr-5 pt-2 font-medium text-text lg:text-xl/10 ">
+
+                <div
+                    class="group flex flex-col justify-center items-center
+                bg-card-blue rounded-3xl
+                min-h-72 lg:min-h-80
+                px-6
+                shadow-lg border border-white/20
+                transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+
+                    <div class="mt-6 lg:mb-5 transition-transform duration-300 group-hover:scale-110">
+                        <x-svg.icons.health/>
+                    </div>
+
+                    <div>
+
+                        <p class="text-center text-sm leading-8 lg:text-xl lg:leading-10
+                    pb-8 lg:pb-12
+                    px-4 font-medium text-text">
                             {{ __('daycare.dogs') }}
-                    </p>
-                </div>
-            </div>
+                        </p>
 
-            <div
-                class="group flex flex-col justify-center items-center bg-card-green rounded-lg h-full transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
-                <div class="mt-5 lg:mb-3 transition-transform duration-300 group-hover:scale-110">
-                    <x-svg.icons.home/>
+                    </div>
+
                 </div>
-                <div>
-                    <p class="text-center text-sm/8 mb-5 lg:mb-20 pl-5 pr-5 pt-2 font-medium text-cta lg:text-xl/10 ">
-                        {{ __('daycare.health') }}
-                    </p>
+
+                <div
+                    class="group flex flex-col justify-center items-center
+                bg-card-green rounded-3xl
+                min-h-72 lg:min-h-80
+                px-6
+                shadow-lg border border-white/20
+                transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+
+                    <div class="mt-6 lg:mb-5 transition-transform duration-300 group-hover:scale-110">
+                        <x-svg.icons.home/>
+                    </div>
+
+                    <div>
+
+                        <p class="text-center text-sm leading-8 lg:text-xl lg:leading-10
+                    pb-8 lg:pb-12
+                    px-4 font-medium text-cta">
+                            {{ __('daycare.health') }}
+                        </p>
+
+                    </div>
+
                 </div>
+
             </div>
 
         </div>
+
     </section>
     <section>
 

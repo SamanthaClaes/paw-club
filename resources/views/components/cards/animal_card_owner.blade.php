@@ -44,8 +44,8 @@
                         {{ $breed }}
                     </p>
                     <p>
-                        <span class="font-extrabold">Race :</span>
-                        {{ $gender }}
+                        <span class="font-extrabold">Genre :</span>
+                        {{ $gender ? 'Mâle' : 'Femelle' }}
                     </p>
 
                     <p>
