@@ -2,23 +2,36 @@
 
 use App\Enums\PetsitterStatus;
 use App\Models\User;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 new #[Title('Petsitter')]
 class extends Component {
-    public $petsitters;
+    use WithPagination;
 
-    public function mount(): void
+    public $query = '';
+
+    public function search()
     {
-        $this->petsitters = User::with([
+        $this->resetPage();
+    }
+
+    #[Computed]
+    public function petsitters(): array|LengthAwarePaginator
+    {
+        return $this->petsitters = User::with([
             'animalTypes',
             'habitation',
         ])
             ->where('is_petsitter', true)
             ->where('petsitter_status', PetsitterStatus::ACCEPTED)
-            ->get();
+            ->paginate(4);
     }
+
+
 };
 ?>
 
@@ -100,131 +113,55 @@ class extends Component {
 
         <div class="grid lg:grid-cols-2 gap-8 items-stretch auto-rows-fr">
 
-            <div
-                class="group flex items-center gap-5
-            bg-card-orange rounded-3xl
-            p-6 lg:p-8
-            h-full relative overflow-hidden
-            lg:ml-25 min-h-44 lg:min-h-56
-            bg-[url(/public/svg/paws_icons.svg)] bg-repeat bg-center
-            shadow-lg border border-white/20
-            transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+            <div class="lg:ml-25">
 
-                <div class="absolute inset-0 bg-linear-to-br from-white/10 to-transparent pointer-events-none"></div>
-
-                <span
-                    class="relative z-10 text-7xl lg:text-8xl font-black text-text-orange leading-none shrink-0
-                [text-shadow:0_4px_10px_rgba(0,0,0,0.20)] group-hover:scale-110 transition-transform duration-300">
-                1
-            </span>
-
-                <div class="relative z-10">
-
-                    <p class="text-text-orange font-extrabold text-lg lg:text-2xl mb-2">
-                        {{ __('petsitter.choosePetsitter') }}
-                    </p>
-
-                    <p class="text-text-orange text-sm lg:text-base font-medium leading-7">
-                        {{ __('petsitter.cardText') }}
-                    </p>
-
-                </div>
+                <x-cards.steps_cards
+                    number="1"
+                    :title="__('petsitter.choosePetsitter')"
+                    :description="__('petsitter.cardText')"
+                    bgColor="bg-card-orange"
+                    textColor="text-text-orange"
+                    backgroundPattern="bg-[url(/public/svg/paws_icons.svg)] bg-repeat bg-center"
+                />
 
             </div>
 
-            <div
-                class="group flex items-center gap-5
-            bg-card-pink rounded-3xl
-            p-6 lg:p-8
-            h-full relative overflow-hidden
-            lg:mr-25 min-h-44 lg:min-h-56
-            bg-[url(/public/svg/paws_icons_rose.svg)] bg-repeat bg-center
-            shadow-lg border border-white/20
-            transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+            <div class="lg:mr-25">
 
-                <div class="absolute inset-0 bg-linear-to-br from-white/10 to-transparent pointer-events-none"></div>
-
-                <span
-                    class="relative z-10 text-7xl lg:text-8xl font-black text-text-pink leading-none shrink-0
-                [text-shadow:0_4px_10px_rgba(0,0,0,0.20)] group-hover:scale-110 transition-transform duration-300">
-                2
-            </span>
-
-                <div class="relative z-10">
-
-                    <p class="text-text-pink font-extrabold text-lg lg:text-2xl mb-2">
-                        {{ __('petsitter.meetPetsitter') }}
-                    </p>
-
-                    <p class="text-text-pink text-sm lg:text-base font-medium leading-7">
-                        {{ __('petsitter.cardTextTwo') }}
-                    </p>
-
-                </div>
+                <x-cards.steps_cards
+                    number="2"
+                    :title="__('petsitter.meetPetsitter')"
+                    :description="__('petsitter.cardTextTwo')"
+                    bgColor="bg-card-pink"
+                    textColor="text-text-pink"
+                    backgroundPattern="bg-[url(/public/svg/paws_icons_rose.svg)] bg-repeat bg-center"
+                />
 
             </div>
 
-            <div
-                class="group flex items-center gap-5
-            bg-element rounded-3xl
-            p-6 lg:p-8
-            h-full relative overflow-hidden
-            lg:ml-25 min-h-44 lg:min-h-56
-            bg-[url(/public/svg/paws_icon_blue.svg)] bg-repeat bg-center
-            shadow-lg border border-white/20
-            transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+            <div class="lg:ml-25">
 
-                <div class="absolute inset-0 bg-linear-to-br from-white/10 to-transparent pointer-events-none"></div>
-
-                <span
-                    class="relative z-10 text-7xl lg:text-8xl font-black text-text leading-none shrink-0
-                [text-shadow:0_4px_10px_rgba(0,0,0,0.20)] group-hover:scale-110 transition-transform duration-300">
-                3
-            </span>
-
-                <div class="relative z-10">
-
-                    <p class="text-text font-extrabold text-lg lg:text-2xl mb-2">
-                        {{ __('petsitter.petsitting') }}
-                    </p>
-
-                    <p class="text-text text-sm lg:text-base font-medium leading-7">
-                        {{ __('petsitter.cardTextThree') }}
-                    </p>
-
-                </div>
+                <x-cards.steps_cards
+                    number="3"
+                    :title="__('petsitter.petsitting')"
+                    :description="__('petsitter.cardTextThree')"
+                    bgColor="bg-element"
+                    textColor="text-text"
+                    backgroundPattern="bg-[url(/public/svg/paws_icon_blue.svg)] bg-repeat bg-center"
+                />
 
             </div>
 
-            <div
-                class="group flex items-center gap-5
-            bg-card-green rounded-3xl
-            p-6 lg:p-8
-            h-full relative overflow-hidden
-            lg:mr-25 min-h-44 lg:min-h-56
-            bg-[url(/public/svg/paws_icon_green.svg)] bg-repeat bg-center
-            shadow-lg border border-white/20
-            transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+            <div class="lg:mr-25">
 
-                <div class="absolute inset-0 bg-linear-to-br from-white/10 to-transparent pointer-events-none"></div>
-
-                <span
-                    class="relative z-10 text-7xl lg:text-8xl font-black text-cta leading-none shrink-0
-                [text-shadow:0_4px_10px_rgba(0,0,0,0.20)] group-hover:scale-110 transition-transform duration-300">
-                4
-            </span>
-
-                <div class="relative z-10">
-
-                    <p class="text-cta font-extrabold text-lg lg:text-2xl mb-2">
-                        {{ __('petsitter.paid') }}
-                    </p>
-
-                    <p class="text-cta text-sm lg:text-base font-medium leading-7">
-                        {{ __('petsitter.cardTextFour') }}
-                    </p>
-
-                </div>
+                <x-cards.steps_cards
+                    number="4"
+                    :title="__('petsitter.paid')"
+                    :description="__('petsitter.cardTextFour')"
+                    bgColor="bg-card-green"
+                    textColor="text-cta"
+                    backgroundPattern="bg-[url(/public/svg/paws_icon_green.svg)] bg-repeat bg-center"
+                />
 
             </div>
 
@@ -233,8 +170,10 @@ class extends Component {
     </section>
     <section>
         <h2 id="petsitters_list"
-            class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-20 mb-6 mt-6"> {{ __('petsitter.discoverPetsitter') }}</h2>
-        @foreach($petsitters as $petsitter)
+            class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-30 mb-6 mt-6"> {{ __('petsitter.discoverPetsitter') }}
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+        @foreach($this->petsitters as $petsitter)
             <x-cards.petsitter_card
                 :name="$petsitter->first_name"
                 :image="$petsitter->image"
@@ -244,6 +183,10 @@ class extends Component {
                 :contact-url=" route('petsitter.contact', ['user' => $petsitter->id])"
             />
         @endforeach
+        </div>
+        <div class="mt-12 flex justify-center">
+        {{ $this->petsitters->links() }}
+        </div>
     </section>
     <section
         class="relative overflow-hidden flex flex-col items-center text-center

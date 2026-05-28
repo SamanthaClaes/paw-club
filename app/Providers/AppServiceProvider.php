@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
@@ -16,8 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->instance(LoginResponse::class, new class implements LoginResponse
-        {
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse {
             public function toResponse($request): Redirector|RedirectResponse
             {
                 return redirect(Auth::user()->redirectRoute());
@@ -30,8 +30,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-            URL::defaults([
+        URL::defaults([
             'locale' => app()->getLocale()
         ]);
+        Paginator::useTailwind();
     }
 }
