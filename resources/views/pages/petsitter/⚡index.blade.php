@@ -183,17 +183,26 @@ class extends Component {
 
     </section>
     <section>
+
+
         <h2 id="petsitters_list"
             class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-30 mb-6 mt-6"> {{ __('petsitter.discoverPetsitter') }}
         </h2>
-        <form role="search" class="flex justify-center">
+
+        <form role="search" class="flex justify-center relative">
+
+            <div class="absolute left-[27%] top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+
+                <x-svg.icons.search/>
+
+            </div>
 
             <input
-                type="search"
-                wire:model.live="search"
-                placeholder="Cherchez un petsitter"
-                class="border-2 border-element rounded-3xl w-1/2 m-10 p-5"
-            >
+                    type="search"
+                    wire:model.live="search"
+                    placeholder="Cherchez un petsitter"
+                    class="border-2 border-element rounded-3xl w-1/2 m-10 py-5 pr-5 pl-16"
+                >
 
         </form>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch m-10">
