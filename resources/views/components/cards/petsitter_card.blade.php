@@ -2,6 +2,7 @@
     'name',
     'image',
     'description',
+    'location',
     'tags' => [],
     'chooseUrl' => '#',
     'contactUrl' => '#',
@@ -49,11 +50,14 @@
             <div class="flex-1 flex flex-col gap-5 w-full">
 
                 <div>
-
+                    <div class="flex items-center justify-between">
                     <h2 class="text-2xl lg:text-3xl font-extrabold text-text mb-3 leading-tight">
                         {{ $name }}
                     </h2>
-
+                        <p class="font-extrabold text-text mb-3 leading-tight">
+                            {{ $location }}
+                        </p>
+                    </div>
                     <p class="text-text text-sm lg:text-base leading-7 max-w-3xl">
                         {{ $description }}
                     </p>

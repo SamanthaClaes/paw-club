@@ -2,6 +2,7 @@
 
 use App\Enums\PetsitterStatus;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
@@ -12,22 +13,34 @@ new #[Title('Petsitter')]
 class extends Component {
     use WithPagination;
 
-    public $query = '';
+    public $search = '';
 
-    public function search()
+    public function updatedSearch(): void
     {
         $this->resetPage();
+    }
+
+
+    public function petsitterQuery(): Builder
+    {
+        return User::with([
+            'animalTypes',
+            'habitation',
+        ])
+            ->where('is_petsitter', true)
+            ->where('petsitter_status', PetsitterStatus::ACCEPTED);
     }
 
     #[Computed]
     public function petsitters(): array|LengthAwarePaginator
     {
-        return $this->petsitters = User::with([
-            'animalTypes',
-            'habitation',
-        ])
-            ->where('is_petsitter', true)
-            ->where('petsitter_status', PetsitterStatus::ACCEPTED)
+        return $this->petsitterQuery()
+            ->when($this->search, function ($query) {
+                $query->where(function ($q) {
+                    $q->where('first_name', 'like', "%{$this->search}%")
+                        ->orWhere('location', 'like', "%{$this->search}%");
+                });
+            })
             ->paginate(4);
     }
 
@@ -111,6 +124,7 @@ class extends Component {
             {{ __('petsitter.fonction') }}
         </h2>
 
+
         <div class="grid lg:grid-cols-2 gap-8 items-stretch auto-rows-fr">
 
             <div class="lg:ml-25">
@@ -172,20 +186,31 @@ class extends Component {
         <h2 id="petsitters_list"
             class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-30 mb-6 mt-6"> {{ __('petsitter.discoverPetsitter') }}
         </h2>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-        @foreach($this->petsitters as $petsitter)
-            <x-cards.petsitter_card
-                :name="$petsitter->first_name"
-                :image="$petsitter->image"
-                :description="$petsitter->description"
-                :tags="[...$petsitter->animalTypes->pluck('type')->toArray(),$petsitter->habitation?->name]"
-                :choose-url=" route('petsitter.booking.create', ['user' => $petsitter->id])"
-                :contact-url=" route('petsitter.contact', ['user' => $petsitter->id])"
-            />
-        @endforeach
+        <form role="search" class="flex justify-center">
+
+            <input
+                type="search"
+                wire:model.live="search"
+                placeholder="Cherchez un petsitter"
+                class="border-2 border-element rounded-3xl w-1/2 m-10 p-5"
+            >
+
+        </form>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch m-10">
+            @foreach($this->petsitters as $petsitter)
+                <x-cards.petsitter_card
+                    :name="$petsitter->first_name"
+                    :location="$petsitter->location"
+                    :image="$petsitter->image"
+                    :description="$petsitter->description"
+                    :tags="[...$petsitter->animalTypes->pluck('type')->toArray(),$petsitter->habitation?->name]"
+                    :choose-url=" route('petsitter.booking.create', ['user' => $petsitter->id])"
+                    :contact-url=" route('petsitter.contact', ['user' => $petsitter->id])"
+                />
+            @endforeach
         </div>
         <div class="mt-12 flex justify-center">
-        {{ $this->petsitters->links() }}
+            {{ $this->petsitters->links() }}
         </div>
     </section>
     <section
