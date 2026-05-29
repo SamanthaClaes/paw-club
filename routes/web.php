@@ -56,6 +56,8 @@ Route::prefix('{locale}')->group(function () {
 
         Route::livewire('/owner/profile', 'pages::owner.profile')->name('owner.profile');
 
+        Route::livewire('/owner/history', 'pages::owner.history')->name('owner.history');
+
         Route::livewire('/daycare/request', 'pages::daycare.request')->name('daycare.request');
 
         Route::livewire('/petsitter/contact/{user}', 'pages::petsitter.booking.contact-form')

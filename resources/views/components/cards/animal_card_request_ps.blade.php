@@ -7,7 +7,24 @@
    'request'
 ])
 
-<section class="bg-card border border-stroke rounded-3xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 h-full">
+<section class="relative bg-card border border-stroke rounded-3xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 h-full">
+    <div class="absolute -top-3 -right-4">
+
+        @if($request->previous_stays_count === 0)
+
+            <span class="bg-blue-100 text-blue-800 px-3 py-3 rounded-full text-xs font-bold">
+                🐾 Première garde
+            </span>
+
+        @else
+
+            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-bold">
+                🐾 {{ $request->previous_stays_count }} garde(s)
+            </span>
+
+        @endif
+
+    </div>
 
     <div class="flex flex-col xl:flex-row gap-8 mb-7">
 

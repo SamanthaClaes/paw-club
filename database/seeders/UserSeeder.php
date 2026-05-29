@@ -15,31 +15,34 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'last_name' => 'Juju',
-            'first_name' => 'Julie',
-            'email' => 'julie@mail.be',
-            'password' => 'julieTest',
-            'phone' => '0499 90 90 91',
-            'adress' => 'route de Napoleon 15',
-            'zip' => 4550,
-            'location' => 'nandrin',
+            'last_name' => 'Claes',
+            'first_name' => 'Samantha',
+            'email' => 'samantha@mail.be',
+            'password' => 'password',
+            'phone' => '0496789303',
+            'adress' => 'Rue des Cahottes 66',
+            'zip' => 4400,
+            'location' => 'flémalle',
             'habitation_id' => 1,
             'role' => null,
             'is_petsitter'=>false,
+            'image' => 'owner/me.jpeg',
+
         ]);
 
         User::create([
-            'last_name' => 'clem',
-            'first_name' => 'Clement',
-            'email' => 'clem@mail.be',
-            'password' => 'clemTest',
-            'phone' => '0499 90 90 90',
-            'adress' => 'route de Napoleon 150',
-            'zip' => 4000,
-            'location' => 'liege',
+            'last_name' => 'Royen',
+            'first_name' => 'Jean',
+            'email' => 'jean@mail.be',
+            'password' => 'password',
+            'phone' => '0471420854',
+            'adress' => 'Rue des Cahottes 66',
+            'zip' => 4400,
+            'location' => 'flémalle',
             'habitation_id' => 2,
             'role' => null,
-            'is_petsitter'=>true
+            'is_petsitter'=>true,
+            'image' => 'owner/ps_1.jpeg'
         ]);
 
         User::create([
