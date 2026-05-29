@@ -2,12 +2,13 @@
 
 return [
 
-    'unreadMessages' => '{0} message non lu|{1} 1 message non lu|[2,*] :count messages non lus',
+    'unreadMessages' => 'Message non lu|Messages non lus',
 
-    'pendingRequest' => '{0}  demande en attente|{1} 1 demande en attente|[2,*] :count demandes en attente',
+    'pendingRequest' => 'Demande en attente|Demandes en attente',
 
-    'acceptedRequest' => '{0}  demande acceptée|{1} 1 demande acceptée|[2,*] :count demandes acceptées',
+    'acceptedRequest' => 'Demande acceptée|Demandes acceptées',
 
-    'refusedRequest' => '{0}  demande refusée|{1} 1 demande refusée|[2,*] :count demandes refusées',
+    'refusedRequest' => 'Demande refusée|Demandes refusées',
+
 
 ];

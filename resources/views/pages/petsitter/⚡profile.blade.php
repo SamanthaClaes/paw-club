@@ -129,7 +129,7 @@ class extends Component {
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-16">
         <div>
             <x-cards.dashboard_card
-                title="{{ trans_choice('profileCard.unreadMessages', $this->unreadMessageCount, ['count'=>$this->unreadMessageCount]) }}"
+                title="{{ trans_choice('profileCard.unreadMessages', $this->unreadMessageCount) }}"
                 :number="$this->unreadMessageCount"
                 route="{{ route('petsitter.messages') }}"
                 class="bg-element"
@@ -137,7 +137,7 @@ class extends Component {
         </div>
         <div>
             <x-cards.dashboard_card
-                title=" {{ trans_choice('profileCard.pendingRequest', $this->countRequestPending, ['count'=>$this->countRequestPending]) }}"
+                title=" {{ trans_choice('profileCard.pendingRequest', $this->countRequestPending) }}"
                 :number="$this->countRequestPending"
                 route="{{ route('petsitter.request') }}#pending"
                 class="bg-yellow-100"
@@ -145,7 +145,7 @@ class extends Component {
         </div>
         <div>
             <x-cards.dashboard_card
-                title="{{ trans_choice('profileCard.acceptedRequest', $this->countRequestAccepted, ['count'=>$this->countRequestAccepted]) }}"
+                title="{{ trans_choice('profileCard.acceptedRequest', $this->countRequestAccepted) }}"
                 :number="$this->countRequestAccepted"
                 route="{{ route('petsitter.request') }}#accepted"
                 class="bg-green-100"
@@ -153,7 +153,7 @@ class extends Component {
         </div>
         <div>
             <x-cards.dashboard_card
-                title="{{ trans_choice('profileCard.refusedRequest', $this->countRequestRefused, ['count'=>$this->countRequestRefused]) }}"
+                title="{{ trans_choice('profileCard.refusedRequest', $this->countRequestRefused) }}"
                 :number="$this->countRequestRefused"
                 route="{{ route('petsitter.request') }}#refused"
                 class="bg-red-100"

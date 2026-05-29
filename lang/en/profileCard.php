@@ -2,11 +2,12 @@
 
 return [
 
-    'unreadMessages' => '{0} No unread messages|{1} 1 unread message|[2,*] :count unread messages',
+    'unreadMessages' => 'Unread message|Unread messages',
 
-    'pendingRequest' => '{0} No pending requests|{1} 1 pending request|[2,*] :count pending requests',
+    'pendingRequest' => 'Pending request|Pending requests',
 
-    'acceptedRequest' => '{0} No accepted requests|{1} 1 accepted request|[2,*] :count accepted requests',
+    'acceptedRequest' => 'Accepted request|Accepted requests',
 
-    'refusedRequest' => '{0} No refused requests|{1} 1 refused request|[2,*] :count refused requests',
+    'refusedRequest' => 'Refused request|Refused requests',
+
 ];
