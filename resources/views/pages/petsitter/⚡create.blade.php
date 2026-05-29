@@ -67,7 +67,7 @@ class extends Component {
         }
         $user = User::create([...$validated,
             'password' => Hash::make('password'),
-            'role' => UserRole::USER,
+            'role' => null,
             'is_petsitter'=>true,
             'petsitter_status'=>PetsitterStatus::PENDING]);
         $user->animalTypes()->sync($this->animals);
@@ -217,8 +217,10 @@ class extends Component {
                 </x-forms.button>
             </div>
         </form>
+        <div class="w-1/2">
         @if( session('success'))
         <x-message_success/>
         @endif
+        </div>
     </section>
 </div>

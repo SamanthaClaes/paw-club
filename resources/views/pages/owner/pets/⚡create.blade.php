@@ -122,8 +122,11 @@ class extends Component {
         <x-modale.pets_modale
             :animal-types="$animalTypes"
             :animal-types-id="$animal_type_id"
-
-        />
+        >
+        @if($pet_image)
+            <img class="h-40 w-40 object-cover rounded-2xl" src="{{ $pet_image->temporaryUrl() }}" alt="Prévisualisation">
+        @endif
+        </x-modale.pets_modale>
         @foreach($pets as $pet)
             <x-cards.animal_card_owner
                 :pet-id="$pet->id"

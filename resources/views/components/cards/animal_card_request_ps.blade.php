@@ -139,7 +139,7 @@
         </p>
 
         <p class="text-base text-text leading-7">
-            {{ $request->pet->description }}
+            {{ $request->description }}
         </p>
 
     </div>

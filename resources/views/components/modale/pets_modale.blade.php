@@ -3,6 +3,7 @@
     'animalTypesId',
     'genders',
 
+
 ])
 
 <dialog
@@ -58,7 +59,7 @@
 
 
         <form wire:submit.prevent="storePet" class="space-y-4" enctype="multipart/form-data">
-
+            {{ $slot }}
             <x-forms.input-label
                 wire:model="pet_image"
                 label="Photo de votre animal"

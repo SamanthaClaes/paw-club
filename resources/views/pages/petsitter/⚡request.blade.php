@@ -1,6 +1,9 @@
 <?php
 
 use App\Enums\PetsitterRequestStatus;
+use App\Mail\PetsitterRequestMail;
+use App\Mail\PetsittingAcceptedRequestMail;
+use App\Mail\PetsittingRefusedRequestMail;
 use App\Models\PetSittingRequest;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -54,23 +57,54 @@ class extends Component {
 
     public function acceptRequest($requestId): void
     {
-        $request = PetSittingRequest::where('petsitter_id', Auth::id())
+        $request = PetSittingRequest::with([
+            'user',
+            'petsitter',
+            'pet',
+        ])
+            ->where('petsitter_id', Auth::id())
             ->findOrFail($requestId);
 
+        $owner = $request->user;
+        $petsitter = $request->petsitter;
+        $pet = $request->pet;
         $request->status = PetsitterRequestStatus::ACCEPTED;
-
         $request->save();
-
+        Mail::to($owner->email)->queue(new PetsittingAcceptedRequestMail($petsitter, $owner, $pet, $request));
         $this->loadPendingRequests();
 
     }
 
-    public function refusedRequest($requestId): void
+    public function pendingRequest($requestId): void
     {
         $request = PetSittingRequest::where('petsitter_id', Auth::id())
+            ->with([
+                'user',
+                'petsitter',
+                'pet',
+            ])
             ->findOrFail($requestId);
+        $request->status = PetsitterRequestStatus::PENDING;
+        $request->save();
+    }
+
+    public function refusedRequest($requestId): void
+    {
+        $request = PetSittingRequest::with([
+            'user',
+            'petsitter',
+            'pet',
+        ])
+            ->where('petsitter_id', Auth::id())
+            ->findOrFail($requestId);
+
+        $owner = $request->user;
+        $petsitter = $request->petsitter;
+        $pet = $request->pet;
+
         $request->status = PetsitterRequestStatus::REFUSED;
         $request->save();
+        Mail::to($owner->email)->queue(new PetsittingRefusedRequestMail($owner, $petsitter, $pet, $request));
         $this->loadPendingRequests();
     }
 };

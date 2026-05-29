@@ -54,7 +54,7 @@ class CreateNewUser implements CreatesNewUsers
             'zip' => $input['zip'],
             'location' => $input['location'],
             'password' => Hash::make($input['password']),
-            'role' => UserRole::OWNER->value,
+            'role' => null,
         ]));
     }
 }
