@@ -19,12 +19,11 @@ class extends Component {
     {
         $this->requests = PetSittingRequest::with([
             'user',
+            'petsitter',
             'pet',
             'pet.breed',
             'pet.animalType',
         ])
-            ->where('status', PetsitterStatus::ACCEPTED)
-            ->where('end_date', '<', now())
             ->where('user_id', auth()->id())
             ->get();
     }
@@ -33,15 +32,35 @@ class extends Component {
 ?>
 
 <div>
-    <section>
+    <div class="max-w-7xl mx-auto px-6">
+
         <x-header.OwnerNav/>
+
         <section class="mt-20">
-            <h1 class="text-text lg:text-2xl text-lg uppercase font-bold mb-10"> Mon historique</h1>
+
+            <h1 class="text-text lg:text-2xl text-lg uppercase font-bold mb-10">
+                Mon historique
+            </h1>
+
             <div class="space-y-10">
-                @foreach($requests as $request)
-                    <x-cards.card_owner_history/>
-                @endforeach
+
+                @forelse($requests as $request)
+
+                    <x-cards.card_owner_history
+                        :request="$request"
+                    />
+
+                @empty
+
+                    <div class="bg-card border-2 border-element rounded-2xl p-8">
+                        Aucune garde terminée pour le moment.
+                    </div>
+
+                @endforelse
+
             </div>
+
         </section>
-    </section>
+
+    </div>
 </div>

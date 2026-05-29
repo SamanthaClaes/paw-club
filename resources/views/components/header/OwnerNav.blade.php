@@ -1,4 +1,4 @@
-<nav class="mt-20 mb-30 max-w-7xl mx-auto">
+<nav class="mt-20 mb-30">
     <h1 class="sr-only">
         {{ __('petsitterNav.title') }}
     </h1>
