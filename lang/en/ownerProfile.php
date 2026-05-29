@@ -18,4 +18,8 @@ return [
 
     'profileImageAlt' => 'Profile picture of',
 
+    'title'=> 'My pets',
+
+    'add'=>'+ Add a pet',
+
 ];

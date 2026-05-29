@@ -164,7 +164,7 @@ class extends Component {
                         wire:model.live="search"
                         placeholder="Cherchez un petsitter"
                         class="w-full
-                border-2 border-element
+                border-2 border-stroke
                 rounded-2xl
                 py-4 pl-14 pr-5
                 bg-card
@@ -225,7 +225,7 @@ class extends Component {
             @endforeach
         </div>
         <div class="mt-12 flex justify-center">
-            {{ $this->petsitters->links() }}
+            {{ $this->petsitters->links(data: ['scrollTo' => false]) }}
         </div>
     </section>
     <section

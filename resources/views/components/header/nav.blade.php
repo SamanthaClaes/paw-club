@@ -43,16 +43,17 @@
             </li>
 
             @auth
-                    <li>
-                        <a href="{{ route('owner.profile') }}"
-                           class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out">
-                            {{ __('nav.mySpace') }}
-                        </a>
-                    </li>
 
                 @if( auth()->user()->is_petsitter)
                     <li>
                         <a href="{{ route('petsitter.request') }}"
+                           class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out">
+                            {{ __('nav.mySpace') }}
+                        </a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{ route('owner.profile') }}"
                            class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out">
                             {{ __('nav.mySpace') }}
                         </a>

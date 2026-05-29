@@ -53,7 +53,7 @@
                     @click="$dispatch('open-password-modal')"
                     class="flex-1 bg-btn-green hover:bg-green-800 text-white font-bold uppercase rounded-xl px-4 py-3 transition cursor-pointer text-sm text-center"
                 >
-                    Modifier mon mot de passe
+                        {{ __('petsitterProfile.changePassword') }}
                 </button>
 
                 <button

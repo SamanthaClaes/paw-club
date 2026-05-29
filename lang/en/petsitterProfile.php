@@ -32,4 +32,8 @@ return [
 
     'profileImageAlt' => 'Profile picture',
 
+    'animalType' => ' Available pet’s type  : ',
+
+    'visitType'=> ' Available visit types :  ',
+
 ];

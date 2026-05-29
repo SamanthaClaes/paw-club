@@ -79,6 +79,8 @@ class extends Component {
 ?>
 
 <div>
+    <x-header.OwnerNav/>
+
     <x-cards.owner_card_profile
         :first_name="$owner->first_name"
         :last_name="$owner->last_name"
@@ -89,10 +91,10 @@ class extends Component {
         :phone="$phone"
         :image="$owner->image"
     />
-    <section>
+    <section class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-            <h2 class="text-text lg:text-2xl text-lg uppercase font-bold ml-50">Tous mes animaux</h2>
-            <x-cta.add title="+ Ajouter un animal"/>
+            <h2 class="text-text lg:text-2xl text-lg uppercase font-bold">{{ __('ownerProfile.title') }}</h2>
+            <x-cta.add title="{{ __('ownerProfile.add') }}"/>
         </div>
         <livewire:pages::owner.pets.create/>
         <livewire:pages::owner.pets.edit/>

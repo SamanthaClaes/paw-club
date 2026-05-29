@@ -3,7 +3,7 @@
  'visit',
 ])
 
-<section class="border-2 border-stroke rounded-lg bg-card p-6 h-full">
+<section class="border-2 border-stroke rounded-2xl bg-card p-6 h-full">
     <div>
 
         <div>
@@ -13,11 +13,11 @@
 
             <div class="space-y-4 text-text text-lg">
                 <p>
-                    <span class="font-extrabold">Types d’animaux gardés :</span>
+                    <span class="font-extrabold">{{ __('petsitterProfile.animalType') }}</span>
                     {{ $type }}
                 </p>
                 <p>
-                    <span class="font-extrabold">Types de visites effectuées :</span>
+                    <span class="font-extrabold">{{ __('petsitterProfile.visitType') }}</span>
                     {{ $visit }}
                 </p>
             </div>

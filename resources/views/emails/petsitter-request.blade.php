@@ -26,7 +26,7 @@
 
             <p>
                 <span class="label">Animal :</span>
-                {{ $pet->name }} - {{ $pet->breed }}
+                {{ $pet->name }} - {{ $pet->breed->name }}
             </p>
 
             <p>

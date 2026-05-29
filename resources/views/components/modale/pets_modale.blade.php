@@ -44,7 +44,7 @@
         </button>
 
         <h2 class="text-2xl font-extrabold text-text uppercase mb-8">
-            Ajouter un animal
+           {{ __('petModal.addAnAnimal') }}
         </h2>
 
         @if ($errors->any())
@@ -62,14 +62,14 @@
             {{ $slot }}
             <x-forms.input-label
                 wire:model="pet_image"
-                label="Photo de votre animal"
+                label="{{ __('petModal.animalPicture') }}"
                 name="pet_image"
                 type="file"
             />
 
             <x-forms.input-label
                 wire:model="name"
-                label="Nom de l’animal"
+                label="{{ __('petModal.animalName') }}"
                 name="name"
                 type="text"
                 placeholder="Entrez le nom de votre animal"
@@ -78,9 +78,9 @@
             <x-forms.select-option
                 wire:model.live="animal_type_id"
                 name="animal_type_id"
-                label="Choisissez un type d’animal"
+                label="{{ __('petModal.animalType') }}"
             >
-                <option value="">Choisissez un type d’animal</option>
+                <option value="">{{ __('petModal.chooseAnimalType') }}</option>
 
                 @foreach($animalTypes as $animalType)
                     <option value="{{ $animalType->id }}">
@@ -92,16 +92,16 @@
             <x-forms.select-option
                 wire:model="gender"
                 name="gender"
-                label="Genre"
+                label="{{ __('petModal.gender') }}"
             >
-                <option value="">Choisissez un genre</option>
+                <option value="">{{ __('petModal.chooseGender') }}</option>
 
                 <option value="1">
-                    Mâle
+                   {{ __('petModal.male') }}
                 </option>
 
                 <option value="0">
-                    Femelle
+                        {{ __('petModal.female') }}
                 </option>
 
             </x-forms.select-option>
@@ -119,14 +119,14 @@
             >
 
                 <label class="block text-sm text-text uppercase font-bold mb-1">
-                    Choisissez la race de votre animal
+                   {{ __('petModal.chooseBreed') }}
                 </label>
 
                 <input
                     type="text"
                     x-model="search"
                     @focus="open = true"
-                    placeholder="Rechercher une race..."
+                    placeholder="{{ __('petModal.searchBreed') }}"
                     class="w-full border-2 border-element rounded-lg px-3 py-2"
                 >
 
@@ -170,14 +170,13 @@
 
             <x-forms.input-label
                 wire:model="birth_date"
-                label="Date de naissance"
+                label="{{ __('petModal.birthDate') }}"
                 name="birth_date"
                 type="date"
-                placeholder="L’age de votre animal"
             />
 
             <label class="block text-sm text-text uppercase font-bold mb-1" for="description">
-                Description
+                    {{ __('petModal.description') }}
             </label>
 
             <textarea
@@ -194,7 +193,7 @@
                     type="submit"
                     class="bg-btn-green hover:bg-green-800 text-white px-6 py-3 rounded-lg font-bold uppercase transition cursor-pointer"
                 >
-                    Ajouter mon animal
+                    {{ __('petModal.addAnAnimal') }}
                 </button>
             </div>
 
