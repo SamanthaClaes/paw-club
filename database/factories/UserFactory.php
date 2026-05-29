@@ -29,6 +29,8 @@ class UserFactory extends Factory
 
             'location' => fake()->city(),
 
+            'image' => 'petsitters/portrait.jpeg',
+
             'habitation_id' => fake()->numberBetween(1, 4),
 
             'role' => null,
@@ -40,7 +42,7 @@ class UserFactory extends Factory
 
     public function petsitter(): static
     {
-        return $this->state(fn () => [
+        return $this->state(fn() => [
 
             'role' => null,
             'is_petsitter' => true,
@@ -54,7 +56,7 @@ class UserFactory extends Factory
 
     public function admin(): static
     {
-        return $this->state(fn () => [
+        return $this->state(fn() => [
 
             'role' => UserRole::ADMIN,
 

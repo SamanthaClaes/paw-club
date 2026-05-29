@@ -15,6 +15,10 @@ class extends Component {
 
     public $search = '';
 
+    public $location = '';
+
+    public $habitation;
+
     public function updatedSearch(): void
     {
         $this->resetPage();
@@ -40,6 +44,12 @@ class extends Component {
                     $q->where('first_name', 'like', "%{$this->search}%")
                         ->orWhere('location', 'like', "%{$this->search}%");
                 });
+            })
+            ->when($this->location, function ($query) {
+                $query->where('location', $this->location);
+            })
+            ->when($this->habitation, function ($query) {
+                $query->where('habitation_id', $this->habitation);
             })
             ->paginate(4);
     }
@@ -124,87 +134,83 @@ class extends Component {
             {{ __('petsitter.fonction') }}
         </h2>
 
-
         <div class="grid lg:grid-cols-2 gap-8 items-stretch auto-rows-fr">
-
-            <div class="lg:ml-25">
-
-                <x-cards.steps_cards
-                    number="1"
-                    :title="__('petsitter.choosePetsitter')"
-                    :description="__('petsitter.cardText')"
-                    bgColor="bg-card-orange"
-                    textColor="text-text-orange"
-                    backgroundPattern="bg-[url(/public/svg/paws_icons.svg)] bg-repeat bg-center"
-                />
-
-            </div>
-
-            <div class="lg:mr-25">
-
-                <x-cards.steps_cards
-                    number="2"
-                    :title="__('petsitter.meetPetsitter')"
-                    :description="__('petsitter.cardTextTwo')"
-                    bgColor="bg-card-pink"
-                    textColor="text-text-pink"
-                    backgroundPattern="bg-[url(/public/svg/paws_icons_rose.svg)] bg-repeat bg-center"
-                />
-
-            </div>
-
-            <div class="lg:ml-25">
-
-                <x-cards.steps_cards
-                    number="3"
-                    :title="__('petsitter.petsitting')"
-                    :description="__('petsitter.cardTextThree')"
-                    bgColor="bg-element"
-                    textColor="text-text"
-                    backgroundPattern="bg-[url(/public/svg/paws_icon_blue.svg)] bg-repeat bg-center"
-                />
-
-            </div>
-
-            <div class="lg:mr-25">
-
-                <x-cards.steps_cards
-                    number="4"
-                    :title="__('petsitter.paid')"
-                    :description="__('petsitter.cardTextFour')"
-                    bgColor="bg-card-green"
-                    textColor="text-cta"
-                    backgroundPattern="bg-[url(/public/svg/paws_icon_green.svg)] bg-repeat bg-center"
-                />
-
-            </div>
-
+            <x-cards.all_cards_steps/>
         </div>
-
     </section>
-    <section>
 
+
+    <section>
 
         <h2 id="petsitters_list"
             class="uppercase text-text text-lg lg:text-3xl text-center font-bold lg:mt-30 mb-6 mt-6"> {{ __('petsitter.discoverPetsitter') }}
         </h2>
 
-        <form role="search" class="flex justify-center relative">
 
-            <div class="absolute left-[27%] top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+        <div class="max-w-6xl ml-8 px-4 mb-6">
 
-                <x-svg.icons.search/>
+            <div class="flex flex-col lg:flex-row gap-8 items-center">
+
+                <div class="relative flex-1">
+
+                    <div class="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+
+                        <x-svg.icons.search/>
+
+                    </div>
+
+                    <input
+                        type="search"
+                        wire:model.live="search"
+                        placeholder="Cherchez un petsitter"
+                        class="w-full
+                border-2 border-element
+                rounded-2xl
+                py-4 pl-14 pr-5
+                bg-card
+                shadow-sm
+                focus:outline-none focus:ring-2 focus:ring-element"
+                    >
+
+                </div>
+
+                <div class="w-full lg:w-64">
+
+                    <x-forms.select-option
+                        name="location"
+                        id="location"
+                        wire:model.live="location"
+                        label="Localité"
+                    >
+                        <option value="">Toutes les localités</option>
+                        <option value="Antwonshire">Antwonshire</option>
+                        <option value="Grantburgh">Grantburgh</option>
+                        <option value="South Aylinchester">South Aylinchester</option>
+                        <option value="Port Abby">Port Abby</option>
+                    </x-forms.select-option>
+
+                </div>
+
+                <div class="w-full lg:w-64">
+
+                    <x-forms.select-option
+                        name="habitation"
+                        id="habitation"
+                        wire:model.live="habitation"
+                        label="Habitation"
+                    >
+                        <option value="">Toutes les habitations</option>
+                        <option value="1">Maison</option>
+                        <option value="3">Appartement</option>
+                        <option value="2">Studio</option>
+                        <option value="4">Ferme</option>
+                    </x-forms.select-option>
+
+                </div>
 
             </div>
 
-            <input
-                    type="search"
-                    wire:model.live="search"
-                    placeholder="Cherchez un petsitter"
-                    class="border-2 border-element rounded-3xl w-1/2 m-10 py-5 pr-5 pl-16"
-                >
-
-        </form>
+        </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch m-10">
             @foreach($this->petsitters as $petsitter)
                 <x-cards.petsitter_card
