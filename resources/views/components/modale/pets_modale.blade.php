@@ -179,14 +179,11 @@
                     {{ __('petModal.description') }}
             </label>
 
-            <textarea
-                wire:model="description"
+            <x-forms.textarea-label
                 name="description"
-                id="description"
-                cols="30"
-                rows="10"
-                class="resize-none w-full border-2 border-element rounded-lg px-3 py-2 "
-            ></textarea>
+                wire:model="description"
+                label=" {{ __('petModal.description') }}"
+            />
 
             <div class="flex justify-end pt-4">
                 <button

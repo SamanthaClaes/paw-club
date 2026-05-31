@@ -72,24 +72,11 @@
 
             <div class="mb-6">
 
-                <label
-                    for="note"
-                    class="block text-sm font-bold uppercase text-text mb-3"
-                >
-                    Votre note
-                </label>
-
-                <textarea
-                    wire:model="note"
-
-                    id="note"
-
-                    rows="6"
-
-                    placeholder="Ajoutez une note concernant le comportement, les habitudes ou le séjour de l’animal..."
-
-                    class="w-full border-2 border-element rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-background resize-none"
-                ></textarea>
+            <x-forms.textarea-label
+                wire:model="note"
+                name="note"
+                label="Note"
+            />
 
                 @error('note')
                 <p class="text-red-500 text-sm mt-2">

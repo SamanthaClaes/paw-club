@@ -224,9 +224,11 @@ class extends Component {
                         <x-forms.input-label wire:model="phone" type="tel" label="{{ __('form.phone') }}" name="phone"/>
                     </div>
                     <div class="mt-6 mb-6">
-                        <label for="msg" class="text-text font-bold uppercase">{{ __('form.message') }}</label>
-                        <textarea wire:model="message" name="message" id="message" cols="30" rows="10"
-                                  class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none"></textarea>
+                        <x-forms.textarea-label
+                            name="message"
+                            wire:model="message"
+                            label=" {{ __('form.message') }}"
+                        />
                     </div>
                     <div class="mb-20">
                         <x-forms.button>

@@ -207,9 +207,11 @@ class extends Component {
             </div>
 
             <div class="mt-6 mb-6">
-                <label class="text-text font-bold uppercase" for="infos">{{ __('form.infos') }}</label>
-                <textarea wire:model="description" name="description" id="description" cols="30" rows="10"
-                          class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none"></textarea>
+                <x-forms.textarea-label
+                    name="description"
+                    wire:model="description"
+                    label="{{ __('petsitterRequestForm.infos') }}"
+                />
             </div>
             <div>
                 <x-forms.button>
