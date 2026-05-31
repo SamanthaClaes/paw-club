@@ -1,6 +1,9 @@
 <?php
 
 use App\Enums\PetsitterRequestStatus;
+use App\Mail\ModificationAcceptedRequestMail;
+use App\Mail\ModificationCancelRequestMail;
+use App\Mail\ModificationRefuseRequestMail;
 use App\Mail\ModifyPetsittingRequestMail;
 use App\Mail\PetsitterRequestMail;
 use App\Mail\PetsittingAcceptedRequestMail;
@@ -17,11 +20,13 @@ class extends Component {
     public PetSittingRequest $request;
     public $requested_start_date;
     public $requested_end_date;
+    public $start_date;
+    public $end_date;
     public $requested_description;
     public $requestId;
 
     public $sentModificationRequests = [];
-    public $receivedModificationRequests =[];
+    public $receivedModificationRequests = [];
 
     public function mount(): void
     {
@@ -88,6 +93,7 @@ class extends Component {
             ->where('status', PetsitterRequestStatus::MODIFICATION_REQUESTED)
             ->get();
     }
+
     public function loadSentModificationRequest(): void
     {
         $this->sentModificationRequests = PetSittingRequest::with([
@@ -180,6 +186,70 @@ class extends Component {
 
     }
 
+    public function acceptModification($requestId): void
+    {
+        $request = PetSittingRequest::where('user_id', Auth::id())
+            ->where('status', PetsitterRequestStatus::MODIFICATION_REQUESTED)
+            ->findOrFail($requestId);
+
+        $request->start_date = $request->requested_start_date;
+        $request->end_date = $request->requested_end_date;
+
+        Mail::to($request->petsitter->email)->queue(new ModificationAcceptedRequestMail($request));
+        $request->requested_start_date = null;
+        $request->requested_end_date = null;
+        $request->requested_description = null;
+
+        $request->status = PetsitterRequestStatus::ACCEPTED;
+
+
+        $request->save();
+
+        $this->loadPendingRequests();
+    }
+
+    public function refuseModification($requestId): void
+    {
+        $request = PetSittingRequest::where('user_id', Auth::id())
+            ->where('status', PetsitterRequestStatus::MODIFICATION_REQUESTED)
+            ->findOrFail($requestId);
+
+        Mail::to($request->petsitter->email)->queue(new ModificationRefuseRequestMail($request));
+
+        $request->requested_start_date = null;
+        $request->requested_end_date = null;
+        $request->requested_description = null;
+
+        $request->status = PetsitterRequestStatus::PENDING;
+
+        $request->save();
+
+        $this->loadSentModificationRequest();
+        $this->loadReceivedModificationRequests();
+    }
+
+    public function cancelModification($requestId): void
+    {
+        $request = PetSittingRequest::where('petsitter_id', Auth::id())
+            ->where('status', PetsitterRequestStatus::MODIFICATION_REQUESTED)
+            ->findOrFail($requestId);
+
+        Mail::to($request->user->email)->queue(new ModificationCancelRequestMail($request));
+
+        $request->requested_start_date = null;
+        $request->requested_end_date = null;
+        $request->requested_description = null;
+
+        $request->status = PetsitterRequestStatus::ACCEPTED;
+
+        $request->save();
+
+        $this->loadSentModificationRequest();
+        $this->loadReceivedModificationRequests();
+        $this->loadPendingRequests();
+    }
+
+
     public function openModifyModal($requestId): void
     {
         $request = PetSittingRequest::where('petsitter_id', Auth::id())
@@ -245,7 +315,7 @@ class extends Component {
 
                 @forelse($sentModificationRequests as $request)
 
-                    <x-cards.cards_modify_request
+                    <x-cards.card_sent_modify
                         :request="$request"
                     />
 

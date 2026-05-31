@@ -13,7 +13,20 @@
     </div>
 
     <div
-        class="absolute top-full left-0 w-1/2 bg-element hidden peer-checked:block md:static md:block md:w-auto transition-colors duration-300">
+        class="
+absolute
+top-full
+left-0
+w-1/2
+h-screen
+bg-element
+hidden
+peer-checked:block
+md:h-auto
+md:static
+md:block
+md:w-auto
+">
         <ul class="flex flex-col md:flex-row md:items-center gap-8 justify-around text-sm font-bold uppercase">
             <li>
                 <a href="{{ route('home') }}">
@@ -72,7 +85,7 @@
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit"
-                                class="text-text uppercase hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out">
+                                class="text-text uppercase hover:bg-card px-8 py-4 rounded-full  cursor-pointer transition-colors duration-300 ease-in-out">
                             {{ __('nav.logout') }}
                         </button>
 
