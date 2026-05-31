@@ -10,17 +10,21 @@
 <section class="relative bg-card border border-stroke rounded-3xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 h-full">
     <div class="absolute -top-3 -right-4">
 
-        @if($request->previous_stays_count === 0)
+        @if($request->status === PetsitterRequestStatus::PENDING)
 
-            <span class="bg-blue-100 text-blue-800 px-3 py-3 rounded-full text-xs font-bold">
-                🐾 Première garde
-            </span>
+            @if($request->previous_stays_count === 0)
 
-        @else
+                <span class="bg-blue-100 text-blue-800 px-3 py-3 rounded-full text-xs font-bold">
+            🐾 Première garde
+        </span>
 
-            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-bold">
-                🐾 {{ $request->previous_stays_count }} garde(s)
-            </span>
+            @else
+
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-bold">
+            🐾 {{ $request->previous_stays_count }} garde(s)
+        </span>
+
+            @endif
 
         @endif
 
@@ -33,15 +37,20 @@
             <h1 class="text-2xl font-extrabold uppercase text-text leading-tight">
                 {{ $request->pet->name }}
             </h1>
-
-            <p class="text-base text-text mt-2">
+            <div class="flex items-center mb-6 text-text justify-between">
+            <p>
                 {{ $request->pet->animalType->type }}
                 -
                 {{ $request->pet->breed->name }}
                 -
                 {{ $request->pet->birthDateFormat() }}
             </p>
-
+                <p>
+                    <button wire:click="openModifyModal({{ $request->id }})" type="button" class="bg-blue-400 hover:bg-blue-500 transition rounded-xl py-4 px-4 text-base font-bold text-white cursor-pointer">
+                        Modifier la demande
+                    </button>
+                </p>
+            </div>
         </div>
 
         <div class="text-right">
@@ -113,7 +122,7 @@
                     Email
                 </p>
 
-                <a href="mailto:{{ $request->user->mail }}">
+                <a href="mailto:{{ $request->user->mail }}" class="underline font-bold">
                     {{ $request->user->email }}
                 </a>
 
