@@ -148,7 +148,7 @@ new #[Title('Demander une garde')] class extends Component
                 <x-forms.textarea-label
                     name="description"
                     wire:model="description"
-                    label="{{ __('petModal.description.') }}"
+                    label="{{ __('petModal.description') }}"
                 />
 
             </div>

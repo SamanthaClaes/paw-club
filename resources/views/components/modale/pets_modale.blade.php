@@ -175,10 +175,6 @@
                 type="date"
             />
 
-            <label class="block text-sm text-text uppercase font-bold mb-1" for="description">
-                    {{ __('petModal.description') }}
-            </label>
-
             <x-forms.textarea-label
                 name="description"
                 wire:model="description"

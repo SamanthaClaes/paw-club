@@ -15,7 +15,7 @@
 
         {{ $label }}
         @if($required)
-            <abbr title="requis" class="text-red-500">*</abbr>
+            <abbr title="requis" class="text-red-500 no-underline">*</abbr>
         @endif
     </label>
 

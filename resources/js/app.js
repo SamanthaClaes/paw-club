@@ -16,6 +16,8 @@ document.addEventListener('livewire:navigated', () => {
 
             events: events,
 
+            dayMaxEvents: 2,
+
         });
 
         calendar.render();
