@@ -20,9 +20,14 @@ class extends Component {
     public $requested_description;
     public $requestId;
 
+    public $sentModificationRequests = [];
+    public $receivedModificationRequests =[];
+
     public function mount(): void
     {
         $this->loadPendingRequests();
+        $this->loadReceivedModificationRequests();
+        $this->loadSentModificationRequest();
     }
 
     public function loadPendingRequests(): void
@@ -67,6 +72,32 @@ class extends Component {
             ->where('petsitter_id', Auth::id())
             ->where('status', PetsitterRequestStatus::ACCEPTED)
             ->latest()
+            ->get();
+    }
+
+
+    public function loadReceivedModificationRequests(): void
+    {
+        $this->receivedModificationRequests = PetSittingRequest::with([
+            'user',
+            'pet',
+            'pet.breed',
+            'pet.animalType',
+        ])
+            ->where('user_id', Auth::id())
+            ->where('status', PetsitterRequestStatus::MODIFICATION_REQUESTED)
+            ->get();
+    }
+    public function loadSentModificationRequest(): void
+    {
+        $this->sentModificationRequests = PetSittingRequest::with([
+            'user',
+            'pet',
+            'pet.breed',
+            'pet.animalType',
+        ])
+            ->where('petsitter_id', Auth::id())
+            ->where('status', PetsitterRequestStatus::MODIFICATION_REQUESTED)
             ->get();
     }
 
@@ -175,6 +206,62 @@ class extends Component {
         <h1 class="sr-only">
             L'espace du petsitter
         </h1>
+
+        <div class="mb-20">
+
+            <h2 class="text-text uppercase text-3xl font-extrabold mb-8">
+                Modifications à traiter
+            </h2>
+
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+
+                @forelse($receivedModificationRequests as $request)
+
+                    <x-cards.cards_modify_request
+                        :request="$request"
+                    />
+
+                @empty
+
+                    <div class="bg-card border-2 border-element rounded-2xl p-8 w-full">
+                        <p class="text-center text-text text-lg font-semibold">
+                            Aucune modification à traiter
+                        </p>
+                    </div>
+
+                @endforelse
+
+            </div>
+
+        </div>
+
+        <div class="mb-20">
+
+            <h2 class="text-text uppercase text-3xl font-extrabold mb-8">
+                Modifications envoyées
+            </h2>
+
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+
+                @forelse($sentModificationRequests as $request)
+
+                    <x-cards.cards_modify_request
+                        :request="$request"
+                    />
+
+                @empty
+
+                    <div class="bg-card border-2 border-element rounded-2xl p-8 w-full">
+                        <p class="text-center text-text text-lg font-semibold">
+                            Aucune modification envoyée
+                        </p>
+                    </div>
+
+                @endforelse
+
+            </div>
+
+        </div>
 
         <div class="mb-20">
 

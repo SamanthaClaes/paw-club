@@ -29,7 +29,6 @@
         @endif
 
     </div>
-
     <div class="flex flex-col xl:flex-row gap-8 mb-7">
 
         <div>
@@ -37,20 +36,19 @@
             <h1 class="text-2xl font-extrabold uppercase text-text leading-tight">
                 {{ $request->pet->name }}
             </h1>
-            <div class="flex items-center mb-6 text-text justify-between">
-            <p>
-                {{ $request->pet->animalType->type }}
-                -
-                {{ $request->pet->breed->name }}
-                -
-                {{ $request->pet->birthDateFormat() }}
-            </p>
+
+            <div class="mb-6 text-text">
+
                 <p>
-                    <button wire:click="openModifyModal({{ $request->id }})" type="button" class="bg-blue-400 hover:bg-blue-500 transition rounded-xl py-4 px-4 text-base font-bold text-white cursor-pointer">
-                        Modifier la demande
-                    </button>
+                    {{ $request->pet->animalType->type }}
+                    -
+                    {{ $request->pet->breed->name }}
+                    -
+                    {{ $request->pet->birthDateFormat() }}
                 </p>
+
             </div>
+
         </div>
 
         <div class="text-right">
@@ -81,7 +79,7 @@
                     Dates
                 </p>
 
-                <p class="text-base text-text wrap-break-word">
+                <p class="text-base text-text">
                     {{ Carbon::parse($request->start_date)->format('d/m/Y') }}
                     →
                     {{ Carbon::parse($request->end_date)->format('d/m/Y') }}
@@ -191,5 +189,20 @@
         </div>
 
     @endif
+    <div class="flex justify-center mt-6">
+
+        @if($request->status === PetsitterRequestStatus::ACCEPTED)
+
+            <button
+                wire:click="openModifyModal({{ $request->id }})"
+                type="button"
+                class="bg-blue-400 hover:bg-blue-500 transition rounded-xl py-5 px-5 text-lg font-bold text-white cursor-pointer shadow-md"
+            >
+                Modifier la demande
+            </button>
+
+        @endif
+
+    </div>
 
 </section>
