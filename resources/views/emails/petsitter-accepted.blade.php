@@ -36,7 +36,6 @@
         <p style="margin-top:30px;">
             Pour des raisons de sécurité, nous vous recommandons de modifier votre mot de passe dès votre première connexion.
         </p>
-        ```
 
     </section>
 
