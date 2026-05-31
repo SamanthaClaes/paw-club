@@ -22,6 +22,9 @@ class PetSittingRequest extends Model
         'user_id',
         'petsitter_id',
         'note',
+        'requested_start_date',
+        'requested_end_date',
+        'requested_description',
     ];
     protected $casts = [
         'status' => PetsitterRequestStatus::class,

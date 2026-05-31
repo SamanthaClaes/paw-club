@@ -15,6 +15,9 @@ return new class extends Migration {
             $table->string('status');
             $table->date('start_date');
             $table->date('end_date');
+            $table->date('requested_start_date')->nullable();
+            $table->date('requested_end_date')->nullable();
+            $table->string('requested_description')->nullable();
             $table->string('image')->nullable();
             $table->string('description')->nullable();
             $table->string('note')->nullable();

@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\PetsitterRequestStatus;
+use App\Mail\ModifyPetsittingRequestMail;
 use App\Mail\PetsitterRequestMail;
 use App\Mail\PetsittingAcceptedRequestMail;
 use App\Mail\PetsittingRefusedRequestMail;
@@ -13,6 +14,11 @@ class extends Component {
     public $requests;
     public $refusedRequests;
     public $acceptedRequests;
+    public PetSittingRequest $request;
+    public $requested_start_date;
+    public $requested_end_date;
+    public $requested_description;
+    public $requestId;
 
     public function mount(): void
     {
@@ -79,7 +85,7 @@ class extends Component {
         $pet = $request->pet;
         $request->status = PetsitterRequestStatus::ACCEPTED;
         $request->save();
-        Mail::to($owner->email)->queue(new PetsittingAcceptedRequestMail($petsitter, $owner, $pet, $request));
+//        Mail::to($owner->email)->queue(new PetsittingAcceptedRequestMail($petsitter, $owner, $pet, $request));
         $this->loadPendingRequests();
 
     }
@@ -113,8 +119,49 @@ class extends Component {
 
         $request->status = PetsitterRequestStatus::REFUSED;
         $request->save();
-        Mail::to($owner->email)->queue(new PetsittingRefusedRequestMail($owner, $petsitter, $pet, $request));
+//        Mail::to($owner->email)->queue(new PetsittingRefusedRequestMail($owner, $petsitter, $pet, $request));
         $this->loadPendingRequests();
+    }
+
+    public function updateRequests(): void
+    {
+        $request = PetSittingRequest::with([
+            'user',
+            'petsitter',
+            'pet',
+        ])
+            ->where('petsitter_id', Auth::id())
+            ->where('status', PetsitterRequestStatus::ACCEPTED)
+            ->findOrFail($this->requestId);
+
+        $validated = $this->validate([
+            'requested_start_date' => 'required|date',
+            'requested_end_date' => 'required|date',
+            'requested_description' => 'required|string',
+        ]);
+
+        $request->update($validated);
+        $request->status = PetsitterRequestStatus::MODIFICATION_REQUESTED;
+        $request->save();
+        Mail::to($request->user->email)->queue(new ModifyPetsittingRequestMail($request));
+        $this->loadPendingRequests();
+        $this->dispatch('close-modify-modal');
+
+    }
+
+    public function openModifyModal($requestId): void
+    {
+        $request = PetSittingRequest::where('petsitter_id', Auth::id())
+            ->where('status', PetsitterRequestStatus::ACCEPTED)
+            ->findOrFail($requestId);
+
+        $this->requestId = $request->id;
+
+        $this->requested_start_date = $request->start_date;
+        $this->requested_end_date = $request->end_date;
+        $this->requested_description = '';
+
+        $this->dispatch('open-modify-modal');
     }
 };
 ?>
@@ -232,5 +279,6 @@ class extends Component {
         </div>
 
     </section>
+    <x-modale.modify_petsitting_request_modal/>
 
 </div>
