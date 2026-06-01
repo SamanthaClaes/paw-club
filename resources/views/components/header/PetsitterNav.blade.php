@@ -1,4 +1,4 @@
-<nav class="mt-20 mb-30 max-w-7xl mx-auto">
+<nav class="mt-20 mb-30 max-w-7xl mx-auto ">
     <h1 class="sr-only">
         {{ __('petsitterNav.title') }}
     </h1>
@@ -7,7 +7,7 @@
         <li>
             <a
                 href="{{ route('petsitter.request') }}"
-                class="block text-center border-2 border-stroke py-2 rounded-lg transition
+                class="block text-center border-2 border-stroke py-2 rounded-lg transition text-text
                 {{ request()->routeIs('petsitter.request') ? 'bg-stroke text-white font-bold' : '' }}"
             >
                 {{ __('petsitterNav.requests') }}
@@ -17,7 +17,7 @@
         <li>
             <a
                 href="{{ route('petsitter.planning') }}"
-                class="block text-center border-2 border-stroke py-2 rounded-lg transition
+                class="block text-center border-2 border-stroke py-2 rounded-lg transition text-text
                 {{ request()->routeIs('petsitter.planning') ? 'bg-stroke text-white font-bold' : '' }}"
             >
                 {{ __('petsitterNav.planning') }}
@@ -27,7 +27,7 @@
         <li>
             <a
                 href="{{ route('petsitter.history') }}"
-                class="block text-center border-2 border-stroke py-2 rounded-lg transition
+                class="block text-center border-2 border-stroke py-2 rounded-lg transition text-text
                 {{ request()->routeIs('petsitter.history') ? 'bg-stroke text-white font-bold' : '' }}"
             >
                 {{ __('petsitterNav.history') }}
@@ -37,7 +37,7 @@
         <li>
             <a
                 href="{{ route('petsitter.profile') }}"
-                class="block text-center border-2 border-stroke py-2 rounded-lg transition
+                class="block text-center border-2 border-stroke py-2 rounded-lg transition text-text
                 {{ request()->routeIs('petsitter.profile') ? 'bg-stroke text-white font-bold' : '' }}"
             >
                 {{ __('petsitterNav.profile') }}

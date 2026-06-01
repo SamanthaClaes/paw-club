@@ -29,13 +29,15 @@ class UserFactory extends Factory
 
             'location' => fake()->city(),
 
-            'image' => 'petsitters/portrait.jpeg',
+            'image' => 'petsitters/portrait.webp',
 
             'habitation_id' => fake()->numberBetween(1, 4),
 
             'role' => null,
 
             'is_petsitter' => false,
+
+            'price'=> fake()->randomElement([ 15, 20, 25]),
 
         ];
     }

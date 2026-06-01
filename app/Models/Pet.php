@@ -58,5 +58,15 @@ class Pet extends Model
     {
         return $this->hasMany(PetSittingRequest::class);
     }
+    public function getImageUrl(int $size = 400): ?string
+    {
+        if (!$this->pet_image) {
+            return null;
+        }
+
+        $fileName = basename($this->pet_image);
+
+        return asset("storage/images/{$size}/{$fileName}");
+    }
 
 }

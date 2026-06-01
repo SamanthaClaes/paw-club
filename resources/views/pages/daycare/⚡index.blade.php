@@ -47,7 +47,7 @@ class extends Component {
                 </p>
 
                 <img
-                    src="{{ asset('svg/illu_2.svg') }}"
+                    src="{{ asset('svg/illu_2.webp') }}"
                     alt="petite fille qui carresse un chat"
                     class="absolute
                     hidden

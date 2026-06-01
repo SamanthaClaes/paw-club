@@ -1,14 +1,22 @@
 @php use App\enum\UserRole; @endphp
 <nav class="bg-element p-2 text-text relative z-9999">
     <h1 class="sr-only">{{ __('nav.title') }}</h1>
-    <input type="checkbox" id="menu-toggle" class="peer hidden">
-
+    <input
+        type="checkbox"
+        id="menu-toggle"
+        class="peer hidden"
+        aria-label="Ouvrir le menu de navigation"
+    >
     <div class="flex items-center justify-between">
-        <label for="menu-toggle"
-               class="md:hidden flex items-center px-3 py-2 border rounded cursor-pointer">
+        <label
+            for="menu-toggle"
+            aria-label="Ouvrir le menu de navigation"
+            class="md:hidden flex items-center px-3 py-2 border rounded cursor-pointer"
+        >
             <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
             </svg>
+            <span class="sr-only">Ouvrir le menu de navigation</span>
         </label>
     </div>
 
@@ -29,7 +37,10 @@ md:w-auto
 ">
         <ul class="flex flex-col md:flex-row md:items-center gap-8 justify-around text-sm font-bold uppercase">
             <li>
-                <a href="{{ route('home') }}">
+                <a
+                    href="{{ route('home') }}"
+                    aria-label="Retour à l'accueil de Paw Club"
+                >
                     <x-svg.logo/>
                 </a>
             </li>

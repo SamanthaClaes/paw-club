@@ -1,5 +1,6 @@
 <?php
 
+use App\Jobs\ProcessImageJob;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use App\Models\User;
@@ -65,9 +66,23 @@ class extends Component {
             'phone' => 'nullable',
         ]);
 
-        if ($this->image) {
-            $validated['image'] = $this->image->store('owner', 'public');
-        }
+        if($this->image){
+
+        $fileName = 'owner_' . uniqid() . '.jpg';
+
+        $path = $this->image->storeAs(
+            'owner/original',
+            $fileName,
+            'public'
+        );
+
+        ProcessImageJob::dispatch(
+            $fileName,
+            $path
+        );
+
+        $validated['image'] = $path;
+    }
 
         $this->owner->update($validated);
 

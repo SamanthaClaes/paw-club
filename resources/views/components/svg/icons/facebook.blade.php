@@ -1,5 +1,4 @@
-<xml version="1.0" encoding="UTF-8"/>
-<svg id="Calque_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 49 49" height="24" width="24">
+<svg  viewBox="0 0 49 49" height="24" width="24">
     <defs>
         <style>
             .st0 {

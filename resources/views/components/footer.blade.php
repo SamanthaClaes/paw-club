@@ -2,7 +2,10 @@
     <nav class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 items-start">
         <h1 class="sr-only">{{ __('footer.title') }}</h1>
         <div class="sm:col-span-2 lg:col-span-1 justify-items-center">
-            <a href="{{ route('home') }}">
+            <a
+                href="{{ route('home') }}"
+                aria-label="Retour à l'accueil de Paw Club"
+            >
                 <x-svg.logo/>
             </a>
         </div>

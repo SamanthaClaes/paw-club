@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['last_name', 'first_name', 'email', 'password', 'role', 'phone', 'adress', 'zip', 'image', 'location', 'description', 'habitation_id', 'petsitter_status', 'is_petsitter'])]
+#[Fillable(['last_name', 'first_name', 'email', 'password', 'role', 'phone', 'adress', 'zip', 'image', 'location', 'description', 'habitation_id', 'petsitter_status', 'is_petsitter', 'price'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -81,5 +81,16 @@ class User extends Authenticatable
     public function petsitterMessages(): HasMany
     {
         return  $this->hasMany(PetsitterMessages::class, 'petsitter_id');
+    }
+
+    public function getImageUrl(int $size = 400): ?string
+    {
+        if (!$this->image) {
+            return null;
+        }
+
+        $fileName = basename($this->image);
+
+        return asset("storage/images/{$size}/{$fileName}");
     }
 }

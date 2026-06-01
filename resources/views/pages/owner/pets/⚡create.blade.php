@@ -1,5 +1,6 @@
 <?php
 
+use App\Jobs\ProcessImageJob;
 use App\Models\AnimalType;
 use App\Models\Pet;
 use App\Models\User;
@@ -41,7 +42,7 @@ class extends Component {
     }
 
 
-     public function storePet(): void
+    public function storePet(): void
     {
         $validated = $this->validate([
             'name' => 'required|string',
@@ -56,7 +57,21 @@ class extends Component {
         $validated['user_id'] = $this->owner->id;
 
         if ($this->pet_image) {
-            $validated['pet_image'] = $this->pet_image->store('pets', 'public');
+
+            $fileName = 'pet_' . uniqid() . '.jpg';
+
+            $path = $this->pet_image->storeAs(
+                'pet/original',
+                $fileName,
+                'public'
+            );
+
+            ProcessImageJob::dispatch(
+                $fileName,
+                $path
+            );
+
+            $validated['pet_image'] = $path;
         }
 
         Pet::create($validated);
@@ -123,13 +138,15 @@ class extends Component {
             :animal-types="$animalTypes"
             :animal-types-id="$animal_type_id"
         >
-        @if($pet_image)
-            <img class="h-40 w-40 object-cover rounded-2xl" src="{{ $pet_image->temporaryUrl() }}" alt="Prévisualisation">
-        @endif
+            @if($pet_image)
+                <img class="h-40 w-40 object-cover rounded-2xl" src="{{ $pet_image->temporaryUrl() }}"
+                     alt="Prévisualisation">
+            @endif
         </x-modale.pets_modale>
         @foreach($pets as $pet)
             <x-cards.animal_card_owner
                 :pet-id="$pet->id"
+                :pet="$pet"
                 :name="$pet->name"
                 :birth-date="$pet->birthDateFormat()"
                 :breed="$pet->breed?->name"

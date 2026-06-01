@@ -20,12 +20,16 @@
     --color-card-blue: #1BA0AC;
     --color-card-green: #88C9B1;
     --color-hover: #6FBFA4;
+    --color-hover-green: #6DAE7B;
     --color-hover-orange: #E67300;
     --color-hover-pink: #E65F64;
     --color-hover-element:#A8D4D9;
     --color-cta: #003B00;
     --color-text-orange: #4A1F00;
     --color-text-pink:#4A0F14;
+    --color-success: #88C9B1;
+    --color-success-bg: #F5FFFF;
+    --color-success-text: #003B00;
 }
 .fc {
     --fc-button-bg-color: #1BA0AC;

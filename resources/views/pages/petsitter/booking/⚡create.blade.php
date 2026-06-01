@@ -2,6 +2,7 @@
 
 use App\enum\UserRole;
 use App\Enums\PetsitterRequestStatus;
+use App\Jobs\ProcessImageJob;
 use App\Mail\PetsitterRequestMail;
 use App\Models\PetSittingRequest;
 use App\Models\User;
@@ -11,8 +12,8 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Facades;
 use Livewire\Attributes\Title;
 
-new #[Title('Demander une garde')] class extends Component
-{
+new #[Title('Demander une garde')]
+class extends Component {
     use WithFileUploads;
 
 
@@ -45,6 +46,14 @@ new #[Title('Demander une garde')] class extends Component
         return $this->pets->firstWhere('id', $this->pet_id);
     }
 
+    public function validationAttributes(): array
+    {
+        return [
+            'start_date' => strtolower(__('')),
+            'end_date' => 'test',
+        ];
+    }
+
     public function store(): void
     {
         $validated = $this->validate([
@@ -69,7 +78,20 @@ new #[Title('Demander une garde')] class extends Component
 
         if ($this->image) {
 
-            $validated['image'] = $this->image->store('animals', 'public');
+            $fileName = 'pet_' . uniqid() . '.jpg';
+
+            $path = $this->image->storeAs(
+                'pet/original',
+                $fileName,
+                'public'
+            );
+
+            ProcessImageJob::dispatch(
+                $fileName,
+                $path
+            );
+
+            $validated['image'] = $path;
         }
 
         $request = PetSittingRequest::create($validated);
@@ -129,7 +151,13 @@ new #[Title('Demander une garde')] class extends Component
                         <span
                             class="block text-sm  text-text uppercase font-bold mb-1">{{ __('formDaycare.animalPicture') }}</span>
                         <img
-                            src="{{ Storage::url($this->selectedAnimal->pet_image) }}"
+                            src="{{ $this->selectedAnimal->getImageUrl(800) }}"
+                            srcset="
+        {{ $this->selectedAnimal->getImageUrl(400) }} 400w,
+        {{ $this->selectedAnimal->getImageUrl(800) }} 800w,
+        {{ $this->selectedAnimal->getImageUrl(1200) }} 1200w
+    "
+                            sizes="(max-width: 768px) 100vw, 320px"
                             alt="{{ $this->selectedAnimal->name }}"
                             class="w-80 h-80 object-cover rounded-2xl"
                         >

@@ -9,6 +9,7 @@
 
     @livewireStyles
 </head>
+<h1 class="sr-only">Pages principales de l’admin</h1>
 <header>
     <x-header.sideBar/>
 </header>

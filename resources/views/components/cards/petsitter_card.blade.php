@@ -1,8 +1,10 @@
 @props([
     'name',
+    'last',
     'image',
     'description',
     'location',
+    'price',
     'tags' => [],
     'chooseUrl' => '#',
     'contactUrl' => '#',
@@ -32,6 +34,7 @@
         ]) }}
     >
 
+
         <div class="relative z-10 flex flex-col lg:flex-row gap-2 lg:items-start h-full">
 
             <div class="shrink-0 flex justify-center">
@@ -44,25 +47,43 @@
                     border-4 border-white/60
                     shadow-lg"
                 >
-
             </div>
 
-            <div class="flex-1 flex flex-col gap-5 w-full">
 
-                <div>
-                    <div class="flex items-center justify-between">
-                    <h2 class="text-2xl lg:text-3xl font-extrabold text-text mb-3 leading-tight">
-                        {{ $name }}
-                    </h2>
-                        <p class="font-extrabold text-text mb-3 leading-tight">
+            <div class="flex-1 flex flex-col gap-5 w-full">
+                <div class="flex items-start justify-between gap-4">
+
+                    <div>
+                        <h2 class="text-2xl lg:text-3xl font-extrabold text-text leading-tight">
+                            {{ $name }} {{ $last }}
+                        </h2>
+
+                        <p class="font-semibold text-text text-lg mt-1">
                             {{ $location }}
                         </p>
                     </div>
-                    <p class="text-text text-sm lg:text-base leading-7 max-w-3xl">
-                        {{ $description }}
-                    </p>
+
+                    <div
+                        class="
+        bg-card-green
+        text-text
+        font-extrabold
+        text-sm lg:text-base
+        px-4 py-2
+        rounded-full
+        shadow-md
+        whitespace-nowrap
+        shrink-0
+        "
+                    >
+                        {{ $price }} €/jour
+                    </div>
 
                 </div>
+
+                <p class="text-text text-sm lg:text-base leading-7 max-w-3xl mt-4">
+                    {{ $description }}
+                </p>
 
                 <div class="flex flex-wrap gap-2">
 
@@ -84,7 +105,6 @@
 
                 </div>
 
-                <div class="border-b border-gray-200 pt-1"></div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 pt-1">
 

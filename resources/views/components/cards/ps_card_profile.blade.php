@@ -7,6 +7,7 @@
  'zip',
  'location',
  'image',
+ 'petsitter',
 ])
 
 <section class="border-2 border-stroke rounded-2xl bg-card p-8 h-full max-w-5xl mx-auto">
@@ -14,7 +15,12 @@
 
         <div class="shrink-0">
             <img
-                src="{{ \Illuminate\Support\Facades\Storage::url($image)  }}"
+                src="{{ $petsitter->getImageUrl(800)  }}"
+                srcset=" {{ $petsitter->getImageUrl(400) }} 400w,
+                {{ $petsitter->getImageUrl(800)  }} 800w,
+                {{ $petsitter->getImageUrl(1200)  }} 1200w
+                "
+                sizes="( max-width: 768px) 100vw 400px"
                 alt="{{ __('petsitterProfile.profileImageAlt') }}"
                 class="w-40 h-40 rounded-2xl object-cover">
         </div>
@@ -51,15 +57,15 @@
                 <button
                     type="button"
                     @click="$dispatch('open-password-modal')"
-                    class="flex-1 bg-btn-green hover:bg-green-800 text-white font-bold uppercase rounded-xl px-4 py-3 transition cursor-pointer text-sm text-center"
+                    class="flex-1 bg-btn-green hover:bg-hover-green text-white font-bold uppercase rounded-xl px-4 py-3 transition cursor-pointer text-sm text-center"
                 >
-                        {{ __('petsitterProfile.changePassword') }}
+                    {{ __('petsitterProfile.changePassword') }}
                 </button>
 
                 <button
                     type="button"
                     @click="$dispatch('open-update-data-modal')"
-                    class="flex-1 bg-btn-green hover:bg-green-800 text-white font-bold uppercase rounded-xl px-4 py-3 transition cursor-pointer text-sm text-center"
+                    class="flex-1 bg-btn-green hover:bg-hover-green text-white font-bold uppercase rounded-xl px-4 py-3 transition cursor-pointer text-sm text-center"
                 >
                     {{ __('petsitterProfile.editInfos') }}
                 </button>

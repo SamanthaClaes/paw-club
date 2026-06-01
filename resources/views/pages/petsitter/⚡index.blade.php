@@ -42,6 +42,7 @@ class extends Component {
             ->when($this->search, function ($query) {
                 $query->where(function ($q) {
                     $q->where('first_name', 'like', "%{$this->search}%")
+                        ->orWhere('last_name', 'like', "%{$this->search}%")
                         ->orWhere('location', 'like', "%{$this->search}%");
                 });
             })
@@ -96,7 +97,7 @@ class extends Component {
                 </p>
 
                 <img
-                    src="{{ asset('svg/illu_5.svg') }}"
+                    src="{{ asset('svg/illu_5.webp') }}"
                     alt="homme et femme donnant à manger à un chat"
                     class="hidden lg:block absolute
                 bottom-5 right-0
@@ -215,7 +216,9 @@ class extends Component {
             @foreach($this->petsitters as $petsitter)
                 <x-cards.petsitter_card
                     :name="$petsitter->first_name"
+                    :last="$petsitter->last_name"
                     :location="$petsitter->location"
+                    :price="$petsitter->price"
                     :image="$petsitter->image"
                     :description="$petsitter->description"
                     :tags="[...$petsitter->animalTypes->pluck('type')->toArray(),$petsitter->habitation?->name]"
@@ -237,9 +240,9 @@ class extends Component {
 
         <div class="absolute inset-0 bg-linear-to-br from-white/10 to-transparent pointer-events-none"></div>
 
-        <h3 class="relative z-10 text-text text-2xl lg:text-4xl font-extrabold leading-tight max-w-2xl">
+        <h2 class="relative z-10 text-text text-2xl lg:text-4xl font-extrabold leading-tight max-w-2xl">
             {{ __('petsitter.cardTitle') }}
-        </h3>
+        </h2>
 
         <p class="relative z-10 mt-6 max-w-2xl text-sm lg:text-lg leading-7 text-text/90">
             {{ __('petsitter.cardSubtitle') }}
@@ -271,7 +274,7 @@ class extends Component {
         >
 
         <img
-            src="{{ asset('svg/ill_7.svg') }}"
+            src="{{ asset('svg/ill_7.webp') }}"
             alt="illustration d'une femme promenant un chien brun"
             class="hidden lg:block absolute
         bottom-0 right-0

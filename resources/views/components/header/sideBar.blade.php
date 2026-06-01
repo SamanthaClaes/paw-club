@@ -8,7 +8,7 @@
 <nav
     class="fixed top-0 left-0 z-40 w-90 min-h-screen bg-element dark:bg-gray-600 transform -translate-x-full peer-checked:translate-x-0 transition-transform md:translate-x-0"
     aria-label="Sidebar">
-    <h1 class="sr-only"> </h1>
+    <h1 class="sr-only"> Navigation du dashboard </h1>
     <div class="h-full px-3 py-4">
         <ul class="flex flex-col items-center gap-12">
             <li class="flex justify-center">

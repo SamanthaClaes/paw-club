@@ -1,6 +1,5 @@
-<xml version="1.0" encoding="UTF-8"/>
-<svg id="Calque_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 58 58" height="24" width="24">
-    <!-- Generator: Adobe Illustrator 30.3.0, SVG Export Plug-In . SVG Version: 2.1.3 Build 182)  -->
+<svg viewBox="0 0 58 58" height="24" width="24">
+
     <defs>
         <style>
             .st0 {

@@ -2,6 +2,7 @@
 
 use App\enum\UserRole;
 use App\Enums\PetsitterStatus;
+use App\Jobs\ProcessImageJob;
 use App\Models\AnimalType;
 use App\Models\Habitation;
 use App\Models\User;
@@ -32,6 +33,7 @@ class extends Component {
     public string $location;
     public string $description;
     public $petsitters;
+    public array $prices = [15, 20, 25];
 
 
     public function mount(): void
@@ -42,6 +44,7 @@ class extends Component {
         $this->petsitters = User::where('is_petsitter', true)
             ->where('petsitter_status', PetsitterStatus::PENDING)
             ->get();
+
     }
 
 
@@ -60,16 +63,30 @@ class extends Component {
             'animals' => 'required|array',
             'visits' => 'required|array',
             'description' => 'nullable|string',
+            'price'=>'nullable|integer',
         ]);
         if ($this->image) {
 
-            $validated['image'] = $this->image->store('petsitters', 'public');
+            $fileName = 'petsitter_' . uniqid() . '.jpg';
+
+            $path = $this->image->storeAs(
+                'petsitters/original',
+                $fileName,
+                'public'
+            );
+
+            ProcessImageJob::dispatch(
+                $fileName,
+                $path
+            );
+
+            $validated['image'] = $path;
         }
         $user = User::create([...$validated,
             'password' => Hash::make('password'),
             'role' => null,
-            'is_petsitter'=>true,
-            'petsitter_status'=>PetsitterStatus::PENDING]);
+            'is_petsitter' => true,
+            'petsitter_status' => PetsitterStatus::PENDING]);
         $user->animalTypes()->sync($this->animals);
         $user->visitTypes()->sync($this->visits);
         session()->flash('success', 'Demande envoyée avec succès');
@@ -98,29 +115,45 @@ class extends Component {
         <form wire:submit.prevent="store" class="w-8/10 mx-auto mt-6">
             @csrf
             <div>
-                <x-forms.input-label type="file" name="image" label="{{ __('petsitterCreateForm.picture') }}" wire:model="image"/>
+                <x-forms.input-label type="file" name="image" label="{{ __('petsitterCreateForm.picture') }}"
+                                     wire:model="image"/>
             </div>
             <div class="flex gap-6 justify-between">
-                <x-forms.input-label wire:model="last_name" type="text" name="last_name" label="{{ __('form.last_name') }} *"/>
-                <x-forms.input-label wire:model="first_name" type="text" name="first_name" label="{{ __('form.first_name') }} *"/>
+                <x-forms.input-label wire:model="last_name" type="text" name="last_name"
+                                     label="{{ __('form.last_name') }} *"/>
+                <x-forms.input-label wire:model="first_name" type="text" name="first_name"
+                                     label="{{ __('form.first_name') }} *"/>
             </div>
             <div class="flex gap-6 justify-between">
                 <x-forms.input-label wire:model="email" type="email" name="email" label="{{ __('form.email') }} *"/>
                 <x-forms.input-label wire:model="phone" type="text" name="phone" label="{{ __('form.phone') }} *"/>
             </div>
             <div class="flex gap-6 justify-between">
-                <x-forms.input-label wire:model="adress" type="text" name="adress" label="{{ __('petsitterCreateForm.address') }} *"/>
-                <x-forms.input-label wire:model="zip" type="number" name="zip" label=" {{ __('petsitterCreateForm.zip') }} *"/>
+                <x-forms.input-label wire:model="adress" type="text" name="adress"
+                                     label="{{ __('petsitterCreateForm.address') }} *"/>
+                <x-forms.input-label wire:model="zip" type="number" name="zip"
+                                     label=" {{ __('petsitterCreateForm.zip') }} *"/>
             </div>
             <div>
-                <x-forms.input-label wire:model="location" type="text" name="location" label="{{ __('petsitterCreateForm.location') }}"/>
+                <x-forms.input-label wire:model="location" type="text" name="location"
+                                     label="{{ __('petsitterCreateForm.location') }}"/>
+            </div>
+            <div>
+                <x-forms.select-option wire:model="prices" name="prices" label="Votre prix à la journée">
+
+                    @foreach($prices as $price)
+                        <option value="{{ $price }}">
+                            {{ $price }} €
+                        </option>
+                    @endforeach
+                </x-forms.select-option>
             </div>
             <div class="flex gap-12 justify-between">
 
                 <div class="w-1/3">
 
                     <label class="block text-sm text-text uppercase font-bold mb-3">
-                       {{ __('petsitterCreateForm.habitation') }} <abbr title="Requis">*</abbr>
+                        {{ __('petsitterCreateForm.habitation') }} <abbr title="Requis">*</abbr>
                     </label>
 
                     <div class="flex flex-col gap-3">
@@ -150,7 +183,7 @@ class extends Component {
                 </div>
                 <div class="w-1/3">
                     <label class="block text-sm text-text uppercase font-bold mb-3">
-                            {{ __('petsitterCreateForm.chooseAnimal') }}
+                        {{ __('petsitterCreateForm.chooseAnimal') }}
                     </label>
 
                     <div class="flex flex-col gap-3">
@@ -178,7 +211,7 @@ class extends Component {
                 </div>
                 <div class="w-1/3">
                     <label class="block text-sm text-text uppercase font-bold mb-3">
-                            {{ __('petsitterCreateForm.chooseVisit') }}
+                        {{ __('petsitterCreateForm.chooseVisit') }}
                     </label>
 
                     <div class="flex flex-col gap-3">
@@ -215,14 +248,14 @@ class extends Component {
             </div>
             <div>
                 <x-forms.button>
-                        {{ __('petsitterCreateForm.sentRequest') }}
+                    {{ __('petsitterCreateForm.sentRequest') }}
                 </x-forms.button>
             </div>
         </form>
-        <div class="w-1/2">
-        @if( session('success'))
-        <x-message_success/>
-        @endif
+        <div class="w-1/2 mx-auto">
+            @if( session('success'))
+                <x-message_success/>
+            @endif
         </div>
     </section>
 </div>

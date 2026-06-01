@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\PetsitterRequestStatus;
+use App\Jobs\ProcessImageJob;
 use App\Models\PetsitterMessages;
 use App\Models\PetSittingRequest;
 use App\Models\User;
@@ -55,7 +56,14 @@ class extends Component {
             'image' => 'nullable|image',
         ]);
         if ($this->image) {
-            $validated['image'] = $this->image->store('petsitter', 'public');
+            $fileName = 'petsitter_' . uniqid() . '.jpg';
+            $path = $this->image->storeAs(
+                'petsitter/original',
+                $fileName,
+                'public'
+            );
+            ProcessImageJob::dispatch($fileName, $path);
+            $validated['image'] = $path;
         }
 
         $this->petsitter->update($validated);
@@ -169,7 +177,7 @@ class extends Component {
             :adress="$petsitter->adress"
             :zip="$petsitter->zip"
             :location="$petsitter->location"
-            :image="$petsitter->image"
+            :petsitter="$petsitter"
         />
 
         <x-cards.ps_card_profile_info

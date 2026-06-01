@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('phone')->nullable();
             $table->string('adress');
+            $table->bigInteger('price')->nullable();
             $table->integer('zip');
             $table->string('location');
             $table->string('role')->nullable();

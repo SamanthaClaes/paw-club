@@ -51,8 +51,8 @@ class extends Component {
         <div class="absolute inset-0 bg-black/60"></div>
         <div class="absolute inset-0 flex flex-col justify-center items-center gap-4">
             <h1 class="
-               text-white text-2xl md:text-6xl font-bold uppercase z-10">{{ __('home.title') }}</h1>
-            <span class=" text-sm text-center text-white md:text-3xl z-10 w-1/2">{{ __('home.subtitle') }}</span>
+               text-white text-2xl md:text-4xl font-bold uppercase z-10">{{ __('home.title') }}</h1>
+            <span class=" text-sm text-center text-white md:text-2xl z-10 w-1/2">{{ __('home.subtitle') }}</span>
         </div>
     </section>
     <section class="px-6 py-12">
@@ -86,7 +86,8 @@ class extends Component {
             </div>
             <div class="flex justify-center mt-6">
                 <a href="{{ route('petsitter.index') }}#petsitters_list"
-                   class=" text-cta  font-bold uppercase bg-card-green hover:bg-hover hover:text-white p-5 lg:w-1/2 rounded-lg mb-6  text-center shadow-md/10"> {{ __('home.petsitter') }}</a>
+                   class="  hover:-translate-y-1 hover:shadow-lg
+        transition-all duration-300 text-cta  font-bold uppercase bg-card-green hover:bg-hover hover:text-white p-5 lg:w-1/2 rounded-lg mb-6  text-center shadow-md/10"> {{ __('home.petsitter') }}</a>
             </div>
 
         </div>
@@ -112,7 +113,7 @@ class extends Component {
                     </p>
 
                     <img
-                        src="{{ asset('svg/icons 1.svg') }}"
+                        src="{{ asset('svg/icons1.svg') }}"
                         alt="garçon qui joue à la balle avec son chien"
                         class="
                         pointer-events-none
@@ -120,12 +121,14 @@ class extends Component {
                         bottom-0 right-5
                         w-40 sm:w-32 md:w-40 lg:w-70
                         translate-x-1/4 translate-y-1/4
+                        z-10
                     "
                     >
 
                     <div class="flex justify-center">
                         <a href="{{ route('daycare.request') }}"
-                           class="text-text-orange font-bold uppercase bg-card-orange hover:bg-hover-orange hover:text-white p-5 lg:w-2/3 rounded-lg mb-6 shadow-md/10 ">
+                           class="text-text-orange font-bold uppercase bg-card-orange hover:bg-hover-orange hover:text-white p-5 lg:w-2/3 rounded-lg mb-6 shadow-md/10  hover:-translate-y-1 hover:shadow-lg
+        transition-all duration-300 ">
                             {{ __('home.scheduleDaycare') }}
                         </a>
                     </div>
@@ -156,7 +159,8 @@ class extends Component {
 
                     <div class="flex justify-center">
                         <a href="{{ route('petsitter.index') }}#petsitters_list"
-                           class="shadow-md/10 text-text-pink font-bold uppercase bg-card-pink hover:bg-hover-pink hover:text-white p-5 lg:w-2/3 rounded-lg mb-6">
+                           class="shadow-md/10 text-text-pink font-bold uppercase bg-card-pink hover:bg-hover-pink hover:text-white p-5 lg:w-2/3 rounded-lg mb-6  hover:-translate-y-1 hover:shadow-lg
+        transition-all duration-300">
                             {{ __('home.schedulePetsitter') }}
                         </a>
                     </div>

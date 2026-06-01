@@ -1,4 +1,3 @@
-<xml version="1.0" encoding="UTF-8"/>
 <svg {{ $attributes }} viewBox="0 0 2000 2000" width="100" height="100">
     <defs>
         <style>

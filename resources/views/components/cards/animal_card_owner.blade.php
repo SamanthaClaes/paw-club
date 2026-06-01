@@ -10,6 +10,7 @@
     'petImage',
     'petId',
     'gender',
+    'pet',
 ])
 
 <section class="border-5 border-stroke rounded-md overflow-hidden bg-card w-full mt-6">
@@ -18,7 +19,13 @@
 
         <div class="w-full h-64 sm:h-auto sm:w-1/3">
             <img
-                src="{{ \Illuminate\Support\Facades\Storage::url($petImage) }}"
+                src="{{ $pet->getImageUrl(800) }}"
+                srcset="
+        {{ $pet->getImageUrl(400) }} 400w,
+        {{ $pet->getImageUrl(800) }} 800w,
+        {{ $pet->getImageUrl(1200) }} 1200w
+    "
+                sizes="(max-width: 768px) 100vw, 300px"
                 alt="{{ __('animalCard.animalPicture') }}"
                 class="w-full h-full object-cover"
             >

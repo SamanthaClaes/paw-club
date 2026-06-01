@@ -82,8 +82,10 @@ class extends Component {
             </div>
 
         </form>
-        @if( session('success'))
-            <x-message_success/>
-        @endif
+        <div class="w-1/2 mx-auto">
+            @if( session('success'))
+                <x-message_success/>
+            @endif
+        </div>
    </section>
 </div>
