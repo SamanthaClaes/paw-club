@@ -16,7 +16,7 @@ use Carbon\Carbon
 <div class="ml-25">
     <div class="w-1/2 mb-6">
         <x-search.search
-            search="search"
+            search="lastWeeksearch"
         />
     </div>
     <table class="min-w-full border dark:border-none">

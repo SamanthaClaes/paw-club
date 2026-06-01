@@ -6,6 +6,7 @@ use App\Models\DayCareRequest;
 use App\Models\Pet;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
@@ -13,29 +14,49 @@ use Livewire\Component;
 
 new #[Layout('layouts::dashboard', ['title' => 'Dashboard'])]
 class extends Component {
-    public $currentWeekRequests = [];
-    public $lastWeekRequests = [];
     public $selectedOwner = null;
     public $search = '';
+    public $lastWeeksearch = '';
+
+   #[Computed]
+    public function currentWeekRequests(): LengthAwarePaginator
+    {
+        $startCurrentWeek = Carbon::now()->startOfWeek();
+        $endCurrentWeek = Carbon::now()->endOfWeek();
+
+        return $this->daycareRequests()
+            ->where('start_date', '<=', $endCurrentWeek)
+            ->where('end_date', '>=', $startCurrentWeek)
+            ->when($this->search, function ($query) {
+                $query->whereHas('pet', function ($q) {
+                    $q->where('name', 'like', "%{$this->search}%");
+                });
+            })
+            ->paginate(
+                perPage: 4,
+                pageName: 'currentWeekPage'
+            );
+    }
 
 
-    public function mount(): void
+    #[Computed]
+    public function lastWeekRequests(): LengthAwarePaginator
     {
         $startLastWeek = Carbon::now()->subWeek()->startOfWeek();
         $endLastWeek = Carbon::now()->subWeek()->endOfWeek();
 
-        $startCurrentWeek = Carbon::now()->startOfWeek();
-        $endCurrentWeek = Carbon::now()->endOfWeek();
-
-        $this->currentWeekRequests = $this->requestsBetween(
-            $startCurrentWeek,
-            $endCurrentWeek
-        );
-
-        $this->lastWeekRequests = $this->requestsBetween(
-            $startLastWeek,
-            $endLastWeek
-        );
+        return $this->daycareRequests()
+            ->where('start_date', '<=', $endLastWeek)
+            ->where('end_date', '>=', $startLastWeek)
+            ->when($this->lastWeeksearch, function ($query) {
+                $query->whereHas('pet', function ($q) {
+                    $q->where('name', 'like', "%{$this->lastWeeksearch}%");
+                });
+            })
+            ->paginate(
+                perPage: 4,
+                pageName: 'lastWeekPage'
+            );
     }
 
     #[On('open-owner-modal')]
@@ -110,11 +131,11 @@ class extends Component {
     <div>
         <x-dashboard.daycare-table
             title="Chiens présents cette semaine"
-            :requests="$currentWeekRequests"
+            :requests="$this->currentWeekRequests"
         />
-        <x-dashboard.daycare-table
+        <x-dashboard.daycareLastWeek-table
             title="Chiens présent la semaine dernière"
-            :requests="$lastWeekRequests"
+            :requests="$this->lastWeekRequests"
         />
     </div>
     <x-modale.owner_infos_modale
