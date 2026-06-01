@@ -25,7 +25,12 @@ use Carbon\Carbon
 
         <tr class="bg-background border-b">
 
-            <th class="border-r py-2">Nom</th>
+            <th class="border-r py-2" wire:click="sortLastWeek('pet_name')">
+                <div class="flex items-center justify-center gap-2 cursor-pointer">
+                    <span>Nom</span>
+                    <x-svg.icons.sort/>
+                </div>
+            </th>
 
             <th class="border-r">Race</th>
 

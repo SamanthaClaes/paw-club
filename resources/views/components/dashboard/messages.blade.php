@@ -4,7 +4,7 @@
     'showReadButton' => false,
 ])
 
-<section class="md:ml-25 mb-6 md:mt-30 text-text text-2xl uppercase font-bold">
+<section class=" mb-6 md:mt-30 text-text text-2xl uppercase font-bold">
 
     <h2 class="text-xl mt-6 font-bold text-text md:text-2xl md:mt-0 dark:text-white">
         {{ $title }}

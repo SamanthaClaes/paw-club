@@ -42,6 +42,7 @@ class extends Component {
         $this->loadPendingRequests();
 
     }
+
     public function rejectRequest($requestId): void
     {
         $request = DayCareRequest::findOrFail($requestId);
@@ -69,15 +70,23 @@ class extends Component {
 ?>
 
 <div>
-    <section class="md:ml-25 mb-6 md:mt-30 text-text text-2xl uppercase font-bold">
+    <section class=" mb-6 md:mt-30 text-text text-2xl uppercase font-bold">
         <h1 class="text-xl mt-6 font-bold text-text md:text-2xl md:mt-0 dark:text-white">Liste des demandes de
             garde</h1>
     </section>
-    @foreach($requests as $request)
-            <x-dashboard.cards_daycare_request_admin
-                :request="$request"
-            />
-    @endforeach
+    @forelse($requests as $request)
+        <x-dashboard.cards_daycare_request_admin
+            :request="$request"
+        />
+
+    @empty
+        <div class="bg-card border-2 border-element rounded-2xl p-8">
+
+            <p class="text-center text-text text-lg font-semibold">
+                Aucune demande en attente
+            </p>
+        </div>
+    @endforelse
     <x-modale.owner_infos_modale
         :selected-owner="$selectedOwner"
     />

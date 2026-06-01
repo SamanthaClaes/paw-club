@@ -14,7 +14,9 @@
 
 <div>
     <div class="mb-6 w-1/2">
-    <x-search.search/>
+    <x-search.search
+        search="search"
+    />
     </div>
     <table class="min-w-full border dark:border-none">
 
