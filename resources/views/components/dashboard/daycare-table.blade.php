@@ -2,6 +2,9 @@
     'title',
     'requests',
 ])
+@php
+use Carbon\Carbon
+ @endphp
 
 <section class="md:ml-25 mb-6">
 
@@ -13,13 +16,14 @@
 
 <div class="ml-25">
 
+
     <table class="min-w-full border dark:border-none">
 
         <thead class="bg-element">
 
         <tr class="bg-background border-b">
 
-            <th class="border-r">Nom</th>
+            <th class="border-r py-2">Nom</th>
 
             <th class="border-r">Race</th>
 
@@ -52,16 +56,16 @@
                 </x-table.table-data>
 
                 <x-table.table-data>
-                    {{ Carbon\Carbon::parse($request->start_date)->format('d/m/Y') }}
+                    {{ Carbon::parse($request->start_date)->format('d/m/Y') }}
                     -
-                    {{ Carbon\Carbon::parse($request->end_date)->format('d/m/Y') }}
+                    {{ Carbon::parse($request->end_date)->format('d/m/Y') }}
                 </x-table.table-data>
 
                 <x-table.table-data>
 
                     <button
                         wire:click="$dispatch('open-owner-modal', { userId: {{ $request->user->id }} })"
-                    >
+                     class="underline cursor-pointer">
                         Voir la fiche du propriétaire
                     </button>
 
@@ -73,7 +77,7 @@
 
             <tr>
 
-                <td colspan="6" class="bg-white p-3">
+                <td colspan="6" class="bg-white p-3 text-center">
                     Pas d’animaux trouvés
                 </td>
 

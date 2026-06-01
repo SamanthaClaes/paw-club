@@ -64,11 +64,11 @@
         </p>
         <p class="text-text text-lg mb-10">
             {{ __('ownerModale.email') }} :
-            <a href="mailto:{{ $selectedOwner?->email }}" class="font-bold">{{ $selectedOwner?->email }}</a>
+            <a href="mailto:{{ $selectedOwner?->email }}" class="font-bold underline">{{ $selectedOwner?->email }}</a>
         </p>
         <p class="text-text text-lg mb-10">
             {{ __('ownerModale.phone') }} :
-            <a href="tel:{{ $selectedOwner?->phone }}" class="font-bold">{{ $selectedOwner?->phone }}</a>
+            <a href="tel:{{ $selectedOwner?->phone }}" class="font-bold underline">{{ $selectedOwner?->phone }}</a>
         </p>
 
         <div class="flex justify-end gap-4">

@@ -73,14 +73,14 @@
 
                 <button
                     @click="$dispatch('edit-pet', { petId: {{ $petId }} })"
-                    class="bg-btn-green hover:bg-hover text-cta font-extrabold uppercase px-4 sm:px-6 py-3 rounded-md transition w-full cursor-pointer"
+                    class="bg-btn-green hover:bg-hover-green hover:text-white text-sm text-cta font-extrabold uppercase px-4 sm:px-6 py-3 rounded-md transition w-full cursor-pointer"
                 >
                     {{ __('animalCard.modifyInformations') }}
                 </button>
 
                 <button
                     @click="$dispatch('open-delete-dog-modal')"
-                    class="bg-btn-red hover:bg-red-700 text-red-950 hover:text-white font-extrabold uppercase px-4 sm:px-6 py-3 rounded-md transition w-full cursor-pointer"
+                    class="bg-btn-red hover:bg-red-600 text-text-red hover:text-white text-sm font-extrabold uppercase px-4 sm:px-6 py-3 rounded-md transition w-full cursor-pointer"
                 >
                     {{ __('animalCard.deletefile') }}
                 </button>

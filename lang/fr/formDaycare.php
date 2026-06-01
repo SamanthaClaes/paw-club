@@ -15,5 +15,6 @@ return [
     'endDate'=>'Date de fin de garde',
     'infos'=>'Informations supplémentaires',
     'sent'=>'Envoyez ma demande',
+    'candidate'=>'Envoyez ma candidature',
 
 ];

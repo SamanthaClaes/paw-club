@@ -30,9 +30,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        URL::defaults([
-            'locale' => app()->getLocale()
-        ]);
         Paginator::useTailwind();
     }
 }

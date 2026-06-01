@@ -37,6 +37,15 @@ class extends Component {
             'message',]);
     }
 
+    public function validationAttributes(): array
+    {
+        return [
+            'first_name' => strtolower(__('form.first_name')),
+            'last_name' => strtolower(__('form.last_name')),
+
+        ];
+    }
+
     public function showForm(): void
     {
         $this->submit = false;
@@ -189,12 +198,12 @@ class extends Component {
      w-30 sm:w-40 md:w-40 lg:w-50 xl:w-60
      -translate-x-1/4 translate-y-1/4">
 
-                <img src="{{ asset('svg/ill_7.svg') }}"
+                <img src="{{ asset('svg/ill_7.webp') }}"
                      alt="illustration d'une femme en train de promener un chien brun"
-                     class="hidden lg:block absolute bottom-10 right-0 xl:right-90
-     w-30 sm:w-40 md:w-56 lg:w-50 xl:w-80
-     translate-x-1/4 translate-y-1/4">
-
+                     class="hidden lg:block absolute -bottom-25 lg:right-70 xl:right-70
+    w-30 sm:w-40 md:w-56 lg:w-50 xl:w-80
+    translate-x-1/4 translate-y-4"
+    >
             </section>
         </div>
     </section>

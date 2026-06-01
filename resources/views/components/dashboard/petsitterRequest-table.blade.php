@@ -13,9 +13,7 @@
 </section>
 
 <div>
-    <div class="mb-6 w-1/2">
-    <x-search.search/>
-    </div>
+
     <table class="min-w-full border dark:border-none">
 
         <thead class="bg-element">
@@ -40,6 +38,10 @@
 
             <th class="border-r">
                 Habitation
+            </th>
+
+            <th class="border-r">
+                Types d'animaux
             </th>
 
             <th class="border-r">
@@ -74,6 +76,15 @@
 
                 <x-table.table-data>
                     {{ $petsitter->habitation?->name }}
+                </x-table.table-data>
+
+                <x-table.table-data>
+
+                    {{ $petsitter->animalTypes
+                        ->pluck('type')
+                        ->join(', ')
+                    }}
+
                 </x-table.table-data>
 
                 <x-table.table-data>
@@ -115,5 +126,4 @@
     <div class="mt-12 flex justify-center">
         {{ $petsitters->links(data: ['scrollTo' => false]) }}
     </div>
-
 </div>

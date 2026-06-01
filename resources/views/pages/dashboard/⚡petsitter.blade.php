@@ -4,23 +4,18 @@ use App\Enums\PetsitterStatus;
 use App\Mail\PetsitterAcceptedMail;
 use App\Models\User;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 new #[Layout('layouts::dashboard', ['title' => 'Nos petsitters'])]
 class extends Component {
 
-    public $petsitters;
-    public $petsitterRequests;
+    use WithPagination;
+    public $search = '';
 
-    public function mount(): void
-    {
-        $this->petsitters = $this->petsitterQuery()
-            ->where('petsitter_status', PetsitterStatus::ACCEPTED)
-            ->get();
-
-        $this->loadingPendingRequest();
-    }
 
     public function petsitterQuery()
     {
@@ -29,6 +24,34 @@ class extends Component {
                 'habitation',
                 'animalTypes',
             ]);
+    }
+
+
+    #[Computed]
+    public function petsitters(): LengthAwarePaginator
+    {
+        return $this->petsitterQuery()
+            ->where('petsitter_status', PetsitterStatus::ACCEPTED)
+            ->when($this->search, function ($query) {
+                $query->where(function ($q) {
+                    $q->where('first_name', 'like', "%{$this->search}%")
+                        ->orWhere('last_name', 'like', "%{$this->search}%");
+                });
+            })
+            ->paginate(
+                perPage: 4,
+                pageName: 'petsittersPage'
+            );
+    }
+    #[Computed]
+    public function petsitterRequests(): LengthAwarePaginator
+    {
+        return $this->petsitterQuery()
+            ->where('petsitter_status', PetsitterStatus::PENDING)
+            ->paginate(
+                perPage: 4,
+                pageName: 'requestsPage'
+            );
     }
 
     public function loadingPendingRequest(): void
@@ -63,20 +86,17 @@ class extends Component {
 ?>
 
 <div>
-    <section class="md:ml-25 mb-6 md:mt-30 text-text text-2xl uppercase font-bold">
-        <h2 class="text-xl mt-6 font-bold text-text md:text-2xl md:mt-0 dark:text-white">Liste de nos petsitters</h2>
-    </section>
     <div class="ml-25">
         <div>
             <x-dashboard.petsitter-table
                 title="Liste de nos petsitters"
-                :petsitters="$petsitters"
+                :petsitters="$this->petsitters"
             />
         </div>
         <div>
-            <x-dashboard.petsitter-table
+            <x-dashboard.petsitterRequest-table
                 title="Liste des demandes des petsitters"
-                :petsitters="$petsitterRequests"
+                :petsitters="$this->petsitterRequests"
                 :show-actions=" true "
             />
         </div>

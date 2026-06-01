@@ -49,8 +49,9 @@ class extends Component {
     public function validationAttributes(): array
     {
         return [
-            'start_date' => strtolower(__('')),
-            'end_date' => 'test',
+            'start_date' => strtolower(__('formDaycare.startDate')),
+            'end_date' => strtolower(__('formDaycare.endDate')),
+            'pet_id'=> strtolower('animal'),
         ];
     }
 
@@ -182,7 +183,7 @@ class extends Component {
             </div>
             <div class="lg:mb-20">
                 <x-forms.button>
-                    {{ __('formDaycare.sent') }}
+                    {{ __('formDaycare.candidate') }}
                 </x-forms.button>
             </div>
         </div>

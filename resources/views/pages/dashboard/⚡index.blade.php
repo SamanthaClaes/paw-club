@@ -16,6 +16,8 @@ class extends Component {
     public $currentWeekRequests = [];
     public $lastWeekRequests = [];
     public $selectedOwner = null;
+    public $search = '';
+
 
     public function mount(): void
     {
@@ -45,6 +47,7 @@ class extends Component {
             'pets.animalType',
         ])->findOrFail($userId);
     }
+
     public function requestsBetween($start, $end)
     {
         return $this->daycareRequests()
@@ -52,6 +55,7 @@ class extends Component {
             ->where('end_date', '>=', $start)
             ->get();
     }
+
     public function daycareRequests()
     {
         return DayCareRequest::with([
@@ -89,7 +93,7 @@ class extends Component {
 ?>
 
 <div>
-    <div class=" mt-20 md:ml-25 grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class=" mt-20 mb-20 md:ml-25 grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
             <x-cards.dashboard_card :number="$this->petsCount" title="Chiens présents"
                                     route="{{ 'dashboard/dogs' }}" class="bg-element"/>

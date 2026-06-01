@@ -9,7 +9,7 @@
  'image',
 ])
 
-<section class="border-4 border-stroke rounded-lg bg-card p-6 max-w-5xl mx-auto mt-20 mb-30">
+<section class="border-4 border-stroke rounded-lg bg-card p-6 ">
     <div class="flex flex-col gap-8">
 
         <h1 class="uppercase font-extrabold text-text lg:text-3xl text-center">
@@ -20,8 +20,14 @@
 
             <div class="shrink-0">
                 <img
-                    src="{{ \Illuminate\Support\Facades\Storage::url($image) }}"
-                    alt="{{ __('ownerProfile.profileImageAlt') }}{{ Auth::user()->first_name }}"
+                    src="{{ Auth::user()->getImageUrl(800) }}"
+                    srcset="
+        {{ Auth::user()->getImageUrl(400) }} 400w,
+        {{ Auth::user()->getImageUrl(800) }} 800w,
+        {{ Auth::user()->getImageUrl(1200) }} 1200w
+    "
+                    sizes="176px"
+                    alt="{{ __('ownerProfile.profileImageAlt') }} {{ Auth::user()->first_name }}"
                     class="w-44 h-44 rounded-lg object-cover"
                 >
             </div>
@@ -57,7 +63,7 @@
                     <button
                         type="button"
                         @click="$dispatch('open-password-modal')"
-                        class="w-full bg-btn-green hover:bg-green-800 text-white font-extrabold uppercase rounded-lg py-3 transition cursor-pointer"
+                        class="w-full bg-btn-green hover:bg-hover-green hover:text-white text-cta font-extrabold uppercase rounded-lg py-3 transition cursor-pointer"
                     >
                         {{ __('ownerProfile.editPassword') }}
                     </button>
@@ -65,7 +71,7 @@
                     <button
                         type="button"
                         @click="$dispatch('open-datas-modal')"
-                        class="w-full bg-btn-green hover:bg-green-800 text-white font-extrabold uppercase rounded-lg py-3 transition cursor-pointer"
+                        class="w-full bg-btn-green hover:bg-hover-green hover:text-white text-cta font-extrabold uppercase rounded-lg py-3 transition cursor-pointer"
                     >
                         {{ __('ownerProfile.editInfos') }}
                     </button>

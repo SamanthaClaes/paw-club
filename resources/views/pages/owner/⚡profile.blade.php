@@ -15,10 +15,12 @@ class extends Component {
     public string $email;
     public string $adress;
     public ?string $phone = null;
-    public $image = null;
+    public $image;
+    public ?string $currentImage = null;
     public string $current_password = '';
     public string $password = '';
     public string $password_confirmation = '';
+
 
 
     public function mount(): void
@@ -27,7 +29,7 @@ class extends Component {
         $this->email = $this->owner->email;
         $this->adress = $this->owner->adress;
         $this->phone = $this->owner->phone;
-        $this->image = $this->owner->image;
+        $this->currentImage = $this->owner->image;
 
     }
 
@@ -85,6 +87,7 @@ class extends Component {
     }
 
         $this->owner->update($validated);
+        $this->owner->refresh();
 
         $this->dispatch('update-data');
     }
@@ -93,7 +96,7 @@ class extends Component {
 
 ?>
 
-<div>
+<div class="max-w-5xl mx-auto mt-20 mb-30">
     <x-header.OwnerNav/>
 
     <x-cards.owner_card_profile
@@ -106,10 +109,10 @@ class extends Component {
         :phone="$phone"
         :image="$owner->image"
     />
-    <section class="max-w-7xl mx-auto">
+    <section class="max-w-7xl mx-auto mt-30">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
             <h2 class="text-text lg:text-2xl text-lg uppercase font-bold">{{ __('ownerProfile.title') }}</h2>
-            <x-cta.add title="{{ __('ownerProfile.add') }}"/>
+            <x-cta.add title="{{ __('ownerProfile.add') }}" class="bg-btn-green hover:bg-hover-green text-cta hover:text-white" />
         </div>
         <livewire:pages::owner.pets.create/>
         <livewire:pages::owner.pets.edit/>

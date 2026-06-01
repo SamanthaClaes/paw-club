@@ -1,4 +1,4 @@
-<footer class="bg-element px-6 py-8">
+<footer class="bg-element px-6 py-8  sticky">
     <nav class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 items-start">
         <h1 class="sr-only">{{ __('footer.title') }}</h1>
         <div class="sm:col-span-2 lg:col-span-1 justify-items-center">
@@ -25,7 +25,7 @@
         </ul>
         <ul class="space-y-2">
             <li class="font-bold uppercase text-sm">{{ __('footer.information') }}</li>
-            <li><a href="/#about" class="text-xs">{{ __('footer.about') }}</a></li>
+            <li><a href="/#about" class="text-xs hover:underline">{{ __('footer.about') }}</a></li>
             <li><a href="{{ route('terms') }}" class="text-xs hover:underline">{{ __('footer.terms') }}</a></li>
             <li><a href="{{ route('confidentiality') }}" class="text-xs hover:underline">{{ __('footer.confidentiality') }}</a></li>
         </ul>

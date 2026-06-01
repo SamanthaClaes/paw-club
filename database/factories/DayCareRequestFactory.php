@@ -21,7 +21,9 @@ class DayCareRequestFactory extends Factory
 
         $endDate = (clone $startDate)->addDays(rand(1, 10));
 
-        $pet = Pet::inRandomOrder()->first();
+        $pet = Pet::where('animal_type_id', 1)
+            ->inRandomOrder()
+            ->firstOrFail();
 
         return [
 

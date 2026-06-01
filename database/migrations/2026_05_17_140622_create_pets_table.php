@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('name');
             $table->boolean('gender');
             $table->date('birth_date');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('pet_image')->nullable();
 
             $table->timestamps();

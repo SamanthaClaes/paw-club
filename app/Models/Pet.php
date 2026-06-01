@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class Pet extends Model
 {
@@ -66,7 +67,12 @@ class Pet extends Model
 
         $fileName = basename($this->pet_image);
 
-        return asset("storage/images/{$size}/{$fileName}");
-    }
+        $variant = "images/{$size}/{$fileName}";
 
+        if (Storage::disk('public')->exists($variant)) {
+            return asset("storage/{$variant}");
+        }
+
+        return Storage::url($this->pet_image);
+    }
 }

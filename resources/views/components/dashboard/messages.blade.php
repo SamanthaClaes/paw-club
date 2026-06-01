@@ -26,7 +26,7 @@
                 </th>
             @endif
 
-            <th class="border-r">Nom</th>
+            <th class="border-r py-2">Nom</th>
 
             <th class="border-r">Prénom</th>
 
@@ -99,7 +99,7 @@
             <tr>
 
                 <td colspan="{{ $showReadButton ? 6 : 5 }}"
-                    class="bg-white p-3"
+                    class="bg-white p-3 text-center"
                 >
                     Pas de message trouvés
                 </td>

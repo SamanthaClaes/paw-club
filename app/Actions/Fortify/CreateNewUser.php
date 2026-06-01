@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\enum\UserRole;
+use App\Jobs\ProcessImageJob;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -36,6 +37,7 @@ class CreateNewUser implements CreatesNewUsers
             'image'=>['nullable', 'image'],
             'adress'=>['required', 'string', 'max:255'],
             'zip'=>['required', 'max_digits:5'],
+            'phone'=>['nullable', 'digits:10'],
             'location'=>['required', 'string', 'max:255'],
             'password' => $this->passwordRules(),
 
@@ -43,7 +45,19 @@ class CreateNewUser implements CreatesNewUsers
         $imagePath = null;
 
         if (isset($input['image'])) {
-            $imagePath = $input['image']->store('owner', 'public');
+
+            $fileName = 'owner_' . uniqid() . '.jpg';
+
+            $imagePath = $input['image']->storeAs(
+                'owner/original',
+                $fileName,
+                'public'
+            );
+
+            ProcessImageJob::dispatch(
+                $fileName,
+                $imagePath
+            );
         }
          return (User::create([
             'last_name' => $input['last_name'],
@@ -53,6 +67,7 @@ class CreateNewUser implements CreatesNewUsers
             'adress' => $input['adress'],
             'zip' => $input['zip'],
             'location' => $input['location'],
+            'phone' => $input['phone'],
             'password' => Hash::make($input['password']),
             'role' => null,
         ]));

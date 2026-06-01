@@ -29,4 +29,6 @@ return [
 
     'sent' => 'Send my request',
 
+    'candidate'=>'Send my candidature',
+
 ];

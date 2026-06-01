@@ -46,9 +46,9 @@ class extends Component {
     {
         $validated = $this->validate([
             'name' => 'required|string',
-            'birth_date' => 'required|date',
+            'birth_date' => 'required|date|before_or_equal:today',
             'pet_image' => 'nullable|image',
-            'description' => 'required|string',
+            'description' => 'nullable|string',
             'gender' => 'required|boolean',
             'animal_type_id' => 'required|exists:animal_types,id',
             'breed_id' => 'nullable|exists:breeds,id',
@@ -128,6 +128,15 @@ class extends Component {
             ->get();
         $this->dispatch('dog-deleted');
 
+    }
+    public function validationAttributes(): array
+    {
+        return [
+            'name' => strtolower(__('petModal.animalName')),
+            'gender' => strtolower(__('petModal.gender')),
+            'birth_date' => strtolower(__('petModal.birthDate')),
+            'animal_type_id'=> strtolower(__('petModal.animalType')),
+        ];
     }
 };
 ?>
