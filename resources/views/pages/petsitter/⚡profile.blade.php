@@ -28,7 +28,7 @@ class extends Component {
     public ?string $phone = null;
     public string $location = '';
     public string $zip = '';
-    public $image;
+    public $image = null;
 
     public function mount(): void
     {
@@ -74,6 +74,10 @@ class extends Component {
         $this->reset('image');
         $this->dispatch('update-data');
         session()->flash('success', 'Informations mises à jour');
+    }
+    public function updatedImage(): void
+    {
+        dd($this->image);
     }
 
 
