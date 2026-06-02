@@ -50,7 +50,8 @@ class extends Component {
 
     public function store(): void
     {
-        $validated = $this->validate([
+        dd('store');
+      /*  $validated = $this->validate([
             'last_name' => 'required|string',
             'first_name' => 'required|string',
             'email' => 'required|email|unique:users,email',
@@ -110,7 +111,7 @@ class extends Component {
             'image',
             'location',
             'description',
-        ]);
+        ]);*/
     }
 };
 ?>
