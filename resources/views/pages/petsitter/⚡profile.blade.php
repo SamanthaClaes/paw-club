@@ -55,7 +55,10 @@ class extends Component {
             'zip' => 'required',
             'image' => 'nullable|image',
         ]);
-
+        dd([
+            'image_exists' => $this->image !== null,
+            'image_type' => get_debug_type($this->image),
+        ]);
         if ($this->image) {
             $fileName = 'petsitter_' . uniqid() . '.jpg';
             $path = $this->image->storeAs(
@@ -63,10 +66,6 @@ class extends Component {
                 $fileName,
                 's3'
             );
-            dd([
-                'path' => $path,
-                'exists' => Storage::disk('s3')->exists($path),
-            ]);
             ProcessImageJob::dispatchSync($fileName, $path);
             $validated['image'] = $path;
         }
