@@ -67,6 +67,7 @@ class extends Component {
             'adress' => 'required|string',
             'phone' => 'nullable',
         ]);
+        dd($this->image);
 
         if($this->image){
 
