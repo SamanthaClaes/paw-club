@@ -50,8 +50,8 @@ class extends Component {
 
     public function store(): void
     {
-        dd('store');
-      /*  $validated = $this->validate([
+
+       $validated = $this->validate([
             'last_name' => 'required|string',
             'first_name' => 'required|string',
             'email' => 'required|email|unique:users,email',
@@ -66,6 +66,8 @@ class extends Component {
             'description' => 'nullable|string',
             'price'=>'nullable|integer',
         ]);
+        dd('store');
+       /*
         if ($this->image) {
 
             try {
