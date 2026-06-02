@@ -42,7 +42,7 @@
                 <img
                     src="{{ $image
         ? Storage::url($image)
-        : asset('images/petsitters/portrait.webp') }}"
+        : asset('img/petsitter/portrait.webp') }}"
                     alt="{{ $name }}"
                     class="rounded-full object-cover
                     w-28 h-28 lg:w-32 lg:h-32
