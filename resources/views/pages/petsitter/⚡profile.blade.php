@@ -40,6 +40,7 @@ class extends Component {
         $this->phone = $this->petsitter->phone;
         $this->location = $this->petsitter->location;
         $this->zip = $this->petsitter->zip;
+        $this->image = $this->petsitter->image;
 
     }
     public function save()
