@@ -85,7 +85,7 @@ class extends Component {
 
             $validated['image'] = $path;
         }
-        
+
         $user = User::create([...$validated,
             'password' => Hash::make('password'),
             'role' => null,

@@ -2,6 +2,7 @@
 
 use App\Enums\PetsitterStatus;
 use App\Mail\PetsitterAcceptedMail;
+use App\Mail\PetsittingRefusedRequestMail;
 use App\Models\User;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -14,6 +15,7 @@ new #[Layout('layouts::dashboard', ['title' => 'Nos petsitters'])]
 class extends Component {
 
     use WithPagination;
+
     public $search = '';
 
 
@@ -43,6 +45,7 @@ class extends Component {
                 pageName: 'petsittersPage'
             );
     }
+
     #[Computed]
     public function petsitterRequests(): LengthAwarePaginator
     {
@@ -54,20 +57,14 @@ class extends Component {
             );
     }
 
-    public function loadingPendingRequest(): void
-    {
-        $this->petsitterRequests = $this->petsitterQuery()
-            ->where('petsitter_status', PetsitterStatus::PENDING)
-            ->get();
-    }
 
     public function acceptPetsitterRequest($requestId): void
     {
         $petsitter = User::findOrFail($requestId);
         $petsitter->petsitter_status = PetsitterStatus::ACCEPTED;
         $petsitter->save();
-        Mail::to($petsitter->email)->queue(new PetsitterAcceptedMail($petsitter));
-        $this->loadingPendingRequest();
+//       Mail::to($petsitter->email)->queue(new PetsitterAcceptedMail($petsitter));
+        $this->resetPage('requestsPage');
     }
 
     public function rejectPetsitterRequest($requestId): void
@@ -77,8 +74,8 @@ class extends Component {
         $petsitter->petsitter_status = PetsitterStatus::REFUSED;
 
         $petsitter->save();
-
-        $this->loadingPendingRequest();
+        //Mail::to($petsitter->email)->queue(new PetsittingRefusedRequestMail($petsitter, $owner, $pet, $request));
+        $this->resetPage('requestsPage');
 
     }
 
