@@ -17,7 +17,7 @@
 
         <div class="shrink-0">
             <img
-                src="{{ Storage::url($petsitter->image) }}"
+                src="{{ Storage::url($image) }}"
                 srcset="
         {{ Storage::url($petsitter->image) }} 400w,
         {{ Storage::url($petsitter->image) }} 800w,
