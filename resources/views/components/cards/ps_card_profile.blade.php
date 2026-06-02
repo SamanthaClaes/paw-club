@@ -13,8 +13,8 @@
     <div class="flex flex-col lg:flex-row gap-6 items-center lg:items-start">
 
         <div class="shrink-0">
-          {{--  <img
-                src="{{ Storage::disk('s3')->url($petsitter->image) }}"
+           <img
+               src="{{ $petsitter->getImageUrl(800) }}"
                 srcset="
         {{ $petsitter->getImageUrl(400) }} 400w,
         {{ $petsitter->getImageUrl(800) }} 800w,
@@ -23,7 +23,7 @@
                 sizes="(max-width: 768px) 100vw, 400px"
                 alt="{{ __('petsitterProfile.profileImageAlt') }}"
                 class="w-40 h-40 rounded-2xl object-cover"
-            >--}}
+            >
         </div>
 
         <div class="flex-1 w-full">
