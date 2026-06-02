@@ -12,7 +12,7 @@
 
 <section class="border-2 border-stroke rounded-2xl bg-card p-8 h-full max-w-5xl mx-auto">
     <div class="flex flex-col lg:flex-row gap-6 items-center lg:items-start">
-
+        {{ $petsitter->image }}
         <div class="shrink-0">
             <img
                 src="{{ Storage::url($petsitter->image) }}"
