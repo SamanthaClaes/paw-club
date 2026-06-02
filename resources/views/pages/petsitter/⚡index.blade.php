@@ -1,9 +1,11 @@
 <?php
 
 use App\Enums\PetsitterStatus;
+use App\Models\AnimalType;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -17,12 +19,29 @@ class extends Component {
 
     public $location = '';
 
-    public $habitation;
+    public $animalType = null;
 
     public function updatedSearch(): void
     {
         $this->resetPage();
     }
+
+    #[Computed]
+    public function animalTypes(): Collection
+    {
+        return AnimalType::all();
+    }
+
+    #[Computed]
+    public function locations(): Collection
+    {
+        return $this->petsitterQuery()
+            ->select('location')
+            ->distinct()
+            ->orderBy('location')
+            ->pluck('location');
+    }
+
 
 
     public function petsitterQuery(): Builder
@@ -49,13 +68,13 @@ class extends Component {
             ->when($this->location, function ($query) {
                 $query->where('location', $this->location);
             })
-            ->when($this->habitation, function ($query) {
-                $query->where('habitation_id', $this->habitation);
+            ->when($this->animalType, function ($query) {
+                $query->whereHas('animalTypes',function ($q){
+                    $q->where('animal_types.id', $this->animalType);
+                });
             })
             ->paginate(4);
     }
-
-
 };
 ?>
 
@@ -100,8 +119,8 @@ class extends Component {
                     alt="homme et femme donnant à manger à un chat"
                     class="hidden lg:block absolute
                 bottom-5 right-0
-                w-40 xl:w-56
-                translate-y-1/5
+                w-40 xl:w-40
+                translate-y-6
                 opacity-95 pointer-events-none"
                 >
 
@@ -151,7 +170,9 @@ class extends Component {
 
             <div class="flex flex-col lg:flex-row gap-8 items-center">
 
-                <x-search.search/>
+                <x-search.search
+                    search="search"
+                />
 
                 <div class="w-full lg:w-64">
 
@@ -162,10 +183,9 @@ class extends Component {
                         label="Localité"
                     >
                         <option value="">Toutes les localités</option>
-                        <option value="Antwonshire">Antwonshire</option>
-                        <option value="Grantburgh">Grantburgh</option>
-                        <option value="South Aylinchester">South Aylinchester</option>
-                        <option value="Port Abby">Port Abby</option>
+                       @foreach($this->locations as $location)
+                            <option value="{{ $location }}"> {{ $location }}</option>
+                       @endforeach
                     </x-forms.select-option>
 
                 </div>
@@ -173,16 +193,15 @@ class extends Component {
                 <div class="w-full lg:w-64">
 
                     <x-forms.select-option
-                        name="habitation"
-                        id="habitation"
-                        wire:model.live="habitation"
-                        label="Habitation"
+                        name="animalType"
+                        id="animalType"
+                        wire:model.live="animalType"
+                        label="Type d’animal"
                     >
-                        <option value="">Toutes les habitations</option>
-                        <option value="1">Maison</option>
-                        <option value="3">Appartement</option>
-                        <option value="2">Studio</option>
-                        <option value="4">Ferme</option>
+                        <option value="">Tous les animaux</option>
+                        @foreach($this->animalTypes as $animalType)
+                            <option value="{{ $animalType->id }}">{{ ucfirst($animalType->type) }}</option>
+                        @endforeach
                     </x-forms.select-option>
 
                 </div>
@@ -257,7 +276,7 @@ class extends Component {
             class="hidden lg:block absolute
         bottom-0 right-0
         w-48 xl:w-64
-        translate-x-1/5 translate-y-1/6
+        translate-x-3 translate-y-1
         opacity-95 pointer-events-none"
         >
 
