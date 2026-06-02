@@ -7,6 +7,7 @@
  'zip',
  'location',
  'image',
+ 'owner'
 ])
 
 <section class="border-4 border-stroke rounded-lg bg-card p-6 ">

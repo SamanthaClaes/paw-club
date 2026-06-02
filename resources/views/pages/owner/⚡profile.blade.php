@@ -108,6 +108,7 @@ class extends Component {
         :zip="$owner->zip"
         :phone="$phone"
         :image="$owner->image"
+        :owner="$owner"
     />
     <section class="max-w-7xl mx-auto mt-30">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
