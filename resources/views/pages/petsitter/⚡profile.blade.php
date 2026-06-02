@@ -60,7 +60,7 @@ class extends Component {
             $path = $this->image->storeAs(
                 'petsitter/original',
                 $fileName,
-                'public'
+                's3'
             );
             ProcessImageJob::dispatch($fileName, $path);
             $validated['image'] = $path;
