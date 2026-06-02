@@ -62,10 +62,6 @@ class extends Component {
                 $fileName,
                 's3'
             );
-            dd([
-                'path' => $path,
-                'exists' => Storage::disk('s3')->exists($path),
-            ]);
             ProcessImageJob::dispatchSync($fileName, $path);
             $validated['image'] = $path;
         }
