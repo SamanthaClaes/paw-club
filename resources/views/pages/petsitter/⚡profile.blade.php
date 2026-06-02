@@ -68,6 +68,7 @@ class extends Component {
         }
         $this->petsitter->update($validated);
         $this->petsitter->refresh();
+        $this->reset($image);
         $this->dispatch('update-data');
         session()->flash('success', 'Informations mises à jour');
     }
