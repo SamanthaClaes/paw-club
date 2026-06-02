@@ -40,8 +40,10 @@
             <div class="shrink-0 flex justify-center">
 
                 <img
-                    src="{{ \Illuminate\Support\Facades\Storage::url($image) }}"
-                    alt="{{ $name }}"
+                    src="{{ $petsitter->image
+        ? Storage::url($petsitter->image)
+        : asset('images/petsitters/portrait.webp') }}"
+                    alt="{{ $petsitter->first_name }}"
                     class="rounded-full object-cover
                     w-28 h-28 lg:w-32 lg:h-32
                     border-4 border-white/60
