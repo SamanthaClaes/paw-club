@@ -87,7 +87,7 @@ class User extends Authenticatable
     public function getImageUrl(int $size = 400): ?string
     {
         if (!$this->image) {
-            return asset('img/petsitter/portrait.webp');
+            return null;
         }
 
         $fileName = basename($this->image);
