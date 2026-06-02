@@ -28,7 +28,7 @@ class extends Component {
     public ?string $phone = null;
     public string $location = '';
     public string $zip = '';
-    public $image = null;
+    public $image;
 
     public function mount(): void
     {
