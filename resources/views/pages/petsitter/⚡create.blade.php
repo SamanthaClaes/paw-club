@@ -50,6 +50,7 @@ class extends Component {
 
     public function store(): void
     {
+        dd('store');
         $validated = $this->validate([
             'last_name' => 'required|string',
             'first_name' => 'required|string',
