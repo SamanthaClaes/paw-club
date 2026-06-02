@@ -55,6 +55,7 @@ class extends Component {
             'zip' => 'required',
             'image' => 'nullable|image',
         ]);
+
         if ($this->image) {
             $fileName = 'petsitter_' . uniqid() . '.jpg';
             $path = $this->image->storeAs(
@@ -65,8 +66,8 @@ class extends Component {
             ProcessImageJob::dispatch($fileName, $path);
             $validated['image'] = $path;
         }
-
         $this->petsitter->update($validated);
+        $this->petsitter->refresh();
         $this->dispatch('update-data');
         session()->flash('success', 'Informations mises à jour');
     }
