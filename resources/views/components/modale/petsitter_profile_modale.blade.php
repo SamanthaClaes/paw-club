@@ -1,5 +1,4 @@
 <dialog
-    wire:ignore.self
     x-data="{ open: false }"
     x-on:open-update-data-modal.window="
         open = true;
@@ -51,7 +50,7 @@
 
 
         <form wire:submit.prevent="updateData" class="space-y-4" enctype="multipart/form-data">
-
+            @csrf
             <x-forms.input-label
                 wire:model="image"
                 label="Image"
