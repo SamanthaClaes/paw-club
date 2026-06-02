@@ -34,4 +34,6 @@ return [
 
     'imageAlt' => 'Several images of dogs or cats',
 
+    'passwordValidation' => 'Your password must be at least 8 characters long',
+
 ];

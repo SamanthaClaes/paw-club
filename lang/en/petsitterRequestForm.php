@@ -3,7 +3,7 @@
 return [
     'title' => 'Apply to become a petsitter',
 
-    'subtitle' => 'PuppyClub petsitters are carefully selected to ensure a high-quality service.
+    'subtitle' => 'Paw Club petsitters are carefully selected to ensure a high-quality service.
                     Please complete the form below to submit your application.',
     'picture'=>'Profil picture',
     'address' => 'Postal address',

@@ -38,4 +38,6 @@ return [
 
     'imageAlt' => 'Plusieurs images de chiens ou de chats',
 
+    'passwordValidation'=>'Votre mot de passe doit contenir au moins 8 caractères',
+
 ];

@@ -11,7 +11,7 @@ return [
     'habitation' => 'Type of housing',
     'chooseVisit' => 'Choose your type of visits',
     'chooseAnimal' => 'Choose your type of animal',
-    'infos' => 'Additional information',
+    'infos' => 'Informations supplémentaires',
     'sentRequest' => 'Send your request',
 
 
