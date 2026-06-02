@@ -67,21 +67,26 @@ class extends Component {
         ]);
         if ($this->image) {
 
-            $fileName = 'petsitter_' . uniqid() . '.jpg';
+            try {
 
-            $path = $this->image->storeAs(
-                'petsitters/original',
-                $fileName,
-                'public'
-            );
-            dd($path);
+                $fileName = 'petsitter_' . uniqid() . '.jpg';
 
-            ProcessImageJob::dispatch(
-                $fileName,
-                $path
-            );
+                $path = $this->image->storeAs(
+                    'petsitters/original',
+                    $fileName,
+                    'public'
+                );
 
-            $validated['image'] = $path;
+                dd($path);
+
+            } catch (\Throwable $e) {
+
+                dd([
+                    'message' => $e->getMessage(),
+                    'file' => $e->getFile(),
+                    'line' => $e->getLine(),
+                ]);
+            }
         }
         $user = User::create([...$validated,
             'password' => Hash::make('password'),
