@@ -6,7 +6,6 @@
  'adress',
  'zip',
  'location',
- 'image',
  'petsitter',
 ])
 
