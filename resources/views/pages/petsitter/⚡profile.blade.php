@@ -32,7 +32,12 @@ class extends Component {
 
     public function mount(): void
     {
+
         $this->petsitter = Auth::user();
+        dd([
+            'user_id' => $this->petsitter->id,
+            'image' => $this->petsitter->image,
+        ]);
         $this->first_name = $this->petsitter->first_name;
         $this->last_name = $this->petsitter->last_name;
         $this->email = $this->petsitter->email;
