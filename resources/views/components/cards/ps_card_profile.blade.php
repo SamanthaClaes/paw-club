@@ -11,13 +11,11 @@
 ])
 
 <section class="border-2 border-stroke rounded-2xl bg-card p-8 h-full max-w-5xl mx-auto">
-    {{ Storage::url($petsitter->image) }}
-    {{ $petsitter->image }}
     <div class="flex flex-col lg:flex-row gap-6 items-center lg:items-start">
 
         <div class="shrink-0">
             <img
-                src="{{ Storage::url($image) }}"
+                src="{{ Storage::url($petsitter->image) }}"
                 srcset="
         {{ Storage::url($petsitter->image) }} 400w,
         {{ Storage::url($petsitter->image) }} 800w,
