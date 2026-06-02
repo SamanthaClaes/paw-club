@@ -51,7 +51,12 @@ class extends Component {
 
     public function store(): void
     {
+        Storage::disk('s3')->put(
+            'test.txt',
+            'Hello Paw Club'
+        );
 
+        dd('ok');
        $validated = $this->validate([
             'last_name' => 'required|string',
             'first_name' => 'required|string',
