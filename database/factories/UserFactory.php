@@ -20,7 +20,7 @@ class UserFactory extends Factory
             'adress' => $this->faker->streetAddress(),
             'zip' => $this->faker->numberBetween(1000, 6999),
             'location' => $this->faker->city(),
-            'image' => 'petsitters/portrait.webp',
+            'image' => null,
             'habitation_id' => $this->faker->numberBetween(1, 4),
             'role' => null,
             'is_petsitter' => false,

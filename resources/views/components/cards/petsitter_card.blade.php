@@ -45,10 +45,10 @@
         : asset('img/petsitter/portrait.webp') }}"
                     alt="{{ $name }}"
                     class="rounded-full object-cover
-                    w-28 h-28 lg:w-32 lg:h-32
-                    border-4 border-white/60
-                    shadow-lg"
-                >
+           w-28 h-28 lg:w-32 lg:h-32
+           border-4 border-white/60
+           shadow-lg"
+                />
             </div>
 
 
