@@ -188,7 +188,7 @@ class extends Component {
     </div>
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
         <h2 class="text-text lg:text-2xl text-lg uppercase font-bold">{{ __('ownerProfile.title') }}</h2>
-        <x-cta.add title="{{ __('ownerProfile.add') }}"/>
+        <x-cta.add title="{{ __('ownerProfile.add') }} " class="bg-btn-green hover:bg-hover-green text-cta hover:text-white"/>
     </div>
     <livewire:pages::owner.pets.create/>
     <livewire:pages::owner.pets.edit/>

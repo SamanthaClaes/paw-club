@@ -57,7 +57,13 @@
 
 
         <form wire:submit.prevent="updatePet" class="space-y-4" enctype="multipart/form-data">
-
+            {{ $slot }}
+            <x-forms.input-label
+                name="pet_image"
+                wire:model="pet_image"
+                label="Image de l’animal"
+                type="file"
+            />
             <x-forms.input-label
                 wire:model="name"
                 label="Nom de l’animal"
@@ -123,7 +129,6 @@
                     Modifier mon animal
                 </button>
             </div>
-
         </form>
 
     </div>

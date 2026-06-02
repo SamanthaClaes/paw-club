@@ -41,7 +41,7 @@
 
                 <img
                     src="{{ $image
-        ? Storage::url($image)
+        ? Storage::disk('s3')->url($image)
         : asset('img/petsitter/portrait.webp') }}"
                     alt="{{ $name }}"
                     class="rounded-full object-cover

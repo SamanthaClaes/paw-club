@@ -14,11 +14,11 @@
 
         <div class="shrink-0">
             <img
-                src="{{ Storage::url($petsitter->image) }}"
+                src="{{ Storage::disk('s3')->url($petsitter->image) }}"
                 srcset="
-        {{ Storage::url($petsitter->image) }} 400w,
-        {{ Storage::url($petsitter->image) }} 800w,
-        {{ Storage::url($petsitter->image) }} 1200w
+        {{ $petsitter->getImageUrl(400) }} 400w,
+        {{ $petsitter->getImageUrl(800) }} 800w,
+        {{ $petsitter->getImageUrl(1200) }} 1200w
     "
                 sizes="(max-width: 768px) 100vw, 400px"
                 alt="{{ __('petsitterProfile.profileImageAlt') }}"

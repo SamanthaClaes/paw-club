@@ -63,7 +63,7 @@ class extends Component {
             $path = $this->pet_image->storeAs(
                 'pet/original',
                 $fileName,
-                'public'
+                's3'
             );
 
             ProcessImageJob::dispatch(

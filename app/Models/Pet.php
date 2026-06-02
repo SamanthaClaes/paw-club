@@ -67,12 +67,8 @@ class Pet extends Model
 
         $fileName = basename($this->pet_image);
 
-        $variant = "images/{$size}/{$fileName}";
-
-        if (Storage::disk('public')->exists($variant)) {
-            return asset("storage/{$variant}");
-        }
-
-        return Storage::url($this->pet_image);
+        return Storage::disk('s3')->url(
+            "images/{$size}/{$fileName}"
+        );
     }
 }

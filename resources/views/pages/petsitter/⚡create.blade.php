@@ -51,12 +51,6 @@ class extends Component {
 
     public function store(): void
     {
-        Storage::disk('s3')->put(
-            'test.txt',
-            'Hello Paw Club'
-        );
-
-        dd('ok');
        $validated = $this->validate([
             'last_name' => 'required|string',
             'first_name' => 'required|string',
@@ -80,7 +74,7 @@ class extends Component {
             $path = $this->image->storeAs(
                 'petsitter/original',
                 $fileName,
-                'public'
+                's3'
             );
 
             ProcessImageJob::dispatch(
@@ -123,6 +117,10 @@ class extends Component {
         <p class="w-1/2 text-center mx-auto"> {{ __('petsitterCreateForm.subtitle') }}</p>
         <form wire:submit="store" class="w-8/10 mx-auto mt-6">
             @csrf
+            @if($image)
+                <img class="h-40 w-40 object-cover rounded-2xl" src="{{ $image->temporaryUrl() }}"
+                     alt="Prévisualisation">
+            @endif
             <div>
                 <x-forms.input-label type="file" name="image" label="{{ __('petsitterCreateForm.picture') }}"
                                      wire:model="image"/>

@@ -27,7 +27,7 @@ class ProcessImageJob implements ShouldQueue
     public function handle(): void
     {
 
-        $imageContent = Storage::disk('public')->get($this->fullPath);
+        $imageContent = Storage::disk('s3')->get($this->fullPath);
         $image = Image::read($imageContent);
         $sizes = [400,800,1200];
         $compression = 85;
@@ -42,7 +42,7 @@ class ProcessImageJob implements ShouldQueue
             $variantPath = sprintf($variantPathTemplate, $size);
             $fullVariantPath = $variantPath . '/' . $this->fileName;
 
-            Storage::disk('public')->put($fullVariantPath, $resizedImage);
+            Storage::disk('s3')->put($fullVariantPath, $resizedImage);
         }
     }
 }

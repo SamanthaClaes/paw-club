@@ -24,6 +24,8 @@ new class extends Component {
 
     public $description;
 
+    public $image;
+
     public ?Pet $pet = null;
 
     public function mount(): void
@@ -53,6 +55,7 @@ new class extends Component {
         $this->animal_type_id = $pet->animal_type_id;
         $this->breed_id = $pet->breed_id;
         $this->birth_date = $pet->birth_date;
+        $this->image = $pet->pet_image;
         $this->description = $pet->description;
         $this->dispatch('edit-dog');
     }
@@ -64,12 +67,14 @@ new class extends Component {
             'animal_type_id' => 'required|exists:animal_types,id',
             'breed_id' => 'nullable|exists:breeds,id',
             'birth_date' => 'required|date',
+            'image'=>'nullable|image',
             'description' => 'nullable|string',
         ]);
 
         $this->pet->name = $this->name;
         $this->pet->animal_type_id = $this->animal_type_id;
         $this->pet->breed_id = $this->breed_id;
+        $this->pet->pet_image = $this->image;
         $this->pet->birth_date = $this->birth_date;
         $this->pet->description = $this->description;
 

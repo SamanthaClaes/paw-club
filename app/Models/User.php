@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 #[Fillable(['last_name', 'first_name', 'email', 'password', 'role', 'phone', 'adress', 'zip', 'image', 'location', 'description', 'habitation_id', 'petsitter_status', 'is_petsitter', 'price'])]
 #[Hidden(['password', 'remember_token'])]
@@ -91,6 +92,8 @@ class User extends Authenticatable
 
         $fileName = basename($this->image);
 
-        return asset("storage/images/{$size}/{$fileName}");
+        return Storage::disk('s3')->url(
+            "images/{$size}/{$fileName}"
+        );
     }
 }

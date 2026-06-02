@@ -75,7 +75,7 @@ class extends Component {
         $path = $this->image->storeAs(
             'owner/original',
             $fileName,
-            'public'
+            's3'
         );
 
         ProcessImageJob::dispatch(
