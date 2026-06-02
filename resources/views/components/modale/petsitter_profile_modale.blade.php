@@ -58,6 +58,9 @@
                 name="image"
                 type="file"
             />
+            <button wire:click="save">
+                Test
+            </button>
             <div class="flex gap-6">
             <x-forms.input-label
                 wire:model="first_name"

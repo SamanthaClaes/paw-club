@@ -28,7 +28,7 @@ class extends Component {
     public ?string $phone = null;
     public string $location = '';
     public string $zip = '';
-    public $image = null;
+    public $image;
 
     public function mount(): void
     {
@@ -41,6 +41,10 @@ class extends Component {
         $this->location = $this->petsitter->location;
         $this->zip = $this->petsitter->zip;
 
+    }
+    public function save()
+    {
+        dd($this->image);
     }
 
     public function updateData(): void
