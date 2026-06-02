@@ -25,7 +25,6 @@
                 class="w-40 h-40 rounded-2xl object-cover"
             >
         </div>
-
         <div class="flex-1 w-full">
             <h1 class="uppercase font-extrabold text-text text-2xl mb-6">
                 {{ __('petsitterProfile.personalInfos') }}

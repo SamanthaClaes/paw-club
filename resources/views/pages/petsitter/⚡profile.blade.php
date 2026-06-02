@@ -63,12 +63,12 @@ class extends Component {
                 $fileName,
                 's3'
             );
-            ProcessImageJob::dispatch($fileName, $path);
+            ProcessImageJob::dispatchSync($fileName, $path);
             $validated['image'] = $path;
         }
         $this->petsitter->update($validated);
         $this->petsitter->refresh();
-        $this->reset($image);
+        $this->reset('image');
         $this->dispatch('update-data');
         session()->flash('success', 'Informations mises à jour');
     }
