@@ -22,11 +22,6 @@
             <div class="shrink-0">
                 <img
                     src="{{ $owner->getImageUrl(800) }}"
-                    srcset="
-        {{ $owner->getImageUrl(400) }} 400w,
-        {{ $owner->getImageUrl(800) }} 800w,
-        {{ $owner->getImageUrl(1200) }} 1200w
-    "
                     sizes="176px"
                     alt="{{ __('ownerProfile.profileImageAlt') }} {{ Auth::user()->first_name }}"
                     class="w-44 h-44 rounded-lg object-cover"
