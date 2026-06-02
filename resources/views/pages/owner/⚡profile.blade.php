@@ -32,10 +32,6 @@ class extends Component {
         $this->currentImage = $this->owner->image;
 
     }
-    public function updatedImage()
-    {
-        dd($this->image);
-    }
 
     public function updatePw(): void
     {
@@ -71,7 +67,6 @@ class extends Component {
             'adress' => 'required|string',
             'phone' => 'nullable',
         ]);
-        dd($this->image);
 
         if($this->image){
 
