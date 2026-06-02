@@ -34,6 +34,7 @@ class extends Component {
     public string $description;
     public $petsitters;
     public array $prices = [15, 20, 25];
+    public ?int $price = null;
 
 
     public function mount(): void
@@ -66,31 +67,25 @@ class extends Component {
             'description' => 'nullable|string',
             'price'=>'nullable|integer',
         ]);
-        dd('store');
-       /*
+
         if ($this->image) {
 
-            try {
+            $fileName = 'petsitter_' . uniqid() . '.jpg';
 
-                $fileName = 'petsitter_' . uniqid() . '.jpg';
+            $path = $this->image->storeAs(
+                'petsitters/original',
+                $fileName,
+                'public'
+            );
 
-                $path = $this->image->storeAs(
-                    'petsitters/original',
-                    $fileName,
-                    'public'
-                );
+            ProcessImageJob::dispatch(
+                $fileName,
+                $path
+            );
 
-                dd($path);
-
-            } catch (\Throwable $e) {
-
-                dd([
-                    'message' => $e->getMessage(),
-                    'file' => $e->getFile(),
-                    'line' => $e->getLine(),
-                ]);
-            }
+            $validated['image'] = $path;
         }
+        
         $user = User::create([...$validated,
             'password' => Hash::make('password'),
             'role' => null,
@@ -113,7 +108,7 @@ class extends Component {
             'image',
             'location',
             'description',
-        ]);*/
+        ]);
     }
 };
 ?>
@@ -148,7 +143,7 @@ class extends Component {
                                      label="{{ __('petsitterCreateForm.location') }}"/>
             </div>
             <div>
-                <x-forms.select-option wire:model="prices" name="prices" label="Votre prix à la journée">
+                <x-forms.select-option wire:model="price" name="prices" label="Votre prix à la journée">
 
                     @foreach($prices as $price)
                         <option value="{{ $price }}">
