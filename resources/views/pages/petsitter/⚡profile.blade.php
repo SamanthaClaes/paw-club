@@ -71,11 +71,6 @@ class extends Component {
         $this->dispatch('update-data');
         session()->flash('success', 'Informations mises à jour');
     }
-    public function updatedImage(): void
-    {
-        dd($this->image);
-    }
-
 
     public function updatePw(): void
     {
