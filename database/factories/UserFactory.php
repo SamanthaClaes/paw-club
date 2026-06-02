@@ -56,6 +56,7 @@ class UserFactory extends Factory
         ]);
     }
 
+
     public function admin(): static
     {
         return $this->state(fn() => [

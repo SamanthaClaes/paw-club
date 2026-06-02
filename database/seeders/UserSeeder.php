@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
 
         ]);
 
-        User::create([
+      $jean =  User::create([
             'last_name' => 'Royen',
             'first_name' => 'Jean',
             'email' => 'jean@mail.be',
@@ -44,9 +44,9 @@ class UserSeeder extends Seeder
             'is_petsitter'=>true,
             'image' => 'owner/ps_1.jpeg'
         ]);
-
+        $jean->animalTypes()->attach([1, 2]);
         User::create([
-            'last_name' => 'Nono',
+            'last_name' => 'Dubois',
             'first_name' => 'Norbert',
             'email' => 'nono@mail.be',
             'password' => 'nonoTest',
@@ -60,6 +60,15 @@ class UserSeeder extends Seeder
         User::factory(15)->create();
         User::factory(8)
             ->petsitter()
-            ->create();
+            ->create()
+            ->each(function ($petsitter) {
+
+                $petsitter->animalTypes()->attach(
+                    fake()->randomElements(
+                        range(1, 6),
+                        rand(1, 3)
+                    )
+                );
+            });
     }
 }
