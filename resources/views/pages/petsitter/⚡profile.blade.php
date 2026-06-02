@@ -45,7 +45,7 @@ class extends Component {
     }
     public function save()
     {
-        dd($this->image);
+        dd($petsitter->image);
     }
 
     public function updateData(): void
