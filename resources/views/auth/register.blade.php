@@ -3,9 +3,9 @@
 @php
 
     $images = [
-        'img/login/cat.jpg',
-        'img/login/dog.jpg',
-        'img/login/dog2.jpg',
+        'img/login/cat.webp',
+        'img/login/dog.webp',
+        'img/login/dog2.webp',
     ];
     $image = $images[array_rand($images)];
 
@@ -110,6 +110,7 @@
                             >
                         </button>
                     </div>
+                    <span class="text-text text-sm font-semibold">{{ __('registerForm.passwordValidation') }}</span>
                 </div>
                 <div>
                     <x-forms.input-label
