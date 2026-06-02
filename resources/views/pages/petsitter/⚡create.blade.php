@@ -112,7 +112,7 @@ class extends Component {
     <section>
         <h1 class="text-text text-2xl font-bold uppercase text-center mt-20"> {{ __('petsitterCreateForm.title') }}</h1>
         <p class="w-1/2 text-center mx-auto"> {{ __('petsitterCreateForm.subtitle') }}</p>
-        <form wire:submit.prevent="store" class="w-8/10 mx-auto mt-6">
+        <form wire:submit="store" class="w-8/10 mx-auto mt-6">
             @csrf
             <div>
                 <x-forms.input-label type="file" name="image" label="{{ __('petsitterCreateForm.picture') }}"
