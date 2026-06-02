@@ -53,7 +53,7 @@
         <form wire:submit.prevent="updateData" class="space-y-4" enctype="multipart/form-data">
 
             <x-forms.input-label
-                wire:model.live="image"
+                wire:model="image"
                 label="Image"
                 name="image"
                 type="file"
