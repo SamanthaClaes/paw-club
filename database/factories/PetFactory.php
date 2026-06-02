@@ -31,13 +31,13 @@ class PetFactory extends Factory
 
             'breed_id' => $breed?->id,
 
-            'name' => fake()->firstName(),
+            'name' => $this->faker->firstName(),
 
-            'gender' => fake()->boolean(),
+            'gender' => $this->faker->boolean(),
 
-            'birth_date' => fake()->dateTimeBetween('-15 years', '-2 months'),
+            'birth_date' => $this->faker->dateTimeBetween('-15 years', '-2 months'),
 
-            'description' => fake()->sentence(12),
+            'description' => $this->faker->sentence(12),
 
             'pet_image' => null,
 

@@ -12,49 +12,31 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-
-            'last_name' => fake()->lastName(),
-
-            'first_name' => fake()->firstName(),
-
-            'email' => fake()->unique()->safeEmail(),
-
+            'last_name' => $this->faker->lastName(),
+            'first_name' => $this->faker->firstName(),
+            'email' => $this->faker->unique()->safeEmail(),
             'password' => Hash::make('password'),
-
-            'phone' => fake()->phoneNumber(),
-
-            'adress' => fake()->streetAddress(),
-
-            'zip' => fake()->numberBetween(1000, 6999),
-
-            'location' => fake()->city(),
-
+            'phone' => $this->faker->phoneNumber(),
+            'adress' => $this->faker->streetAddress(),
+            'zip' => $this->faker->numberBetween(1000, 6999),
+            'location' => $this->faker->city(),
             'image' => 'petsitters/portrait.webp',
-
-            'habitation_id' => fake()->numberBetween(1, 4),
-
+            'habitation_id' => $this->faker->numberBetween(1, 4),
             'role' => null,
-
             'is_petsitter' => false,
-
-            'price'=> fake()->randomElement([ 15, 20, 25]),
-
+            'price' => $this->faker->randomElement([15, 20, 25]),
         ];
     }
 
     public function petsitter(): static
-    {
-        return $this->state(fn() => [
-
-            'role' => null,
-            'is_petsitter' => true,
-
-            'petsitter_status' => PetsitterStatus::ACCEPTED,
-
-            'description' => fake()->paragraph(),
-
-        ]);
-    }
+{
+    return $this->state(fn() => [
+        'role' => null,
+        'is_petsitter' => true,
+        'petsitter_status' => PetsitterStatus::ACCEPTED,
+        'description' => $this->faker->paragraph(),
+    ]);
+}
 
 
     public function admin(): static

@@ -33,7 +33,7 @@ class DayCareRequestFactory extends Factory
 
             'image' => null,
 
-            'infos' => fake()->sentence(10),
+            'infos' => $this->faker->sentence(10),
 
             'start_date' => $startDate,
 
