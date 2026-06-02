@@ -66,7 +66,7 @@ class extends Component {
                 's3'
             );
 
-            ProcessImageJob::dispatch(
+            ProcessImageJob::dispatchSync(
                 $fileName,
                 $path
             );
