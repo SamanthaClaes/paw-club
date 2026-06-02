@@ -112,6 +112,7 @@ class extends Component {
 };
 ?>
 <div>
+
     <section>
         <h1 class="text-text text-2xl font-bold uppercase text-center mt-20"> {{ __('petsitterCreateForm.title') }}</h1>
         <p class="w-1/2 text-center mx-auto"> {{ __('petsitterCreateForm.subtitle') }}</p>
