@@ -14,7 +14,7 @@
 
         <div class="shrink-0">
            <img
-               src="{{ Storage::disk('s3')->url($petsitter->image) }}"
+               src="{{ $petsitter->getImageUrl(800) }}"
                 sizes="(max-width: 768px) 100vw, 400px"
                 alt="{{ __('petsitterProfile.profileImageAlt') }}"
                 class="w-40 h-40 rounded-2xl object-cover"
