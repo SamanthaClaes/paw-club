@@ -68,20 +68,24 @@ md:w-auto
 
             @auth
 
-                @if( auth()->user()->is_petsitter)
-                    <li>
-                        <a href="{{ route('petsitter.request') }}"
-                           class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out">
-                            {{ __('nav.mySpace') }}
-                        </a>
-                    </li>
-                @else
-                    <li>
-                        <a href="{{ route('owner.profile') }}"
-                           class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out">
-                            {{ __('nav.mySpace') }}
-                        </a>
-                    </li>
+                @if(auth()->user()->role !== UserRole::ADMIN)
+
+                    @if(auth()->user()->is_petsitter)
+                        <li>
+                            <a href="{{ route('petsitter.request') }}"
+                               class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out">
+                                {{ __('nav.mySpace') }}
+                            </a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{ route('owner.profile') }}"
+                               class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out">
+                                {{ __('nav.mySpace') }}
+                            </a>
+                        </li>
+                    @endif
+
                 @endif
 
                 @if(auth()->user()->role === UserRole::ADMIN)
@@ -92,16 +96,18 @@ md:w-auto
                         </a>
                     </li>
                 @endif
+
                 <li>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit"
-                                class="text-text uppercase hover:bg-card px-8 py-4 rounded-full  cursor-pointer transition-colors duration-300 ease-in-out">
+                        <button
+                            type="submit"
+                            class="text-text uppercase hover:bg-card px-8 py-4 rounded-full cursor-pointer transition-colors duration-300 ease-in-out">
                             {{ __('nav.logout') }}
                         </button>
-
                     </form>
                 </li>
+
             @endauth
 
             @guest
