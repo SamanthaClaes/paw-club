@@ -34,10 +34,6 @@ class extends Component {
     {
 
         $this->petsitter = Auth::user();
-        dd([
-            'user_id' => $this->petsitter->id,
-            'image' => $this->petsitter->image,
-        ]);
         $this->first_name = $this->petsitter->first_name;
         $this->last_name = $this->petsitter->last_name;
         $this->email = $this->petsitter->email;
@@ -75,6 +71,10 @@ class extends Component {
             $validated['image'] = $path;
         }
         $this->petsitter->update($validated);
+        dd([
+            'validated_image' => $validated['image'] ?? null,
+            'db_image' => $this->petsitter->fresh()->image,
+        ]);
         $this->petsitter->refresh();
         $this->reset('image');
         $this->dispatch('update-data');
