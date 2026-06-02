@@ -143,6 +143,11 @@ class extends Component {
 <section class="max-w-7xl mx-auto px-6">
     <h1 class=" text-text text-2xl text-center font-bold mb-4 lg:text-3xl mt-20 uppercase">Mes informations</h1>
     <x-header.PetsitterNav/>
+    <input type="file" wire:model="image">
+
+    <button wire:click="save">
+        Test
+    </button>
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-16">
         <div>
             <x-cards.dashboard_card
