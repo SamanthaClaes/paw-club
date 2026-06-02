@@ -66,10 +66,6 @@ class extends Component {
             $validated['image'] = $path;
         }
         $this->petsitter->update($validated);
-        dd([
-            'validated_image' => $validated['image'] ?? null,
-            'db_image' => $this->petsitter->fresh()->image,
-        ]);
         $this->petsitter->refresh();
         $this->reset('image');
         $this->dispatch('update-data');
