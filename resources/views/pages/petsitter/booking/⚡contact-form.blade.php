@@ -58,13 +58,30 @@ class extends Component {
     <section>
         <h1 class=" text-text text-2xl text-center font-bold mb-4 mt-4 lg:text-3xl lg:mt-20"> Vous allez envoyer un
             message à {{ $user->first_name }} {{ $user->last_name }} </h1>
+        <div class="flex flex-col items-center gap-3 text-text">
+
+            <h2 class="font-bold text-lg">
+                Vos coordonnées
+            </h2>
+
+            <div class="flex flex-col items-center">
+                <span><strong>Prénom :</strong> {{ $first_name }}</span>
+                <span><strong>Nom :</strong> {{ $last_name }}</span>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <span><strong>Email :</strong> {{ $email }}</span>
+                <span><strong>Téléphone :</strong> {{ $phone }}</span>
+            </div>
+
+        </div>
 
         <form wire:submit="store" class="w-8/10 mx-auto">
-            <div class="flex gap-6">
+            <div class="flex gap-6" hidden>
                 <x-forms.input-label wire:model="first_name" name="first_name" label="Prénom" type="text" required/>
                 <x-forms.input-label wire:model="last_name" name="last_name" label="Nom" type="text" required/>
             </div>
-            <div class="flex gap-6">
+            <div class="flex gap-6" hidden>
                 <x-forms.input-label wire:model="email" name="email" label="Email" type="email" required/>
                 <x-forms.input-label wire:model="phone" name="phone" label="Téléphone" type="text"/>
             </div>
@@ -87,5 +104,5 @@ class extends Component {
                 <x-message_success/>
             @endif
         </div>
-   </section>
+    </section>
 </div>

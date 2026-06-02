@@ -153,7 +153,7 @@ class extends Component {
                 <div class="w-1/3">
 
                     <label class="block text-sm text-text uppercase font-bold mb-3">
-                        {{ __('petsitterCreateForm.habitation') }} <abbr title="Requis">*</abbr>
+                        {{ __('petsitterCreateForm.habitation') }} <abbr title="Requis" class="no-underline">*</abbr>
                     </label>
 
                     <div class="flex flex-col gap-3">
@@ -183,7 +183,7 @@ class extends Component {
                 </div>
                 <div class="w-1/3">
                     <label class="block text-sm text-text uppercase font-bold mb-3">
-                        {{ __('petsitterCreateForm.chooseAnimal') }}
+                        {{ __('petsitterCreateForm.chooseAnimal') }} <abbr title="Requis" class="no-underline">*</abbr>
                     </label>
 
                     <div class="flex flex-col gap-3">
@@ -211,7 +211,7 @@ class extends Component {
                 </div>
                 <div class="w-1/3">
                     <label class="block text-sm text-text uppercase font-bold mb-3">
-                        {{ __('petsitterCreateForm.chooseVisit') }}
+                        {{ __('petsitterCreateForm.chooseVisit') }} <abbr title="Requis" class="no-underline">*</abbr>
                     </label>
 
                     <div class="flex flex-col gap-3">
@@ -243,7 +243,7 @@ class extends Component {
                 <x-forms.textarea-label
                     name="description"
                     wire:model="description"
-                    label="{{ __('petsitterRequestForm.infos') }}"
+                    label="{{ __('petsitterCreateForm.infos') }}"
                 />
             </div>
             <div>

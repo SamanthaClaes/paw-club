@@ -53,8 +53,7 @@ class extends Component {
                     hidden
                     lg:block
                 bottom-0 left-0
-                w-40 xl:w-56
-                translate-x-1/6 translate-y-1/5
+                w-40 lg:w-40 xl:w-40
                 opacity-95 pointer-events-none"
                 >
 
@@ -92,14 +91,14 @@ class extends Component {
             <img
                 src="{{ asset('img/chihuahua.webp') }}"
                 alt="chihuahua"
-                height="200"
-                width="200"
+                height="150"
+                width="150"
                 class="hidden lg:block object-cover
             rounded-full
             absolute top-1/2 left-1/2
             -translate-x-1/2 -translate-y-1/2
-            border-12 border-white
-            shadow-2xl z-20"
+            border-8 border-white
+             z-20"
             >
 
             <div class="grid lg:grid-cols-2 gap-4 items-stretch auto-rows-fr">
@@ -110,7 +109,7 @@ class extends Component {
                 min-h-72 lg:min-h-80
                 px-6
                 shadow-lg border border-white/20
-                transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+                transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:brightness-105">
 
                     <div class="mt-6 lg:mb-5 transition-transform duration-300 group-hover:scale-110">
                         <x-svg.icons.icons1/>
@@ -134,7 +133,7 @@ class extends Component {
                 min-h-72 lg:min-h-80
                 px-6
                 shadow-lg border border-white/20
-                transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+                transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:brightness-105">
 
                     <div class="mt-6 lg:mb-5 transition-transform duration-300 group-hover:scale-110">
                         <x-svg.icons.bell/>
@@ -158,7 +157,7 @@ class extends Component {
                 min-h-72 lg:min-h-80
                 px-6
                 shadow-lg border border-white/20
-                transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+                transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:brightness-105">
 
                     <div class="mt-6 lg:mb-5 transition-transform duration-300 group-hover:scale-110">
                         <x-svg.icons.health/>
@@ -182,7 +181,7 @@ class extends Component {
                 min-h-72 lg:min-h-80
                 px-6
                 shadow-lg border border-white/20
-                transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:brightness-105">
+                transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:brightness-105">
 
                     <div class="mt-6 lg:mb-5 transition-transform duration-300 group-hover:scale-110">
                         <x-svg.icons.home/>
