@@ -20,11 +20,11 @@
 
             <div class="shrink-0">
                 <img
-                    src="{{ Auth::user()->getImageUrl(800) }}"
+                    src="{{ $owner->getImageUrl(800) }}"
                     srcset="
-        {{ Auth::user()->getImageUrl(400) }} 400w,
-        {{ Auth::user()->getImageUrl(800) }} 800w,
-        {{ Auth::user()->getImageUrl(1200) }} 1200w
+        {{ $owner->getImageUrl(400) }} 400w,
+        {{ $owner->getImageUrl(800) }} 800w,
+        {{ $owner->getImageUrl(1200) }} 1200w
     "
                     sizes="176px"
                     alt="{{ __('ownerProfile.profileImageAlt') }} {{ Auth::user()->first_name }}"

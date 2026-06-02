@@ -78,10 +78,10 @@ class extends Component {
             's3'
         );
 
-        ProcessImageJob::dispatch(
-            $fileName,
-            $path
-        );
+            ProcessImageJob::dispatchSync(
+                $fileName,
+                $path
+            );
 
         $validated['image'] = $path;
     }
