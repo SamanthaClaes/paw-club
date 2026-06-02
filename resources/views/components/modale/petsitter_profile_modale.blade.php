@@ -1,4 +1,5 @@
 <dialog
+    wire:ignore.self
     x-data="{ open: false }"
     x-on:open-update-data-modal.window="
         open = true;
