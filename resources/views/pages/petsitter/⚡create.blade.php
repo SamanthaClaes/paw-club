@@ -73,7 +73,7 @@ class extends Component {
             $fileName = 'petsitter_' . uniqid() . '.jpg';
 
             $path = $this->image->storeAs(
-                'petsitters/original',
+                'petsitter/original',
                 $fileName,
                 'public'
             );
