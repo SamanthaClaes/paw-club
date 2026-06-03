@@ -63,7 +63,7 @@ class extends Component {
         $petsitter = User::findOrFail($requestId);
         $petsitter->petsitter_status = PetsitterStatus::ACCEPTED;
         $petsitter->save();
-//       Mail::to($petsitter->email)->queue(new PetsitterAcceptedMail($petsitter));
+Mail::to($petsitter->email)->queue(new PetsitterAcceptedMail($petsitter));
         $this->resetPage('requestsPage');
     }
 
@@ -73,8 +73,8 @@ class extends Component {
 
         $petsitter->petsitter_status = PetsitterStatus::REFUSED;
 
-        $petsitter->save();
-        //Mail::to($petsitter->email)->queue(new PetsittingRefusedRequestMail($petsitter, $owner, $pet, $request));
+        $petsitter->save()
+        Mail::to($petsitter->email)->queue(new PetsittingRefusedRequestMail($petsitter, $owner, $pet, $request));
         $this->resetPage('requestsPage');
 
     }

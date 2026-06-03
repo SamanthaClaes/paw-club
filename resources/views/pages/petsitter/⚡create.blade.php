@@ -77,7 +77,7 @@ class extends Component {
                 's3'
             );
 
-            ProcessImageJob::dispatch(
+            ProcessImageJob::dispatchSync(
                 $fileName,
                 $path
             );
@@ -142,19 +142,20 @@ class extends Component {
                 <x-forms.input-label wire:model="zip" type="number" name="zip"
                                      label=" {{ __('petsitterCreateForm.zip') }} *"/>
             </div>
-            <div>
+            <div class="flex gap-6 justify-between">
                 <x-forms.input-label wire:model="location" type="text" name="location"
                                      label="{{ __('petsitterCreateForm.location') }}"/>
-            </div>
-            <div>
                 <x-forms.select-option wire:model="price" name="prices" label="Votre prix à la journée">
-
+                    <option value="Choisissez votre tarif">Votre tarif</option>
                     @foreach($prices as $price)
                         <option value="{{ $price }}">
                             {{ $price }} €
                         </option>
                     @endforeach
                 </x-forms.select-option>
+            </div>
+            <div>
+
             </div>
             <div class="flex gap-12 justify-between">
 
