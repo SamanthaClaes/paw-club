@@ -21,7 +21,7 @@ class extends Component {
     public User $owner;
     public $name;
     public $description;
-    public $pet_image;
+    public $pet_image = null;
     public $birth_date;
     public ?Pet $pet = null;
     public $animal_type_id;
@@ -66,10 +66,10 @@ class extends Component {
                 's3'
             );
 
-           /* ProcessImageJob::dispatchSync(
+           ProcessImageJob::dispatchSync(
                 $fileName,
                 $path
-            );*/
+            );
 
             $validated['pet_image'] = $path;
         }
