@@ -20,7 +20,6 @@ class AnimalTypeSeeder extends Seeder
             ['type' => 'ferret'],
             ['type' => 'snake'],
             ['type' => 'hamster'],
-            ['type' => 'all'],
         ]);
     }
 }
