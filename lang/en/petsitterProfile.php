@@ -3,6 +3,8 @@
 return [
 
     'personalInfos' => 'Personal information',
+    'praticalInfos'=>'Practical informations',
+    'price'=>'your price',
 
     'fullname' => 'Full name',
 

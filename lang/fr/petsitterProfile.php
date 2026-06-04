@@ -3,6 +3,8 @@
 return [
 
     'personalInfos' => 'Informations personnelles',
+    'praticalInfos'=>'Informations pratiques',
+    'price'=>'votre tarif',
 
     'fullname' => 'Nom & Prénom',
 
