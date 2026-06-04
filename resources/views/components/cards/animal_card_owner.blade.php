@@ -13,7 +13,7 @@
     'pet',
 ])
 
-<section class="border-5 border-stroke rounded-md overflow-hidden bg-card w-full mt-6">
+<section class="border-5 border-stroke rounded-md overflow-hidden bg-card w-full mt-6 mb-6">
 
     <div class="flex flex-col sm:flex-row h-full">
 

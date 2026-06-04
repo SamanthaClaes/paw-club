@@ -18,9 +18,12 @@ class PetsitterAcceptedMail extends Mailable implements ShouldQueue
     use Queueable, SerializesModels;
 
     public User $petsitter;
-    public function __construct( User $petsitter)
+    public string $token;
+
+    public function __construct( User $petsitter,   string $token)
     {
         $this->petsitter = $petsitter;
+        $this->token = $token;
     }
 
     public function envelope(): Envelope

@@ -27,7 +27,6 @@
             w-full
             h-full
             shadow-lg
-            hover:shadow-lg hover:-translate-y-1
             transition-all duration-300
             overflow-hidden
             relative'
@@ -42,7 +41,7 @@
                 <img
                     src="{{ $image
         ? Storage::disk('s3')->url($image)
-        : asset('img/petsitter/portrait.webp') }}"
+        : asset('img/avatar.jpg') }}"
                     alt="{{ $name }}"
                     class="rounded-full object-cover
            w-28 h-28 lg:w-32 lg:h-32
@@ -57,7 +56,7 @@
 
                     <div>
                         <h2 class="text-2xl lg:text-3xl font-extrabold text-text leading-tight">
-                            {{ $name }} {{ $last }}
+                            {{ ucfirst($name)  }} {{ ucfirst($last) }}
                         </h2>
 
                         <p class="font-semibold text-text text-lg mt-1">
@@ -110,38 +109,34 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 pt-1">
 
-                    <a
-                        href="{{ $chooseUrl }}"
-                        class="bg-card-orange hover:bg-hover-orange
-                        hover:text-white
-                        text-text font-extrabold
-                        text-sm lg:text-base
-                        text-center whitespace-nowrap
-                        py-3 px-5
-                        rounded-2xl
-                        shadow-md hover:shadow-lg hover:-translate-y-1
-                        transition-all duration-300"
-                    >
-                        Choisir {{ $name }}
-                    </a>
+                    @if(auth()->check() && auth()->user()->pets()->exists())
+
+                        <a
+                            href="{{ $chooseUrl }}"
+                            class="bg-card-orange hover:bg-hover-orange hover:text-white text-text font-extrabold text-sm lg:text-base text-center whitespace-nowrap py-3 px-5 rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                        >
+                            {{ __('petsitter.cardChoose') }} {{ $name }}
+                        </a>
+
+                    @else
+
+                        <a
+                            href="{{ route('owner.profile') }}"
+                            class="block bg-btn-green hover:bg-hover-green hover:text-white text-text font-extrabold text-center py-3 px-5 rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                        >
+                            {{ __('petsitter.addAnimal') }}
+                        </a>
+
+                    @endif
 
                     <a
                         href="{{ $contactUrl }}"
-                        class="bg-card-pink hover:bg-hover-pink
-                        hover:text-white
-                        text-text font-extrabold
-                        text-sm lg:text-base
-                        text-center whitespace-nowrap
-                        py-3 px-5
-                        rounded-2xl
-                        shadow-md hover:shadow-lg hover:-translate-y-1
-                        transition-all duration-300"
+                        class="bg-card-pink hover:bg-hover-pink hover:text-white text-text font-extrabold text-sm lg:text-base text-center whitespace-nowrap py-3 px-5 rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                     >
-                        Contacter {{ $name }}
+                        {{ __('petsitter.cardContact') }} {{ $name }}
                     </a>
 
                 </div>
-
             </div>
 
         </div>

@@ -18,23 +18,24 @@
         <div class="card">
 
             <h2>
-                Vos identifiants
+                Activez votre compte
             </h2>
 
             <p>
-                <span class="label">Email :</span>
-                {{ $petsitter->email }}
+                Pour sécuriser votre compte, cliquez sur le bouton ci-dessous afin de définir votre mot de passe.
             </p>
 
-            <p>
-                <span class="label">Mot de passe :</span>
-                password
-            </p>
+            <a href="{{ route('password.reset', [
+    'token' => $token,
+    'email' => $petsitter->email,
+]) }}">
+                Définir mon mot de passe
+            </a>
 
         </div>
 
         <p style="margin-top:30px;">
-            Pour des raisons de sécurité, nous vous recommandons de modifier votre mot de passe dès votre première connexion.
+            Une fois votre mot de passe défini, vous pourrez vous connecter à votre espace Paw Club.
         </p>
 
     </section>

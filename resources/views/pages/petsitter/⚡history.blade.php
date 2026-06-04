@@ -71,13 +71,13 @@ class extends Component {
 
 <div class="max-w-7xl mx-auto px-6">
     <section>
-        <h1 class="text-text lg:text-2xl text-lg uppercase font-bold mb-10 text-center mt-20"> Mon historique</h1>
+        <h1 class="text-text text-3xl font-extrabold uppercase text-center mt-20 mb-10"> {{ __('history.title') }}</h1>
     </section>
     <x-header.PetsitterNav/>
     <section class="mt-20">
         <div>
             <div>
-                <h2 class="text-text lg:text-2xl text-lg uppercase font-bold mb-6 mt-6"> Mes demandes en cours</h2>
+                <h2 class="text-text uppercase text-3xl font-extrabold mb-8"> {{ __('history.ongoing') }}</h2>
 
                 <div class="space-y-10">
 
@@ -88,15 +88,17 @@ class extends Component {
                         @empty
 
                             <div class="bg-card border-2 border-element rounded-2xl p-8">
-                                Aucune garde terminée pour le moment.
+                                <p class="text-center text-text text-lg font-semibold">
+                                        {{ __('history.noRequestOngoing') }}
+                                </p>
                             </div>
                     @endforelse
 
                 </div>
 
             </div>
-            <h2 class="text-text lg:text-2xl text-lg uppercase font-bold mb-6 mt-6">
-                Mes demandes passées
+            <h2 class="text-text uppercase text-3xl font-extrabold mb-8 mt-6">
+               {{ __('history.requested') }}
             </h2>
             <div class="space-y-10">
                 @forelse($requests as $request)
@@ -105,8 +107,10 @@ class extends Component {
                     />
                     @empty
 
-                        <div class="bg-card border-2 border-element rounded-2xl p-8">
-                            Aucune garde terminée pour le moment.
+                        <div class="bg-card border-2 border-element rounded-2xl p-8 mb-6">
+                            <p class="text-center text-text text-lg font-semibold">
+                            {{ __('history.noRequestEnd') }}
+                            </p>
                         </div>
                 @endforelse
             </div>

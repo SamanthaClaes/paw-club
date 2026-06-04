@@ -38,10 +38,15 @@ class DayCareRequestFactory extends Factory
             'start_date' => $startDate,
 
             'end_date' => $endDate,
-
             'status' => DayCareRequestStatus::ACCEPTED,
 
         ];
+    }
+    public function pending(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'status' => DayCareRequestStatus::PENDING,
+        ]);
     }
 
     public function currentWeek(): static

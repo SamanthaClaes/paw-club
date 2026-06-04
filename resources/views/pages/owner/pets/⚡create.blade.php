@@ -158,7 +158,7 @@ class extends Component {
                 :pet="$pet"
                 :name="$pet->name"
                 :birth-date="$pet->birthDateFormat()"
-                :breed="$pet->breed?->name"
+                :breed="__('breed.' . $pet->breed?->name)"
                 :description="$pet->description"
                 :pet-image="$pet->pet_image"
                 :gender="$pet->gender"

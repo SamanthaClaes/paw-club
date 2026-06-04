@@ -1,11 +1,15 @@
 <?php
 
+use App\Jobs\ProcessImageJob;
 use App\Models\AnimalType;
 use App\Models\Pet;
 use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\WithFileUploads;
 
 new class extends Component {
+    use WithFileUploads;
+
     public $owner;
 
     public $pets = [];
@@ -24,7 +28,7 @@ new class extends Component {
 
     public $description;
 
-    public $image;
+    public $pet_image;
 
     public ?Pet $pet = null;
 
@@ -40,6 +44,7 @@ new class extends Component {
             ->get();
         $this->animalTypes = AnimalType::with('breeds')->get();
     }
+
     #[On('edit-pet')]
     public function editPet($petId): void
     {
@@ -50,12 +55,13 @@ new class extends Component {
                 'animalType',
             ])
             ->findOrFail($petId);
+
         $this->pet = $pet;
         $this->name = $pet->name;
         $this->animal_type_id = $pet->animal_type_id;
         $this->breed_id = $pet->breed_id;
         $this->birth_date = $pet->birth_date;
-        $this->image = $pet->pet_image;
+        $this->pet_image = null;
         $this->description = $pet->description;
         $this->dispatch('edit-dog');
     }
@@ -67,14 +73,26 @@ new class extends Component {
             'animal_type_id' => 'required|exists:animal_types,id',
             'breed_id' => 'nullable|exists:breeds,id',
             'birth_date' => 'required|date',
-            'image'=>'nullable|image',
+            'pet_image' => 'nullable|image',
             'description' => 'nullable|string',
         ]);
+        if ($this->pet_image) {
 
+            $fileName = 'pet_' . uniqid() . '.jpg';
+
+            $path = $this->pet_image->storeAs(
+                'pet/original',
+                $fileName,
+                's3'
+            );
+
+            ProcessImageJob::dispatchSync($fileName, $path);
+
+            $this->pet->pet_image = $path;
+        }
         $this->pet->name = $this->name;
         $this->pet->animal_type_id = $this->animal_type_id;
         $this->pet->breed_id = $this->breed_id;
-        $this->pet->pet_image = $this->image;
         $this->pet->birth_date = $this->birth_date;
         $this->pet->description = $this->description;
 

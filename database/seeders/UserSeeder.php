@@ -15,54 +15,53 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'last_name' => 'Claes',
-            'first_name' => 'Samantha',
-            'email' => 'samantha@mail.be',
+            'last_name' => 'Dubois',
+            'first_name' => 'Sophie',
+            'email' => 'sophie.dubois@example.be',
             'password' => 'password',
-            'phone' => '0496789303',
-            'adress' => 'Rue des Cahottes 66',
-            'zip' => 4400,
-            'location' => 'flémalle',
+            'phone' => '+32 472 15 84 93',
+            'adress' => 'Rue de la Station 24',
+            'zip' => 5000,
+            'location' => 'Namur',
             'habitation_id' => 1,
             'role' => null,
             'is_petsitter'=>false,
-            'image' => 'owner/me.jpeg',
+            'image' => null,
 
         ]);
 
-      $jean =  User::create([
-            'last_name' => 'Royen',
-            'first_name' => 'Jean',
-            'email' => 'jean@mail.be',
+      $thomas =  User::create([
+            'last_name' => 'Lambert',
+            'first_name' => 'Thomas',
+            'email' => 'thomas.lambert@example.be',
             'password' => 'password',
-            'phone' => '0471420854',
-            'adress' => 'Rue des Cahottes 66',
-            'zip' => 4400,
-            'location' => 'flémalle',
+            'phone' => '+32 478 62 31 47',
+            'adress' => 'Avenue des Tilleuls 87',
+            'zip' => 4000,
+            'location' => 'Liège',
             'habitation_id' => 2,
             'role' => null,
             'is_petsitter'=>true,
-            'image' => 'owner/ps_1.jpeg'
+            'image' => null,
         ]);
-        $jean->animalTypes()->attach([1, 2]);
+        $thomas->animalTypes()->attach([1, 2]);
+
         User::create([
-            'last_name' => 'Dubois',
-            'first_name' => 'Norbert',
-            'email' => 'nono@mail.be',
-            'password' => 'nonoTest',
-            'phone' => '0499 90 90 92',
-            'adress' => 'route de Napoleon 1',
-            'zip' => 4400,
-            'location' => 'flemalle',
-            'habitation_id' => 3,
+            'last_name' => 'Delcourt',
+            'first_name' => 'Julien',
+            'email' => 'admin@pawclub.be',
+            'password' => 'adminpassword',
+            'adress' => 'Rue Royale 1',
+            'zip' => 1000,
+            'location' => 'Bruxelles',
             'role' => UserRole::ADMIN,
         ]);
-        User::factory(15)->create();
-        User::factory(8)
+
+        User::factory(5)->create();
+        User::factory(24)
             ->petsitter()
             ->create()
             ->each(function ($petsitter) {
-
                 $petsitter->animalTypes()->attach(
                     fake()->randomElements(
                         range(1, 6),

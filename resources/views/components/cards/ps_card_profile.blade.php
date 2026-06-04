@@ -14,7 +14,7 @@
 
         <div class="shrink-0">
            <img
-               src="{{ $petsitter->getImageUrl(800) }}"
+               src="{{ $petsitter->image ? $petsitter->getImageUrl(800) : asset('img/avatar.jpg') }}"
                 sizes="(max-width: 768px) 100vw, 400px"
                 alt="{{ __('petsitterProfile.profileImageAlt') }}"
                 class="w-40 h-40 rounded-2xl object-cover"
@@ -52,7 +52,7 @@
                 <button
                     type="button"
                     @click="$dispatch('open-password-modal')"
-                    class="flex-1 bg-btn-green hover:bg-hover-green text-white font-bold uppercase rounded-xl px-4 py-3 transition cursor-pointer text-sm text-center"
+                    class="flex-1 bg-btn-green hover:bg-hover-green text-cta hover:text-white font-bold uppercase rounded-xl px-4 py-3 transition cursor-pointer text-sm text-center"
                 >
                     {{ __('petsitterProfile.changePassword') }}
                 </button>
@@ -60,7 +60,7 @@
                 <button
                     type="button"
                     @click="$dispatch('open-update-data-modal')"
-                    class="flex-1 bg-btn-green hover:bg-hover-green text-white font-bold uppercase rounded-xl px-4 py-3 transition cursor-pointer text-sm text-center"
+                    class="flex-1 bg-btn-green hover:bg-hover-green text-cta hover:text-white font-bold uppercase rounded-xl px-4 py-3 transition cursor-pointer text-sm text-center"
                 >
                     {{ __('petsitterProfile.editInfos') }}
                 </button>

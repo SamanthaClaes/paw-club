@@ -56,22 +56,21 @@ class extends Component {
 
 <div>
     <section>
-        <h1 class=" text-text text-2xl text-center font-bold mb-4 mt-4 lg:text-3xl lg:mt-20"> Vous allez envoyer un
-            message à {{ $user->first_name }} {{ $user->last_name }} </h1>
+        <h1 class=" text-text text-2xl text-center font-bold mb-4 mt-4 lg:text-3xl lg:mt-20"> {{ __('petsitterContact.title') }} {{ $user->first_name }} {{ $user->last_name }} </h1>
         <div class="flex flex-col items-center gap-3 text-text">
 
             <h2 class="font-bold text-lg">
-                Vos coordonnées
+              {{ __('petsitterContact.coordonates') }}
             </h2>
 
             <div class="flex flex-col items-center">
-                <span><strong>Prénom :</strong> {{ $first_name }}</span>
-                <span><strong>Nom :</strong> {{ $last_name }}</span>
+                <span><strong> {{ __('petsitterContact.firstName') }} :</strong> {{ $first_name }}</span>
+                <span><strong> {{ __('petsitterContact.lastName') }} :</strong> {{ $last_name }}</span>
             </div>
 
             <div class="flex flex-col items-center">
-                <span><strong>Email :</strong> {{ $email }}</span>
-                <span><strong>Téléphone :</strong> {{ $phone }}</span>
+                <span><strong> {{ __('petsitterContact.email') }} :</strong> {{ $email }}</span>
+                <span><strong>{{ __('petsitterContact.phone') }} :</strong> {{ $phone }}</span>
             </div>
 
         </div>
@@ -94,7 +93,7 @@ class extends Component {
             </div>
             <div>
                 <x-forms.button>
-                    Envoyer votre message
+                    {{ __('petsitterContact.sent') }}
                 </x-forms.button>
             </div>
 

@@ -6,7 +6,9 @@
     <div class="flex flex-col sm:flex-row h-full">
         <div class="w-full h-64 sm:h-auto sm:w-1/3">
             <img
-                src="{{ \Illuminate\Support\Facades\Storage::url($request->pet->pet_image) }}"
+                src="{{ $request->pet->pet_image
+        ? Storage::url($request->pet->pet_image)
+        : asset('img/default-pet.jpg') }}"
                 alt="{{ $request->pet->name }}"
                 class="w-full h-full object-cover"
             >
@@ -36,7 +38,7 @@
 
                     <p>
                         <span class="font-extrabold">Race :</span>
-                        {{ $request->pet?->breed?->name }}
+                        {{ __('breed.' . $request->pet?->breed?->name) }}
                     </p>
 
                     <p>

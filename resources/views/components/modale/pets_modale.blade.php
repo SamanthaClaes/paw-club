@@ -44,7 +44,7 @@
         </button>
 
         <h2 class="text-2xl font-extrabold text-text uppercase mb-8">
-           {{ __('petModal.addAnAnimal') }}
+            {{ __('petModal.addAnAnimal') }}
         </h2>
 
         @if ($errors->any())
@@ -84,7 +84,7 @@
 
                 @foreach($animalTypes as $animalType)
                     <option value="{{ $animalType->id }}">
-                        {{ ucfirst($animalType->type) }}
+                        {{ ucfirst(__( 'animalTypes.' . $animalType->type)) }}
                     </option>
                 @endforeach
             </x-forms.select-option>
@@ -97,11 +97,11 @@
                 <option value="">{{ __('petModal.chooseGender') }}</option>
 
                 <option value="1">
-                   {{ __('petModal.male') }}
+                    {{ __('petModal.male') }}
                 </option>
 
                 <option value="0">
-                        {{ __('petModal.female') }}
+                    {{ __('petModal.female') }}
                 </option>
 
             </x-forms.select-option>
@@ -119,7 +119,7 @@
             >
 
                 <label class="block text-sm text-text uppercase font-bold mb-1">
-                   {{ __('petModal.chooseBreed') }}
+                    {{ __('petModal.chooseBreed') }}
                 </label>
 
                 <input
@@ -144,18 +144,18 @@
                             @foreach($animalType->breeds as $breed)
 
                                 <div
-                                    x-show="'{{ strtolower($breed->name) }}'
-                                .includes(search.toLowerCase())"
+                                    x-show="'{{ strtolower(__('breed.' . $breed->name)) }}'
+    .includes(search.toLowerCase())"
 
                                     @click="
                                 $wire.set('breed_id', {{ $breed->id }});
-                                search = '{{ $breed->name }}';
+                                search = '{{ __('breed.' . $breed->name) }}';
                                 open = false;
                             "
 
                                     class="px-3 py-2 hover:bg-gray-100 cursor-pointer"
                                 >
-                                    {{ $breed->name }}
+                                    {{ ucfirst(__('breed.'. $breed->name))  }}
                                 </div>
 
                             @endforeach

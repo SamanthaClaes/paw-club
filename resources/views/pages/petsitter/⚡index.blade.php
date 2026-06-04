@@ -11,7 +11,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-new #[Title('Petsitter')]
+new #[Title('Paw-club | Petsitter')]
 class extends Component {
     use WithPagination;
 
@@ -43,7 +43,6 @@ class extends Component {
     }
 
 
-
     public function petsitterQuery(): Builder
     {
         return User::with([
@@ -69,10 +68,11 @@ class extends Component {
                 $query->where('location', $this->location);
             })
             ->when($this->animalType, function ($query) {
-                $query->whereHas('animalTypes',function ($q){
+                $query->whereHas('animalTypes', function ($q) {
                     $q->where('animal_types.id', $this->animalType);
                 });
             })
+            ->latest()
             ->paginate(4);
     }
 };
@@ -92,9 +92,9 @@ class extends Component {
 
             <div
                 class="relative flex flex-col justify-center
-            border-4 border-element
+            border-2 border-element
             rounded-3xl
-            px-6 py-10 lg:px-12 lg:py-14
+            px-6 py-10 m-3 lg:m-0
             overflow-hidden  shadow-lg lg:w-1/2">
 
                 <div class="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none"></div>
@@ -180,12 +180,12 @@ class extends Component {
                         name="location"
                         id="location"
                         wire:model.live="location"
-                        label="Localité"
+                        label="{{ __('petsitter.location') }}"
                     >
-                        <option value="">Toutes les localités</option>
-                       @foreach($this->locations as $location)
+                        <option value="">{{ __('petsitter.allLocation') }}</option>
+                        @foreach($this->locations as $location)
                             <option value="{{ $location }}"> {{ $location }}</option>
-                       @endforeach
+                        @endforeach
                     </x-forms.select-option>
 
                 </div>
@@ -196,11 +196,12 @@ class extends Component {
                         name="animalType"
                         id="animalType"
                         wire:model.live="animalType"
-                        label="Type d’animal"
+                        label="{{ __('petsitter.animalType') }}"
                     >
-                        <option value="">Tous les animaux</option>
+                        <option value="">{{ __('petsitter.animals') }}</option>
                         @foreach($this->animalTypes as $animalType)
-                            <option value="{{ $animalType->id }}">{{ ucfirst($animalType->type) }}</option>
+                            <option
+                                value="{{ $animalType->id }}">{{ ucfirst( __('animalTypes.' . $animalType->type)) }}</option>
                         @endforeach
                     </x-forms.select-option>
 
@@ -218,7 +219,7 @@ class extends Component {
                     :price="$petsitter->price"
                     :image="$petsitter->image"
                     :description="$petsitter->description"
-                    :tags="[...$petsitter->animalTypes->pluck('type')->toArray(),$petsitter->habitation?->name]"
+                    :tags="[...$petsitter->animalTypes->map(fn ($animalType) => __('animalTypes.' . $animalType->type))->toArray(), __('habitationType.' . $petsitter->habitation?->name)]"
                     :choose-url=" route('petsitter.booking.create', ['user' => $petsitter->id])"
                     :contact-url=" route('petsitter.contact', ['user' => $petsitter->id])"
                 />

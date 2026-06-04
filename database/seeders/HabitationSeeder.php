@@ -14,13 +14,14 @@ class HabitationSeeder extends Seeder
     public function run(): void
     {
         DB::table('habitations')->insert([
-            ['name' => 'maison avec jardin'],
-            ['name' => 'maison sans jardin'],
-            ['name' => 'studio avec jardin/cour'],
-            ['name' => 'studio sans extérieur'],
-            ['name' => 'appartement avec balcon'],
-            ['name' => 'appartement sans extérieur'],
-            ['name' => 'ferme'],
+
+                ['name' => 'houseWithGarden'],
+                ['name' => 'houseWithoutGarden'],
+                ['name' => 'studioWithGardenOrPatio'],
+                ['name' => 'studioWithoutOutdoorSpace'],
+                ['name' => 'apartmentWithBalcony'],
+                ['name' => 'apartmentWithoutOutdoorSpace'],
+                ['name' => 'farm'],
         ]);
     }
 }

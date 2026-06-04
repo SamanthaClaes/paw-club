@@ -47,6 +47,7 @@ md:w-auto
 
             <li>
                 <a href="{{ route('daycare.index') }}"
+                   title=" {{ ucfirst( __('linkTranslate.daycare')) }}"
                    class="hover:bg-card px-8 py-4 w-full rounded-full cursor-pointer transition-colors duration-300 ease-in-out">
                     {{ __('nav.daycare') }}
                 </a>
@@ -61,7 +62,8 @@ md:w-auto
 
             <li>
                 <a href="/#contact"
-                   class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer">
+                   class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer"
+                >
                     {{ __('nav.contact') }}
                 </a>
             </li>
@@ -70,7 +72,7 @@ md:w-auto
 
                 @if(auth()->user()->role !== UserRole::ADMIN)
 
-                    @if(auth()->user()->is_petsitter)
+                    @if( auth()->user()->is_petsitter)
                         <li>
                             <a href="{{ route('petsitter.request') }}"
                                class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out">

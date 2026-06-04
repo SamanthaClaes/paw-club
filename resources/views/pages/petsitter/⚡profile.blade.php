@@ -2,17 +2,21 @@
 
 use App\Enums\PetsitterRequestStatus;
 use App\Jobs\ProcessImageJob;
+use App\Models\AnimalType;
 use App\Models\PetsitterMessages;
 use App\Models\PetSittingRequest;
 use App\Models\User;
+use App\Models\VisitType;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-new #[Title('Mon profil')]
+new #[Title('Mon profil | Paw-club')]
 class extends Component {
 
     use WithFileUploads;
@@ -29,6 +33,11 @@ class extends Component {
     public string $location = '';
     public string $zip = '';
     public $image = null;
+    public array $animalTypes = [];
+    public array $visitTypes = [];
+    public Collection $animalTypesList;
+    public Collection $visitTypesList;
+
 
     public function mount(): void
     {
@@ -41,8 +50,25 @@ class extends Component {
         $this->phone = $this->petsitter->phone;
         $this->location = $this->petsitter->location;
         $this->zip = $this->petsitter->zip;
+        $this->animalTypesList = AnimalType::all();
+        $this->visitTypesList = VisitType::all();
 
     }
+
+    #[On('open-update-infos')]
+    public function loadInfos(): void
+    {
+        $this->animalTypes = $this->petsitter
+            ->animalTypes
+            ->pluck('id')
+            ->toArray();
+
+        $this->visitTypes = $this->petsitter
+            ->visitTypes
+            ->pluck('id')
+            ->toArray();
+    }
+
     public function updateData(): void
     {
         $validated = $this->validate([
@@ -98,6 +124,21 @@ class extends Component {
         $this->dispatch('password-updated');
     }
 
+    public function updateInfos(): void
+    {
+        $this->validate([
+            'animalTypes' => ['array'],
+            'visitTypes' => ['array'],
+        ]);
+
+        $this->petsitter->animalTypes()->sync($this->animalTypes);
+        $this->petsitter->visitTypes()->sync($this->visitTypes);
+        $this->petsitter->refresh();
+        $this->dispatch('update-infos');
+
+    }
+
+
     #[Computed]
     public function countRequestPending(): int
     {
@@ -132,7 +173,7 @@ class extends Component {
 };
 ?>
 <section class="max-w-7xl mx-auto px-6">
-    <h1 class=" text-text text-2xl text-center font-bold mb-4 lg:text-3xl mt-20 uppercase">Mes informations</h1>
+    <h1 class=" text-text text-2xl text-center font-bold mb-4 lg:text-3xl mt-20 uppercase">{{ __('ownerProfile.informations') }}</h1>
     <x-header.PetsitterNav/>
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-16">
         <div>
@@ -181,15 +222,24 @@ class extends Component {
         />
 
         <x-cards.ps_card_profile_info
-            :type="$petsitter->animalTypes->pluck('type')->join(', ')"
-            :visit="$petsitter->visitTypes->pluck('name')->join(', ')"
+            :type="$petsitter->animalTypes
+    ->map(fn ($animalType) => __('animalTypes.' . $animalType->type))
+    ->join(', ')"
+            :visit="$petsitter->visitTypes
+    ->map(fn ($visitType) => __('visitTypes.' . $visitType->name))
+    ->join(', ')"
+            :animal-types-list="$animalTypesList"
+            :visit-types-list="$visitTypesList"
 
         />
+
     </div>
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
         <h2 class="text-text lg:text-2xl text-lg uppercase font-bold">{{ __('ownerProfile.title') }}</h2>
-        <x-cta.add title="{{ __('ownerProfile.add') }} " class="bg-btn-green hover:bg-hover-green text-cta hover:text-white"/>
+        <x-cta.add title="{{ __('ownerProfile.add') }} "
+                   class="bg-btn-green hover:bg-hover-green text-cta hover:text-white"/>
     </div>
     <livewire:pages::owner.pets.create/>
     <livewire:pages::owner.pets.edit/>
+
 </section>

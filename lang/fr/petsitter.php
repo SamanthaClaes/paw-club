@@ -22,5 +22,13 @@ return [
     'cardSubtitle' => ' Envie de vous occuper d’animaux ? Rejoignez PawClub et devenez petsitter en proposant un service adapté à
             vos disponibilités.',
     'cardCta' => '  Devenir petsitter',
+    'location'=>'Localité',
+    'allLocation'=>'toutes les localités',
+    'animals'=>'Tous les animaux',
+    'animalType'=>'Type d’animal',
+    'placeholderSearch'=>'Recherchez...',
+    'cardChoose'=>'choisir',
+    'cardContact'=>'Contacter',
+    'addAnimal'=>'Créer un animal',
 
 ];

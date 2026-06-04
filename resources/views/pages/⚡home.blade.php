@@ -27,7 +27,7 @@ class extends Component {
             'message' => 'required|string',
         ]);
         ContactMessage::create([...$validated, 'is_read' => false,]);
-        Mail::to('contact@pawclub.be')->queue(new ContactMessageMail($validated));
+        Mail::to('samantha.claes@student.hepl.be')->queue(new ContactMessageMail($validated));
         session()->flash('success', 'Message envoyé avec succès');
         $this->submit = true;
         $this->reset(['first_name',
@@ -191,18 +191,6 @@ class extends Component {
 
                     {{ __('petsitter.cardCta') }}
                 </a>
-                <img src="{{ asset('svg/ill_6.svg') }}"
-                     alt="illustration d'une femme qui caresse un chat"
-                     class="hidden lg:block absolute bottom-5 left-0 xl:left-20
-     w-30 sm:w-40 md:w-40 lg:w-50 xl:w-60
-     -translate-x-1/4 translate-y-1/4">
-
-                <img src="{{ asset('svg/ill_7.webp') }}"
-                     alt="illustration d'une femme en train de promener un chien brun"
-                     class="hidden lg:block absolute -bottom-1 lg:right-0 xl:right-20
-    w-30 sm:w-40 md:w-56 lg:w-50 xl:w-60
-   "
-    >
             </section>
         </div>
     </section>

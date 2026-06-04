@@ -15,7 +15,7 @@
 
                 <div
                     class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-card-green text-text text-xs font-bold px-3 py-2 rounded-full shadow-md whitespace-nowrap max-w-[90%] text-center">
-                    {{ $request->pet->breed?->name }}
+                    {{ __('breed.' . $request->pet?->breed?->name) }}
                 </div>
 
             </div>

@@ -122,7 +122,7 @@ class extends Component {
         $pet = $request->pet;
         $request->status = PetsitterRequestStatus::ACCEPTED;
         $request->save();
-//        Mail::to($owner->email)->queue(new PetsittingAcceptedRequestMail($petsitter, $owner, $pet, $request));
+        Mail::to($owner->email)->queue(new PetsittingAcceptedRequestMail($petsitter, $owner, $pet, $request));
         $this->loadPendingRequests();
 
     }
@@ -156,7 +156,7 @@ class extends Component {
 
         $request->status = PetsitterRequestStatus::REFUSED;
         $request->save();
-//        Mail::to($owner->email)->queue(new PetsittingRefusedRequestMail($owner, $petsitter, $pet, $request));
+        Mail::to($owner->email)->queue(new PetsittingRefusedRequestMail($owner, $petsitter, $pet, $request));
         $this->loadPendingRequests();
     }
 
@@ -280,7 +280,7 @@ class extends Component {
         <div class="mb-20">
 
             <h2 class="text-text uppercase text-3xl font-extrabold mb-8">
-                Modifications à traiter
+                {{ __('request.modifyToProcess') }}
             </h2>
 
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
@@ -293,9 +293,9 @@ class extends Component {
 
                 @empty
 
-                    <div class="bg-card border-2 border-element rounded-2xl p-8 w-full">
+                    <div class="col-span-full bg-card border-2 border-element rounded-2xl p-8">
                         <p class="text-center text-text text-lg font-semibold">
-                            Aucune modification à traiter
+                            {{ __('request.noModifyToProcess') }}
                         </p>
                     </div>
 
@@ -308,7 +308,7 @@ class extends Component {
         <div class="mb-20">
 
             <h2 class="text-text uppercase text-3xl font-extrabold mb-8">
-                Modifications envoyées
+                {{ __('request.modifySent') }}
             </h2>
 
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
@@ -321,9 +321,9 @@ class extends Component {
 
                 @empty
 
-                    <div class="bg-card border-2 border-element rounded-2xl p-8 w-full">
+                    <div class="col-span-full bg-card border-2 border-element rounded-2xl p-8">
                         <p class="text-center text-text text-lg font-semibold">
-                            Aucune modification envoyée
+                            {{ __('request.noModifySent') }}
                         </p>
                     </div>
 
@@ -338,7 +338,7 @@ class extends Component {
             <div class="flex items-center gap-4 mb-8">
 
                 <h2 class="text-text uppercase text-3xl font-extrabold" id="pending">
-                    Mes demandes en attente
+                    {{ __('request.pendingRequests') }}
                 </h2>
 
             </div>
@@ -353,10 +353,10 @@ class extends Component {
 
                 @empty
 
-                    <div class="bg-card border-2 border-element rounded-2xl p-8 w-full">
+                    <div class="col-span-full bg-card border-2 border-element rounded-2xl p-8">
 
                         <p class="text-center text-text text-lg font-semibold">
-                            Aucune demande en attente
+                            {{ __('request.noPendingRequests') }}
                         </p>
 
                     </div>
@@ -372,7 +372,7 @@ class extends Component {
             <div class="flex items-center gap-4 mb-8">
 
                 <h2 class="text-text uppercase text-3xl font-extrabold" id="accepted">
-                    Mes demandes acceptées
+                    {{ __('request.acceptedRequests') }}
                 </h2>
 
             </div>
@@ -387,10 +387,10 @@ class extends Component {
 
                 @empty
 
-                    <div class="bg-card border-2 border-element rounded-2xl p-8 w-full">
+                    <div class="col-span-full bg-card border-2 border-element rounded-2xl p-8">
 
                         <p class="text-center text-text text-lg font-semibold">
-                            Aucune demande acceptée
+                            {{ __('request.noAcceptedRequests') }}
                         </p>
 
                     </div>
@@ -406,7 +406,7 @@ class extends Component {
             <div class="flex items-center gap-4 mb-8">
 
                 <h2 class="text-text uppercase text-3xl font-extrabold" id="refused">
-                    Mes demandes refusées
+                    {{ __('request.refusedRequests') }}
                 </h2>
 
             </div>
@@ -421,10 +421,10 @@ class extends Component {
 
                 @empty
 
-                    <div class="bg-card border-2 border-element rounded-2xl p-8 w-full">
+                    <div class="col-span-full bg-card border-2 border-element rounded-2xl p-8">
 
                         <p class="text-center text-text text-lg font-semibold">
-                            Aucune demande refusée
+                            {{ __('request.noRefusedRequests') }}
                         </p>
 
                     </div>

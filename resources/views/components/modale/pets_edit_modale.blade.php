@@ -111,10 +111,6 @@
                 placeholder="L’age de votre animal"
             />
 
-            <label class="block text-sm text-text uppercase font-bold mb-1" for="description">
-                Description
-            </label>
-
            <x-forms.textarea-label
                name="description"
                wire:model="description"

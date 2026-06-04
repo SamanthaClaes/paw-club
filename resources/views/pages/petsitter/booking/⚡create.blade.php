@@ -35,6 +35,7 @@ class extends Component {
             ->with('breed')
             ->get();
 
+
         if ($this->pets->count() === 1) {
             $this->pet_id = $this->pets->first()->id;
         }

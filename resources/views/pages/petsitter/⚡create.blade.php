@@ -86,7 +86,7 @@ class extends Component {
         }
 
         $user = User::create([...$validated,
-            'password' => Hash::make('password'),
+            'password' => Hash::make(Str::random(64)),
             'role' => null,
             'is_petsitter' => true,
             'petsitter_status' => PetsitterStatus::PENDING]);
@@ -115,7 +115,7 @@ class extends Component {
 
     <section>
         <h1 class="text-text text-2xl font-bold uppercase text-center mt-20"> {{ __('petsitterCreateForm.title') }}</h1>
-        <p class="w-1/2 text-center mx-auto"> {{ __('petsitterCreateForm.subtitle') }}</p>
+        <p class=" lg:w-1/2 text-center text-sm mx-auto"> {{ __('petsitterCreateForm.subtitle') }}</p>
         <form wire:submit="store" class="w-8/10 mx-auto mt-6">
             @csrf
             @if($image)
@@ -145,8 +145,8 @@ class extends Component {
             <div class="flex gap-6 justify-between">
                 <x-forms.input-label wire:model="location" type="text" name="location"
                                      label="{{ __('petsitterCreateForm.location') }}"/>
-                <x-forms.select-option wire:model="price" name="prices" label="Votre prix à la journée">
-                    <option value="Choisissez votre tarif">Votre tarif</option>
+                <x-forms.select-option wire:model="price" name="prices" label="{{ __('petsitterCreateForm.price') }}">
+                    <option value="">{{ __('petsitterCreateForm.price') }}</option>
                     @foreach($prices as $price)
                         <option value="{{ $price }}">
                             {{ $price }} €
@@ -157,7 +157,7 @@ class extends Component {
             <div>
 
             </div>
-            <div class="flex gap-12 justify-between">
+            <div class="flex flex-col lg:flex-row gap-12 justify-between">
 
                 <div class="w-1/3">
 
@@ -180,7 +180,7 @@ class extends Component {
                                 >
 
                                 <span class="text-text">
-                        {{ ucfirst($habitation->name ) }}
+                        {{ ucfirst( __( 'habitationType.' . $habitation->name )) }}
                     </span>
 
                             </label>
@@ -209,7 +209,7 @@ class extends Component {
                                 >
 
                                 <span class="text-text">
-                        {{ ucfirst($type->type) }}
+                        {{ ucfirst( __( 'animalTypes.' . $type->type)) }}
                     </span>
 
                             </label>
@@ -237,7 +237,7 @@ class extends Component {
                                 >
 
                                 <span class="text-text">
-                        {{ ucfirst($visit->name) }}
+                        {{ ucfirst( __('visitTypes.' . $visit->name)) }}
                     </span>
 
                             </label>

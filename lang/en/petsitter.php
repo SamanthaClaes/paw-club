@@ -36,5 +36,16 @@ return [
     'cardSubtitle' => 'Would you like to take care of animals? Join PawClub and become a petsitter by offering a service adapted to your availability.',
 
     'cardCta' => 'Become a petsitter',
+    'location' => 'Location',
+    'allLocation' => 'All locations',
+
+    'animals' => 'All animals',
+    'animalType' => 'Animal type',
+
+    'placeholderSearch' => 'Search...',
+
+    'cardChoose' => 'Choose',
+    'cardContact' => 'Contact',
+    'addAnimal'=>'Add a pet',
 
 ];

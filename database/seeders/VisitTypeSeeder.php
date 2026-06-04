@@ -14,10 +14,10 @@ class VisitTypeSeeder extends Seeder
     public function run(): void
     {
         DB::table('visit_types')->insert([
-            ['name' => 'ponctuelle'],
-            ['name' => 'à domicile'],
-            ['name' => 'chez le propriétaire'],
-            ['name' => 'toutes les visites'],
+            ['name' => 'oneTimeVisit'],
+            ['name' => 'homeVisit'],
+            ['name' => "ownersHome"],
+            ['name' => 'all'],
         ]);
     }
 }

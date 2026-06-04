@@ -22,4 +22,6 @@ return [
 
     'add'=>'+ Add a pet',
 
+    'informations'=>'My informations',
+
 ];

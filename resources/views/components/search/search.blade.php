@@ -13,7 +13,7 @@
     <input
         type="search"
         wire:model.live.debounce.300ms="{{ $search }}"
-        placeholder="Recherchez..."
+        placeholder="{{ __('petsitter.placeholderSearch') }}"
         class="w-full
                 border-2 border-stroke
                 rounded-2xl

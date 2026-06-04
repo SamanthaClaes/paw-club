@@ -20,4 +20,22 @@ return [
     'yourDogs' => 'Your companions on vacation',
 
     'place' => 'Where to find us?',
+    'priceTitle' => 'Our rates',
+    'priceAdvice' => 'Payment must be made on site',
+
+    'cardPinkTitle' => 'Day care for small dogs (poodle, bichon, ...)',
+    'cardPinkPrice' => '€15',
+    'cardPinkDescription' => 'Daily rate for small dogs',
+
+    'cardOrangeTitle' => 'Day care for large dogs (German Shepherd, Labrador, ...)',
+    'cardOrangePrice' => '€20',
+    'cardOrangeDescription' => 'Daily rate for large dogs',
+
+    'cardBlueTitle' => 'Overnight care for small dogs (poodle, bichon, ...)',
+    'cardBluePrice' => '€25',
+    'cardBlueDescription' => 'Overnight rate for small dogs',
+
+    'cardGreenTitle' => 'Overnight care for large dogs (German Shepherd, Labrador, ...)',
+    'cardGreenPrice' => '€30',
+    'cardGreenDescription' => 'Overnight rate for large dogs',
 ];

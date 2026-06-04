@@ -33,6 +33,12 @@ class extends Component {
             ->where('animal_type_id', 1)
             ->get();
     }
+    public function updatedPetId($value): void
+    {
+        $pet = $this->pets->firstWhere('id', $value);
+
+        $this->gender = $pet?->gender;
+    }
 
 
     public function store(): void
@@ -104,9 +110,11 @@ class extends Component {
             />
         </div>
         <div>
-            <p>
-                {{ $pet->gender ? __('formDaycare.male') : __('formDaycare.female') }}
-            </p>
+            @if($pet_id)
+                <p>
+                    {{ $gender ? __('formDaycare.male') : __('formDaycare.female') }}
+                </p>
+            @endif
         </div>
         <div class="flex gap-6">
             <x-forms.input-label type="date" wire:model="start_date" name="start_date"

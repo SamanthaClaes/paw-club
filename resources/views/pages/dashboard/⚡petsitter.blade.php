@@ -19,6 +19,7 @@ class extends Component {
     public $search = '';
 
 
+
     public function petsitterQuery()
     {
         return User::where('is_petsitter', true)
@@ -63,7 +64,8 @@ class extends Component {
         $petsitter = User::findOrFail($requestId);
         $petsitter->petsitter_status = PetsitterStatus::ACCEPTED;
         $petsitter->save();
-Mail::to($petsitter->email)->queue(new PetsitterAcceptedMail($petsitter));
+        $token = Password::createToken($petsitter);
+        Mail::to($petsitter->email)->queue(new PetsitterAcceptedMail($petsitter, $token));
         $this->resetPage('requestsPage');
     }
 
@@ -73,7 +75,7 @@ Mail::to($petsitter->email)->queue(new PetsitterAcceptedMail($petsitter));
 
         $petsitter->petsitter_status = PetsitterStatus::REFUSED;
 
-        $petsitter->save()
+        $petsitter->save();
         Mail::to($petsitter->email)->queue(new PetsittingRefusedRequestMail($petsitter, $owner, $pet, $request));
         $this->resetPage('requestsPage');
 

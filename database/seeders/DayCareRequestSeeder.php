@@ -14,6 +14,9 @@ class DayCareRequestSeeder extends Seeder
     public function run(): void
     {
         DayCareRequest::factory(15)->create();
+        DayCareRequest::factory(5)
+            ->pending()
+            ->create();
 
         DayCareRequest::factory(5)
             ->currentWeek()

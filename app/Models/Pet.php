@@ -62,7 +62,7 @@ class Pet extends Model
     public function getImageUrl(int $size = 400): ?string
     {
         if (!$this->pet_image) {
-            return null;
+            return asset('img/default-pet.jpg');
         }
 
         $fileName = basename($this->pet_image);

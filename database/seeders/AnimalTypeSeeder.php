@@ -14,12 +14,13 @@ class AnimalTypeSeeder extends Seeder
     public function run(): void
     {
         DB::table('animal_types')->insert([
-            ['type' => 'chien'],
-            ['type' => 'chat'],
-            ['type' => 'lapin'],
-            ['type' => 'furet'],
-            ['type' => 'serpent'],
+            ['type' => 'dog'],
+            ['type' => 'cat'],
+            ['type' => 'rabbit'],
+            ['type' => 'ferret'],
+            ['type' => 'snake'],
             ['type' => 'hamster'],
+            ['type' => 'all'],
         ]);
     }
 }

@@ -18,213 +18,213 @@ class BreedSeeder extends Seeder
             // CHIENS
             [
                 'animal_type_id' => 1,
-                'name' => 'Berger Allemand',
+                'name' => 'german_shepherd',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Labrador Retriever',
+                'name' => 'labrador_retriever',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Golden Retriever',
+                'name' => 'golden_retriever',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Border Collie',
+                'name' => 'border_collie',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Berger Australien',
+                'name' => 'australian_shepherd',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Chihuahua',
+                'name' => 'chihuahua',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Shiba Inu',
+                'name' => 'shiba_inu',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Berger Belge Malinois',
+                'name' => 'belgian_malinois',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Bouledogue Français',
+                'name' => 'french_bulldog',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Cocker Anglais',
+                'name' => 'english_cocker_spaniel',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Beagle',
+                'name' => 'beagle',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Caniche',
+                'name' => 'poodle',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Jack Russell Terrier',
+                'name' => 'jack_russell_terrier',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Husky Sibérien',
+                'name' => 'siberian_husky',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Rottweiler',
+                'name' => 'rottweiler',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Dogue Allemand',
+                'name' => 'great_dane',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Bichon Maltais',
+                'name' => 'maltese',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Bichon Frisé',
+                'name' => 'bichon_frise',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Yorkshire Terrier',
+                'name' => 'yorkshire_terrier',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Akita Inu',
+                'name' => 'akita_inu',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Samoyède',
+                'name' => 'samoyed',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Terre-Neuve',
+                'name' => 'newfoundland',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Teckel',
+                'name' => 'dachshund',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Dalmatien',
+                'name' => 'dalmatian',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Boxer',
+                'name' => 'boxer',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Cane Corso',
+                'name' => 'cane_corso',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Épagneul Breton',
+                'name' => 'brittany_spaniel',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Cavalier King Charles',
+                'name' => 'cavalier_king_charles_spaniel',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Spitz nain',
+                'name' => 'pomeranian',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Berger des shetlands',
+                'name' => 'shetland_sheepdog',
             ],
             [
                 'animal_type_id' => 1,
-                'name' => 'Autre',
+                'name' => 'other',
             ],
 
             // CHATS
             [
                 'animal_type_id' => 2,
-                'name' => 'Maine Coon',
+                'name' => 'maine_coon',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Siamois',
+                'name' => 'siamese',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Persan',
+                'name' => 'persian',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Bengal',
+                'name' => 'bengal',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'British Shorthair',
+                'name' => 'british_shorthair',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Ragdoll',
+                'name' => 'ragdoll',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Sacré de Birmanie',
+                'name' => 'birman',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Norvégien',
+                'name' => 'norwegian_forest_cat',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Sphynx',
+                'name' => 'sphynx',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Chartreux',
+                'name' => 'chartreux',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Oriental',
+                'name' => 'oriental_shorthair',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Devon Rex',
+                'name' => 'devon_rex',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Cornish Rex',
+                'name' => 'cornish_rex',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Abyssin',
+                'name' => 'abyssinian',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Angora Turc',
+                'name' => 'turkish_angora',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Bleu Russe',
+                'name' => 'russian_blue',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Scottish Fold',
+                'name' => 'scottish_fold',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Savannah',
+                'name' => 'savannah',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Exotic Shorthair',
+                'name' => 'exotic_shorthair',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Burmese',
+                'name' => 'burmese',
             ],
             [
                 'animal_type_id' => 2,
-                'name' => 'Autre',
+                'name' => 'other',
             ],
 
             // LAPINS
@@ -241,160 +241,166 @@ class BreedSeeder extends Seeder
                 'name' => 'Rex',
             ],
 
-            // FURETS
+            // LAPINS
             [
-                'animal_type_id' => 4,
-                'name' => 'Furet Albinos',
-            ],
-            [
-                'animal_type_id' => 4,
-                'name' => 'Furet Putoisé',
+                'animal_type_id' => 3,
+                'name' => 'dutch_lop',
             ],
             [
                 'animal_type_id' => 3,
-                'name' => 'Bélier Français',
+                'name' => 'dwarf_rabbit',
             ],
             [
                 'animal_type_id' => 3,
-                'name' => 'Géant des Flandres',
+                'name' => 'rex_rabbit',
             ],
             [
                 'animal_type_id' => 3,
-                'name' => 'Tête de Lion',
+                'name' => 'french_lop',
             ],
             [
                 'animal_type_id' => 3,
-                'name' => 'Papillon',
+                'name' => 'flemish_giant',
             ],
             [
                 'animal_type_id' => 3,
-                'name' => 'Havana',
+                'name' => 'lionhead_rabbit',
             ],
             [
                 'animal_type_id' => 3,
-                'name' => 'Angora',
+                'name' => 'english_spot',
             ],
             [
                 'animal_type_id' => 3,
-                'name' => 'Californien',
+                'name' => 'havana_rabbit',
             ],
             [
                 'animal_type_id' => 3,
-                'name' => 'Autre',
+                'name' => 'angora_rabbit',
             ],
-            // FURETS
+            [
+                'animal_type_id' => 3,
+                'name' => 'californian_rabbit',
+            ],
+            [
+                'animal_type_id' => 3,
+                'name' => 'other',
+            ],
 
+            // FURETS
             [
                 'animal_type_id' => 4,
-                'name' => 'Furet Champagne',
+                'name' => 'champagne_ferret',
             ],
             [
                 'animal_type_id' => 4,
-                'name' => 'Furet Cannelle',
+                'name' => 'cinnamon_ferret',
             ],
             [
                 'animal_type_id' => 4,
-                'name' => 'Furet Chocolat',
+                'name' => 'chocolate_ferret',
             ],
             [
                 'animal_type_id' => 4,
-                'name' => 'Furet Silver',
+                'name' => 'silver_ferret',
             ],
             [
                 'animal_type_id' => 4,
-                'name' => 'Furet Panda',
+                'name' => 'panda_ferret',
             ],
             [
                 'animal_type_id' => 4,
-                'name' => 'Autre',
+                'name' => 'other',
             ],
 
             // SERPENTS
+
             [
                 'animal_type_id' => 5,
-                'name' => 'Python Royal',
+                'name' => 'ball_python',
             ],
             [
                 'animal_type_id' => 5,
-                'name' => 'Boa Constrictor',
+                'name' => 'boa_constrictor',
             ],
             [
                 'animal_type_id' => 5,
-                'name' => 'Couleuvre des Blés',
+                'name' => 'corn_snake',
             ],
             [
                 'animal_type_id' => 5,
-                'name' => 'Python Morelia',
+                'name' => 'morelia_python',
             ],
             [
                 'animal_type_id' => 5,
-                'name' => 'Python Tapis',
+                'name' => 'carpet_python',
             ],
             [
                 'animal_type_id' => 5,
-                'name' => 'Serpent des Blés',
+                'name' => 'corn_snake',
             ],
             [
                 'animal_type_id' => 5,
-                'name' => 'Python Vert',
+                'name' => 'green_tree_python',
             ],
             [
                 'animal_type_id' => 5,
-                'name' => 'Couleuvre Royale',
+                'name' => 'kingsnake',
             ],
             [
                 'animal_type_id' => 5,
-                'name' => 'Python de Birmanie',
+                'name' => 'burmese_python',
             ],
             [
                 'animal_type_id' => 5,
-                'name' => 'Boa Arc-en-ciel',
+                'name' => 'rainbow_boa',
             ],
             [
                 'animal_type_id' => 5,
-                'name' => 'Autre',
+                'name' => 'other',
             ],
 
             // HAMSTERS
+
             [
                 'animal_type_id' => 6,
-                'name' => 'Hamster Syrien',
+                'name' => 'syrian_hamster',
             ],
             [
                 'animal_type_id' => 6,
-                'name' => 'Hamster Russe',
+                'name' => 'russian_hamster',
             ],
             [
                 'animal_type_id' => 6,
-                'name' => 'Hamster Roborovski',
+                'name' => 'roborovski_hamster',
             ],
             [
                 'animal_type_id' => 6,
-                'name' => 'Hamster Chinois',
+                'name' => 'chinese_hamster',
             ],
             [
                 'animal_type_id' => 6,
-                'name' => 'Hamster de Campbell',
+                'name' => 'campbell_hamster',
             ],
             [
                 'animal_type_id' => 6,
-                'name' => 'Hamster de Winter White',
+                'name' => 'winter_white_hamster',
             ],
             [
                 'animal_type_id' => 6,
-                'name' => 'Hamster Noir',
+                'name' => 'black_hamster',
             ],
             [
                 'animal_type_id' => 6,
-                'name' => 'Hamster Satin',
+                'name' => 'satin_hamster',
             ],
             [
                 'animal_type_id' => 6,
-                'name' => 'Hamster Angora',
+                'name' => 'angora_hamster',
             ],
             [
                 'animal_type_id' => 6,
-                'name' => 'Autre',
+                'name' => 'other',
             ],
         ]);
     }

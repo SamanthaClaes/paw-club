@@ -21,7 +21,7 @@
 
             <div class="shrink-0">
                 <img
-                    src="{{ $owner->getImageUrl(800) }}"
+                    src="{{ $owner->image ? $owner->getImageUrl(800) : asset('img/avatar.jpg') }}"
                     sizes="176px"
                     alt="{{ __('ownerProfile.profileImageAlt') }} {{ Auth::user()->first_name }}"
                     class="w-44 h-44 rounded-lg object-cover"
