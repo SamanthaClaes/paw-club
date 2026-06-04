@@ -37,6 +37,8 @@ class extends Component {
     public array $visitTypes = [];
     public Collection $animalTypesList;
     public Collection $visitTypesList;
+    public array $prices = [15, 20, 25];
+    public ?int $price = null;
 
 
     public function mount(): void
@@ -52,6 +54,7 @@ class extends Component {
         $this->zip = $this->petsitter->zip;
         $this->animalTypesList = AnimalType::all();
         $this->visitTypesList = VisitType::all();
+        $this->price = $this->petsitter->price;
 
     }
 
@@ -129,10 +132,14 @@ class extends Component {
         $this->validate([
             'animalTypes' => ['array'],
             'visitTypes' => ['array'],
+            'price' => ['required', 'integer'],
         ]);
 
         $this->petsitter->animalTypes()->sync($this->animalTypes);
         $this->petsitter->visitTypes()->sync($this->visitTypes);
+        $this->petsitter->update([
+            'price' => $this->price,
+        ]);
         $this->petsitter->refresh();
         $this->dispatch('update-infos');
 
@@ -230,6 +237,7 @@ class extends Component {
     ->join(', ')"
             :animal-types-list="$animalTypesList"
             :visit-types-list="$visitTypesList"
+            :price="$petsitter->price"
 
         />
 

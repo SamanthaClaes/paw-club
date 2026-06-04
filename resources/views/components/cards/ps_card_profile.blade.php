@@ -28,7 +28,7 @@
             <div class="space-y-5 text-text text-base">
                 <p>
                     <span class="font-extrabold">{{__('petsitterProfile.fullname')}} :</span>
-                    {{ $last_name }} {{ $first_name }}
+                    {{ $first_name }} {{ $last_name }}
                 </p>
 
                 <p>

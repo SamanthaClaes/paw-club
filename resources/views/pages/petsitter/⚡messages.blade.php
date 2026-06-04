@@ -1,10 +1,12 @@
 <?php
 
 use App\Models\PetsitterMessages;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
-new class extends Component {
+new #[Title('Mes messages | Paw-club')]
+class extends Component {
     public $messages;
 
     public function mount(): void

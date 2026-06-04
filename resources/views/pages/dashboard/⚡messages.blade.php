@@ -4,7 +4,7 @@ use App\Models\ContactMessage;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-new #[Layout('layouts::dashboard', ['title' => 'Liste de messages'])]
+new #[Layout('layouts::dashboard', ['title' => 'Liste de messages | Paw-club'])]
 class extends Component {
 
     public $unreadMessages;

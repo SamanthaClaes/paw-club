@@ -11,7 +11,7 @@ use Livewire\Component;
 use Carbon\Carbon;
 use Livewire\WithPagination;
 
-new #[Layout('layouts::dashboard', ['title' => 'Nos chiens'])]
+new #[Layout('layouts::dashboard', ['title' => 'Nos chiens | Paw-club'])]
 class extends Component {
 
     use WithPagination;

@@ -12,7 +12,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-new  #[Title('Devenir petsitter')]
+new  #[Title('Devenir petsitter | Paw-club')]
 class extends Component {
 
     use WithFileUploads;
@@ -128,23 +128,23 @@ class extends Component {
             </div>
             <div class="flex gap-6 justify-between">
                 <x-forms.input-label wire:model="last_name" type="text" name="last_name"
-                                     label="{{ __('form.last_name') }} *"/>
+                                     label="{{ __('form.last_name') }} " required/>
                 <x-forms.input-label wire:model="first_name" type="text" name="first_name"
-                                     label="{{ __('form.first_name') }} *"/>
+                                     label="{{ __('form.first_name') }} " required/>
             </div>
             <div class="flex gap-6 justify-between">
-                <x-forms.input-label wire:model="email" type="email" name="email" label="{{ __('form.email') }} *"/>
-                <x-forms.input-label wire:model="phone" type="text" name="phone" label="{{ __('form.phone') }} *"/>
+                <x-forms.input-label wire:model="email" type="email" name="email" label="{{ __('form.email') }} " required/>
+                <x-forms.input-label wire:model="phone" type="text" name="phone" label="{{ __('form.phone') }} " required/>
             </div>
             <div class="flex gap-6 justify-between">
                 <x-forms.input-label wire:model="adress" type="text" name="adress"
-                                     label="{{ __('petsitterCreateForm.address') }} *"/>
+                                     label="{{ __('petsitterCreateForm.address') }} " required/>
                 <x-forms.input-label wire:model="zip" type="number" name="zip"
-                                     label=" {{ __('petsitterCreateForm.zip') }} *"/>
+                                     label=" {{ __('petsitterCreateForm.zip') }} " required/>
             </div>
             <div class="flex gap-6 justify-between">
                 <x-forms.input-label wire:model="location" type="text" name="location"
-                                     label="{{ __('petsitterCreateForm.location') }}"/>
+                                     label="{{ __('petsitterCreateForm.location') }}" required/>
                 <x-forms.select-option wire:model="price" name="prices" label="{{ __('petsitterCreateForm.price') }}">
                     <option value="">{{ __('petsitterCreateForm.price') }}</option>
                     @foreach($prices as $price)
@@ -162,7 +162,7 @@ class extends Component {
                 <div class="w-1/3">
 
                     <label class="block text-sm text-text uppercase font-bold mb-3">
-                        {{ __('petsitterCreateForm.habitation') }} <abbr title="Requis" class="no-underline">*</abbr>
+                        {{ __('petsitterCreateForm.habitation') }} <abbr title="Requis" class="no-underline text-red-500">*</abbr>
                     </label>
 
                     <div class="flex flex-col gap-3">
@@ -192,7 +192,7 @@ class extends Component {
                 </div>
                 <div class="w-1/3">
                     <label class="block text-sm text-text uppercase font-bold mb-3">
-                        {{ __('petsitterCreateForm.chooseAnimal') }} <abbr title="Requis" class="no-underline">*</abbr>
+                        {{ __('petsitterCreateForm.chooseAnimal') }} <abbr title="Requis" class="no-underline text-red-500">*</abbr>
                     </label>
 
                     <div class="flex flex-col gap-3">
@@ -220,7 +220,7 @@ class extends Component {
                 </div>
                 <div class="w-1/3">
                     <label class="block text-sm text-text uppercase font-bold mb-3">
-                        {{ __('petsitterCreateForm.chooseVisit') }} <abbr title="Requis" class="no-underline">*</abbr>
+                        {{ __('petsitterCreateForm.chooseVisit') }} <abbr title="Requis"  class="no-underline text-red-500">*</abbr>
                     </label>
 
                     <div class="flex flex-col gap-3">

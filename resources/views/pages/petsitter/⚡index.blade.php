@@ -11,7 +11,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-new #[Title('Paw-club | Petsitter')]
+new #[Title('Petsitter | Paw-club')]
 class extends Component {
     use WithPagination;
 
@@ -245,10 +245,21 @@ class extends Component {
         <p class="relative z-10 mt-6 max-w-2xl text-sm lg:text-lg leading-7 text-text/90">
             {{ __('petsitter.cardSubtitle') }}
         </p>
-
-        <a
-            href="{{ route('petsitter.create') }}"
-            class="relative z-10 mt-8
+        @if( Auth::user()->is_petsitter)
+            <a href="{{ route('petsitter.profile') }}" class="relative z-10 mt-8
+        bg-white text-text
+        text-sm lg:text-xl
+        font-extrabold uppercase tracking-wide
+        px-8 py-4 lg:px-12
+        rounded-2xl shadow-md
+        hover:-translate-y-1 hover:shadow-lg
+        transition-all duration-300" title="{{ __('petsitter.goProfile') }}">
+                {{ __('petsitter.already') }}
+            </a>
+        @else
+            <a
+                href="{{ route('petsitter.create') }}"
+                class="relative z-10 mt-8
         bg-white text-text
         text-sm lg:text-xl
         font-extrabold uppercase tracking-wide
@@ -257,9 +268,11 @@ class extends Component {
         shadow-md
         hover:-translate-y-1 hover:shadow-lg
         transition-all duration-300"
-        >
-            {{ __('petsitter.cardCta') }}
-        </a>
+            >
+                {{ __('petsitter.cardCta') }}
+            </a>
+        @endif
+
 
         <img
             src="{{ asset('svg/ill_6.svg') }}"

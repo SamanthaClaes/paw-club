@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new #[Title('Mon planning')]
+new #[Title('Mon planning | Paw-club')]
 class extends Component {
     public function getEvents(): array
     {

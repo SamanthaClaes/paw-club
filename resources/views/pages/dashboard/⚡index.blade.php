@@ -12,7 +12,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-new #[Layout('layouts::dashboard', ['title' => 'Dashboard'])]
+new #[Layout('layouts::dashboard', ['title' => 'Dashboard | Paw-club'])]
 class extends Component {
     public $selectedOwner = null;
     public $search = '';

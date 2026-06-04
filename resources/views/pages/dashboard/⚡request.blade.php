@@ -9,7 +9,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-new #[Layout('layouts::dashboard', ['title' => 'Demandes de garde'])]
+new #[Layout('layouts::dashboard', ['title' => 'Demandes de garde | Paw-club'])]
 class extends Component {
     public $requests = [];
     public ?User $selectedOwner = null;

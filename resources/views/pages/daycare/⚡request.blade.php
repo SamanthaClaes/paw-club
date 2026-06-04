@@ -7,7 +7,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-new #[Title('Demande de garde')]
+new #[Title('Demande de garde | Paw-club')]
 class extends Component {
     use WithFileUploads;
 

@@ -6,7 +6,7 @@ use Livewire\Component;
 use App\Models\User;
 use Livewire\WithFileUploads;
 
-new  #[Title('Mon profil')]
+new  #[Title('Mon profil | Paw-club')]
 class extends Component {
 
     use WithFileUploads;

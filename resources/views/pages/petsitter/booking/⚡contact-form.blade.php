@@ -6,7 +6,7 @@ use App\Models\User;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new #[Title('Contacter le petsitter')]
+new #[Title('Contacter le petsitter | Paw-club')]
 class extends Component {
     public User $user;
     public string $first_name = '';

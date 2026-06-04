@@ -87,7 +87,7 @@
 
                 <div class="grid grid-cols-2 gap-3">
                     @foreach($visitTypesList as $visitType)
-                        <label class="flex items-center gap-3 cursor-pointer">
+                        <label class="flex items-center gap-3 cursor-pointer mb-3">
                             <input
                                 type="checkbox"
                                 wire:model="visitTypes"
@@ -100,6 +100,15 @@
                     </span>
                         </label>
                     @endforeach
+                </div>
+                <div>
+                    <x-forms.select-option wire:model="price" label="{{ __('petsitterProfile.price')}}" name="price">
+                        @foreach($this->prices as $price)
+                            <option value="{{ $price }}">
+                                {{ $price }} €
+                            </option>
+                        @endforeach
+                    </x-forms.select-option>
                 </div>
             </div>
 

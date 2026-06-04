@@ -3,6 +3,7 @@
     'visit',
     'animalTypesList',
     'visitTypesList',
+    'price',
 ])
 
 <section class="border-2 border-stroke rounded-2xl bg-card p-6 h-full flex flex-col">
@@ -10,7 +11,7 @@
 
         <div>
             <h1 class="uppercase font-extrabold text-text text-2xl mb-6">
-                Informations pratiques
+                {{ __('petsitterProfile.praticalInfos') }}
             </h1>
 
             <div class="space-y-4 text-text text-lg">
@@ -21,6 +22,10 @@
                 <p>
                     <span class="font-extrabold">{{ __('petsitterProfile.visitType') }}</span>
                     {{ $visit }}
+                </p>
+                <p>
+                    <span class="font-extrabold">{{ __('petsitterProfile.price') }} : </span>
+                    {{ $price }} €
                 </p>
             </div>
         </div>

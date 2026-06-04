@@ -3,11 +3,13 @@
 use App\Jobs\ProcessImageJob;
 use App\Models\AnimalType;
 use App\Models\Pet;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\Attributes\On;
 use Livewire\WithFileUploads;
 
-new class extends Component {
+new #[Title('Editer un animal | Paw-club')]
+class extends Component {
     use WithFileUploads;
 
     public $owner;

@@ -3,7 +3,7 @@
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new #[Title('Notre garderie')]
+new #[Title('Notre garderie | Paw-club')]
 class extends Component {
     public string $title = 'Paw Club';
 

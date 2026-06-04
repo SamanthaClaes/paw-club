@@ -12,7 +12,7 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Facades;
 use Livewire\Attributes\Title;
 
-new #[Title('Demander une garde')]
+new #[Title('Demander une garde | Paw-club')]
 class extends Component {
     use WithFileUploads;
 

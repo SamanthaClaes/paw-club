@@ -5,7 +5,7 @@ use App\Models\PetSittingRequest;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new #[Title('Mon historique')]
+new #[Title('Mon historique | Paw-club')]
 class extends Component {
     public $requests = [];
     public $note;

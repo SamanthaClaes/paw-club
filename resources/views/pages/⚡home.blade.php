@@ -7,7 +7,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Mail;
 
 
-new #[Title('Paw club accueil')]
+new #[Title('Accueil | Paw-club')]
 class extends Component {
 
     public $first_name;
@@ -184,13 +184,23 @@ class extends Component {
                 <p class="max-w-2xl text-center text-sm lg:text-base text-text leading-7 mb-6">
                     {{ __('petsitter.cardSubtitle') }}
                 </p>
+                    @if( Auth::user()->is_petsitter)
+                    <a
+                        href="{{ route('petsitter.profile') }}"
+                        title=" {{ __('petsitter.goProfile') }}"
+                        class=" text-cta  font-bold uppercase bg-card-green hover:bg-hover hover:text-white p-5 lg:w-1/2 rounded-lg mb-3  text-center shadow-md/10">
 
-                <a
-                    href="{{ route('petsitter.create') }}"
-                    class=" text-cta  font-bold uppercase bg-card-green hover:bg-hover hover:text-white p-5 lg:w-1/2 rounded-lg mb-3  text-center shadow-md/10">
+                        {{ __('petsitter.already') }}
+                    </a>
+                    @else
+                    <a
+                        href="{{ route('petsitter.create') }}"
+                        class=" text-cta  font-bold uppercase bg-card-green hover:bg-hover hover:text-white p-5 lg:w-1/2 rounded-lg mb-3  text-center shadow-md/10">
 
-                    {{ __('petsitter.cardCta') }}
-                </a>
+                        {{ __('petsitter.cardCta') }}
+                    </a>
+                    @endif
+
             </section>
         </div>
     </section>

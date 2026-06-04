@@ -1,9 +1,11 @@
 <?php
 
 use Carbon\Carbon;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new class extends Component {
+new #[Title('Terms | Paw-club')]
+class extends Component {
     //
 };
 ?>

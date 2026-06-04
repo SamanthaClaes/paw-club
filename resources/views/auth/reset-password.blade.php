@@ -2,7 +2,7 @@
 
 @section('content')
     <section>
-        <h1 class="text-3xl font-bold text-text mb-8 uppercase text-center m-10"> Réinitiliser votre mot de passe</h1>
+        <h1 class="text-3xl font-bold text-text mb-8 uppercase text-center m-10"> Réinitialiser votre mot de passe</h1>
         <form action="{{ route('password.update') }}"  method="POST" class="w-8/10 mx-auto bg-white p-10 rounded-lg">
             @csrf
             <input class="border-2 border-element bg-white rounded-lg px-3 py-2 mb-6 w-full" type="hidden" name="token"
@@ -13,12 +13,12 @@
                    placeholder="Email">
             </div>
             <div>
-                <label for="password">Mot de passe</label>
+                <label for="password">Choisissez votre mot de passe</label>
             <input class="border-2 border-element bg-white rounded-lg px-3 py-2 mb-6 w-full" type="password"
                    name="password" placeholder="Nouveau mot de passe">
             </div>
             <div>
-                <label for="password_confirmation">Nouveau mot de passe</label>
+                <label for="password_confirmation">Confirmer le mot de passe</label>
             <input class="border-2 border-element bg-white rounded-lg px-3 py-2 mb-6 w-full" type="password"
                    name="password_confirmation" placeholder="Confirmer le mot de passe">
             </div>

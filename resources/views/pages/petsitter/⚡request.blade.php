@@ -12,7 +12,7 @@ use App\Models\PetSittingRequest;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new #[Title('Mes demandes')]
+new #[Title('Mes demandes | Paw-club')]
 class extends Component {
     public $requests;
     public $refusedRequests;
