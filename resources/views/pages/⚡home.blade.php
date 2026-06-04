@@ -184,7 +184,7 @@ class extends Component {
                 <p class="max-w-2xl text-center text-sm lg:text-base text-text leading-7 mb-6">
                     {{ __('petsitter.cardSubtitle') }}
                 </p>
-                    @if( Auth::check() && Auth::user()->is_petsitter)
+                    @if( Auth::user()?->is_petsitter)
                     <a
                         href="{{ route('petsitter.profile') }}"
                         title=" {{ __('petsitter.goProfile') }}"

@@ -245,7 +245,7 @@ class extends Component {
         <p class="relative z-10 mt-6 max-w-2xl text-sm lg:text-lg leading-7 text-text/90">
             {{ __('petsitter.cardSubtitle') }}
         </p>
-        @if( Auth::check() && Auth::user()->is_petsitter)
+        @if( Auth::user()?->is_petsitter)
             <a href="{{ route('petsitter.profile') }}" class="relative z-10 mt-8
         bg-white text-text
         text-sm lg:text-xl
