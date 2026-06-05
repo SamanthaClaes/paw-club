@@ -2,7 +2,7 @@
 
 return [
     'first_name' => 'Prénom',
-    'last_name' => 'Nom de famille',
+    'last_name' => 'Nom',
     'email' => 'Email',
     'phone' => 'Téléphone',
     'message' => 'Message',

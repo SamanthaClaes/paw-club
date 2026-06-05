@@ -12,7 +12,7 @@ class extends Component {
 ?>
 
 <div>
-    <section class="mx-5 lg:mt-20">
+    <section class="mx-5 mt-6 lg:mt-20">
 
         <div class="relative flex flex-col lg:flex-row-reverse gap-8 items-stretch">
 
@@ -26,7 +26,7 @@ class extends Component {
                 class="relative flex flex-col justify-center
             border-4 border-element
             rounded-3xl
-            px-6 py-10 lg:px-12 lg:py-14
+            px-6 py-10  lg:px-12 lg:py-14
             overflow-hidden  shadow-lg lg:w-1/2">
 
                 <div class="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none"></div>

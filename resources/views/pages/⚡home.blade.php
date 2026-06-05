@@ -220,7 +220,7 @@ class extends Component {
                     </button>
                 </div>
             @else
-                <form wire:submit="store" id="contact" class="w-6/10">
+                <form wire:submit="store" id="contact" class="w-8/10 lg:w-6/10">
                     <div class="flex gap-6 mt-6 justify-between">
                         <x-forms.input-label wire:model="first_name" type="text" label="{{ __('form.first_name') }}"
                                              name="first_name"

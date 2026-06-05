@@ -1,8 +1,11 @@
 @props([
     'request'
 ])
+@php
+use Carbon\Carbon
+ @endphp
 
-<section class="border-5 border-stroke rounded-md overflow-hidden bg-card w-full mt-6 lg:max-w-7xl ml-25">
+<section class="border-5 border-stroke rounded-md overflow-hidden bg-card w-full">
     <div class="flex flex-col sm:flex-row h-full">
         <div class="w-full h-64 sm:h-auto sm:w-1/3">
             <img
@@ -74,6 +77,5 @@
             </div>
 
         </div>
-
     </div>
 </section>

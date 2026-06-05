@@ -19,7 +19,7 @@
 
     "
     x-cloak
-    class="rounded-2xl p-0 backdrop:bg-black/50 w-full mx-auto mt-20 max-w-xl shadow-xl"
+    class="rounded-2xl p-0 backdrop:bg-black/50 w-full mx-auto my-auto  max-w-xl shadow-xl"
 >
 
     <div
@@ -29,7 +29,7 @@
             open = false;
             $el.closest('dialog').close();
         "
-        class="bg-white rounded-2xl p-8 relative"
+        class="bg-white rounded-2xl p-8 relative "
     >
 
         <button
