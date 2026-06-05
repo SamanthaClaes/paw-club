@@ -104,10 +104,6 @@ class extends Component {
                     {{ __('petsitter.title') }}
                 </h1>
 
-                <span
-                    class="relative z-10 block text-text text-sm lg:text-base text-center mt-6 max-w-2xl mx-auto leading-7">
-                {{ __('petsitter.subtitle') }}
-            </span>
 
                 <p
                     class="relative z-10 text-center text-sm lg:text-base text-text mt-8 mb-10 leading-7 max-w-xl mx-auto">

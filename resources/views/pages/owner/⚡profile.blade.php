@@ -111,7 +111,7 @@ class extends Component {
         :owner="$owner"
     />
     <section class="max-w-7xl mx-auto mt-30">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+        <div class="flex flex-col gap-3 ml-3 md:flex-row justify-between items-start md:items-center mb-4">
             <h2 class="text-text lg:text-2xl text-lg uppercase font-bold">{{ __('ownerProfile.title') }}</h2>
             <x-cta.add title="{{ __('ownerProfile.add') }}" class="bg-btn-green hover:bg-hover-green text-cta hover:text-white" />
         </div>

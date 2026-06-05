@@ -3,10 +3,7 @@
 return [
 
     'title' => 'Vous cherchez un petsitter ?',
-    'subtitle' => ' La garderie qui fait sentir vos compagnons comme à la maison, même en votre absence',
-    'description' => '    PawClub est une garderie canine pensée pour offrir à votre compagnon un environnement sécurisé,
-                    encadré et adapté à ses besoins. Chaque chien y est accueilli avec attention, dans un cadre
-                    favorisant son bien-être et sa socialisation.',
+    'description' => 'Nous vous laissons la possibilité de choisir le petsitter qui conviendra le mieux à votre compagnon, pour une prise en charge adaptée et en toute confiance.',
     'schedulePetsitter' => 'Réserver un petsitter',
     'fonction' => ' Comment cela fonctionne ?',
     'choosePetsitter' => 'Choisissez votre petsitter',

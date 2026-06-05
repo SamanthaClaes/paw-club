@@ -33,7 +33,7 @@ class extends Component {
 
 <div>
     <div class="max-w-7xl mx-auto px-6">
-
+        <x-header.nav/>
         <x-header.OwnerNav/>
 
         <section class="mt-20">
@@ -52,7 +52,7 @@ class extends Component {
 
                 @empty
 
-                    <div class="bg-card border-2 border-element rounded-2xl p-8">
+                    <div class="bg-card border-2 border-element rounded-2xl p-8 mb-6">
                         Aucune garde terminée pour le moment.
                     </div>
 

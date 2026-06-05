@@ -48,7 +48,7 @@ md:w-auto
             <li>
                 <a href="{{ route('daycare.index') }}"
                    title=" {{ ucfirst( __('linkTranslate.daycare')) }}"
-                   class="hover:bg-card px-8 py-4 w-full rounded-full cursor-pointer transition-colors duration-300 ease-in-out">
+                   class="hover:bg-card px-8 py-4 w-full  rounded-full cursor-pointer transition-colors duration-300 ease-in-out">
                     {{ __('nav.daycare') }}
                 </a>
             </li>

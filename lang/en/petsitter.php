@@ -3,11 +3,8 @@
 return [
     'title' => 'Searching for a petsitter ?',
 
-    'subtitle' => 'The daycare that makes your companions feel at home, even in your absence',
 
-    'description' => 'PawClub is a dog daycare designed to provide your companion with a safe,
-                      supervised environment adapted to their needs. Each dog is welcomed with care in a setting
-                      that promotes well-being and socialization.',
+    'description' => 'We give you the option of choosing the pet sitter who best suits your companion, for appropriate and trustworthy care.',
 
     'schedulePetsitter' => 'Book a petsitter',
 
