@@ -14,7 +14,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
         <section class="bg-element flex flex-col items-center justify-center px-12">
             <div>
-                <x-svg.logo class="w-89 h-89 mb-8"/>
+                <x-svg.logo class="w-60 h-60 mb-8"/>
             </div>
             <h1 class="text-3xl font-bold text-text mb-8 uppercase">
                 {{ __('login.title') }}
@@ -65,6 +65,18 @@
 
                 <div class="text-sm text-center mt-2">
                     <a href="{{ route('register') }}" class="underline">{{ __('login.noAccount') }}</a>
+                </div>
+                <div class="text-sm text-center">
+                    <p class="text-text">
+                        {{ __('login.becomePetsitter') }}
+                    </p>
+
+                    <a
+                        href="{{ route('petsitter.create') }}"
+                        class="underline font-semibold"
+                    >
+                        {{ __('login.createAccount') }}
+                    </a>
                 </div>
 
                 <div class="text-sm text-center">
