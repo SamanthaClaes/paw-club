@@ -15,12 +15,12 @@
 
     @livewireStyles
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
 <h1 class="sr-only">Pages principales</h1>
 <header>
     <x-header.nav/>
 </header>
-<main>
+<main class="flex-1">
     {{ $slot }}
 </main>
 

@@ -10,5 +10,6 @@ return[
     'noAccount'=> 'Not account yet ?',
     'becomePetsitter'=>'You want to be become a petsitter? ',
     'createAccount'=>'Create petsitter’s profile ',
+    'owner'=>'Create an owner’s account',
 
 ];

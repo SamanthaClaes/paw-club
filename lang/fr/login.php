@@ -10,5 +10,6 @@ return[
     'noAccount'=> 'Pas encore de compte ?',
     'becomePetsitter'=>'Vous souhaiter devenir petsitter ?',
     'createAccount'=>'Créer un profil petsitter ',
+    'owner'=>'Créer un profil propriétaire',
 
 ];

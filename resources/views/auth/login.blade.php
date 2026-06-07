@@ -62,9 +62,12 @@
                 <button type="submit" class="bg-text text-white py-3 rounded-lg font-bold uppercase cursor-pointer">
                     {{ __('login.submit') }}
                 </button>
-
+                <div class="text-sm text-center">
+                    <a href="{{ route('password.request') }}" class="underline"> {{ __('login.forgotPassword') }}</a>
+                </div>
                 <div class="text-sm text-center mt-2">
-                    <a href="{{ route('register') }}" class="underline">{{ __('login.noAccount') }}</a>
+                    <p class="text-text">{{ __('login.noAccount') }}</p>
+                    <a href="{{ route('register') }}" class="underline font-semibold text-text">{{ __('login.owner') }}</a>
                 </div>
                 <div class="text-sm text-center">
                     <p class="text-text">
@@ -73,16 +76,11 @@
 
                     <a
                         href="{{ route('petsitter.create') }}"
-                        class="underline font-semibold"
+                        class="underline font-semibold text-text"
                     >
                         {{ __('login.createAccount') }}
                     </a>
                 </div>
-
-                <div class="text-sm text-center">
-                    <a href="{{ route('password.request') }}" class="underline"> {{ __('login.forgotPassword') }}</a>
-                </div>
-
             </form>
         </section>
 
