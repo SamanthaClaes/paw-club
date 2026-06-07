@@ -257,11 +257,11 @@ class extends Component {
             </div>
             <div>
                 <x-forms.button>
-                    {{ __('petsitterCreateForm.sentRequest') }}
+                    {{ __('formDaycare.candidate') }}
                 </x-forms.button>
             </div>
         </form>
-        <div class="w-1/2 mx-auto">
+        <div class="w-1/2 mx-auto mb-6">
             @if( session('success'))
                 <x-message_success/>
             @endif
