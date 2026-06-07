@@ -5,7 +5,7 @@
         :title="__('petsitter.choosePetsitter')"
         :description="__('petsitter.cardText')"
         bgColor="bg-card-orange"
-        textColor="text-text-orange"
+        textColor="text-text"
         backgroundPattern="bg-[url(/public/svg/paws_icons.svg)] bg-repeat bg-center"
     />
 

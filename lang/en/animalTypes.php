@@ -8,5 +8,4 @@ return
         'ferret'=>'ferret',
         'snake'=>'snake',
         'hamster'=>'hamster',
-        'all'=>'all',
     ];

@@ -8,6 +8,7 @@
     'tags' => [],
     'chooseUrl' => '#',
     'contactUrl' => '#',
+    'petsitter',
 ])
 
 <div
@@ -37,12 +38,15 @@
         <div class="relative z-10 flex flex-col lg:flex-row gap-2 lg:items-start h-full">
 
             <div class="shrink-0 flex justify-center">
-
                 <img
-                    src="{{ $image
-        ? Storage::disk('s3')->url($image)
-        : asset('img/avatar.jpg') }}"
-                    alt="{{ $name }}"
+                    src="{{ $petsitter->getImageUrl(800) }}"
+                    srcset="
+        {{ $petsitter->getImageUrl(400) }} 400w,
+        {{ $petsitter->getImageUrl(800) }} 800w,
+        {{ $petsitter->getImageUrl(1200) }} 1200w
+    "
+                    sizes="(max-width: 1024px) 112px, 128px"
+                    alt="{{ $petsitter->first_name }}"
                     class="rounded-full object-cover
            w-28 h-28 lg:w-32 lg:h-32
            border-4 border-white/60
@@ -116,15 +120,6 @@
                             class="bg-card-orange hover:bg-hover-orange hover:text-white text-text font-extrabold text-sm lg:text-base text-center whitespace-nowrap py-3 px-5 rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                         >
                             {{ __('petsitter.cardChoose') }} {{ $name }}
-                        </a>
-
-                    @else
-
-                        <a
-                            href="{{ route('owner.profile') }}"
-                            class="block bg-btn-green hover:bg-hover-green hover:text-white text-text font-extrabold text-center py-3 px-5 rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-                        >
-                            {{ __('petsitter.addAnimal') }}
                         </a>
 
                     @endif

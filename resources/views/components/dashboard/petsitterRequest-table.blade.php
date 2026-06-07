@@ -19,6 +19,9 @@
         <thead class="bg-element">
 
         <tr class="bg-background border-b">
+            <th class="border-r py-2">
+                Photo
+            </th>
 
             <th class="border-r py-2">
                 Nom
@@ -57,6 +60,13 @@
         @forelse($petsitters as $petsitter)
 
             <tr>
+                <x-table.table-data>
+                    <img
+                        src="{{ $petsitter->image ? $petsitter->getImageUrl(400) : asset('img/avatar.jpg') }}"
+                        alt="{{ $petsitter->first_name }} {{ $petsitter->last_name }}"
+                        class="w-10 h-10 rounded-full object-cover mx-auto"
+                    />
+                </x-table.table-data>
 
                 <x-table.table-data>
                     {{ $petsitter->last_name }}
@@ -75,22 +85,19 @@
                 </x-table.table-data>
 
                 <x-table.table-data>
-                    {{ $petsitter->habitation?->name }}
+                    {{ __('habitationType.' . $petsitter->habitation?->name) }}
                 </x-table.table-data>
 
                 <x-table.table-data>
 
                     {{ $petsitter->animalTypes
-                        ->pluck('type')
-                        ->join(', ')
-                    }}
+     ->map(fn ($animalType) => __('animalTypes.' . $animalType->type))
+     ->join(', ')
+ }}
 
                 </x-table.table-data>
 
                 <x-table.table-data>
-
-                    @if($showActions)
-
                         <div class="flex gap-2 items-center justify-center">
 
                             <x-table.accept-button
@@ -102,8 +109,6 @@
                             />
 
                         </div>
-
-                    @endif
 
                 </x-table.table-data>
 
@@ -121,7 +126,6 @@
         @endforelse
 
         </tbody>
-
     </table>
     <div class="mt-12 flex justify-center">
         {{ $petsitters->links(data: ['scrollTo' => false]) }}

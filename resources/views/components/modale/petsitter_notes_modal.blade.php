@@ -8,13 +8,23 @@
 
     x-on:open-note-modal.window="
         open = true;
+        document.documentElement.classList.add('overflow-hidden');
+        document.body.classList.add('overflow-hidden');
         $el.showModal();
     "
 
     x-on:close-note-modal.window="
-    open = false;
-    $el.close();
-"
+        open = false;
+        document.documentElement.classList.remove('overflow-hidden');
+        document.body.classList.remove('overflow-hidden');
+        $el.close();
+    "
+
+    x-on:close="
+        open = false;
+        document.documentElement.classList.remove('overflow-hidden');
+        document.body.classList.remove('overflow-hidden');
+    "
 
     x-cloak
 

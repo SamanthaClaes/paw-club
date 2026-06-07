@@ -81,6 +81,15 @@ class extends Component {
 
     }
 
+    public function deletePetsitter($userId)
+    {
+        $petsitter = User::findOrFail($userId);
+
+        $petsitter->delete();
+
+        $this->resetPage();
+    }
+
 };
 ?>
 

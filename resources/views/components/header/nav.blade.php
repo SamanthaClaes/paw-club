@@ -47,22 +47,29 @@ md:w-auto
 
             <li>
                 <a href="{{ route('daycare.index') }}"
-                   title=" {{ ucfirst( __('linkTranslate.daycare')) }}"
-                   class="hover:bg-card px-8 py-4 w-full  rounded-full cursor-pointer transition-colors duration-300 ease-in-out">
+                   class="px-8 py-4 w-full  rounded-full cursor-pointer transition-colors duration-300 ease-in-out
+                    {{ request()->routeIs('daycare.*')
+                ? 'bg-active text-white shadow-md'
+                : 'hover:bg-card'
+            }}">
                     {{ __('nav.daycare') }}
                 </a>
             </li>
 
             <li>
                 <a href="{{ route('petsitter.index') }}"
-                   class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out">
+                   class="px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out
+                   {{ request()->routeIs('petsitter.index')
+                ? 'bg-active text-white shadow-md'
+                : 'hover:bg-card'
+            }}">
                     {{ __('nav.petsitter') }}
                 </a>
             </li>
 
             <li>
                 <a href="/#contact"
-                   class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer"
+                   class=" hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer "
                 >
                     {{ __('nav.contact') }}
                 </a>
@@ -74,15 +81,23 @@ md:w-auto
 
                     @if( auth()->user()->is_petsitter)
                         <li>
-                            <a href="{{ route('petsitter.request') }}"
-                               class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out">
+                            <a href="{{ route('petsitter.profile') }}"
+                               class=" px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out
+                                {{ request()->routeIs('petsitter.profile')
+                ? 'bg-active text-white shadow-md'
+                : 'hover:bg-card'
+            }}">
                                 {{ __('nav.mySpace') }}
                             </a>
                         </li>
                     @else
                         <li>
                             <a href="{{ route('owner.profile') }}"
-                               class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out">
+                               class="px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out
+       {{ request()->routeIs('owner.*')
+            ? 'bg-active text-white shadow-md'
+            : 'hover:bg-card'
+       }}">
                                 {{ __('nav.mySpace') }}
                             </a>
                         </li>
@@ -93,7 +108,11 @@ md:w-auto
                 @if(auth()->user()->role === UserRole::ADMIN)
                     <li>
                         <a href="{{ route('dashboard.index') }}"
-                           class="hover:bg-card px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out">
+                           class="px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out
+       {{ request()->routeIs('dashboard.*')
+            ? 'bg-active text-white shadow-md'
+            : 'hover:bg-card'
+       }}">
                             {{ __('nav.dashboard') }}
                         </a>
                     </li>

@@ -51,7 +51,7 @@ class CreateNewUser implements CreatesNewUsers
             $imagePath = $input['image']->storeAs(
                 'owner/original',
                 $fileName,
-                'public'
+                's3'
             );
 
             ProcessImageJob::dispatch(

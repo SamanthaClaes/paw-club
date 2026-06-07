@@ -4,12 +4,22 @@
 
     x-on:open-modify-modal.window="
         open = true;
+        document.documentElement.classList.add('overflow-hidden');
+        document.body.classList.add('overflow-hidden');
         $el.showModal();
-        "
+    "
 
     x-on:close-modify-modal.window="
         open = false;
-        "
+        document.documentElement.classList.remove('overflow-hidden');
+        document.body.classList.remove('overflow-hidden');
+        $el.close();
+    "
+
+    x-on:close="
+        document.documentElement.classList.remove('overflow-hidden');
+        document.body.classList.remove('overflow-hidden');
+    "
 
     x-cloak
     class="rounded-2xl
@@ -22,8 +32,7 @@
     left-1/2
     -translate-x-1/2
     -translate-y-1/2
-    m-0
-"
+    m-0"
 >
 
     <div

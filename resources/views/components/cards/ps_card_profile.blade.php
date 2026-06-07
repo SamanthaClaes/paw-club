@@ -13,12 +13,18 @@
     <div class="flex flex-col lg:flex-row gap-6 items-center lg:items-start">
 
         <div class="shrink-0">
-           <img
-               src="{{ $petsitter->image ? $petsitter->getImageUrl(800) : asset('img/avatar.jpg') }}"
+            <img
+                src="{{ $petsitter->getImageUrl(800) }}"
+                srcset="
+        {{ $petsitter->getImageUrl(400) }} 400w,
+        {{ $petsitter->getImageUrl(800) }} 800w,
+        {{ $petsitter->getImageUrl(1200) }} 1200w
+    "
                 sizes="(max-width: 768px) 100vw, 400px"
                 alt="{{ __('petsitterProfile.profileImageAlt') }}"
+                itemprop="image"
                 class="w-40 h-40 rounded-2xl object-cover"
-            >
+            />
         </div>
         <div class="flex-1 w-full">
             <h1 class="uppercase font-extrabold text-text text-2xl mb-6">
@@ -28,22 +34,34 @@
             <div class="space-y-5 text-text text-base">
                 <p>
                     <span class="font-extrabold">{{__('petsitterProfile.fullname')}} :</span>
-                    {{ $first_name }} {{ $last_name }}
+                    <span itemprop="name">{{ $first_name }} {{ $last_name }}</span>
                 </p>
 
                 <p>
                     <span class="font-extrabold">{{ __('petsitterProfile.email') }} :</span>
-                    {{ $email }}
+                    <span itemprop="email">  {{ $email }}</span>
                 </p>
 
                 <p>
                     <span class="font-extrabold">{{ __('petsitterProfile.phone') }} :</span>
-                    {{ $phone }}
+                    <span itemprop="telephone"> {{ $phone }}</span>
                 </p>
 
-                <p>
+                <p itemprop="address"
+                   itemscope
+                   itemtype="https://schema.org/PostalAddress">
                     <span class="font-extrabold">{{ __('petsitterProfile.address') }} :</span>
-                    {{ $adress }} {{ $zip }} {{ $location }}
+                    <span itemprop="streetAddress">
+                    {{ $adress }}
+                    </span>
+
+                    <span itemprop="postalCode">
+                     {{ $zip }}
+                    </span>
+
+                    <span itemprop="addressLocality">
+                     {{ $location }}
+                     </span>
                 </p>
             </div>
 

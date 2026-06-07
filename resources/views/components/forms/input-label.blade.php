@@ -26,7 +26,9 @@
         type="{{ $type }}"
         id="{{ $name }}"
         name="{{ $name }}"
-        placeholder="{{ $placeholder }}"
+        @if($placeholder)
+            placeholder="{{ $placeholder }}"
+        @endif
         @if($required) required @endif
     >
 

@@ -11,10 +11,15 @@
     x-data="{ open: false }"
     x-on:open-pets-modal.window="
         open = true;
+        document.body.classList.add('overflow-hidden');
         $el.showModal();
     "
-    x-on:close="open = false"
+    x-on:close="
+        open = false;
+        document.body.classList.remove('overflow-hidden');
+    "
     x-on:pet-created.window=" open = false;
+    document.body.classList.remove('overflow-hidden');
     $el.close()
     "
 

@@ -27,7 +27,7 @@ return [
     'cardChoose'=>'choisir',
     'cardContact'=>'Contacter',
     'addAnimal'=>'Créer un animal',
-    'already'=>'vous êtes déjà petsitter',
+    'already'=>'Aller vers mon profil',
     'goProfile'=>'aller vers votre profil',
 
 ];

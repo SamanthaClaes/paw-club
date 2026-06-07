@@ -1,6 +1,7 @@
 @props([
     'title',
     'requests',
+
 ])
 @php
 use Carbon\Carbon
@@ -38,6 +39,7 @@ use Carbon\Carbon
             <th class="border-r">Date de garde</th>
 
             <th class="border-r">Fiche du propriétaire</th>
+            <th class="border-r">Action</th>
 
         </tr>
 
@@ -54,7 +56,7 @@ use Carbon\Carbon
                 </x-table.table-data>
 
                 <x-table.table-data>
-                    {{ $request->pet?->breed?->name }}
+                    {{ __('breed.' . $request->pet?->breed?->name) }}
                 </x-table.table-data>
 
                 <x-table.table-data>
@@ -75,6 +77,9 @@ use Carbon\Carbon
                         Voir la fiche du propriétaire
                     </button>
 
+                </x-table.table-data>
+                <x-table.table-data>
+                    <x-table.delete-button wire:click="deleteDog({{$request->pet?->id}})" wire:confirm="Supprimer? "/>
                 </x-table.table-data>
 
             </tr>

@@ -75,26 +75,14 @@
                 </x-table.table-data>
 
                 <x-table.table-data>
-                    {{ $petsitter->habitation?->name }}
+                    {{ __('habitationType.' . $petsitter->habitation?->name) }}
                 </x-table.table-data>
 
                 <x-table.table-data>
-
-                    @if($showActions)
-
                         <div class="flex gap-2 items-center justify-center">
 
-                            <x-table.accept-button
-                                wire:click="acceptPetsitterRequest({{ $petsitter->id }})"
-                            />
-
-                            <x-table.refuse-button
-                                wire:click="rejectPetsitterRequest({{ $petsitter->id }})"
-                            />
-
+                         <x-table.delete-button wire:click="deletePetsitter({{ $petsitter->id }})"  wire:confirm="Êtes-vous sûr de vouloir supprimer {{ $petsitter->first_name }} {{ $petsitter->last_name }} ?" />
                         </div>
-
-                    @endif
 
                 </x-table.table-data>
 

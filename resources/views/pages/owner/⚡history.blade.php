@@ -33,7 +33,6 @@ class extends Component {
 
 <div>
     <div class="max-w-7xl mx-auto px-6">
-        <x-header.nav/>
         <x-header.OwnerNav/>
 
         <section class="mt-20">

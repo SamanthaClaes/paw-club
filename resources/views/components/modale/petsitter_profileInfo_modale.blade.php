@@ -8,13 +8,21 @@
     x-data="{ open: false }"
     x-on:open-update-infos.window="
         open = true;
+        document.documentElement.classList.add('overflow-hidden');
+        document.body.classList.add('overflow-hidden');
         $el.showModal();
     "
     x-on:update-infos.window="
         open = false;
+        document.documentElement.classList.remove('overflow-hidden');
+        document.body.classList.remove('overflow-hidden');
         $el.close();
     "
-    x-on:close="open = false"
+    x-on:close="
+        open = false;
+        document.documentElement.classList.remove('overflow-hidden');
+        document.body.classList.remove('overflow-hidden');
+    "
     x-cloak
     class="rounded-2xl p-0 backdrop:bg-black/50 w-full mx-auto mt-20 max-w-2xl shadow-xl"
 >
@@ -73,7 +81,7 @@
                             >
 
                             <span>
-                        {{ ucfirst($animalType->type) }}
+                        {{ ucfirst(__( 'animalTypes.' . $animalType->type)) }}
                     </span>
                         </label>
                     @endforeach
@@ -96,7 +104,7 @@
                             >
 
                             <span>
-                        {{ ucfirst($visitType->name) }}
+                        {{ ucfirst( __( 'visitTypes.' . $visitType->name)) }}
                     </span>
                         </label>
                     @endforeach

@@ -12,7 +12,7 @@
     --color-card: #F5FFFF;
     --color-btn-green: #82BE8F;
     --color-btn-red: #FF4C53;
-    --color-text-red: #620000;
+    --color-text-red: #440000;
     --color-stroke: #88C4C9;
     --color-text: #000633;
     --color-card-pink: #FF7176;
@@ -30,6 +30,7 @@
     --color-success: #88C9B1;
     --color-success-bg: #F5FFFF;
     --color-success-text: #003B00;
+    --color-active:#6B9EA6;
 }
 .fc {
     --fc-button-bg-color: #1BA0AC;

@@ -8,14 +8,21 @@
     x-data="{ open: false }"
     x-on:edit-dog.window="
         open = true;
+        document.documentElement.classList.add('overflow-hidden');
+        document.body.classList.add('overflow-hidden');
         $el.showModal();
-
     "
-    x-on:close="open = false"
-    x-on:update-dog.window=" open = false;
-    $el.close()
+    x-on:close="
+        open = false;
+        document.documentElement.classList.remove('overflow-hidden');
+        document.body.classList.remove('overflow-hidden');
     "
-
+    x-on:update-dog.window="
+        open = false;
+        document.documentElement.classList.remove('overflow-hidden');
+        document.body.classList.remove('overflow-hidden');
+        $el.close();
+    "
     x-cloak
     class="rounded-2xl p-0 backdrop:bg-black/50 w-full mx-auto max-w-2xl m-auto"
 >
@@ -108,7 +115,6 @@
                 label="Date de naissance"
                 name="birth_date"
                 type="date"
-                placeholder="L’age de votre animal"
             />
 
            <x-forms.textarea-label

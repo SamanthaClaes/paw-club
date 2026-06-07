@@ -6,7 +6,6 @@
  'adress',
  'zip',
  'location',
- 'image',
  'owner'
 ])
 
@@ -16,16 +15,20 @@
         <h1 class="uppercase font-extrabold text-text lg:text-3xl text-center">
             {{ __('ownerProfile.personalInfos') }}
         </h1>
-
         <div class="flex flex-col lg:flex-row gap-10 items-center lg:items-start">
 
             <div class="shrink-0">
                 <img
-                    src="{{ $owner->image ? $owner->getImageUrl(800) : asset('img/avatar.jpg') }}"
+                    src="{{ $owner->getImageUrl(800) }}"
+                    srcset="
+        {{ $owner->getImageUrl(400) }} 400w,
+        {{ $owner->getImageUrl(800) }} 800w,
+        {{ $owner->getImageUrl(1200) }} 1200w
+    "
                     sizes="176px"
                     alt="{{ __('ownerProfile.profileImageAlt') }} {{ Auth::user()->first_name }}"
                     class="w-44 h-44 rounded-lg object-cover"
-                >
+                />
             </div>
 
             <div class="flex-1 w-full">

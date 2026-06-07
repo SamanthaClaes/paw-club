@@ -10,7 +10,7 @@
         {{ __('daycare.green') }}
     </x-cards.daycare_cards>
     <x-cards.daycare_cards    bg="bg-card-orange"
-                              text-color="text-text-orange">
+                              text-color="text-text">
         <x-slot:icon>
             <x-svg.icons.bell />
         </x-slot:icon>

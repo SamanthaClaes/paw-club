@@ -107,7 +107,6 @@ class extends Component {
         :location="$owner->location"
         :zip="$owner->zip"
         :phone="$phone"
-        :image="$owner->image"
         :owner="$owner"
     />
     <section class="max-w-7xl mx-auto mt-30">

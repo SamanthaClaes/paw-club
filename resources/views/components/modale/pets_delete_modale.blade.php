@@ -8,18 +8,23 @@
     x-data="{ open: false }"
     x-on:open-delete-dog-modal.window="
         open = true;
+        document.documentElement.classList.add('overflow-hidden');
+        document.body.classList.add('overflow-hidden');
         $el.showModal();
     "
     x-on:dog-deleted.window="
         open = false;
+        document.documentElement.classList.remove('overflow-hidden');
+        document.body.classList.remove('overflow-hidden');
         $el.close();
     "
     x-on:close="
         open = false;
-
+        document.documentElement.classList.remove('overflow-hidden');
+        document.body.classList.remove('overflow-hidden');
     "
     x-cloak
-    class="rounded-2xl p-0 backdrop:bg-black/50 w-full mx-auto my-auto  max-w-xl shadow-xl"
+    class="rounded-2xl p-0 backdrop:bg-black/50 w-full mx-auto my-auto max-w-xl shadow-xl"
 >
 
     <div

@@ -179,7 +179,8 @@ class extends Component {
     }
 };
 ?>
-<section class="max-w-7xl mx-auto px-6">
+<section class="max-w-7xl mx-auto px-6" itemscope
+         itemtype="https://schema.org/Person">
     <h1 class=" text-text text-2xl text-center font-bold mb-4 lg:text-3xl mt-20 uppercase">{{ __('ownerProfile.informations') }}</h1>
     <x-header.PetsitterNav/>
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-16">

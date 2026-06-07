@@ -54,12 +54,13 @@ class extends Component {
 ?>
 
 <div>
-    <section class="h-[28vh] lg:h-[38vh] relative w-full  overflow-hidden">
+    <section class="h-[28vh] lg:h-[38vh] relative w-full  overflow-hidden" itemscope
+             itemtype="https://schema.org/Organization">
         <img src="{{ asset('img/Hero_home.webp') }}" alt="pleins de chiens en balade"
              class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/60"></div>
         <div class="absolute inset-0 flex flex-col justify-center items-center gap-4">
-            <h1 class="
+            <h1 itemprop="name" class="
                text-white text-2xl md:text-4xl font-bold uppercase z-10">{{ __('home.title') }}</h1>
             <span class=" text-sm text-center text-white md:text-2xl z-10 w-1/2">{{ __('home.subtitle') }}</span>
         </div>

@@ -218,6 +218,7 @@ class extends Component {
                     :tags="[...$petsitter->animalTypes->map(fn ($animalType) => __('animalTypes.' . $animalType->type))->toArray(), __('habitationType.' . $petsitter->habitation?->name)]"
                     :choose-url=" route('petsitter.booking.create', ['user' => $petsitter->id])"
                     :contact-url=" route('petsitter.contact', ['user' => $petsitter->id])"
+                    :petsitter="$petsitter"
                 />
             @endforeach
         </div>

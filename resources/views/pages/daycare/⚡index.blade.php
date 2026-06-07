@@ -12,13 +12,16 @@ class extends Component {
 ?>
 
 <div>
-    <section class="mx-5 mt-6 lg:mt-20">
+    <section class="mx-5 mt-6 lg:mt-20" itemscope
+             itemtype="https://schema.org/Service"
+    >
 
         <div class="relative flex flex-col lg:flex-row-reverse gap-8 items-stretch">
 
             <img
                 src="{{ asset('img/hero_daycare_image.webp') }}"
                 alt="personne assise qui jouent avec des chiens de petites tailles"
+                itemprop="image"
                 class="hidden lg:block lg:w-1/2 object-cover rounded-3xl shadow-lg"
             >
 
@@ -31,7 +34,7 @@ class extends Component {
 
                 <div class="absolute inset-0 bg-linear-to-br from-white/5 to-transparent pointer-events-none"></div>
 
-                <h1
+                <h1 itemprop="name"
                     class="relative z-10 text-text text-2xl lg:text-4xl text-center font-extrabold leading-tight">
                     {{ $title }}
                 </h1>
@@ -41,7 +44,7 @@ class extends Component {
                 {{ __('daycare.subtitle') }}
             </span>
 
-                <p
+                <p itemprop="description"
                     class="relative z-10 text-center text-sm lg:text-base text-text mt-8 mb-10 leading-7 max-w-2xl mx-auto">
                     {{ __('daycare.about') }}
                 </p>

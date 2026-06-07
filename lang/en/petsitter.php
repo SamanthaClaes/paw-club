@@ -44,7 +44,7 @@ return [
     'cardChoose' => 'Choose',
     'cardContact' => 'Contact',
     'addAnimal'=>'Add a pet',
-    'already'=>'you are a petsitter already',
+    'already'=>'Go to my profile',
     'goProfile'=>'go to your profile',
 
 ];
