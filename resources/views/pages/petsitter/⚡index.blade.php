@@ -236,13 +236,20 @@ class extends Component {
         <div class="absolute inset-0 bg-linear-to-br from-white/10 to-transparent pointer-events-none"></div>
 
         <h2 class="relative z-10 text-text text-2xl lg:text-4xl font-extrabold leading-tight max-w-2xl">
-            {{ __('petsitter.cardTitleAlready') }}
+            {{ __('petsitter.cardTitle') }}
         </h2>
 
         <p class="relative z-10 mt-6 max-w-2xl text-sm lg:text-lg leading-7 text-text/90">
-            {{ __('petsitter.cardSubtitleAlready') }}
+            {{ __('petsitter.cardSubtitle') }}
         </p>
         @if( Auth::user()?->is_petsitter)
+            <h2 class="relative z-10 text-text text-2xl lg:text-4xl font-extrabold leading-tight max-w-2xl">
+                {{ __('petsitter.cardTitleAlready') }}
+            </h2>
+
+            <p class="relative z-10 mt-6 max-w-2xl text-sm lg:text-lg leading-7 text-text/90">
+                {{ __('petsitter.cardSubtitleAlready') }}
+            </p>
             <a href="{{ route('petsitter.profile') }}" class="relative z-10 mt-8
         bg-white text-text
         text-sm lg:text-xl
