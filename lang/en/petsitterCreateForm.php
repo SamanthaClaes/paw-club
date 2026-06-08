@@ -15,4 +15,5 @@ return [
 
     'subtitle' => 'PawClub petsitters are carefully selected to ensure a high-quality service.
                     Please complete the form below to submit your application.',
+    'price'=>'your price',
 ];

@@ -234,7 +234,7 @@ class extends Component {
     shadow-lg border border-white/20">
 
         <div class="absolute inset-0 bg-linear-to-br from-white/10 to-transparent pointer-events-none"></div>
-        
+
         @if(Auth::user()?->is_petsitter)
 
             <h2 class="relative z-10 text-text text-2xl lg:text-4xl font-extrabold leading-tight max-w-2xl">
