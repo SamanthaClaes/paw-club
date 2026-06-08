@@ -234,15 +234,9 @@ class extends Component {
     shadow-lg border border-white/20">
 
         <div class="absolute inset-0 bg-linear-to-br from-white/10 to-transparent pointer-events-none"></div>
+        
+        @if(Auth::user()?->is_petsitter)
 
-        <h2 class="relative z-10 text-text text-2xl lg:text-4xl font-extrabold leading-tight max-w-2xl">
-            {{ __('petsitter.cardTitle') }}
-        </h2>
-
-        <p class="relative z-10 mt-6 max-w-2xl text-sm lg:text-lg leading-7 text-text/90">
-            {{ __('petsitter.cardSubtitle') }}
-        </p>
-        @if( Auth::user()?->is_petsitter)
             <h2 class="relative z-10 text-text text-2xl lg:text-4xl font-extrabold leading-tight max-w-2xl">
                 {{ __('petsitter.cardTitleAlready') }}
             </h2>
@@ -250,17 +244,30 @@ class extends Component {
             <p class="relative z-10 mt-6 max-w-2xl text-sm lg:text-lg leading-7 text-text/90">
                 {{ __('petsitter.cardSubtitleAlready') }}
             </p>
-            <a href="{{ route('petsitter.profile') }}" class="relative z-10 mt-8
-        bg-white text-text
-        text-sm lg:text-xl
-        font-extrabold uppercase tracking-wide
-        px-8 py-4 lg:px-12
-        rounded-2xl shadow-md
-        hover:-translate-y-1 hover:shadow-lg
-        transition-all duration-300" title="{{ __('petsitter.goProfile') }}">
+
+            <a href="{{ route('petsitter.profile') }}"
+               class="relative z-10 mt-8
+       bg-white text-text
+       text-sm lg:text-xl
+       font-extrabold uppercase tracking-wide
+       px-8 py-4 lg:px-12
+       rounded-2xl shadow-md
+       hover:-translate-y-1 hover:shadow-lg
+       transition-all duration-300"
+               title="{{ __('petsitter.goProfile') }}">
                 {{ __('petsitter.already') }}
             </a>
+
         @else
+
+            <h2 class="relative z-10 text-text text-2xl lg:text-4xl font-extrabold leading-tight max-w-2xl">
+                {{ __('petsitter.cardTitle') }}
+            </h2>
+
+            <p class="relative z-10 mt-6 max-w-2xl text-sm lg:text-lg leading-7 text-text/90">
+                {{ __('petsitter.cardSubtitle') }}
+            </p>
+
             <a
                 href="{{ route('petsitter.create') }}"
                 class="relative z-10 mt-8
@@ -275,6 +282,7 @@ class extends Component {
             >
                 {{ __('petsitter.cardCta') }}
             </a>
+
         @endif
 
 

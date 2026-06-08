@@ -178,14 +178,8 @@ class extends Component {
             <section
                 class="flex flex-col justify-center items-center gap-4 border-2 border-card-green rounded-2xl px-6 py-10 lg:px-10 lg:py-12 my-14 shadow-sm max-w-6xl mx-auto">
 
-                <h3 class="text-text text-2xl lg:text-3xl font-extrabold text-center leading-tight">
-                    {{ __('petsitter.cardTitle') }}
-                </h3>
+                @if(Auth::user()?->is_petsitter)
 
-                <p class="max-w-2xl text-center text-sm lg:text-base text-text leading-7 mb-6">
-                    {{ __('petsitter.cardSubtitle') }}
-                </p>
-                    @if( Auth::user()?->is_petsitter)
                     <h3 class="text-text text-2xl lg:text-3xl font-extrabold text-center leading-tight">
                         {{ __('petsitter.cardTitleAlready') }}
                     </h3>
@@ -193,21 +187,33 @@ class extends Component {
                     <p class="max-w-2xl text-center text-sm lg:text-base text-text leading-7 mb-6">
                         {{ __('petsitter.cardSubtitleAlready') }}
                     </p>
+
                     <a
                         href="{{ route('petsitter.profile') }}"
-                        title=" {{ __('petsitter.goProfile') }}"
-                        class=" text-cta  font-bold uppercase bg-card-green hover:bg-hover hover:text-white p-5 lg:w-1/2 rounded-lg mb-3  text-center shadow-md/10">
-
+                        title="{{ __('petsitter.goProfile') }}"
+                        class="text-cta font-bold uppercase bg-card-green hover:bg-hover hover:text-white p-5 lg:w-1/2 rounded-lg mb-3 text-center shadow-md/10"
+                    >
                         {{ __('petsitter.already') }}
                     </a>
-                    @else
+
+                @else
+
+                    <h3 class="text-text text-2xl lg:text-3xl font-extrabold text-center leading-tight">
+                        {{ __('petsitter.cardTitle') }}
+                    </h3>
+
+                    <p class="max-w-2xl text-center text-sm lg:text-base text-text leading-7 mb-6">
+                        {{ __('petsitter.cardSubtitle') }}
+                    </p>
+
                     <a
                         href="{{ route('petsitter.create') }}"
-                        class=" text-cta  font-bold uppercase bg-card-green hover:bg-hover hover:text-white p-5 lg:w-1/2 rounded-lg mb-3  text-center shadow-md/10">
-
+                        class="text-cta font-bold uppercase bg-card-green hover:bg-hover hover:text-white p-5 lg:w-1/2 rounded-lg mb-3 text-center shadow-md/10"
+                    >
                         {{ __('petsitter.cardCta') }}
                     </a>
-                    @endif
+
+                @endif
 
             </section>
         </div>
