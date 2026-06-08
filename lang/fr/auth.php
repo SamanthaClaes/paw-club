@@ -18,4 +18,10 @@ return [
 
     'throttle' => 'Trop de tentatives de connexion. Veuillez réessayer dans :seconds secondes.',
 
+    'reset'=>'Réinitialiser votre mot de passe',
+    'choose'=>'Choisissez votre mot de passe',
+    'email'=>'Email',
+    'confirm'=>'Confirmez votre nouveau mot de passe',
+    'forgot'=>'Vous avez oublié votre mot de passe ?',
+
 ];

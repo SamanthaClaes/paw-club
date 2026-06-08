@@ -54,7 +54,6 @@ class extends Component {
             'image' => 'nullable|image',
             'infos' => 'nullable|string',
             'pet_id' => 'required|exists:pets,id',
-            'gender' => 'required|boolean',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
         ]);
@@ -79,7 +78,7 @@ class extends Component {
         $validated['user_id'] = $this->user->id;
         $validated['status'] = DayCareRequestStatus::PENDING;
         $request = DayCareRequest::create($validated);
-
+        session()->flash('success', 'Demande envoyée avec succès');
         $this->reset([
             'image',
             'infos',
@@ -138,27 +137,31 @@ class extends Component {
                 <option value="">{{ __('formDaycare.chooseAnimal') }}</option>
                 @foreach( $this->pets as $pet)
                     <option value="{{ $pet->id }}">
-                        {{ $pet->name }} - {{$pet->breed?->name}}
+                        {{ $pet->name }} - {{ __( 'breed.' . $pet->breed?->name)}}
                     </option>
                 @endforeach
             </x-forms.select-option>
-            <img
-                src="{{ $this->selectedAnimal->getImageUrl(800) }}"
-                srcset="
+            @if($this->selectedAnimal)
+
+                <div>
+                        <span
+                            class="block text-sm  text-text uppercase font-bold mb-1">{{ __('formDaycare.animalPicture') }}
+                        </span>
+                    <div>
+                    <img
+                        src="{{ $this->selectedAnimal->getImageUrl(800) }}"
+                        srcset="
         {{ $this->selectedAnimal->getImageUrl(400) }} 400w,
         {{ $this->selectedAnimal->getImageUrl(800) }} 800w,
         {{ $this->selectedAnimal->getImageUrl(1200) }} 1200w
     "
-                sizes="(max-width: 768px) 100vw, 320px"
-                alt="{{ $this->selectedAnimal->name }}"
-                class="w-80 h-80 object-cover rounded-2xl"
-            >
-        </div>
-        <div>
-            @if($pet_id)
-                <p>
-                    {{ $gender ? __('formDaycare.male') : __('formDaycare.female') }}
-                </p>
+                        sizes="(max-width: 768px) 100vw, 320px"
+                        alt="{{ $this->selectedAnimal->name }}"
+                        class="w-80 h-80 object-cover rounded-2xl"
+                    >
+                    </div>
+                </div>
+
             @endif
         </div>
         <div class="flex gap-6">
@@ -179,7 +182,9 @@ class extends Component {
         </div>
     </form>
     @endif
-    @if(session('success'))
+    <div class="w-1/2 mx-auto mb-6">
+    @if( session('success'))
         <x-message_success/>
     @endif
+    </div>
 </div>

@@ -106,17 +106,17 @@ class extends Component {
         ])->findOrFail($userId);
     }
 
-    public function deleteDog($petId)
+    public function deleteRequest($requestId): void
     {
-        $dog = Pet::findOrFail($petId);
-        $dog->delete();
+        $request = DayCareRequest::findOrFail($requestId);
+        $request->delete();
         $this->resetPage();
     }
 };
 ?>
 
 <div>
-    <div class="ml-25">
+    <div>
         <div>
             <x-dashboard.daycare-table
                 title="Chiens présents cette semaine"

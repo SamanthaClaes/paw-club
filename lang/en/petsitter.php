@@ -29,6 +29,8 @@ return [
     'discoverPetsitter' => 'Discover our petsitters',
 
     'cardTitle' => 'Would you like to become a petsitter?',
+    'cardTitleAlready' => 'You are a petsitter already',
+    'cardSubtitleAlready'=>'Thank you to choose Paw-Club',
 
     'cardSubtitle' => 'Would you like to take care of animals? Join PawClub and become a petsitter by offering a service adapted to your availability.',
 

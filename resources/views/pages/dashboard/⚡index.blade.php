@@ -146,10 +146,10 @@ class extends Component {
         return DayCareRequest::where('status', DayCareRequestStatus::PENDING)->count();
     }
 
-public function deleteDog($petId)
+    public function deleteRequest($requestId): void
     {
-        $dog = Pet::findOrFail($petId);
-        $dog->delete();
+        $request = DayCareRequest::findOrFail($requestId);
+        $request->delete();
     }
 };
 ?>

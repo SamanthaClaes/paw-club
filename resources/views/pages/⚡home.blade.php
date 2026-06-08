@@ -179,11 +179,11 @@ class extends Component {
                 class="flex flex-col justify-center items-center gap-4 border-2 border-card-green rounded-2xl px-6 py-10 lg:px-10 lg:py-12 my-14 shadow-sm max-w-6xl mx-auto">
 
                 <h3 class="text-text text-2xl lg:text-3xl font-extrabold text-center leading-tight">
-                    {{ __('petsitter.cardTitle') }}
+                    {{ __('petsitter.cardTitleAlready') }}
                 </h3>
 
                 <p class="max-w-2xl text-center text-sm lg:text-base text-text leading-7 mb-6">
-                    {{ __('petsitter.cardSubtitle') }}
+                    {{ __('petsitter.cardSubtitleAlready') }}
                 </p>
                     @if( Auth::user()?->is_petsitter)
                     <a

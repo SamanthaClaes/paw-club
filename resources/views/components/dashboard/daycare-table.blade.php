@@ -79,7 +79,7 @@ use Carbon\Carbon
 
                 </x-table.table-data>
                 <x-table.table-data>
-                    <x-table.delete-button wire:click="deleteDog({{$request->pet?->id}})" wire:confirm="Supprimer? "/>
+                    <x-table.delete-button wire:click="deleteRequest({{$request->id}})" wire:confirm="Supprimer? "/>
                 </x-table.table-data>
 
             </tr>

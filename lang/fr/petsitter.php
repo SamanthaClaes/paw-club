@@ -18,6 +18,8 @@ return [
     'cardTitle' => ' Vous souhaitez devenir petsitter ?',
     'cardSubtitle' => ' Envie de vous occuper d’animaux ? Rejoignez PawClub et devenez petsitter en proposant un service adapté à
             vos disponibilités.',
+    'cardSubtitleAlready'=>'Merci d’avoir choisi Paw-Club',
+    'cardTitleAlready'=>'Vous êtes déjà petsitter !',
     'cardCta' => '  Devenir petsitter',
     'location'=>'Localité',
     'allLocation'=>'toutes les localités',

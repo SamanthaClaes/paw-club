@@ -9,10 +9,10 @@ use Carbon\Carbon
     <div class="flex flex-col sm:flex-row h-full">
         <div class="w-full h-64 sm:h-auto sm:w-1/3">
             <img
-                src="{{ $request->pet->pet_image
-        ? Storage::url($request->pet->pet_image)
+                src="{{ $request->pet?->pet_image
+        ? $request->pet->getImageUrl(800)
         : asset('img/default-pet.jpg') }}"
-                alt="{{ $request->pet->name }}"
+                alt="{{ $request->pet?->name ?? 'Animal' }}"
                 class="w-full h-full object-cover"
             >
         </div>
@@ -62,14 +62,14 @@ use Carbon\Carbon
 
                 <button
                     wire:click="acceptRequest({{$request->id}})"
-                    class="bg-btn-green hover:bg-hover text-cta text-sm font-extrabold uppercase px-4 sm:px-6 py-3 rounded-md transition w-full cursor-pointer"
+                    class="bg-btn-green hover:bg-hover-green text-cta text-sm font-extrabold uppercase px-4 sm:px-6 py-3 rounded-md transition w-full cursor-pointer"
                 >
                     Accepter la demande
                 </button>
 
                 <button
                     wire:click="rejectRequest({{ $request->id }})"
-                    class="bg-btn-red hover:bg-red-700 text-red-950 text-sm hover:text-white font-extrabold uppercase px-4 sm:px-6 py-3 rounded-md transition w-full cursor-pointer"
+                    class="bg-btn-red hover:bg-red-600 text-red-950 text-sm hover:text-white font-extrabold uppercase px-4 sm:px-6 py-3 rounded-md transition w-full cursor-pointer"
                 >
                     Refuser la demande
                 </button>

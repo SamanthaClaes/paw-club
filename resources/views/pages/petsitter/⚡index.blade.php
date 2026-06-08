@@ -236,11 +236,11 @@ class extends Component {
         <div class="absolute inset-0 bg-linear-to-br from-white/10 to-transparent pointer-events-none"></div>
 
         <h2 class="relative z-10 text-text text-2xl lg:text-4xl font-extrabold leading-tight max-w-2xl">
-            {{ __('petsitter.cardTitle') }}
+            {{ __('petsitter.cardTitleAlready') }}
         </h2>
 
         <p class="relative z-10 mt-6 max-w-2xl text-sm lg:text-lg leading-7 text-text/90">
-            {{ __('petsitter.cardSubtitle') }}
+            {{ __('petsitter.cardSubtitleAlready') }}
         </p>
         @if( Auth::user()?->is_petsitter)
             <a href="{{ route('petsitter.profile') }}" class="relative z-10 mt-8
