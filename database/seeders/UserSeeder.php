@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
+     $sophie =   User::create([
             'last_name' => 'Dubois',
             'first_name' => 'Sophie',
             'email' => 'sophie.dubois@example.be',
@@ -44,7 +44,14 @@ class UserSeeder extends Seeder
             'is_petsitter'=>true,
             'image' => null,
         ]);
-        $thomas->animalTypes()->attach([1, 2]);
+        $thomas->pets()->create([
+            'name' => 'Milo',
+            'birth_date' => '2021-08-21',
+            'gender' => true,
+            'description' => 'Très joueur et aime les promenades.',
+            'breed_id' => 3,
+            'animal_type_id' => 1,
+        ]);
 
         User::create([
             'last_name' => 'Delcourt',
@@ -69,5 +76,14 @@ class UserSeeder extends Seeder
                     )
                 );
             });
+        $sophie->pets()->create([
+            'name' => 'Max',
+            'birth_date' => '2020-05-12',
+            'gender' => true,
+            'description' => 'Chien calme et sociable.',
+            'breed_id' => 5,
+            'animal_type_id' => 1,
+        ]);
     }
+
 }
