@@ -75,7 +75,7 @@ class extends Component {
             'animal_type_id' => 'required|exists:animal_types,id',
             'breed_id' => 'nullable|exists:breeds,id',
             'birth_date' => 'required|date',
-            'pet_image' => 'nullable|image',
+            'pet_image' => 'image|nullable|max:10240',
             'description' => 'nullable|string',
         ]);
         if ($this->pet_image) {

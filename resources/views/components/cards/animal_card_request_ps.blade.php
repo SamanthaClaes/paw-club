@@ -40,9 +40,9 @@
             <div class="mb-6 text-text">
 
                 <p>
-                    {{ $request->pet->animalType->type }}
+                    {{ $request->pet->animalType?->type }}
                     -
-                    {{ $request->pet->breed->name }}
+                    {{ $request->pet->breed?->name }}
                     -
                     {{ $request->pet->birthDateFormat() }}
                 </p>
@@ -93,12 +93,12 @@
 
     <div class="flex flex-col 2xl:flex-row gap-8 mb-7">
 
-        <img
+       {{-- <img
             src="{{ \Illuminate\Support\Facades\Storage::url($request->pet->pet_image) }}"
             alt="Image de {{ $request->pet->name }}"
             class="w-full max-w-52 h-52 object-cover rounded-2xl shrink-0"
-        >
-
+        >--}}
+        <p>Image : {{ $request->pet->pet_image }}</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6 text-base text-text w-full">
 
             <div>
@@ -108,7 +108,7 @@
                 </p>
 
                 <p>
-                    {{ $request->user->first_name }}
+                    {{ $request->user?->first_name }}
                     {{ $request->user->last_name }}
                 </p>
 
@@ -120,7 +120,7 @@
                     Email
                 </p>
 
-                <a href="mailto:{{ $request->user->mail }}" class="underline font-bold">
+                <a href="mailto:{{ $request->user->email }}" class="underline font-bold">
                     {{ $request->user->email }}
                 </a>
 

@@ -34,7 +34,7 @@ class CreateNewUser implements CreatesNewUsers
                 'max:255',
                 Rule::unique(User::class),
             ],
-            'image'=>['nullable', 'image'],
+            'image'=>['nullable', 'image', 'max:10240'],
             'adress'=>['required', 'string', 'max:255'],
             'zip'=>['required', 'max_digits:5'],
             'phone'=>['nullable', 'digits:10'],

@@ -47,6 +47,15 @@ class extends Component {
             ->where('status', PetsitterRequestStatus::PENDING)
             ->latest()
             ->get();
+        $this->requests->each(function ($request) {
+
+            $request->previous_stays_count = PetSittingRequest::where('petsitter_id', $request->petsitter_id)
+                ->where('pet_id', $request->pet_id)
+                ->where('status', PetsitterRequestStatus::ACCEPTED)
+                ->where('end_date', '<', now())
+                ->count();
+
+        });
 
         $this->refusedRequests = PetSittingRequest::with([
             'user',

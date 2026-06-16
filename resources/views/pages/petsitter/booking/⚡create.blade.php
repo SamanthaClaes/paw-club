@@ -59,7 +59,7 @@ class extends Component {
     public function store(): void
     {
         $validated = $this->validate([
-            'image' => 'nullable|image',
+            'image' => 'image|nullable|max:10240',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
             'description' => 'nullable|string',

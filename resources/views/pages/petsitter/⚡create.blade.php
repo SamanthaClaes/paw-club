@@ -55,7 +55,7 @@ class extends Component {
             'last_name' => 'required|string',
             'first_name' => 'required|string',
             'email' => 'required|email|unique:users,email',
-            'image' => 'image|nullable',
+            'image' => 'image|nullable|max:10240',
             'phone' => 'required|string',
             'adress' => 'required|string',
             'zip' => 'required|integer|max_digits:5',

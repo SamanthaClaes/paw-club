@@ -63,7 +63,7 @@ class extends Component {
     {
         $validated = $this->validate([
             'email' => 'required|email',
-            'image' => 'nullable|image',
+            'image' => 'image|nullable|max:10240',
             'adress' => 'required|string',
             'phone' => 'nullable',
         ]);

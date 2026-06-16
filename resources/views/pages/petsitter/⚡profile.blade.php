@@ -82,7 +82,7 @@ class extends Component {
             'phone' => 'nullable|string',
             'location' => 'required|string',
             'zip' => 'required',
-            'image' => 'nullable|image',
+            'image' => 'image|nullable|max:10240',
         ]);
         if ($this->image) {
             $fileName = 'petsitter_' . uniqid() . '.jpg';

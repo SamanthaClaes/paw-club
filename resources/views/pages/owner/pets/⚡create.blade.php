@@ -47,7 +47,7 @@ class extends Component {
         $validated = $this->validate([
             'name' => 'required|string',
             'birth_date' => 'required|date|before_or_equal:today',
-            'pet_image' => 'nullable|image',
+            'pet_image' => 'image|nullable|max:10240',
             'description' => 'nullable|string',
             'gender' => 'required|boolean',
             'animal_type_id' => 'required|exists:animal_types,id',
