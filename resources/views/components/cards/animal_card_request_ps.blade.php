@@ -98,7 +98,7 @@
             alt="Image de {{ $request->pet->name }}"
             class="w-full max-w-52 h-52 object-cover rounded-2xl shrink-0"
         >--}}
-        <p>Image : {{ $request->pet->pet_image }}</p>
+        <p>{{ Storage::url($request->pet->pet_image) }}</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6 text-base text-text w-full">
 
             <div>
