@@ -40,7 +40,7 @@
         <div style="text-align:center; margin:35px 0;">
 
             <a
-                href="{{ route('petsitter.request') }}"
+                href="{{ route('petsitter.request', ['locale' => app()->getLocale()]) }}"
                 style="
             display:inline-block;
             background:#50C878;
