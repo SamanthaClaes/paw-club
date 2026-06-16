@@ -2,6 +2,7 @@
 
 use App\Enums\PetsitterStatus;
 use App\Mail\PetsitterAcceptedMail;
+use App\Mail\PetsitterRefusedRequestMail;
 use App\Mail\PetsittingRefusedRequestMail;
 use App\Models\User;
 use Illuminate\Database\Query\Builder;
@@ -17,7 +18,6 @@ class extends Component {
     use WithPagination;
 
     public $search = '';
-
 
 
     public function petsitterQuery()
@@ -76,7 +76,7 @@ class extends Component {
         $petsitter->petsitter_status = PetsitterStatus::REFUSED;
 
         $petsitter->save();
-        Mail::to($petsitter->email)->queue(new PetsittingRefusedRequestMail($petsitter, $owner, $pet, $request));
+        Mail::to($petsitter->email)->queue(new PetsitterRefusedRequestMail($petsitter));
         $this->resetPage('requestsPage');
 
     }
