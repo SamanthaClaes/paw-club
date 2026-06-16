@@ -92,13 +92,17 @@
     </div>
 
     <div class="flex flex-col 2xl:flex-row gap-8 mb-7">
-        @if($request->pet->pet_image)
             <img
-                src="{{ Storage::disk('s3')->url($request->pet->pet_image) }}"
-                alt="{{ $request->pet->name }}"
+                src="{{ $request->pet->getImageUrl(800) }}"
+                srcset="
+        {{ $request->pet->getImageUrl(400) }} 400w,
+        {{ $request->pet->getImageUrl(800) }} 800w,
+        {{ $request->pet->getImageUrl(1200) }} 1200w
+    "
+                sizes="(max-width: 768px) 100vw, 300px"
+                alt="Image de {{ $request->pet->name }}"
                 class="w-full max-w-52 h-52 object-cover rounded-2xl shrink-0"
             >
-        @endif
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6 text-base text-text w-full">
 
             <div>
