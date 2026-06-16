@@ -1,3 +1,8 @@
+# Liens pour accéder à mon site 
+https://paw-club.be/fr
+https://www.figma.com/design/7M0kTFxmTMLfR2P1Hk0rOG/Paw-Club?node-id=38-144&t=yCVkG34aEzDHgLlN-1
+
+
 # 🐾 Paw Club – Application Web de Gestion de Réservations de Gardes Animalières
 
 Projet de fin d’études
