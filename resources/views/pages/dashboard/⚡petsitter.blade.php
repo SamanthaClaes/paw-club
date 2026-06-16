@@ -81,7 +81,7 @@ class extends Component {
 
     }
 
-    public function deletePetsitter($userId)
+    public function deletePetsitter($userId): void
     {
         $petsitter = User::findOrFail($userId);
 
