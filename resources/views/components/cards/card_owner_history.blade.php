@@ -8,7 +8,13 @@
             <div class="relative inline-block">
 
                 <img
-                    src="{{ Storage::url($request->pet->pet_image) }}"
+                    src="{{ $request->pet->getImageUrl(800) }}"
+                    srcset="
+        {{ $request->pet->getImageUrl(400) }} 400w,
+        {{ $request->pet->getImageUrl(800) }} 800w,
+        {{ $request->pet->getImageUrl(1200) }} 1200w
+    "
+                    sizes="(max-width: 768px) 100vw, 300px"
                     alt="Photo de {{ $request->pet->name }}"
                     class="w-100 h-100 rounded-2xl object-cover"
                 >
