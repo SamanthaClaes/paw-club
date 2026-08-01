@@ -81,7 +81,7 @@ md:w-auto
 
                     @if( auth()->user()->is_petsitter)
                         <li>
-                            <a href="{{ route('petsitter.profile') }}"
+                            <a href="{{ route('profile') }}"
                                class=" px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out
                                 {{ request()->routeIs('petsitter.profile')
                 ? 'bg-active text-white shadow-md'
@@ -92,9 +92,9 @@ md:w-auto
                         </li>
                     @else
                         <li>
-                            <a href="{{ route('owner.profile') }}"
+                            <a href="{{ route('profile') }}"
                                class="px-8 py-4 rounded-full w-full cursor-pointer transition-colors duration-300 ease-in-out
-       {{ request()->routeIs('owner.*')
+       {{ request()->routeIs('user.*')
             ? 'bg-active text-white shadow-md'
             : 'hover:bg-card'
        }}">

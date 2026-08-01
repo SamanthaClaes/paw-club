@@ -35,42 +35,14 @@
                         name="last_name"
                         type="text"
                         placeholder="Martin"
+                        required
                     />
                     <x-forms.input-label
                         label=" {{ __('registerForm.firstName') }}"
                         name="first_name"
                         type="text"
                         placeholder="Jean"
-                    />
-                </div>
-                <div>
-                    <x-forms.input-label
-                        label="{{ __('registerForm.address') }}"
-                        name="adress"
-                        type="text"
-                        placeholder="adresse et numéro"
-                    />
-                </div>
-                <div>
-                    <x-forms.input-label
-                        label=" {{ __('registerForm.phone') }}"
-                        type="tel"
-                        name="phone"
-                        placeholder="0498 xx.xx.xx"
-                    />
-                </div>
-                <div class="flex gap-8">
-                    <x-forms.input-label
-                        label="{{ __('registerForm.zip') }}"
-                        name="zip"
-                        type="number"
-                        placeholder="1234"
-                    />
-                    <x-forms.input-label
-                        label="{{ __('registerForm.location') }}"
-                        name="location"
-                        type="text"
-                        placeholder="Liege"
+                        required
                     />
                 </div>
                 <div>
@@ -79,6 +51,7 @@
                         name="email"
                         type="email"
                         placeholder="user@mail.be"
+                        required
                     />
                 </div>
                 <div x-data="{ type: 'password' }">

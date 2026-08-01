@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('image')->nullable();
             $table->string('phone')->nullable();
-            $table->string('adress');
+            $table->string('adress')->nullable();
             $table->bigInteger('price')->nullable();
-            $table->integer('zip');
-            $table->string('location');
+            $table->integer('zip')->nullable();
+            $table->string('location')->nullable();
             $table->string('role')->nullable();
             $table->boolean('is_petsitter')->default(false);
             $table->string('description')->nullable();

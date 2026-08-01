@@ -1,12 +1,5 @@
 @props([
- 'last_name',
- 'first_name',
- 'email',
- 'phone',
- 'adress',
- 'zip',
- 'location',
- 'owner'
+'user'
 ])
 
 <section class="border-4 border-stroke rounded-lg bg-card p-6 ">
@@ -19,11 +12,11 @@
 
             <div class="shrink-0">
                 <img
-                    src="{{ $owner->getImageUrl(800) }}"
+                    src="{{ $user->getImageUrl(800) }}"
                     srcset="
-        {{ $owner->getImageUrl(400) }} 400w,
-        {{ $owner->getImageUrl(800) }} 800w,
-        {{ $owner->getImageUrl(1200) }} 1200w
+        {{ $user->getImageUrl(400) }} 400w,
+        {{ $user->getImageUrl(800) }} 800w,
+        {{ $user->getImageUrl(1200) }} 1200w
     "
                     sizes="176px"
                     alt="{{ __('ownerProfile.profileImageAlt') }} {{ Auth::user()->first_name }}"
@@ -37,22 +30,22 @@
 
                     <p>
                         <span class="font-extrabold">{{ __('ownerProfile.fullname') }} :</span><br>
-                        {{ $last_name }} {{ $first_name }}
+                        {{ $user->last_name }} {{ $user->first_name }}
                     </p>
 
                     <p>
                         <span class="font-extrabold">{{ __('ownerProfile.email') }} :</span><br>
-                        {{ $email }}
+                        {{ $user->email }}
                     </p>
 
                     <p>
                         <span class="font-extrabold">{{ __('ownerProfile.phone') }}:</span><br>
-                        {{ $phone }}
+                        {{ $user->phone }}
                     </p>
 
                     <p>
                         <span class="font-extrabold">{{ __('ownerProfile.address') }} :</span><br>
-                        {{ $adress }} {{ $zip }} {{ $location }}
+                        {{ $user->adress }} {{ $user->zip }} {{ $user->location }}
                     </p>
 
                 </div>
@@ -83,6 +76,6 @@
 
     </div>
 
-    <x-modale.owner_password_modale/>
-    <x-modale.owner_profile_modale/>
+    <x-modale.user_password_modale/>
+    <x-modale.user_profile_modale/>
 </section>

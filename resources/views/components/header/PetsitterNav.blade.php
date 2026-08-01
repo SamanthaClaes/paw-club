@@ -36,7 +36,7 @@
 
         <li>
             <a
-                href="{{ route('petsitter.profile') }}"
+                href="{{ route('profile') }}"
                 class="block text-center border-2 border-stroke py-2 rounded-lg transition text-text
                 {{ request()->routeIs('petsitter.profile') ? 'bg-stroke text-white font-bold' : '' }}"
             >

@@ -87,6 +87,6 @@
         </div>
 
     </div>
-    <x-modale.owner_password_modale/>
+    <x-modale.user_password_modale/>
     <x-modale.petsitter_profile_modale/>
 </section>

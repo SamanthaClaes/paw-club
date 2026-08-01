@@ -179,7 +179,7 @@ class extends Component {
             :requests="$this->lastWeekRequests"
         />
     </div>
-    <x-modale.owner_infos_modale
+    <x-modale.user_infos_modale
         :selected-owner="$selectedOwner"
     />
 </div>

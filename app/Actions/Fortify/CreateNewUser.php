@@ -35,10 +35,6 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'image'=>['nullable', 'image', 'max:10240'],
-            'adress'=>['required', 'string', 'max:255'],
-            'zip'=>['required', 'max_digits:5'],
-            'phone'=>['nullable', 'digits:10'],
-            'location'=>['required', 'string', 'max:255'],
             'password' => $this->passwordRules(),
 
         ])->validate();
@@ -64,10 +60,6 @@ class CreateNewUser implements CreatesNewUsers
             'first_name' => $input['first_name'],
             'email' => $input['email'],
             'image'=>$imagePath,
-            'adress' => $input['adress'],
-            'zip' => $input['zip'],
-            'location' => $input['location'],
-            'phone' => $input['phone'],
             'password' => Hash::make($input['password']),
             'role' => null,
         ]));

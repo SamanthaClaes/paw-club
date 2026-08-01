@@ -76,7 +76,7 @@ class User extends Authenticatable
             return route('petsitter.profile');
         }
 
-        return route('owner.profile');
+        return route('user.profile');
     }
 
     public function petsitterMessages(): HasMany

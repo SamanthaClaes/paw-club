@@ -6,15 +6,15 @@ return [
 
     'profilePicture' => 'Votre photo de profil',
 
-    'lastName' => 'Nom *',
+    'lastName' => 'Nom ',
 
-    'firstName' => 'Prénom *',
+    'firstName' => 'Prénom ',
 
-    'address' => 'Adresse *',
+    'address' => 'Adresse ',
 
     'phone' => 'Votre numéro de téléphone',
 
-    'zip' => 'Code postal *',
+    'zip' => 'Code postal ',
 
     'location' => 'Localité',
 

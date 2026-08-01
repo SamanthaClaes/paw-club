@@ -94,7 +94,7 @@ class extends Component {
             </div>
         @endforelse
     </div>
-    <x-modale.owner_infos_modale
+    <x-modale.user_infos_modale
         :selected-owner="$selectedOwner"
     />
     <div class="mt-12 flex justify-center">

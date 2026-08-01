@@ -4,6 +4,7 @@
     'label',
     'required' => null,
     'placeholder' => '',
+    'value' => '',
 ])
 
 <div class="w-full">
@@ -26,6 +27,7 @@
         type="{{ $type }}"
         id="{{ $name }}"
         name="{{ $name }}"
+        value="{{ old($name, $value) }}"
         @if($placeholder)
             placeholder="{{ $placeholder }}"
         @endif
