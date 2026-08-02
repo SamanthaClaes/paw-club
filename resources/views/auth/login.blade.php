@@ -67,19 +67,7 @@
                 </div>
                 <div class="text-sm text-center mt-2">
                     <p class="text-text">{{ __('login.noAccount') }}</p>
-                    <a href="{{ route('register') }}" class="underline font-semibold text-text">{{ __('login.owner') }}</a>
-                </div>
-                <div class="text-sm text-center">
-                    <p class="text-text">
-                        {{ __('login.becomePetsitter') }}
-                    </p>
-
-                    <a
-                        href="{{ route('petsitter.create') }}"
-                        class="underline font-semibold text-text"
-                    >
-                        {{ __('login.createAccount') }}
-                    </a>
+                    <a href="{{ route('register') }}" class="underline font-semibold text-text"> {{ __('login.createAccount') }}</a>
                 </div>
             </form>
         </section>

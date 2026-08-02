@@ -189,7 +189,7 @@ class extends Component {
                     </p>
 
                     <a
-                        href="{{ route('petsitter.profile') }}"
+                        href="{{ route('profile') }}"
                         title="{{ __('petsitter.goProfile') }}"
                         class="text-cta font-bold uppercase bg-card-green hover:bg-hover hover:text-white p-5 lg:w-1/2 rounded-lg mb-3 text-center shadow-md/10"
                     >

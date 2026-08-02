@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('email');
             $table->string('phone')->nullable();
             $table->string('message');
-            $table->string('is_read')->default(false);
+            $table->boolean('is_read')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -8,8 +8,7 @@ return[
     'submit'=> 'Login',
     'forgotPassword'=> 'Forgot password ?',
     'noAccount'=> 'Not account yet ?',
-    'becomePetsitter'=>'You want to be become a petsitter? ',
-    'createAccount'=>'Create petsitter’s profile ',
+    'createAccount'=>'Create an account here ',
     'owner'=>'Create an owner’s account',
 
 ];

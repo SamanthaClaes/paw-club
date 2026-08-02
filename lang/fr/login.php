@@ -8,8 +8,7 @@ return[
     'submit'=> ' Se connecter',
     'forgotPassword'=> 'Mot de passe oublié ?',
     'noAccount'=> 'Pas encore de compte ?',
-    'becomePetsitter'=>'Vous souhaiter devenir petsitter ?',
-    'createAccount'=>'Créer un profil petsitter ',
+    'createAccount'=>'Créez un compte ici',
     'owner'=>'Créer un profil propriétaire',
 
 ];

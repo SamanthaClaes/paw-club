@@ -19,6 +19,9 @@
             <h1 class="text-3xl font-bold text-text mb-8 uppercase">
                 {{ __('registerForm.title') }}
             </h1>
+            <div>
+                <p class="text-xs mb-10"> Les champs munis d’une <small class="text-red-500">*</small> sont obligatoires</p>
+            </div>
             <form action="{{ route('register.store') }}" method="POST" class="w-full max-w-md flex flex-col gap-4"
                   enctype="multipart/form-data">
                 @csrf
@@ -92,6 +95,25 @@
                         name="password_confirmation"
                         placeholder="{{ __('registerForm.confirmPasswordPlaceholder') }}"
                     />
+                </div>
+                <div class="mb-2">
+                    <div class="flex items-center gap-3">
+                        <input
+                            type="checkbox"
+                            id="is_petsitter"
+                            name="is_petsitter"
+                            value="1"
+                            {{ old('is_petsitter') ? 'checked' : '' }}
+                            class="h-5 w-5 rounded border-element cursor-pointer"
+                        >
+
+                        <label
+                            for="is_petsitter"
+                            class="text-sm uppercase font-bold text-text cursor-pointer"
+                        >
+                            Je souhaite devenir petsitter
+                        </label>
+                    </div>
                 </div>
                 <button type="submit"
                         class="bg-text text-white py-3 rounded-lg font-bold uppercase mt-6 cursor-pointer mb-20">

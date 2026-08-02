@@ -28,7 +28,7 @@ return [
 
     'confirmPasswordPlaceholder' => 'Confirmez votre mot de passe',
 
-    'submit' => 'S\'enregistrer',
+    'submit' => 'Créer mon compte',
 
     'alreadyAccount' => 'Pas encore de compte ?',
 

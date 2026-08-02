@@ -73,10 +73,10 @@ class User extends Authenticatable
         }
 
         if ($this->is_petsitter) {
-            return route('petsitter.profile');
+            return route('profile');
         }
 
-        return route('user.profile');
+        return route('profile');
     }
 
     public function petsitterMessages(): HasMany

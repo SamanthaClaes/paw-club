@@ -44,22 +44,21 @@ Route::prefix('{locale}')->group(function () {
 
     Route::middleware('auth')->group(function () {
 
-        Route::livewire('/petsitter/request', 'pages::petsitter.request')->name('petsitter.request');
+        Route::livewire('/user/request', 'pages::user.request')->name('user.request');
         Route::livewire('/profile', 'pages::profile')->name('profile');
-
-        Route::livewire('/petsitter/planning', 'pages::petsitter.planning')->name('petsitter.planning');
-
-        Route::livewire('/petsitter/history', 'pages::petsitter.history')->name('petsitter.history');
-        Route::livewire('/petsitter/messages', 'pages::petsitter.messages')->name('petsitter.messages');
         Route::livewire('/user/history', 'pages::user.history')->name('user.history');
-
         Route::livewire('/daycare/request', 'pages::daycare.request')->name('daycare.request');
-
         Route::livewire('/petsitter/contact/{user}', 'pages::petsitter.booking.contact-form')
             ->name('petsitter.contact');
-
         Route::livewire('/petsitter/booking/create/{user}', 'pages::petsitter.booking.create')
             ->name('petsitter.booking.create');
+
+    });
+    Route::middleware(['auth', 'petsitter'])->group(function () {
+        Route::livewire('/petsitter/planning', 'pages::petsitter.planning')->name('petsitter.planning');
+        Route::livewire('/petsitter/history', 'pages::petsitter.history')->name('petsitter.history');
+        Route::livewire('/petsitter/messages', 'pages::petsitter.messages')->name('petsitter.messages');
+        Route::livewire('/petsitter/request', 'pages::petsitter.request')->name('petsitter.request');
 
     });
 

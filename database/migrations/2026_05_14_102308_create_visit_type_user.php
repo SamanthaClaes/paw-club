@@ -9,8 +9,8 @@ return new class extends Migration {
     {
         Schema::create('visit_type_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('visit_type_id');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('visit_type_id')->constrained()->cascadeOnDelete();
 
 
 

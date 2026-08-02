@@ -18,7 +18,7 @@ class CreateNewUser implements CreatesNewUsers
     /**
      * Validate and create a newly registered user.
      *
-     * @param  array<string, string>  $input
+     * @param array<string, string> $input
      *
      * @throws ValidationException
      */
@@ -34,7 +34,8 @@ class CreateNewUser implements CreatesNewUsers
                 'max:255',
                 Rule::unique(User::class),
             ],
-            'image'=>['nullable', 'image', 'max:10240'],
+            'image' => ['nullable', 'image', 'max:10240'],
+            'is_petsitter' => ['nullable', 'boolean:'],
             'password' => $this->passwordRules(),
 
         ])->validate();
@@ -42,10 +43,10 @@ class CreateNewUser implements CreatesNewUsers
 
         if (isset($input['image'])) {
 
-            $fileName = 'owner_' . uniqid() . '.jpg';
+            $fileName = 'user_' . uniqid() . '.jpg';
 
             $imagePath = $input['image']->storeAs(
-                'owner/original',
+                'user/original',
                 $fileName,
                 's3'
             );
@@ -55,13 +56,14 @@ class CreateNewUser implements CreatesNewUsers
                 $imagePath
             );
         }
-         return (User::create([
+        return (User::create([
             'last_name' => $input['last_name'],
             'first_name' => $input['first_name'],
             'email' => $input['email'],
-            'image'=>$imagePath,
+            'image' => $imagePath,
             'password' => Hash::make($input['password']),
             'role' => null,
+            'is_petsitter' => !empty($input['is_petsitter']),
         ]));
     }
 }

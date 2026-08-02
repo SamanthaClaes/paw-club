@@ -245,7 +245,7 @@ class extends Component {
                 {{ __('petsitter.cardSubtitleAlready') }}
             </p>
 
-            <a href="{{ route('petsitter.profile') }}"
+            <a href="{{ route('profile') }}"
                class="relative z-10 mt-8
        bg-white text-text
        text-sm lg:text-xl
