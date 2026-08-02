@@ -75,6 +75,22 @@ class extends Component {
             ->latest()
             ->paginate(4);
     }
+    public function toggleFavorite(User $petsitter): void
+    {
+        if (!auth()->check()) {
+            return;
+        }
+
+        auth()->user()->favoritePetsitters()->toggle($petsitter->id);
+    }
+
+    public function isFavorite(User $petsitter): bool
+    {
+        return auth()->user()
+            ->favoritePetsitters()
+            ->where('petsitter_id', $petsitter->id)
+            ->exists();
+    }
 };
 ?>
 
@@ -219,6 +235,7 @@ class extends Component {
                     :choose-url=" route('petsitter.booking.create', ['user' => $petsitter->id])"
                     :contact-url=" route('petsitter.contact', ['user' => $petsitter->id])"
                     :petsitter="$petsitter"
+                    :is-favorite="auth()->check() ? $this->isFavorite($petsitter) : false"
                 />
             @endforeach
         </div>
@@ -308,4 +325,3 @@ class extends Component {
 
     </section>
 </div>
-

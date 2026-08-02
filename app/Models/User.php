@@ -96,4 +96,24 @@ class User extends Authenticatable
             "images/{$size}/{$fileName}"
         );
     }
+
+    public function favoritePetsitters(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            User::class,
+            'favorite_petsitters',
+            'user_id',
+            'petsitter_id'
+        );
+    }
+
+    public function favoredByUsers(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            User::class,
+            'favorite_petsitters',
+            'petsitter_id',
+            'user_id'
+        )->withTimestamps();
+    }
 }

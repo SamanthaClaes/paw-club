@@ -86,4 +86,6 @@ return [
     'years' => ':count year|:count years',
     'male' => 'Male',
     'female' => 'Female',
+    'add_favorite' => 'Add to favorites',
+    'remove_favorite' => 'Remove from favorites',
 ];

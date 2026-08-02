@@ -52,6 +52,7 @@ Route::prefix('{locale}')->group(function () {
             ->name('petsitter.contact');
         Route::livewire('/petsitter/booking/create/{user}', 'pages::petsitter.booking.create')
             ->name('petsitter.booking.create');
+        Route::livewire('/user/favorites', 'pages::user.favorites')->name('user.favorites');
 
     });
     Route::middleware(['auth', 'petsitter'])->group(function () {

@@ -9,6 +9,7 @@
     'chooseUrl' => '#',
     'contactUrl' => '#',
     'petsitter',
+    'isFavorite' => false,
 ])
 
 <div
@@ -68,6 +69,20 @@
                         </p>
                     </div>
 
+                    <div class="flex items-center gap-2 shrink-0">
+                    @auth
+                        @if(auth()->id() !== $petsitter->id)
+                            <button
+                                wire:click="toggleFavorite({{ $petsitter->id }})"
+                                type="button"
+                                title="{{ $isFavorite ? __('ui.remove_favorite') : __('ui.add_favorite') }}"
+                                class="flex h-11 w-11 items-center justify-center rounded-full border-2 transition {{ $isFavorite ? 'border-card-pink bg-card-pink text-white' : 'border-stroke bg-white text-card-pink hover:bg-card-pink hover:text-white' }}"
+                            >
+                                <span class="text-xl" aria-hidden="true">{{ $isFavorite ? '♥' : '♡' }}</span>
+                                <span class="sr-only">{{ $isFavorite ? __('ui.remove_favorite') : __('ui.add_favorite') }}</span>
+                            </button>
+                        @endif
+                    @endauth
                     <div
                         class="
         bg-card-green
@@ -82,6 +97,7 @@
         "
                     >
                         {{ $price }} €/jour
+                    </div>
                     </div>
 
                 </div>

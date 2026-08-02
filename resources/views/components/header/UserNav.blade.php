@@ -24,6 +24,15 @@
                 {{ __('petsitterNav.history') }}
             </a>
         </li>
+            <li>
+                <a
+                    href="{{ route('user.favorites') }}"
+                    class="block text-center border-2 border-stroke py-2 rounded-lg transition
+        {{ request()->routeIs('user.favorites') ? 'bg-stroke text-white font-bold' : '' }}"
+                >
+                    Mes favoris
+                </a>
+            </li>
 
         <li>
             <a
