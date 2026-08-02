@@ -40,9 +40,9 @@ class Pet extends Model
 
 
         if ($years < 1){
-            return $months . ' ' . "mois";
+            return trans_choice('ui.months', $months, ['count' => $months]);
         }
-        return $years . ' ' . ($years === 1 ? 'an' : 'ans');
+        return trans_choice('ui.years', $years, ['count' => $years]);
 
     }
     public function animalType(): BelongsTo

@@ -4,6 +4,7 @@
     </h1>
 
     <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-20">
+        @if( !Auth::user()->is_petsitter)
         <li>
             <a
                 href="{{ route('user.request') }}"
@@ -13,6 +14,7 @@
                Mes demandes
             </a>
         </li>
+        @endif
         <li>
             <a
                 href="{{ route('user.history') }}"

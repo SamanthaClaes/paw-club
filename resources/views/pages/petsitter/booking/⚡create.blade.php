@@ -111,7 +111,7 @@ class extends Component {
             'description',
             'pet_id',
         ]);
-        session()->flash('success', 'Demande envoyée avec succès');
+        session()->flash('success', __('ui.request_sent'));
     }
 }
 ?>

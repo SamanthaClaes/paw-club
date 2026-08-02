@@ -82,22 +82,27 @@ class extends Component {
 
                             </div>
 
-                            @if($message->is_read)
+                            <div class="flex items-center gap-2">
+                                @if($message->is_read)
+                                    <span
+                                        class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold uppercase">
+                                     Lu
+                                     </span>
+                                @else
+                                    <span
+                                        class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold uppercase">
+                                     Non lu
+                                    </span>
+                                @endif
 
-                                <span
-                                    class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold uppercase">
-                                        Lu
-                                </span>
-
-                            @else
-
-                                <span
-                                    class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold uppercase">
-                                Non lu
-                                </span>
-
-                            @endif
-
+                                <button
+                                    wire:click="deleteMessage({{ $message->id }})"
+                                    class="p-2 text-red-500 rounded-lg transition"
+                                    title="Supprimer"
+                                >
+                                    <img src="{{ asset('svg/delete.svg') }}" alt="Supprimer" class="w-5 h-5">
+                                </button>
+                            </div>
                         </div>
 
                         <div class="bg-background border border-element rounded-2xl p-4 mb-6">
@@ -119,13 +124,12 @@ class extends Component {
                                 </button>
 
                             @endif
-
-                            <button
-                                wire:click="deleteMessage({{ $message->id }})"
-                                class="flex-1 bg-btn-red hover:bg-red-500 text-white rounded-xl py-3 font-bold transition"
+                            <a
+                                href="mailto:{{ $message->email }}"
+                                class="flex-1 bg-blue-400 hover:bg-blue-500 text-white rounded-xl py-3 font-bold transition text-center"
                             >
-                                Supprimer
-                            </button>
+                                Répondre
+                            </a>
 
                         </div>
 

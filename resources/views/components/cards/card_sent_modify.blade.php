@@ -10,11 +10,11 @@
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
 
             <h2 class="font-bold text-blue-700 uppercase">
-                Modification envoyée
+                {{ __('ui.sent_modification') }}
             </h2>
 
             <span class="bg-yellow-50 border border-yellow-200 text-yellow-700 rounded-full text-sm font-bold px-3 py-1">
-                En attente de réponse
+                {{ __('ui.waiting_for_response') }}
             </span>
 
         </div>
@@ -29,7 +29,7 @@
 
                 <img
                     src="{{ Storage::url($request->pet->pet_image) }}"
-                    alt="Photo de {{ $request->pet->name }}"
+                    alt="{{ __('ui.pet_photo', ['name' => $request->pet->name]) }}"
                     class="w-full max-w-64 h-64 rounded-2xl object-cover"
                 >
 
@@ -49,14 +49,14 @@
                 <div class="bg-white rounded-2xl p-5 shadow-sm">
 
                     <h2 class="text-xl font-bold text-text mb-4">
-                        Animal
+                        {{ __('ui.animal') }}
                     </h2>
 
                     <div class="space-y-3 text-text">
 
                         <div>
                             <p class="text-xs font-medium text-gray-500 uppercase">
-                                Nom
+                                {{ __('ui.name') }}
                             </p>
 
                             <p class="text-base font-bold">
@@ -66,7 +66,7 @@
 
                         <div>
                             <p class="text-xs font-medium text-gray-500 uppercase">
-                                Genre
+                                {{ __('ui.gender') }}
                             </p>
 
                             <p class="text-base font-bold">
@@ -91,14 +91,14 @@
                 <div class="bg-white rounded-2xl p-3 shadow-sm">
 
                     <h2 class="text-xl font-bold text-text mb-4">
-                        Petsitter
+                        {{ __('ui.petsitter') }}
                     </h2>
 
                     <div class="space-y-3 text-text">
 
                         <div>
                             <p class="text-xs font-medium text-gray-500 uppercase">
-                                Nom complet
+                                {{ __('ui.full_name') }}
                             </p>
 
                             <p class="text-base font-bold">
@@ -138,7 +138,7 @@
                 <div class="bg-white rounded-2xl p-5 shadow-sm">
 
                     <h2 class="text-xl font-bold text-text mb-4">
-                        Dates actuelles
+                        {{ __('ui.current_dates') }}
                     </h2>
 
                     <div class="flex flex-col gap-3">
@@ -170,7 +170,7 @@
                 <div class="bg-blue-50 border border-stroke rounded-2xl p-5 shadow-sm">
 
                     <h2 class="text-xl font-bold text-blue-700 mb-4">
-                        Nouvelles dates proposées
+                        {{ __('ui.proposed_dates') }}
                     </h2>
 
                     <div class="flex flex-col gap-3">
@@ -204,7 +204,7 @@
             <div class="bg-blue-50 border border-stroke rounded-2xl p-5">
 
                 <h2 class="text-lg font-bold text-blue-700 mb-3">
-                   Votre message
+                   {{ __('ui.your_message') }}
                 </h2>
 
                 <p class="text-text leading-7">
@@ -219,7 +219,7 @@
                     wire:click="cancelModification({{ $request->id }})"
                     class="bg-btn-red hover:bg-red-500 text-white font-bold py-3 px-8 rounded-2xl transition cursor-pointer"
                 >
-                    Annuler la demande
+                    {{ __('ui.cancel_modification') }}
                 </button>
 
             </div>

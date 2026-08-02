@@ -78,7 +78,7 @@ class extends Component {
         $validated['user_id'] = $this->user->id;
         $validated['status'] = DayCareRequestStatus::PENDING;
         $request = DayCareRequest::create($validated);
-        session()->flash('success', 'Demande envoyée avec succès');
+        session()->flash('success', __('ui.request_sent'));
         $this->reset([
             'image',
             'infos',
@@ -107,11 +107,11 @@ class extends Component {
     @if($this->pets->isEmpty())
         <div class="rounded-xl border bg-card border-stroke p-6 w-8/10 mx-auto">
             <p class="font-medium text-lg">
-                Vous ne possédez actuellement aucun chien.
+                {{ __('ui.no_dog') }}
             </p>
 
             <p class="mt-2 text-sm text-gray-600">
-                La garderie n'accepte que les chiens. Ajoutez un chien à votre profil afin de pouvoir effectuer une demande de garde.
+                {{ __('ui.no_dog_daycare') }}
             </p>
 
             <div class="mt-6">
@@ -126,7 +126,7 @@ class extends Component {
                    bg-card-green hover:bg-hover hover:text-white
                    px-6 py-4 rounded-lg shadow-md/10"
                 >
-                    Ajouter un chien à mon profil
+                    {{ __('ui.add_dog_profile') }}
                 </a>
             </div>
         </div>

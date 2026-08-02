@@ -287,9 +287,7 @@ class extends Component {
 
                 @forelse($receivedModificationRequests as $request)
 
-                    <x-cards.cards_modify_request
-                        :request="$request"
-                    />
+                    <x-cards.petsitting-request :request="$request" viewer="owner" variant="modification-received" />
 
                 @empty
 
@@ -315,9 +313,7 @@ class extends Component {
 
                 @forelse($sentModificationRequests as $request)
 
-                    <x-cards.card_sent_modify
-                        :request="$request"
-                    />
+                    <x-cards.petsitting-request :request="$request" viewer="petsitter" variant="modification-sent" />
 
                 @empty
 
@@ -347,9 +343,7 @@ class extends Component {
 
                 @forelse($requests as $request)
 
-                    <x-cards.animal_card_request_ps
-                        :request="$request"
-                    />
+                    <x-cards.petsitting-request :request="$request" viewer="petsitter" />
 
                 @empty
 
@@ -381,9 +375,7 @@ class extends Component {
 
                 @forelse($acceptedRequests as $request)
 
-                    <x-cards.animal_card_request_ps
-                        :request="$request"
-                    />
+                    <x-cards.petsitting-request :request="$request" viewer="petsitter" />
 
                 @empty
 
@@ -415,9 +407,7 @@ class extends Component {
 
                 @forelse($refusedRequests as $request)
 
-                    <x-cards.animal_card_request_ps
-                        :request="$request"
-                    />
+                    <x-cards.petsitting-request :request="$request" viewer="petsitter" />
 
                 @empty
 

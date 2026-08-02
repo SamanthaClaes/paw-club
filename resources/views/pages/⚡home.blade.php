@@ -28,7 +28,7 @@ class extends Component {
         ]);
         ContactMessage::create([...$validated, 'is_read' => false,]);
         Mail::to('samantha.claes@student.hepl.be')->queue(new ContactMessageMail($validated));
-        session()->flash('success', 'Message envoyé avec succès');
+        session()->flash('success', __('ui.message_sent'));
         $this->submit = true;
         $this->reset(['first_name',
             'last_name',

@@ -76,21 +76,19 @@ class extends Component
         <section class="mt-20">
 
             <h1 class="text-text lg:text-2xl text-lg uppercase font-bold mb-10">
-                Mes demandes
+                {{ __('ui.my_requests') }}
             </h1>
 
             <div class="space-y-10">
 
                 @forelse($receivedModificationRequests as $request)
 
-                    <x-cards.cards_modify_request
-                        :request="$request"
-                    />
+                    <x-cards.petsitting-request :request="$request" viewer="owner" variant="modification-received" />
 
                 @empty
 
                     <div class="bg-card border-2 border-element rounded-2xl p-8 mb-6">
-                        Aucune modification en attente.
+                        {{ __('ui.no_pending_modifications') }}
                     </div>
 
                 @endforelse

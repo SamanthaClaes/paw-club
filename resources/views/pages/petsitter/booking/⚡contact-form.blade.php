@@ -42,7 +42,7 @@ class extends Component {
 
         PetsitterMessages::create([...$validated, 'petsitter_id' => $this->user->id, 'is_read' => false]);
         Mail::to($this->user->email)->queue(new PetsitterMessageMail($this->user, $validated));
-        session()->flash('success', 'Message envoyé avec succès');
+        session()->flash('success', __('ui.message_sent'));
         $this->reset([
             'first_name',
             'last_name',

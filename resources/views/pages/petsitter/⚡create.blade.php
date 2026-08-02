@@ -92,7 +92,7 @@ class extends Component {
             'petsitter_status' => PetsitterStatus::PENDING]);
         $user->animalTypes()->sync($this->animals);
         $user->visitTypes()->sync($this->visits);
-        session()->flash('success', 'Demande envoyée avec succès');
+        session()->flash('success', __('ui.request_sent'));
 
         $this->reset([
             'last_name',

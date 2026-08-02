@@ -75,7 +75,7 @@
                 />
             </div>
             <div>
-                <label for="message" class="text-text font-bold uppercase">Message</label>
+                <label for="message" class="text-text font-bold uppercase">{{ __('ui.message') }}</label>
                 <textarea name="requested_description" id="message" cols="30" rows="10"
                           wire:model="requested_description"
                           class="w-full border-2 border-element rounded-lg px-3 py-2 mb-6 focus:outline-none focus:ring-2 focus:ring-background resize-none"></textarea>

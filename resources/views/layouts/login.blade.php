@@ -11,7 +11,7 @@
 </head>
 <body class="dark:bg-gray-700 bg-element">
 <main>
-    <h1 class="sr-only">Page de connexion</h1>
+    <h1 class="sr-only">{{ __('ui.login_page') }}</h1>
     @yield( 'content')
 </main>
 @livewireScripts

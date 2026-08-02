@@ -16,7 +16,7 @@
     @livewireStyles
 </head>
 <body class="min-h-screen flex flex-col">
-<h1 class="sr-only">Pages principales</h1>
+<h1 class="sr-only">{{ __('ui.main_pages') }}</h1>
 <header>
     <x-header.nav/>
 </header>
@@ -29,4 +29,3 @@
 </body>
 
 </html>
-

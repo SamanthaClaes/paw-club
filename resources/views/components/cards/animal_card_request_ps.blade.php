@@ -15,13 +15,13 @@
             @if($request->previous_stays_count === 0)
 
                 <span class="bg-blue-100 text-blue-800 px-3 py-3 rounded-full text-xs font-bold">
-            🐾 Première garde
+            {{ __('ui.first_stay') }}
         </span>
 
             @else
 
                 <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-bold">
-            🐾 {{ $request->previous_stays_count }} garde(s)
+            {{ __('ui.stays', ['count' => $request->previous_stays_count]) }}
         </span>
 
             @endif
@@ -40,9 +40,9 @@
             <div class="mb-6 text-text">
 
                 <p>
-                    {{ $request->pet->animalType?->type }}
+                    {{ __('animalTypes.' . $request->pet->animalType?->type) }}
                     -
-                    {{ $request->pet->breed?->name }}
+                    {{ __('breed.' . $request->pet->breed?->name) }}
                     -
                     {{ $request->pet->birthDateFormat() }}
                 </p>
@@ -56,19 +56,19 @@
             @if($request->status == PetsitterRequestStatus::PENDING)
 
                 <span class="bg-yellow-100 text-yellow-700 px-4 py-1.5 rounded-full font-bold uppercase text-xs">
-                En attente
+                {{ __('ui.pending') }}
             </span>
 
             @elseif($request->status == PetsitterRequestStatus::ACCEPTED)
 
                 <span class="bg-green-100 text-green-700 px-4 py-1.5 rounded-full font-bold uppercase text-xs">
-                Acceptée
+                {{ __('ui.accepted') }}
             </span>
 
             @elseif($request->status == PetsitterRequestStatus::REFUSED)
 
                 <span class="bg-red-100 text-red-600 px-4 py-1.5 rounded-full font-bold uppercase text-xs">
-                Refusée
+                {{ __('ui.refused') }}
             </span>
 
             @endif
@@ -76,7 +76,7 @@
             <div class="mt-3">
 
                 <p class="font-bold uppercase text-sm mb-1 text-gray-500">
-                    Dates
+                    {{ __('ui.dates') }}
                 </p>
 
                 <p class="text-base text-text">
@@ -100,7 +100,7 @@
         {{ $request->pet->getImageUrl(1200) }} 1200w
     "
                 sizes="(max-width: 768px) 100vw, 300px"
-                alt="Image de {{ $request->pet->name }}"
+                alt="{{ __('ui.pet_photo', ['name' => $request->pet->name]) }}"
                 class="w-full max-w-52 h-52 object-cover rounded-2xl shrink-0"
             >
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-6 text-base text-text w-full">
@@ -108,7 +108,7 @@
             <div>
 
                 <p class="font-bold uppercase text-sm mb-1 text-gray-500">
-                    Propriétaire
+                    {{ __('ui.owner') }}
                 </p>
 
                 <p>
@@ -133,7 +133,7 @@
             <div>
 
                 <p class="font-bold uppercase text-sm mb-1 text-gray-500">
-                    Adresse
+                    {{ __('ui.address') }}
                 </p>
 
                 <p>
@@ -145,7 +145,7 @@
             <div>
 
                 <p class="font-bold uppercase text-sm mb-1 text-gray-500">
-                    Ville
+                    {{ __('ui.city') }}
                 </p>
 
                 <p>
@@ -163,7 +163,7 @@
     <div class="bg-background border border-element rounded-2xl p-5 mb-6">
 
         <p class="font-bold uppercase text-sm text-gray-500 mb-3">
-            Indications
+            {{ __('ui.instructions') }}
         </p>
 
         <p class="text-base text-text leading-7">
@@ -180,14 +180,14 @@
                 wire:click="acceptRequest({{ $request->id }})"
                 class="bg-btn-green hover:bg-green-500 transition rounded-xl py-3 text-base font-bold text-cta cursor-pointer"
             >
-                Accepter
+                {{ __('ui.accept') }}
             </button>
 
             <button
                 wire:click="refusedRequest({{ $request->id }})"
                 class="bg-btn-red hover:bg-red-500 transition rounded-xl py-3 text-base font-bold text-text-red cursor-pointer"
             >
-                Refuser
+                {{ __('ui.refuse') }}
             </button>
 
         </div>
@@ -202,7 +202,7 @@
                 type="button"
                 class="bg-blue-400 hover:bg-blue-500 transition rounded-xl py-5 px-5 text-lg font-bold text-white cursor-pointer shadow-md"
             >
-                Modifier la demande
+                {{ __('ui.edit_request') }}
             </button>
 
         @endif
