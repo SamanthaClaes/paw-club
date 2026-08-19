@@ -1,109 +1,109 @@
 @props([
     'title',
     'petsitters',
-    'showActions' => false,
 ])
 
-<section class=" mb-6 md:mt-30 text-text text-2xl uppercase font-bold">
-
-    <h2 class="text-xl mt-6 font-bold text-text md:text-2xl md:mt-0 dark:text-white">
+<section class="mb-6 md:mt-30">
+    <h2 class="text-xl mt-6 font-bold text-text dark:text-white md:text-2xl md:mt-20">
         {{ $title }}
     </h2>
-
 </section>
 
-<div>
+<div class="overflow-hidden rounded-2xl border-2 border-stroke shadow-sm p-5 bg-card dark:bg-blue-950 dark:border-blue-800">
+
     <div class="mb-6 w-1/2">
-    <x-search.search
-        search="search"
-    />
+        <x-search.search search="search"/>
     </div>
-    <table class="min-w-full border dark:border-none">
 
-        <thead class="bg-element">
+    <flux:table :paginate="$petsitters">
 
-        <tr class="bg-background border-b">
+        <flux:table.columns>
 
-            <th class="border-r py-2">
+            <flux:table.column>
                 Nom
-            </th>
+            </flux:table.column>
 
-            <th class="border-r">
+            <flux:table.column>
                 Prénom
-            </th>
+            </flux:table.column>
 
-            <th class="border-r">
+            <flux:table.column>
                 Email
-            </th>
+            </flux:table.column>
 
-            <th class="border-r">
+            <flux:table.column>
                 Téléphone
-            </th>
+            </flux:table.column>
 
-            <th class="border-r">
+            <flux:table.column>
                 Habitation
-            </th>
+            </flux:table.column>
 
-            <th class="border-r">
+            <flux:table.column align="end">
                 Actions
-            </th>
+            </flux:table.column>
 
-        </tr>
+        </flux:table.columns>
 
-        </thead>
+        <flux:table.rows>
 
-        <tbody>
+            @forelse($petsitters as $petsitter)
 
-        @forelse($petsitters as $petsitter)
+                <flux:table.row>
 
-            <tr>
+                    <flux:table.cell variant="strong">
+                        {{ $petsitter->last_name }}
+                    </flux:table.cell>
 
-                <x-table.table-data>
-                    {{ $petsitter->last_name }}
-                </x-table.table-data>
+                    <flux:table.cell>
+                        {{ $petsitter->first_name }}
+                    </flux:table.cell>
 
-                <x-table.table-data>
-                    {{ $petsitter->first_name }}
-                </x-table.table-data>
+                    <flux:table.cell>
+                        {{ $petsitter->email }}
+                    </flux:table.cell>
 
-                <x-table.table-data>
-                    {{ $petsitter->email }}
-                </x-table.table-data>
+                    <flux:table.cell>
+                        {{ $petsitter->phone }}
+                    </flux:table.cell>
 
-                <x-table.table-data>
-                    {{ $petsitter->phone }}
-                </x-table.table-data>
+                    <flux:table.cell>
+                        {{ __('habitationType.' . $petsitter->habitation?->name) }}
+                    </flux:table.cell>
 
-                <x-table.table-data>
-                    {{ __('habitationType.' . $petsitter->habitation?->name) }}
-                </x-table.table-data>
+                    <flux:table.cell>
 
-                <x-table.table-data>
-                        <div class="flex gap-2 items-center justify-center">
+                        <div class="flex justify-end">
 
-                         <x-table.delete-button wire:click="deletePetsitter({{ $petsitter->id }})"  wire:confirm="Êtes-vous sûr de vouloir supprimer {{ $petsitter->first_name }} {{ $petsitter->last_name }} ?" />
+                            <flux:button
+                                variant="danger"
+                                size="sm"
+                                wire:click="deletePetsitter({{ $petsitter->id }})"
+                                wire:confirm="Êtes-vous sûr de vouloir supprimer {{ $petsitter->first_name }} {{ $petsitter->last_name }} ?"
+                            >
+                                Supprimer
+                            </flux:button>
+
                         </div>
 
-                </x-table.table-data>
+                    </flux:table.cell>
 
-            </tr>
+                </flux:table.row>
 
-        @empty
+            @empty
 
-            <tr>
+                <flux:table.row>
 
-                <td colspan="7" class="bg-white p-3 text-center">
-                    Pas de petsitter trouvés
-                </td>
+                    <flux:table.cell colspan="6" class="text-center py-8">
+                        Aucun petsitter trouvé.
+                    </flux:table.cell>
 
-            </tr>
-        @endforelse
+                </flux:table.row>
 
-        </tbody>
+            @endforelse
 
-    </table>
-    <div class="mt-12 flex justify-center">
-        {{ $petsitters->links(data: ['scrollTo' => false]) }}
-    </div>
+        </flux:table.rows>
+
+    </flux:table>
 
 </div>

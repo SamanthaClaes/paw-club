@@ -21,16 +21,16 @@
 
     x-cloak
     class="rounded-2xl
-    backdrop:bg-black/50
-    w-full
-    max-w-2xl
-    shadow-xl
-    fixed
-    top-1/2
-    left-1/2
-    -translate-x-1/2
-    -translate-y-1/2
-    m-0"
+           backdrop:bg-black/60
+           w-full
+           max-w-2xl
+           shadow-xl
+           fixed
+           top-1/2
+           left-1/2
+           -translate-x-1/2
+           -translate-y-1/2
+           m-0"
 >
 
     <div
@@ -40,7 +40,7 @@
             open = false;
             $el.closest('dialog').close();
         "
-        class="bg-white rounded-2xl p-8 relative"
+        class="bg-white dark:bg-slate-800 rounded-2xl p-8 relative"
     >
 
         <button
@@ -49,29 +49,47 @@
                 open = false;
                 $el.closest('dialog').close();
             "
-            class="absolute top-4 right-4 text-3xl text-text hover:text-red-500 transition cursor-pointer"
+            class="absolute top-4 right-4 text-3xl text-text dark:text-white hover:text-red-500 transition cursor-pointer"
         >
             ×
         </button>
 
-        <h2 class="text-2xl font-extrabold text-text uppercase mb-6">
+        <h2 class="text-2xl font-extrabold text-text dark:text-white uppercase mb-6">
             {{ __('ownerModale.title') }}
         </h2>
-        <p class="text-text text-lg mb-10">
+
+        <p class="text-text dark:text-gray-200 text-lg mb-10">
             {{ __('ownerModale.firstName') }} :
-            <span class="text-text font-bold">{{ $selectedOwner?->first_name }}</span>
+            <span class="font-bold">
+                {{ $selectedOwner?->first_name }}
+            </span>
         </p>
-        <p class="text-text text-lg mb-10">
+
+        <p class="text-text dark:text-gray-200 text-lg mb-10">
             {{ __('ownerModale.lastName') }} :
-            <span class="text-text font-bold"> {{ $selectedOwner?->last_name }}</span>
+            <span class="font-bold">
+                {{ $selectedOwner?->last_name }}
+            </span>
         </p>
-        <p class="text-text text-lg mb-10">
+
+        <p class="text-text dark:text-gray-200 text-lg mb-10">
             {{ __('ownerModale.email') }} :
-            <a href="mailto:{{ $selectedOwner?->email }}" class="font-bold underline">{{ $selectedOwner?->email }}</a>
+            <a
+                href="mailto:{{ $selectedOwner?->email }}"
+                class="font-bold underline hover:text-hover dark:text-cyan-300 dark:hover:text-cyan-200"
+            >
+                {{ $selectedOwner?->email }}
+            </a>
         </p>
-        <p class="text-text text-lg mb-10">
+
+        <p class="text-text dark:text-gray-200 text-lg mb-10">
             {{ __('ownerModale.phone') }} :
-            <a href="tel:{{ $selectedOwner?->phone }}" class="font-bold underline">{{ $selectedOwner?->phone }}</a>
+            <a
+                href="tel:{{ $selectedOwner?->phone }}"
+                class="font-bold underline hover:text-hover dark:text-cyan-300 dark:hover:text-cyan-200"
+            >
+                {{ $selectedOwner?->phone }}
+            </a>
         </p>
 
         <div class="flex justify-end gap-4">
@@ -80,10 +98,13 @@
                 type="button"
                 @click="
                     open = false;
-
                     $el.closest('dialog').close();
                 "
-                class="border-2 border-gray-300 px-6 py-3 rounded-lg font-bold uppercase hover:bg-gray-100 transition cursor-pointer"
+                class="border-2 border-gray-300 dark:border-slate-600
+                       px-6 py-3 rounded-lg font-bold uppercase
+                       text-text dark:text-white
+                       hover:bg-gray-100 dark:hover:bg-slate-700
+                       transition cursor-pointer"
             >
                 {{ __('ownerModale.close') }}
             </button>

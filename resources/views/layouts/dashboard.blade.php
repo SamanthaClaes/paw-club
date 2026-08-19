@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +9,23 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @livewireStyles
+    @fluxAppearance
 </head>
+
+<body class="bg-background text-text dark:bg-slate-900 dark:text-white">
+
 <h1 class="sr-only">{{ __('ui.admin_pages') }}</h1>
+
 <header>
     <x-header.sideBar/>
 </header>
-<body class="dark:bg-gray-700">
+
 <main class="md:ml-90 p-4">
     {{ $slot }}
 </main>
+
 @livewireScripts
+@fluxScripts
+
 </body>
+</html>

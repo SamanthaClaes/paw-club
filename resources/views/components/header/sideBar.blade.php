@@ -6,19 +6,19 @@
     </svg>
 </label>
 <nav
-    class="fixed top-0 left-0 z-40 w-90 min-h-screen bg-element dark:bg-gray-600 transform -translate-x-full peer-checked:translate-x-0 transition-transform md:translate-x-0"
+    class="fixed top-0 left-0 z-40 w-90 min-h-screen bg-element dark:bg-blue-950 transform -translate-x-full peer-checked:translate-x-0 transition-transform md:translate-x-0"
     aria-label="Sidebar">
     <h1 class="sr-only">{{ __('ui.dashboard_navigation') }}</h1>
     <div class="h-full px-3 py-4">
         <ul class="flex flex-col items-center gap-12">
             <li class="flex justify-center">
                 <a href="/">
-                <x-svg.logo/>
+                    <x-svg.logo/>
                 </a>
             </li>
             <li class="w-full">
                 <a href="{{ route('dashboard.index') }}"
-                   class="flex items-center p-2 w-full rounded-lg dark:text-white hover:bg-white dark:hover:bg-gray-700 group font-text   ">
+                   class="flex items-center p-2 w-full rounded-lg dark:text-white hover:bg-white dark:hover:bg-slate-700 group font-text   ">
                     <x-svg.icons.dashboard/>
                     <span class="ms-3">{{ __('sideBar.dashboard') }}</span>
                 </a>
@@ -60,6 +60,17 @@
                         <span class="ms-3"> {{ __('sideBar.logout') }}</span>
                     </button>
                 </form>
+            </li>
+            <li>
+                <flux:radio.group
+                    x-data
+                    x-model="$flux.appearance"
+                    variant="segmented"
+                >
+                    <flux:radio value="light" icon="sun" />
+                    <flux:radio value="dark" icon="moon" />
+                    <flux:radio value="system" icon="computer-desktop" />
+                </flux:radio.group>
             </li>
         </ul>
     </div>

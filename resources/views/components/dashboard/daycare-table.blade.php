@@ -1,105 +1,117 @@
-@props([
-    'title',
-    'requests',
-
-])
-@php
-use Carbon\Carbon
- @endphp
-
 <section class="md:ml-25 mb-6">
-
-    <h2 class="text-xl mt-6 font-bold text-text md:text-2xl md:mt-20">
+    <h2 class="text-xl mt-6 font-bold text-text dark:text-white md:text-2xl md:mt-20">
         {{ $title }}
     </h2>
-
 </section>
+
 <div class="ml-25">
+
     <div class="w-1/2 mb-6">
-        <x-search.search
-            search="search"
-        />
+        <x-search.search search="search"/>
     </div>
-    <table class="min-w-full border dark:border-none">
 
-        <thead class="bg-element">
+    <div class="overflow-hidden rounded-2xl border-2 border-stroke shadow-sm p-5 bg-card dark:bg-blue-950 dark:border-blue-800">
 
-        <tr class="bg-background border-b">
+        <flux:table :paginate="$requests">
 
-            <th class="border-r py-2" wire:click="sortCurrentWeek('pet_name')"><div class="flex items-center justify-center gap-2 cursor-pointer">
-                    <span>Nom</span>
-                    <x-svg.icons.sort/>
-                </div>
-            </th>
+            <flux:table.columns>
 
-            <th class="border-r">Race</th>
+                <flux:table.column
+                    sortable
+                    wire:click="sortCurrentWeek('pet_name')"
+                >
+                    Nom
+                </flux:table.column>
 
-            <th class="border-r">Genre</th>
+                <flux:table.column>
+                    Race
+                </flux:table.column>
 
-            <th class="border-r">Date de garde</th>
+                <flux:table.column>
+                    Genre
+                </flux:table.column>
 
-            <th class="border-r">Fiche du propriétaire</th>
-            <th class="border-r">Action</th>
+                <flux:table.column>
+                    Date de garde
+                </flux:table.column>
 
-        </tr>
+                <flux:table.column>
+                    Propriétaire
+                </flux:table.column>
 
-        </thead>
+                <flux:table.column align="end">
+                    Actions
+                </flux:table.column>
 
-        <tbody>
+            </flux:table.columns>
 
-        @forelse($requests as $request)
+            <flux:table.rows>
 
-            <tr>
+                @forelse($requests as $request)
 
-                <x-table.table-data>
-                    {{ $request->pet?->name }}
-                </x-table.table-data>
+                    <flux:table.row>
 
-                <x-table.table-data>
-                    {{ __('breed.' . $request->pet?->breed?->name) }}
-                </x-table.table-data>
+                        <flux:table.cell variant="strong">
+                            {{ $request->pet?->name }}
+                        </flux:table.cell>
 
-                <x-table.table-data>
-                    {{ $request->pet?->gender ? 'Mâle' : 'Femelle' }}
-                </x-table.table-data>
+                        <flux:table.cell>
+                            {{ __('breed.' . $request->pet?->breed?->name) }}
+                        </flux:table.cell>
 
-                <x-table.table-data>
-                    {{ Carbon::parse($request->start_date)->format('d/m/Y') }}
-                    -
-                    {{ Carbon::parse($request->end_date)->format('d/m/Y') }}
-                </x-table.table-data>
+                        <flux:table.cell>
+                            {{ $request->pet?->gender ? 'Mâle' : 'Femelle' }}
+                        </flux:table.cell>
 
-                <x-table.table-data>
+                        <flux:table.cell>
+                            {{ \Carbon\Carbon::parse($request->start_date)->format('d/m/Y') }}
+                            -
+                            {{ \Carbon\Carbon::parse($request->end_date)->format('d/m/Y') }}
+                        </flux:table.cell>
 
-                    <button
-                        wire:click="$dispatch('open-owner-modal', { userId: {{ $request->user->id }} })"
-                     class="underline cursor-pointer">
-                        Voir la fiche du propriétaire
-                    </button>
+                        <flux:table.cell>
 
-                </x-table.table-data>
-                <x-table.table-data>
-                    <x-table.delete-button wire:click="deleteRequest({{$request->id}})" wire:confirm="Supprimer? "/>
-                </x-table.table-data>
+                            <flux:button
+                                variant="ghost"
+                                size="sm"
+                                wire:click="$dispatch('open-owner-modal', { userId: {{ $request->user->id }} })"
+                            >
+                                Voir la fiche
+                            </flux:button>
 
-            </tr>
+                        </flux:table.cell>
 
-        @empty
+                        <flux:table.cell align="end">
 
-            <tr>
+                            <flux:button
+                                variant="danger"
+                                size="sm"
+                                wire:click="deleteRequest({{ $request->id }})"
+                                wire:confirm="Supprimer ?"
+                            >
+                                Supprimer
+                            </flux:button>
 
-                <td colspan="6" class="bg-white p-3 text-center">
-                    Pas d’animaux trouvés
-                </td>
+                        </flux:table.cell>
 
-            </tr>
+                    </flux:table.row>
 
-        @endforelse
+                @empty
 
-        </tbody>
+                    <flux:table.row>
 
-    </table>
-    <div class="mt-12 flex justify-center">
-    {{ $requests->links(data: ['scrollTo' => false]) }}
+                        <flux:table.cell colspan="6" class="text-center py-8">
+                            Pas d'animaux trouvés.
+                        </flux:table.cell>
+
+                    </flux:table.row>
+
+                @endforelse
+
+            </flux:table.rows>
+
+        </flux:table>
+
     </div>
+
 </div>

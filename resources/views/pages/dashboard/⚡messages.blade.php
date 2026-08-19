@@ -3,6 +3,7 @@
 use App\Models\ContactMessage;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 new #[Layout('layouts::dashboard', ['title' => 'Liste de messages | Paw-club'])]
 class extends Component {

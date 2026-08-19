@@ -4,112 +4,123 @@
     'showReadButton' => false,
 ])
 
-<section class=" mb-6 md:mt-30 text-text text-2xl uppercase font-bold">
-
-    <h2 class="text-xl mt-6 font-bold text-text md:text-2xl md:mt-0 dark:text-white">
-        {{ $title }}
+<section class="mb-6 md:mt-30">
+    <h2 class="text-xl mt-6 font-bold text-text dark:text-white md:text-2xl md:mt-20">
+    {{ $title }}
     </h2>
-
 </section>
 
-<div>
+<div class="overflow-hidden rounded-2xl border-2 border-stroke shadow-sm p-5 bg-card dark:bg-blue-950 dark:border-blue-800">
 
-    <table class="min-w-full border dark:border-none">
 
-        <thead class="bg-element">
+    <flux:table>
 
-        <tr class="bg-background border-b">
+        <flux:table.columns>
 
             @if($showReadButton)
-                <th class="border-r">
+                <flux:table.column>
                     Marquer comme lu
-                </th>
+                </flux:table.column>
             @endif
 
-            <th class="border-r py-2">Nom</th>
+            <flux:table.column>
+                Nom
+            </flux:table.column>
 
-            <th class="border-r">Prénom</th>
+            <flux:table.column>
+                Prénom
+            </flux:table.column>
 
-            <th class="border-r">Email</th>
+            <flux:table.column>
+                Email
+            </flux:table.column>
 
-            <th class="border-r">Message</th>
+            <flux:table.column>
+                Message
+            </flux:table.column>
 
-            <th class="border-r">Actions</th>
+            <flux:table.column align="end">
+                Actions
+            </flux:table.column>
 
-        </tr>
+        </flux:table.columns>
 
-        </thead>
+        <flux:table.rows>
 
-        <tbody>
+            @forelse($messages as $message)
 
-        @forelse($messages as $message)
+                <flux:table.row>
 
-            <tr>
+                    @if($showReadButton)
 
-                @if($showReadButton)
+                        <flux:table.cell>
 
-                    <x-table.table-data>
+                            <flux:button
+                                variant="ghost"
+                                size="sm"
+                                wire:click="markAsRead({{ $message->id }})"
+                            >
+                                Lu
+                            </flux:button>
 
-                        <button
-                            class="cursor-pointer"
-                            wire:click="markAsRead({{ $message->id }})"
-                        >
-                            Lu
-                        </button>
+                        </flux:table.cell>
 
-                    </x-table.table-data>
+                    @endif
 
-                @endif
+                    <flux:table.cell variant="strong">
+                        {{ $message->last_name }}
+                    </flux:table.cell>
 
-                <x-table.table-data>
-                    {{ $message->last_name }}
-                </x-table.table-data>
+                    <flux:table.cell>
+                        {{ $message->first_name }}
+                    </flux:table.cell>
 
-                <x-table.table-data>
-                    {{ $message->first_name }}
-                </x-table.table-data>
+                    <flux:table.cell>
+                        {{ $message->email }}
+                    </flux:table.cell>
 
-                <x-table.table-data>
-                    {{ $message->email }}
-                </x-table.table-data>
+                    <flux:table.cell class="max-w-md">
+                        {{ $message->message }}
+                    </flux:table.cell>
 
-                <x-table.table-data>
-                    {{ $message->message }}
-                </x-table.table-data>
+                    <flux:table.cell>
 
-                <x-table.table-data>
+                        <div class="flex justify-end gap-2">
 
-                    <div class="flex gap-2 justify-center">
+                            <x-table.mail-button :email="$message->email"/>
 
-                        <x-table.mail-button :email="$message->email"/>
+                            <flux:button
+                                variant="danger"
+                                size="sm"
+                                wire:click="deleteMessage({{ $message->id }})"
+                                wire:confirm="Êtes-vous sûr de vouloir supprimer le message ?"
+                            >
+                                Supprimer
+                            </flux:button>
 
-                        <x-table.delete-button
-                            wire:confirm="Etes vous sur de vouloir supprimer le message ?"
-                            wire:click="deleteMessage({{ $message->id }})"
-                        />
+                        </div>
 
-                    </div>
+                    </flux:table.cell>
 
-                </x-table.table-data>
+                </flux:table.row>
 
-            </tr>
+            @empty
 
-        @empty
+                <flux:table.row>
 
-            <tr>
+                    <flux:table.cell
+                        colspan="{{ $showReadButton ? 6 : 5 }}"
+                        class="text-center py-8"
+                    >
+                        Pas de message trouvé.
+                    </flux:table.cell>
 
-                <td colspan="{{ $showReadButton ? 6 : 5 }}"
-                    class="bg-white p-3 text-center"
-                >
-                    Pas de message trouvés
-                </td>
+                </flux:table.row>
 
-            </tr>
+            @endforelse
 
-        @endforelse
+        </flux:table.rows>
 
-        </tbody>
-
-    </table>
+    </flux:table>
 
 </div>

@@ -1,20 +1,49 @@
-@props(
-    [
-        'title',
-        'number',
-        'route',
-]
-)
-<div class="w-full">
-    <a href="{{ $route }}">
-        <div {{ $attributes->merge([ 'class'=>'flex flex-col items-center h-24 rounded-lg transform transition-transform duration-300 ease-in-out hover:scale-105']) }}>
-            <div class=" flex justify-center pt-4">
-                <p class="text-xl md:text-2xl font-bold text-text">{!! $number !!}</p>
-            </div>
-            <div class=" text-sm flex justify-center md:text-xl text-text font-bold uppercase ">
-                {!! $title !!}
-            </div>
-        </div>
-    </a>
-</div>
+@props([
+    'title',
+    'number',
+    'route',
+])
 
+<a href="{{ $route }}" class="block">
+
+    <flux:card
+        variant="soft"
+        {{ $attributes->merge([
+            'class' => '
+                h-full
+                bg-card
+                border-2 border-stroke
+                shadow-sm
+                transition-all duration-300
+                hover:scale-105
+
+                    dark:bg-blue-950
+        dark:border-blue-800
+        dark:shadow-xl
+        dark:hover:bg-blue-900
+            '
+        ]) }}
+    >
+
+        <flux:text class="uppercase font-bold text-text dark:text-white">
+            {{ $title }}
+        </flux:text>
+
+        <flux:heading
+            size="xl"
+            class="mt-2 text-text dark:text-white"
+        >
+            {!! $number !!}
+        </flux:heading>
+
+        <flux:link
+            href="{{ $route }}"
+            variant="subtle"
+            class="mt-4 text-text hover:text-hover dark:text-zinc-300 dark:hover:text-white"
+        >
+            Voir les détails →
+        </flux:link>
+
+    </flux:card>
+
+</a>

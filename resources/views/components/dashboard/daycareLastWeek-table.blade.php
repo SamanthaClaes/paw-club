@@ -1,101 +1,102 @@
-@props([
-    'title',
-    'requests',
-])
-@php
-use Carbon\Carbon
- @endphp
-
 <section class="md:ml-25 mb-6">
 
-    <h2 class="text-xl mt-6 font-bold text-text md:text-2xl md:mt-20">
+    <h2 class="text-xl mt-6 font-bold text-text dark:text-white md:text-2xl md:mt-20">
         {{ $title }}
     </h2>
 
 </section>
+
 <div class="ml-25">
+
     <div class="w-1/2 mb-6">
-        <x-search.search
-            search="lastWeeksearch"
-        />
+        <x-search.search search="lastWeeksearch" />
     </div>
-    <table class="min-w-full border dark:border-none">
 
-        <thead class="bg-element">
+    <div class="overflow-hidden rounded-2xl border-2 border-stroke shadow-sm p-5 bg-card dark:bg-blue-950 dark:border-blue-800">
 
-        <tr class="bg-background border-b">
+        <flux:table :paginate="$requests">
 
-            <th class="border-r py-2" wire:click="sortLastWeek('pet_name')">
-                <div class="flex items-center justify-center gap-2 cursor-pointer">
-                    <span>Nom</span>
-                    <x-svg.icons.sort/>
-                </div>
-            </th>
+            <flux:table.columns>
 
-            <th class="border-r">Race</th>
+                <flux:table.column
+                    sortable
+                    wire:click="sortLastWeek('pet_name')"
+                >
+                    Nom
+                </flux:table.column>
 
-            <th class="border-r">Genre</th>
+                <flux:table.column>
+                    Race
+                </flux:table.column>
 
-            <th class="border-r">Date de garde</th>
+                <flux:table.column>
+                    Genre
+                </flux:table.column>
 
-            <th class="border-r">Fiche du propriétaire</th>
+                <flux:table.column>
+                    Date de garde
+                </flux:table.column>
 
-        </tr>
+                <flux:table.column>
+                    Propriétaire
+                </flux:table.column>
 
-        </thead>
+            </flux:table.columns>
 
-        <tbody>
+            <flux:table.rows>
 
-        @forelse($requests as $request)
+                @forelse($requests as $request)
 
-            <tr>
+                    <flux:table.row>
 
-                <x-table.table-data>
-                    {{ $request->pet?->name }}
-                </x-table.table-data>
+                        <flux:table.cell variant="strong">
+                            {{ $request->pet?->name }}
+                        </flux:table.cell>
 
-                <x-table.table-data>
-                    {{ $request->pet?->breed?->name }}
-                </x-table.table-data>
+                        <flux:table.cell>
+                            {{ $request->pet?->breed?->name }}
+                        </flux:table.cell>
 
-                <x-table.table-data>
-                    {{ $request->pet?->gender ? 'Mâle' : 'Femelle' }}
-                </x-table.table-data>
+                        <flux:table.cell>
+                            {{ $request->pet?->gender ? 'Mâle' : 'Femelle' }}
+                        </flux:table.cell>
 
-                <x-table.table-data>
-                    {{ Carbon::parse($request->start_date)->format('d/m/Y') }}
-                    -
-                    {{ Carbon::parse($request->end_date)->format('d/m/Y') }}
-                </x-table.table-data>
+                        <flux:table.cell>
+                            {{ \Carbon\Carbon::parse($request->start_date)->format('d/m/Y') }}
+                            -
+                            {{ \Carbon\Carbon::parse($request->end_date)->format('d/m/Y') }}
+                        </flux:table.cell>
 
-                <x-table.table-data>
+                        <flux:table.cell>
 
-                    <button
-                        wire:click="$dispatch('open-owner-modal', { userId: {{ $request->user->id }} })"
-                     class="underline cursor-pointer">
-                        Voir la fiche du propriétaire
-                    </button>
+                            <flux:button
+                                variant="ghost"
+                                size="sm"
+                                wire:click="$dispatch('open-owner-modal', { userId: {{ $request->user->id }} })"
+                            >
+                                Voir la fiche
+                            </flux:button>
 
-                </x-table.table-data>
+                        </flux:table.cell>
 
-            </tr>
+                    </flux:table.row>
 
-        @empty
+                @empty
 
-            <tr>
+                    <flux:table.row>
 
-                <td colspan="6" class="bg-white p-3 text-center">
-                    Pas d’animaux trouvés
-                </td>
+                        <flux:table.cell colspan="5" class="text-center py-8">
+                            Pas d'animaux trouvés.
+                        </flux:table.cell>
 
-            </tr>
+                    </flux:table.row>
 
-        @endforelse
+                @endforelse
 
-        </tbody>
+            </flux:table.rows>
 
-    </table>
-    <div class="mt-12 flex justify-center">
-    {{ $requests->links(data: ['scrollTo' => false]) }}
+        </flux:table>
+
     </div>
+
 </div>
