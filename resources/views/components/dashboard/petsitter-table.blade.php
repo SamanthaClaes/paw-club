@@ -1,3 +1,4 @@
+@php use App\Enums\PetsitterActive; @endphp
 @props([
     'title',
     'petsitters',
@@ -9,7 +10,8 @@
     </h2>
 </section>
 
-<div class="overflow-hidden rounded-2xl border-2 border-stroke shadow-sm p-5 bg-card dark:bg-blue-950 dark:border-blue-800">
+<div
+    class="overflow-hidden rounded-2xl border-2 border-stroke shadow-sm p-5 bg-card dark:bg-blue-950 dark:border-blue-800">
 
     <div class="mb-6 w-1/2">
         <x-search.search search="search"/>
@@ -39,6 +41,10 @@
                 Habitation
             </flux:table.column>
 
+            <flux:table.column>
+                Statut
+            </flux:table.column>
+
             <flux:table.column align="end">
                 Actions
             </flux:table.column>
@@ -52,7 +58,13 @@
                 <flux:table.row>
 
                     <flux:table.cell variant="strong">
-                        {{ $petsitter->last_name }}
+                        <button
+                            type="button"
+                            wire:click="showPetsitterStats({{ $petsitter->id }})"
+                            class="font-bold underline hover:text-hover cursor-pointer transition"
+                        >
+                            {{ $petsitter->last_name }}
+                        </button>
                     </flux:table.cell>
 
                     <flux:table.cell>
@@ -72,17 +84,52 @@
                     </flux:table.cell>
 
                     <flux:table.cell>
+                        <flux:badge
+                            :color="$petsitter->petsitter_active === \App\Enums\PetsitterActive::ACTIVE
+            ? 'green'
+            : 'zinc'"
+                        >
+                            {{ $petsitter->petsitter_active === PetsitterActive::ACTIVE
+                                ? 'Actif'
+                                : 'Inactif' }}
+                        </flux:badge>
+                    </flux:table.cell>
+
+                    <flux:table.cell>
 
                         <div class="flex justify-end">
 
-                            <flux:button
-                                variant="danger"
-                                size="sm"
-                                wire:click="deletePetsitter({{ $petsitter->id }})"
-                                wire:confirm="Êtes-vous sûr de vouloir supprimer {{ $petsitter->first_name }} {{ $petsitter->last_name }} ?"
-                            >
-                                Supprimer
-                            </flux:button>
+                            <flux:dropdown position="bottom" align="end">
+
+                                <flux:button
+                                    variant="ghost"
+                                    icon="ellipsis-horizontal"
+                                    aria-label="Actions"
+                                />
+
+                                <flux:menu>
+
+                                    <flux:menu.item
+                                        wire:click="confirmStatusChange({{ $petsitter->id }})"
+                                    >
+                                        {{ $petsitter->petsitter_active === PetsitterActive::ACTIVE
+                                            ? 'Passer en inactif'
+                                            : 'Passer en actif' }}
+                                    </flux:menu.item>
+
+                                    <flux:menu.separator />
+
+                                    <flux:menu.item
+                                        variant="danger"
+                                        wire:click="deletePetsitter({{ $petsitter->id }})"
+                                        wire:confirm="Êtes-vous sûr de vouloir supprimer {{ $petsitter->first_name }} {{ $petsitter->last_name }} ?"
+                                    >
+                                        Supprimer
+                                    </flux:menu.item>
+
+                                </flux:menu>
+
+                            </flux:dropdown>
 
                         </div>
 

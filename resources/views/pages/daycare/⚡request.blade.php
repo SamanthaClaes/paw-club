@@ -1,6 +1,8 @@
 <?php
 
+use App\Enums\ActivityType;
 use App\Enums\DayCareRequestStatus;
+use App\Models\Activity;
 use App\Models\DayCareRequest;
 use App\Models\User;
 use Livewire\Attributes\Computed;
@@ -78,6 +80,14 @@ class extends Component {
         $validated['user_id'] = $this->user->id;
         $validated['status'] = DayCareRequestStatus::PENDING;
         $request = DayCareRequest::create($validated);
+
+        Activity::create([
+            'action' => ActivityType::DAYCARE_REQUEST_CREATED,
+            'user_id' => $this->user->id,
+            'pet_id' => $request->pet_id,
+            'day_care_request_id' => $request->id,
+        ]);
+
         session()->flash('success', __('ui.request_sent'));
         $this->reset([
             'image',
@@ -131,60 +141,61 @@ class extends Component {
             </div>
         </div>
     @else
-    <form wire:submit="store" class="w-8/10 mx-auto" enctype="multipart/form-data">
-        <div class="flex gap-6">
-            <x-forms.select-option wire:model.live="pet_id" label="{{ __('formDaycare.nameAndBreed') }}" name="pet_id">
-                <option value="">{{ __('formDaycare.chooseAnimal') }}</option>
-                @foreach( $this->pets as $pet)
-                    <option value="{{ $pet->id }}">
-                        {{ $pet->name }} - {{ __( 'breed.' . $pet->breed?->name)}}
-                    </option>
-                @endforeach
-            </x-forms.select-option>
-            @if($this->selectedAnimal)
+        <form wire:submit="store" class="w-8/10 mx-auto" enctype="multipart/form-data">
+            <div class="flex gap-6">
+                <x-forms.select-option wire:model.live="pet_id" label="{{ __('formDaycare.nameAndBreed') }}"
+                                       name="pet_id">
+                    <option value="">{{ __('formDaycare.chooseAnimal') }}</option>
+                    @foreach( $this->pets as $pet)
+                        <option value="{{ $pet->id }}">
+                            {{ $pet->name }} - {{ __( 'breed.' . $pet->breed?->name)}}
+                        </option>
+                    @endforeach
+                </x-forms.select-option>
+                @if($this->selectedAnimal)
 
-                <div>
+                    <div>
                         <span
                             class="block text-sm  text-text uppercase font-bold mb-1">{{ __('formDaycare.animalPicture') }}
                         </span>
-                    <div>
-                    <img
-                        src="{{ $this->selectedAnimal->getImageUrl(800) }}"
-                        srcset="
+                        <div>
+                            <img
+                                src="{{ $this->selectedAnimal->getImageUrl(800) }}"
+                                srcset="
         {{ $this->selectedAnimal->getImageUrl(400) }} 400w,
         {{ $this->selectedAnimal->getImageUrl(800) }} 800w,
         {{ $this->selectedAnimal->getImageUrl(1200) }} 1200w
     "
-                        sizes="(max-width: 768px) 100vw, 320px"
-                        alt="{{ $this->selectedAnimal->name }}"
-                        class="w-80 h-80 object-cover rounded-2xl"
-                    >
+                                sizes="(max-width: 768px) 100vw, 320px"
+                                alt="{{ $this->selectedAnimal->name }}"
+                                class="w-80 h-80 object-cover rounded-2xl"
+                            >
+                        </div>
                     </div>
-                </div>
 
-            @endif
-        </div>
-        <div class="flex gap-6">
-            <x-forms.input-label type="date" wire:model="start_date" name="start_date"
-                                 label="{{ __('formDaycare.startDate') }}"/>
-            <x-forms.input-label type="date" wire:model="end_date" name="end_date"
-                                 label="{{ __('formDaycare.endDate') }}"/>
-        </div>
-        <div>
-            <label for="infos" class="text-text font-bold uppercase">{{ __('formDaycare.infos') }}</label>
-            <textarea wire:model="infos" name="infos" id="infos" cols="30" rows="10"
-                      class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none"></textarea>
-        </div>
-        <div>
-            <x-forms.button>
-                {{ __('formDaycare.sent') }}
-            </x-forms.button>
-        </div>
-    </form>
+                @endif
+            </div>
+            <div class="flex gap-6">
+                <x-forms.input-label type="date" wire:model="start_date" name="start_date"
+                                     label="{{ __('formDaycare.startDate') }}"/>
+                <x-forms.input-label type="date" wire:model="end_date" name="end_date"
+                                     label="{{ __('formDaycare.endDate') }}"/>
+            </div>
+            <div>
+                <label for="infos" class="text-text font-bold uppercase">{{ __('formDaycare.infos') }}</label>
+                <textarea wire:model="infos" name="infos" id="infos" cols="30" rows="10"
+                          class="w-full border-2 border-element rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-background resize-none"></textarea>
+            </div>
+            <div>
+                <x-forms.button>
+                    {{ __('formDaycare.sent') }}
+                </x-forms.button>
+            </div>
+        </form>
     @endif
     <div class="w-1/2 mx-auto mb-6">
-    @if( session('success'))
-        <x-message_success/>
-    @endif
+        @if( session('success'))
+            <x-message_success/>
+        @endif
     </div>
 </div>

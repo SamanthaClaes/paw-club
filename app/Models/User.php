@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\enum\UserRole;
+use App\Enums\PetsitterActive;
+use App\Enums\PetsitterStatus;
 use Auth;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -16,7 +18,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
 
-#[Fillable(['last_name', 'first_name', 'email', 'password', 'role', 'phone', 'adress', 'zip', 'image', 'location', 'description', 'habitation_id', 'petsitter_status', 'is_petsitter', 'price'])]
+#[Fillable(['last_name', 'first_name', 'email', 'password', 'role', 'phone', 'adress', 'zip', 'image', 'location', 'description', 'habitation_id', 'petsitter_status', 'is_petsitter', 'price', 'petsitter_active'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -34,6 +36,8 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'role'=> UserRole::class,
+            'petsitter_status' => PetsitterStatus::class,
+            'petsitter_active'=>PetsitterActive::class,
         ];
     }
 

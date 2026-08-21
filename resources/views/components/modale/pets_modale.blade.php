@@ -9,9 +9,8 @@
 <dialog
     wire:ignore.self
     x-data="{ open: false }"
-    x-on:-pets-modalopen.window="
+    x-on:open-pets-modal.window="
         open = true;
-        document.body.classList.add('overflow-hidden');
         $el.showModal();
     "
     x-on:close="

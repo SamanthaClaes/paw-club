@@ -1,6 +1,8 @@
 <?php
 
+use App\Enums\ActivityType;
 use App\Jobs\ProcessImageJob;
+use App\Models\Activity;
 use App\Models\AnimalType;
 use App\Models\Pet;
 use App\Models\User;
@@ -18,7 +20,6 @@ class extends Component {
     public $pets;
     public $animalTypes = [];
     public $breeds = [];
-    public User $owner;
     public $name;
     public $description;
     public $pet_image = null;
@@ -30,8 +31,7 @@ class extends Component {
 
     public function mount(): void
     {
-        $this->owner = Auth::user();
-        $this->pets = $this->owner
+            $this->pets = auth()->user()
             ->pets()
             ->with([
                 'breed',
@@ -54,7 +54,7 @@ class extends Component {
             'breed_id' => 'nullable|exists:breeds,id',
         ]);
 
-        $validated['user_id'] = $this->owner->id;
+        $validated['user_id'] = auth()->id();
 
         if ($this->pet_image) {
 
@@ -66,16 +66,15 @@ class extends Component {
                 's3'
             );
 
-           ProcessImageJob::dispatchSync(
+            ProcessImageJob::dispatchSync(
                 $fileName,
                 $path
             );
 
             $validated['pet_image'] = $path;
         }
-
-        Pet::create($validated);
-        $this->pets = $this->owner
+        $pet = Pet::create($validated);
+        $this->pets = auth()->user()
             ->fresh()
             ->pets()
             ->with([
@@ -83,7 +82,6 @@ class extends Component {
                 'animalType',
             ])
             ->get();
-
 
         $this->reset([
             'name',
@@ -94,6 +92,7 @@ class extends Component {
             'breed_id',
             'gender',
         ]);
+
         $this->dispatch('reset-breed-search');
         $this->dispatch('pet-created');
     }
@@ -101,7 +100,7 @@ class extends Component {
     #[On('update-dog')]
     public function refreshPets(): void
     {
-        $this->pets = $this->owner
+        $this->pets = auth()->user()
             ->fresh()
             ->pets()
             ->with([
@@ -113,12 +112,12 @@ class extends Component {
 
     public function delete($petId): void
     {
-        $pet = $this->owner
+        $pet = auth()->user()
             ->pets()
             ->findOrFail($petId);
         $this->name = $pet->name;
         $pet->delete();
-        $this->pets = $this->owner
+        $this->pets = auth()->user()
             ->fresh()
             ->pets()
             ->with([
@@ -129,13 +128,14 @@ class extends Component {
         $this->dispatch('dog-deleted');
 
     }
+
     public function validationAttributes(): array
     {
         return [
             'name' => strtolower(__('petModal.animalName')),
             'gender' => strtolower(__('petModal.gender')),
             'birth_date' => strtolower(__('petModal.birthDate')),
-            'animal_type_id'=> strtolower(__('petModal.animalType')),
+            'animal_type_id' => strtolower(__('petModal.animalType')),
         ];
     }
 };

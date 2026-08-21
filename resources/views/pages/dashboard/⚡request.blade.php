@@ -1,7 +1,9 @@
 <?php
 
+use App\Enums\ActivityType;
 use App\Enums\DayCareRequestStatus;
 use App\Mail\PetsitterAcceptedMail;
+use App\Models\Activity;
 use App\Models\DayCareRequest;
 use App\Models\User;
 use Carbon\Carbon;
@@ -44,6 +46,13 @@ class extends Component {
 
         $request->save();
 
+        Activity::create([
+            'action' => ActivityType::DAYCARE_REQUEST_ACCEPTED,
+            'user_id' => auth()->id(),
+            'pet_id' => $request->pet_id,
+            'day_care_request_id' => $request->id,
+        ]);
+
         $this->loadPendingRequests();
 
     }
@@ -53,6 +62,13 @@ class extends Component {
         $request = DayCareRequest::findOrFail($requestId);
 
         $request->status = DayCareRequestStatus::REFUSED;
+
+        Activity::create([
+            'action' => ActivityType::DAYCARE_REQUEST_REFUSED,
+            'user_id' => auth()->id(),
+            'pet_id' => $request->pet_id,
+            'day_care_request_id' => $request->id,
+        ]);
 
         $request->save();
 

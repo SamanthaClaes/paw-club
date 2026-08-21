@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('petsitter_status')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('petsitter_active')->default('active')->after('petsitter_status');
             $table->rememberToken();
             $table->timestamps();
         });

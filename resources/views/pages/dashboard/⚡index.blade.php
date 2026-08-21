@@ -1,6 +1,8 @@
 <?php
 
 use App\Enums\DayCareRequestStatus;
+use App\Enums\PetsitterStatus;
+use App\Models\Activity;
 use App\Models\ContactMessage;
 use App\Models\DayCareRequest;
 use App\Models\Pet;
@@ -49,6 +51,7 @@ class extends Component {
             pageName: 'currentWeekPage'
         );
     }
+
     public function sortCurrentWeek($column)
     {
         if ($this->currentWeekSortBy === $column) {
@@ -59,6 +62,7 @@ class extends Component {
             $this->currentWeekSortDirection = 'asc';
         }
     }
+
     public function sortLastWeek($column)
     {
         if ($this->lastWeekSortBy === $column) {
@@ -151,11 +155,30 @@ class extends Component {
         $request = DayCareRequest::findOrFail($requestId);
         $request->delete();
     }
+
+    #[Computed]
+    public function latestActivities()
+    {
+        return Activity::with('pet')
+            ->latest()
+            ->take(10)
+            ->get();
+    }
+
+    #[Computed]
+    public function petsitterRequestPending()
+    {
+        return User::where('is_petsitter', true)
+            ->where('petsitter_status', PetsitterStatus::PENDING)
+            ->count();
+    }
+
+
 };
 ?>
 
 <div>
-    <div class=" mt-20 mb-20 md:ml-25 grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class=" mt-20 mb-20 md:ml-25 grid grid-cols-1 md:grid-cols-4 gap-4">
         <div>
             <x-cards.dashboard_card :number="$this->petsCount" title="Chiens présents"
                                     route="{{ 'dashboard/dogs' }}" class="bg-element"/>
@@ -168,6 +191,15 @@ class extends Component {
             <x-cards.dashboard_card :number="$this->unreadMessageCount" title="Messages non lus"
                                     route="{{ 'dashboard/messages' }}" class="bg-element"/>
         </div>
+        <div>
+            <x-cards.dashboard_card :number="$this->petsitterRequestPending" title="Demandes de petsitters"
+                                    route="{{ 'dashboard/petsitters' }}" class="bg-element"/>
+        </div>
+    </div>
+    <div>
+        <x-dashboard.activities
+            :activities="$this->latestActivities"
+        />
     </div>
     <div>
         <x-dashboard.daycare-table

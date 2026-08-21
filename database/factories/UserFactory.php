@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enum\UserRole;
+use App\Enums\PetsitterActive;
 use App\Enums\PetsitterStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -34,6 +35,7 @@ class UserFactory extends Factory
         'role' => null,
         'is_petsitter' => true,
         'petsitter_status' => PetsitterStatus::ACCEPTED,
+        'petsitter_active'=> PetsitterActive::ACTIVE,
         'description' => $this->faker->paragraph(),
     ]);
 }

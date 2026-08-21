@@ -97,6 +97,7 @@
                                 variant="primary"
                                 size="sm"
                                 wire:click="acceptPetsitterRequest({{ $petsitter->id }})"
+                                class="bg-btn-green hover:bg-hover-green text-white"
                             >
                                 Accepter
                             </flux:button>
