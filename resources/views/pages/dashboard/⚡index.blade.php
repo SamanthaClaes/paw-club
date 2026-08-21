@@ -193,7 +193,7 @@ class extends Component {
         </div>
         <div>
             <x-cards.dashboard_card :number="$this->petsitterRequestPending" title="Demandes de petsitters"
-                                    route="{{ 'dashboard/petsitters' }}" class="bg-element"/>
+                                    route="{{ 'dashboard/petsitter' }}" class="bg-element"/>
         </div>
     </div>
     <div>
