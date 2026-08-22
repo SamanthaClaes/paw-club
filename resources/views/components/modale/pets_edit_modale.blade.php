@@ -70,6 +70,7 @@
                 wire:model="pet_image"
                 label="Image de l’animal"
                 type="file"
+                accept=".jpg,.jpeg,.webp"
             />
             <x-forms.input-label
                 wire:model="name"

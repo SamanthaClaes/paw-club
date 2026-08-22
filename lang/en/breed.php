@@ -34,6 +34,7 @@ return
     'pomeranian' => 'Pomeranian',
     'shetland_sheepdog' => 'Shetland Sheepdog',
     'other' => 'Other',
+
     'maine_coon' => 'Maine Coon',
     'siamese' => 'Siamese',
     'persian' => 'Persian',
@@ -45,6 +46,7 @@ return
     'sphynx' => 'Sphynx',
     'chartreux' => 'Chartreux',
     'oriental_shorthair' => 'Oriental Shorthair',
+
     'devon_rex' => 'Devon Rex',
     'cornish_rex' => 'Cornish Rex',
     'abyssinian' => 'Abyssinian',
@@ -54,6 +56,7 @@ return
     'savannah' => 'Savannah',
     'exotic_shorthair' => 'Exotic Shorthair',
     'burmese' => 'Burmese',
+
     'dutch_lop' => 'Dutch Lop',
     'dwarf_rabbit' => 'Dwarf Rabbit',
     'rex_rabbit' => 'Rex Rabbit',

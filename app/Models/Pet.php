@@ -62,7 +62,15 @@ class Pet extends Model
     public function getImageUrl(int $size = 400): ?string
     {
         if (!$this->pet_image) {
-            return asset('img/default-pet.jpg');
+            return match ($this->animalType?->type) {
+                'dog' => asset('img/animals/default-dog.jpg'),
+                'cat' => asset('img/animals/default-cat.jpg'),
+                'rabbit' => asset('img/animals/default-rabbit.jpg'),
+                'ferret' => asset('img/animals/default-ferret.jpg'),
+                'snake' => asset('img/animals/default-snake.jpg'),
+                'hamster' => asset('img/animals/default-hamster.jpg'),
+                default => asset('img/animals/default-pet.jpg'),
+            };
         }
 
         $fileName = basename($this->pet_image);

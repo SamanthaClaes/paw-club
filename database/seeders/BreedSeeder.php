@@ -230,20 +230,6 @@ class BreedSeeder extends Seeder
             // LAPINS
             [
                 'animal_type_id' => 3,
-                'name' => 'Bélier Hollandais',
-            ],
-            [
-                'animal_type_id' => 3,
-                'name' => 'Lapin Nain',
-            ],
-            [
-                'animal_type_id' => 3,
-                'name' => 'Rex',
-            ],
-
-            // LAPINS
-            [
-                'animal_type_id' => 3,
                 'name' => 'dutch_lop',
             ],
             [

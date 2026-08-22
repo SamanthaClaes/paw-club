@@ -151,7 +151,7 @@ public function updateData(): void
 {
     $validated = $this->validate([
         'email' => 'required|email',
-        'image' => 'image|nullable|max:10240',
+        'image' => 'image|nullable|mimes:jpg,jpeg,webp|max:10240',
         'adress' => 'required|string',
         'phone' => 'nullable',
     ]);

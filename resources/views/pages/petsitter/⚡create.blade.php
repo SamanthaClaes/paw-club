@@ -55,7 +55,7 @@ class extends Component {
             'last_name' => 'required|string',
             'first_name' => 'required|string',
             'email' => 'required|email|unique:users,email',
-            'image' => 'image|nullable|max:10240',
+            'image' => 'image|nullable|mimes:jpg,jpeg,webp|max:10240',
             'phone' => 'required|string',
             'adress' => 'required|string',
             'zip' => 'required|integer|max_digits:5',
@@ -123,7 +123,7 @@ class extends Component {
                      alt="Prévisualisation">
             @endif
             <div>
-                <x-forms.input-label type="file" name="image" label="{{ __('petsitterCreateForm.picture') }}"
+                <x-forms.input-label type="file" accept=".jpg,.jpeg,.webp" name="image" label="{{ __('petsitterCreateForm.picture') }}"
                                      wire:model="image"/>
             </div>
             <div class="flex gap-6 justify-between">

@@ -65,6 +65,7 @@
                 label="Image"
                 name="image"
                 type="file"
+                accept=".jpg,.jpeg,.webp"
             />
 
             <x-forms.input-label

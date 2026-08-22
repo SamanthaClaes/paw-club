@@ -69,6 +69,7 @@
                 label="{{ __('petModal.animalPicture') }}"
                 name="pet_image"
                 type="file"
+                accept=".jpg,.jpeg,.webp"
             />
 
             <x-forms.input-label
