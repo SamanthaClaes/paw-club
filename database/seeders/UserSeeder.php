@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\enum\UserRole;
+use App\Enums\PetsitterStatus;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,7 +15,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-     $sophie =   User::create([
+        $sophie = User::create([
             'last_name' => 'Dubois',
             'first_name' => 'Sophie',
             'email' => 'sophie.dubois@example.be',
@@ -25,12 +26,12 @@ class UserSeeder extends Seeder
             'location' => 'Namur',
             'habitation_id' => 1,
             'role' => null,
-            'is_petsitter'=>false,
+            'is_petsitter' => false,
             'image' => null,
 
         ]);
 
-      $thomas =  User::create([
+        $thomas = User::create([
             'last_name' => 'Lambert',
             'first_name' => 'Thomas',
             'email' => 'thomas.lambert@example.be',
@@ -41,8 +42,9 @@ class UserSeeder extends Seeder
             'location' => 'Liège',
             'habitation_id' => 2,
             'role' => null,
-            'is_petsitter'=>true,
+            'is_petsitter' => true,
             'image' => null,
+            'petsitter_status' => PetsitterStatus::ACCEPTED,
         ]);
         $thomas->pets()->create([
             'name' => 'Milo',

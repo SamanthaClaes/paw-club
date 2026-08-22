@@ -12,7 +12,7 @@
 
     <div class="overflow-hidden rounded-2xl border-2 border-stroke shadow-sm p-5 bg-card dark:bg-blue-950 dark:border-blue-800">
 
-        <flux:table :paginate="$requests">
+        <flux:table :paginate="$this->currentWeekRequests">
 
             <flux:table.columns>
 

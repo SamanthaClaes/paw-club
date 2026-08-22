@@ -3,7 +3,7 @@
         {{ __('petsitterNav.title') }}
     </h1>
 
-    <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-20">
+    <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-6 mb-20">
         @if( !Auth::user()->is_petsitter)
         <li>
             <a
@@ -15,15 +15,17 @@
             </a>
         </li>
         @endif
-        <li>
-            <a
-                href="{{ route('user.history') }}"
-                class="block text-center border-2 border-stroke py-2 rounded-lg transition
-                {{ request()->routeIs('user.history') ? 'bg-stroke text-white font-bold' : '' }}"
-            >
-                {{ __('petsitterNav.history') }}
-            </a>
-        </li>
+            <li>
+                <a
+                    href="{{ Auth::user()->is_petsitter
+            ? route('petsitter.history')
+            : route('user.history') }}"
+                    class="block text-center border-2 border-stroke py-2 rounded-lg transition
+        {{ request()->routeIs('user.history', 'petsitter.history') ? 'bg-stroke text-white font-bold' : '' }}"
+                >
+                    {{ __('petsitterNav.history') }}
+                </a>
+            </li>
             <li>
                 <a
                     href="{{ route('user.favorites') }}"

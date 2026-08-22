@@ -269,7 +269,7 @@ class extends Component {
 
 <div class="max-w-7xl mx-auto px-6 pb-20">
 
-    <x-header.PetsitterNav/>
+    <x-header.UserNav/>
 
     <section class="mt-10">
 
@@ -287,7 +287,11 @@ class extends Component {
 
                 @forelse($receivedModificationRequests as $request)
 
-                    <x-cards.petsitting-request :request="$request" viewer="owner" variant="modification-received" />
+                    <x-cards.petsitting-request
+                        :request="$request"
+                        viewer="petsitter"
+                        variant="request"
+                    />
 
                 @empty
 

@@ -46,7 +46,7 @@ class extends Component {
     {
         $validated = $this->validate([
             'name' => 'required|string',
-            'birth_date' => 'required|date|before_or_equal:today',
+            'birth_date' => 'required|date|before_or_equal:today|after_or_equal:' . now()->subYears(30)->toDateString()'',
             'pet_image' => 'image|nullable|max:10240',
             'description' => 'nullable|string',
             'gender' => 'required|boolean',
@@ -162,6 +162,7 @@ class extends Component {
                 :description="$pet->description"
                 :pet-image="$pet->pet_image"
                 :gender="$pet->gender"
+                :animal-type="$pet->animalType"
             />
             <x-modale.pets_delete_modale
                 :pet-id="$pet->id"

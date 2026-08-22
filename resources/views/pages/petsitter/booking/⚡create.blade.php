@@ -6,6 +6,7 @@ use App\Jobs\ProcessImageJob;
 use App\Mail\PetsitterRequestMail;
 use App\Models\PetSittingRequest;
 use App\Models\User;
+use Carbon\Carbon;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -52,7 +53,7 @@ class extends Component {
         return [
             'start_date' => strtolower(__('formDaycare.startDate')),
             'end_date' => strtolower(__('formDaycare.endDate')),
-            'pet_id'=> strtolower('animal'),
+            'pet_id' => strtolower('animal'),
         ];
     }
 
@@ -60,8 +61,8 @@ class extends Component {
     {
         $validated = $this->validate([
             'image' => 'image|nullable|max:10240',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after:start_date',
+            'start_date' => 'required|date|after_or_equal:today|before_or_equal:' . now()->addMonth()->toDateString(),
+            'end_date' => 'required|date|after:start_date|before_or_equal:' . Carbon::parse($this->start_date)->addMonth()->toDateString(),
             'description' => 'nullable|string',
             'pet_id' => 'required|exists:pets,id',
         ]);

@@ -13,9 +13,12 @@ use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 new #[Layout('layouts::dashboard', ['title' => 'Dashboard | Paw-club'])]
 class extends Component {
+    use WithPagination;
+
     public $selectedOwner = null;
     public $search = '';
     public string $currentWeekSortBy = '';

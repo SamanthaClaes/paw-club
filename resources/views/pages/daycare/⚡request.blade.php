@@ -5,6 +5,7 @@ use App\Enums\DayCareRequestStatus;
 use App\Models\Activity;
 use App\Models\DayCareRequest;
 use App\Models\User;
+use Carbon\Carbon;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -56,8 +57,8 @@ class extends Component {
             'image' => 'nullable|image',
             'infos' => 'nullable|string',
             'pet_id' => 'required|exists:pets,id',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after:start_date',
+            'start_date' => 'required|date|after_or_equal:today|before_or_equal:' . now()->addMonth()->toDateString(),
+            'end_date' => 'required|date|after:start_date|before_or_equal:' . Carbon::parse($this->start_date)->addMonth()->toDateString(),
         ]);
         $pet = $this->user
             ->pets()

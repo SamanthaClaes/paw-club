@@ -18,8 +18,26 @@ document.addEventListener('livewire:navigated', () => {
 
             dayMaxEvents: 2,
 
+            eventClick: function(info) {
+
+                Livewire.dispatch('open-petsitting-event', {
+                    requestId: info.event.id
+                });
+
+            },
+
         });
 
         calendar.render();
+
+        Livewire.on('remove-calendar-event', ({ requestId }) => {
+
+            const event = calendar.getEventById(String(requestId));
+
+            if (event) {
+                event.remove();
+            }
+
+        });
     }
 });

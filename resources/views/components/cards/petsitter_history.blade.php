@@ -66,7 +66,7 @@
                             </p>
 
                             <p class="text-base font-bold">
-                                {{ $request->pet->animalType?->type }}
+                                {{ ucfirst(__( 'animalTypes.' . $request->pet->animalType?->type))  }}
                             </p>
                         </div>
 

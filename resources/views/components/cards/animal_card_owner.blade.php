@@ -11,6 +11,7 @@
     'petId',
     'gender',
     'pet',
+    'animalTypes',
 ])
 
 <section class="border-5 border-stroke rounded-md overflow-hidden bg-card w-full mt-6 mb-6">
@@ -44,6 +45,11 @@
                     <p>
                         <span class="font-extrabold">{{ __('animalCard.animalName') }}</span>
                         {{ $name }}
+                    </p>
+
+                    <p>
+                        <span class="font-extrabold">{{ __('animalCard.animalName') }}</span>
+                        {{ ucfirst(__('animalTypes.' . $animalType->type)) }}
                     </p>
 
                     <p>
