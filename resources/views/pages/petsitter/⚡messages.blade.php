@@ -44,7 +44,7 @@ class extends Component {
 
 <div>
     <div class="pb-20">
-
+        <x-header.UserNav/>
         <section class="mt-10 max-w-7xl mx-auto">
 
             <div class="mb-12">

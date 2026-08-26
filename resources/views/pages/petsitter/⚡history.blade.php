@@ -73,7 +73,7 @@ class extends Component {
     <section>
         <h1 class="text-text text-3xl font-extrabold uppercase text-center mt-20 mb-10"> {{ __('history.title') }}</h1>
     </section>
-    <x-header.PetsitterNav/>
+    <x-header.UserNav/>
     <section class="mt-20">
         <div>
             <div>
