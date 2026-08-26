@@ -1,3 +1,4 @@
+@php use Carbon\Carbon; @endphp
 <section class="md:ml-25 mb-6">
 
     <h2 class="text-xl mt-6 font-bold text-text dark:text-white md:text-2xl md:mt-20">
@@ -9,10 +10,11 @@
 <div class="ml-25">
 
     <div class="w-1/2 mb-6">
-        <x-search.search search="lastWeeksearch" />
+        <x-search.search search="lastWeeksearch"/>
     </div>
 
-    <div class="overflow-hidden rounded-2xl border-2 border-stroke shadow-sm p-5 bg-card dark:bg-blue-950 dark:border-blue-800">
+    <div
+        class="overflow-hidden rounded-2xl border-2 border-stroke shadow-sm p-5 bg-card dark:bg-blue-950 dark:border-blue-800">
 
         <flux:table :paginate="$this->lastWeekRequests">
 
@@ -54,7 +56,7 @@
                         </flux:table.cell>
 
                         <flux:table.cell>
-                            {{ $request->pet?->breed?->name }}
+                            {{__('breed.' . $request->pet?->breed?->name) }}
                         </flux:table.cell>
 
                         <flux:table.cell>
@@ -62,9 +64,9 @@
                         </flux:table.cell>
 
                         <flux:table.cell>
-                            {{ \Carbon\Carbon::parse($request->start_date)->format('d/m/Y') }}
+                            {{ Carbon::parse($request->start_date)->format('d/m/Y') }}
                             -
-                            {{ \Carbon\Carbon::parse($request->end_date)->format('d/m/Y') }}
+                            {{ Carbon::parse($request->end_date)->format('d/m/Y') }}
                         </flux:table.cell>
 
                         <flux:table.cell>

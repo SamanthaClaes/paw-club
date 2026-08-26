@@ -9,9 +9,7 @@ use Carbon\Carbon
     <div class="flex flex-col sm:flex-row h-full">
         <div class="w-full h-64 sm:h-auto sm:w-1/3">
             <img
-                src="{{ $request->pet?->pet_image
-        ? $request->pet->getImageUrl(800)
-        : asset('img/default-pet.jpg') }}"
+                src="{{ $request->pet?->getImageUrl(800) ?? asset('img/default-pet.jpg') }}"
                 alt="{{ $request->pet?->name ?? 'Animal' }}"
                 class="w-full h-full object-cover"
             >

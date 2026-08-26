@@ -127,9 +127,7 @@ class extends Component {
 
             <div class="mt-6">
                 <a
-                    href="{{ auth()->user()->petsitter
-                ? route('petsitter.profile')
-                : route('owner.profile') }}"
+                    href="{{ route('profile') }}"
                     class="inline-flex items-center justify-center
                    hover:-translate-y-1 hover:shadow-lg
                    transition-all duration-300

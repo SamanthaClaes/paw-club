@@ -35,6 +35,7 @@ class extends Component {
             'pet.breed',
         ])
             ->where('status', DayCareRequestStatus::PENDING)
+            ->latest()
             ->paginate(2);
     }
 

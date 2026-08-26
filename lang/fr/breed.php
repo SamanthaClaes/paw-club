@@ -31,7 +31,7 @@ return [
     'cavalier_king_charles_spaniel' => 'Cavalier King Charles Spaniel',
     'pomeranian' => 'Spitz nain',
     'shetland_sheepdog' => 'Berger des shetlands',
-    'other' => 'Other',
+    'other' => 'Autre',
 
     'maine_coon' => 'Maine Coon',
     'bengal' => 'Bengal',
@@ -90,5 +90,6 @@ return [
     'black_hamster' => 'Hamster Noir',
     'satin_hamster' => 'Hamster Satin',
     'angora_hamster' => 'Hamster Angora',
+
 
 ];

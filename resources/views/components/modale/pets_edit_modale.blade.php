@@ -104,7 +104,7 @@
                     @if($animalType->id == $animalTypesId)
                         @foreach($animalType->breeds as $breed)
                             <option value="{{ $breed->id }}">
-                                {{ $breed->name }}
+                                {{ ucfirst(__('breed.'. $breed->name))  }}
                             </option>
                         @endforeach
                     @endif

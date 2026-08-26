@@ -67,11 +67,13 @@ return
     'havana_rabbit' => 'Havana Rabbit',
     'angora_rabbit' => 'Angora Rabbit',
     'californian_rabbit' => 'Californian Rabbit',
+
     'champagne_ferret' => 'Champagne Ferret',
     'cinnamon_ferret' => 'Cinnamon Ferret',
     'chocolate_ferret' => 'Chocolate Ferret',
     'silver_ferret' => 'Silver Ferret',
     'panda_ferret' => 'Panda Ferret',
+
     'ball_python' => 'Ball Python',
     'boa_constrictor' => 'Boa Constrictor',
     'corn_snake' => 'Corn Snake',
@@ -90,4 +92,5 @@ return
     'black_hamster' => 'Black Hamster',
     'satin_hamster' => 'Satin Hamster',
     'angora_hamster' => 'Angora Hamster',
+
 ];

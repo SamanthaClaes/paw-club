@@ -60,7 +60,7 @@
                         </flux:table.cell>
 
                         <flux:table.cell>
-                            {{ $request->pet?->breed?->name }}
+                            {{__('breed.' . $request->pet?->breed?->name) }}
                         </flux:table.cell>
 
                         <flux:table.cell>
