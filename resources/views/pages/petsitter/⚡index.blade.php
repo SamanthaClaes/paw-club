@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\PetsitterActive;
 use App\Enums\PetsitterStatus;
 use App\Models\AnimalType;
 use App\Models\User;
@@ -53,6 +54,7 @@ class extends Component {
         ])
             ->where('is_petsitter', true)
             ->where('id', '!=', auth()->id())
+            ->where('users.petsitter_active', PetsitterActive::ACTIVE)
             ->where('petsitter_status', PetsitterStatus::ACCEPTED);
     }
 
