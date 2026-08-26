@@ -74,6 +74,7 @@
 
             <x-forms.input-label
                 wire:model="name"
+                x-on:reset-pet-form.window="$el.value = ''"
                 label="{{ __('petModal.animalName') }}"
                 name="name"
                 type="text"

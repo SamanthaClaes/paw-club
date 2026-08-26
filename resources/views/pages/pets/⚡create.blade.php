@@ -94,6 +94,7 @@ class extends Component {
         ]);
 
         $this->dispatch('reset-breed-search');
+        $this->dispatch('reset-pet-form');
         $this->dispatch('pet-created');
     }
 
