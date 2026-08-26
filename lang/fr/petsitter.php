@@ -31,5 +31,7 @@ return [
     'addAnimal'=>'Créer un animal',
     'already'=>'Aller vers mon profil',
     'goProfile'=>'aller vers votre profil',
+    'noPetsitterFound'=>'Aucun petsitter trouvé',
+    'tryOtherFilters'=>'Essayez de modifier vos critères de recherche.',
 
 ];

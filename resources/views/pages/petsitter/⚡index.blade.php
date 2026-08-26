@@ -10,15 +10,17 @@ use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\Attributes\Url;
 
 new #[Title('Petsitter | Paw-club')]
 class extends Component {
     use WithPagination;
 
+    #[Url]
     public $search = '';
-
+    #[Url]
     public $location = '';
-
+    #[Url]
     public $animalType = null;
 
     public function updatedSearch(): void
@@ -50,6 +52,7 @@ class extends Component {
             'habitation',
         ])
             ->where('is_petsitter', true)
+            ->where('id', '!=', auth()->id())
             ->where('petsitter_status', PetsitterStatus::ACCEPTED);
     }
 
@@ -75,6 +78,7 @@ class extends Component {
             ->latest()
             ->paginate(4);
     }
+
     public function toggleFavorite(User $petsitter): void
     {
         if (!auth()->check()) {
@@ -223,7 +227,7 @@ class extends Component {
 
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch m-10">
-            @foreach($this->petsitters as $petsitter)
+            @forelse($this->petsitters as $petsitter)
                 <x-cards.petsitter_card
                     :name="$petsitter->first_name"
                     :last="$petsitter->last_name"
@@ -232,12 +236,21 @@ class extends Component {
                     :image="$petsitter->image"
                     :description="$petsitter->description"
                     :tags="[...$petsitter->animalTypes->map(fn ($animalType) => __('animalTypes.' . $animalType->type))->toArray(), __('habitationType.' . $petsitter->habitation?->name)]"
-                    :choose-url=" route('petsitter.booking.create', ['user' => $petsitter->id])"
-                    :contact-url=" route('petsitter.contact', ['user' => $petsitter->id])"
+                    :choose-url="route('petsitter.booking.create', ['user' => $petsitter->id])"
+                    :contact-url="route('petsitter.contact', ['user' => $petsitter->id])"
                     :petsitter="$petsitter"
                     :is-favorite="auth()->check() ? $this->isFavorite($petsitter) : false"
                 />
-            @endforeach
+            @empty
+                <div class="col-span-full flex flex-col items-center justify-center py-16 text-center">
+                    <p class="text-lg font-semibold">
+                        {{ __('petsitter.noPetsitterFound') }}
+                    </p>
+                    <p class="mt-2 text-sm text-gray-500">
+                        {{ __('petsitter.tryOtherFilters') }}
+                    </p>
+                </div>
+            @endforelse
         </div>
         <div class="mt-12 flex justify-center">
             {{ $this->petsitters->links(data: ['scrollTo' => false]) }}

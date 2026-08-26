@@ -48,5 +48,7 @@ return [
     'addAnimal'=>'Add a pet',
     'already'=>'Go to my profile',
     'goProfile'=>'go to your profile',
+    'noPetsitterFound' => 'No petsitters found',
+    'tryOtherFilters' => 'Try adjusting your search or filters.',
 
 ];
