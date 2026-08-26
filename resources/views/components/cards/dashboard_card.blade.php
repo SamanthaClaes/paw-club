@@ -12,7 +12,6 @@
             'class' => '
                 h-full
                 bg-card
-                border-2 border-stroke
                 shadow-sm
                 transition-all duration-300
                 hover:scale-105
