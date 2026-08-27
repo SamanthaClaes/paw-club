@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->string('role')->nullable();
             $table->boolean('is_petsitter')->default(false);
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('petsitter_status')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
