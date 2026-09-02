@@ -147,14 +147,17 @@ public function updatePw(): void
     $this->dispatch('password-updated');
 }
 
-public function updateData(): void
-{
-    $validated = $this->validate([
-        'email' => 'required|email',
-        'image' => 'image|nullable|mimes:jpg,jpeg,webp|max:10240',
-        'adress' => 'required|string',
-        'phone' => 'nullable',
-    ]);
+    public function updateData(): void
+    {
+        $validated = $this->validate([
+            'email' => 'required|email',
+            'image' => 'image|nullable|mimes:jpg,jpeg,webp|max:10240',
+            'adress' => 'required|string',
+            'phone' => [
+                'nullable',
+                'regex:/^(04 ?[0-9]{2} ?[0-9]{2} ?[0-9]{2} ?[0-9]{2}|\+32 ?[0-9]{3} ?[0-9]{2} ?[0-9]{2} ?[0-9]{2})$/',
+            ],
+        ]);
 
     if ($this->image) {
 
@@ -179,10 +182,7 @@ public function updateData(): void
 
     $this->dispatch('update-data');
 }
-
 };
-
-
 ?>
 
 <div class="max-w-5xl mx-auto mt-20 mb-30">

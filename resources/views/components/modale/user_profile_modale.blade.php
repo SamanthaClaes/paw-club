@@ -58,7 +58,7 @@
         @endif
 
 
-        <form wire:submit.prevent="updateData" class="space-y-4" enctype="multipart/form-data">
+        <form wire:submit="updateData" class="space-y-4" enctype="multipart/form-data">
 
             <x-forms.input-label
                 wire:model="image"

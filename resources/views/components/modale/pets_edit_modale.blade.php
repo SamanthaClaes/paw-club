@@ -89,7 +89,7 @@
 
                 @foreach($animalTypes as $animalType)
                     <option value="{{ $animalType->id }}">
-                        {{ $animalType->type }}
+                        {{ ucfirst(__('animalTypes.'. $animalType->type))  }}
                     </option>
                 @endforeach
             </x-forms.select-option>
