@@ -15,35 +15,35 @@
 
         <flux:table.columns>
 
-            <flux:table.column>
+            <flux:table.column align="center">
                 Photo
             </flux:table.column>
 
-            <flux:table.column>
+            <flux:table.column align="center">
                 Nom
             </flux:table.column>
 
-            <flux:table.column>
+            <flux:table.column align="center">
                 Prénom
             </flux:table.column>
 
-            <flux:table.column>
+            <flux:table.column align="center">
                 Email
             </flux:table.column>
 
-            <flux:table.column>
+            <flux:table.column align="center">
                 Téléphone
             </flux:table.column>
 
-            <flux:table.column>
+            <flux:table.column align="center">
                 Habitation
             </flux:table.column>
 
-            <flux:table.column>
+            <flux:table.column align="center">
                 Types d'animaux
             </flux:table.column>
 
-            <flux:table.column align="end">
+            <flux:table.column align="center">
                 Actions
             </flux:table.column>
 
@@ -55,49 +55,49 @@
 
                 <flux:table.row>
 
-                    <flux:table.cell>
+                    <flux:table.cell align="center">
                         <img
                             src="{{ $petsitter->image ? $petsitter->getImageUrl(400) : asset('img/avatar.jpg') }}"
                             alt="{{ $petsitter->first_name }} {{ $petsitter->last_name }}"
-                            class="w-10 h-10 rounded-full object-cover"
+                            class="w-10 h-10 rounded-full object-cover mx-auto"
                         >
                     </flux:table.cell>
 
-                    <flux:table.cell variant="strong">
+                    <flux:table.cell align="center" variant="strong">
                         {{ $petsitter->last_name }}
                     </flux:table.cell>
 
-                    <flux:table.cell>
+                    <flux:table.cell align="center">
                         {{ $petsitter->first_name }}
                     </flux:table.cell>
 
-                    <flux:table.cell>
+                    <flux:table.cell align="center">
                         {{ $petsitter->email }}
                     </flux:table.cell>
 
-                    <flux:table.cell>
+                    <flux:table.cell align="center">
                         {{ $petsitter->phone }}
                     </flux:table.cell>
 
-                    <flux:table.cell>
+                    <flux:table.cell align="center">
                         {{ __('habitationType.' . $petsitter->habitation?->name) }}
                     </flux:table.cell>
 
-                    <flux:table.cell class="max-w-xs">
+                    <flux:table.cell align="center" class="max-w-xs">
                         {{ $petsitter->animalTypes
                             ->map(fn ($animalType) => __('animalTypes.' . $animalType->type))
                             ->join(', ') }}
                     </flux:table.cell>
 
-                    <flux:table.cell>
+                    <flux:table.cell align="center">
 
-                        <div class="flex justify-end gap-2">
+                        <div class="flex justify-center gap-2">
 
                             <flux:button
                                 variant="primary"
                                 size="sm"
                                 wire:click="acceptPetsitterRequest({{ $petsitter->id }})"
-                                class="bg-btn-green hover:bg-hover-green text-white"
+                                class="bg-btn-green hover:bg-hover-green text-white cursor-pointer"
                             >
                                 Accepter
                             </flux:button>
@@ -106,6 +106,7 @@
                                 variant="danger"
                                 size="sm"
                                 wire:click="rejectPetsitterRequest({{ $petsitter->id }})"
+                                class="cursor-pointer"
                             >
                                 Refuser
                             </flux:button>

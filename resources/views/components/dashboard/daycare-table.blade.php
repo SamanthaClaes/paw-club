@@ -17,21 +17,22 @@
             <flux:table.columns>
 
                 <flux:table.column
+                    align="center"
                     sortable
                     wire:click="sortCurrentWeek('pet_name')"
                 >
                     Nom
                 </flux:table.column>
 
-                <flux:table.column>
+                <flux:table.column align="center">
                     Race
                 </flux:table.column>
 
-                <flux:table.column>
+                <flux:table.column align="center">
                     Genre
                 </flux:table.column>
 
-                <flux:table.column>
+                <flux:table.column align="center">
                     Date de garde
                 </flux:table.column>
 
@@ -51,19 +52,19 @@
 
                     <flux:table.row>
 
-                        <flux:table.cell variant="strong">
+                        <flux:table.cell align="center" variant="strong">
                             {{ $request->pet?->name }}
                         </flux:table.cell>
 
-                        <flux:table.cell>
+                        <flux:table.cell align="center">
                             {{ __('breed.' . $request->pet?->breed?->name) }}
                         </flux:table.cell>
 
-                        <flux:table.cell>
+                        <flux:table.cell align="center">
                             {{ $request->pet?->gender ? 'Mâle' : 'Femelle' }}
                         </flux:table.cell>
 
-                        <flux:table.cell>
+                        <flux:table.cell align="center">
                             {{ \Carbon\Carbon::parse($request->start_date)->format('d/m/Y') }}
                             -
                             {{ \Carbon\Carbon::parse($request->end_date)->format('d/m/Y') }}
@@ -81,7 +82,7 @@
 
                         </flux:table.cell>
 
-                        <flux:table.cell align="end">
+                        <flux:table.cell align="center">
 
                             <flux:button
                                 variant="danger"

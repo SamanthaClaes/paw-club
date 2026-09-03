@@ -18,28 +18,28 @@
         <flux:table.columns>
 
             @if($showReadButton)
-                <flux:table.column>
+                <flux:table.column align="center">
                     Marquer comme lu
                 </flux:table.column>
             @endif
 
-            <flux:table.column>
+            <flux:table.column align="center">
                 Nom
             </flux:table.column>
 
-            <flux:table.column>
+            <flux:table.column align="center">
                 Prénom
             </flux:table.column>
 
-            <flux:table.column>
+            <flux:table.column align="center">
                 Email
             </flux:table.column>
 
-            <flux:table.column>
+            <flux:table.column align="center">
                 Message
             </flux:table.column>
 
-            <flux:table.column align="end">
+            <flux:table.column align="center">
                 Actions
             </flux:table.column>
 
@@ -53,11 +53,11 @@
 
                     @if($showReadButton)
 
-                        <flux:table.cell>
+                        <flux:table.cell align="center">
 
                             <flux:button
-                                variant="ghost"
                                 size="sm"
+                                class="cursor-pointer"
                                 wire:click="markAsRead({{ $message->id }})"
                             >
                                 Lu
@@ -67,31 +67,32 @@
 
                     @endif
 
-                    <flux:table.cell variant="strong">
+                    <flux:table.cell align="center" variant="strong">
                         {{ $message->last_name }}
                     </flux:table.cell>
 
-                    <flux:table.cell>
+                    <flux:table.cell align="center">
                         {{ $message->first_name }}
                     </flux:table.cell>
 
-                    <flux:table.cell>
+                    <flux:table.cell align="center">
                         {{ $message->email }}
                     </flux:table.cell>
 
-                    <flux:table.cell class="max-w-md">
+                    <flux:table.cell align="center" class="max-w-md">
                         {{ $message->message }}
                     </flux:table.cell>
 
-                    <flux:table.cell>
+                    <flux:table.cell align="center">
 
-                        <div class="flex justify-end gap-2">
+                        <div class="flex justify-center gap-2">
 
                             <x-table.mail-button :email="$message->email"/>
 
                             <flux:button
                                 variant="danger"
                                 size="sm"
+                                class="cursor-pointer"
                                 wire:click="deleteMessage({{ $message->id }})"
                                 wire:confirm="Êtes-vous sûr de vouloir supprimer le message ?"
                             >

@@ -22,20 +22,21 @@
 
                 <flux:table.column
                     sortable
+                    align="center"
                     wire:click="sortLastWeek('pet_name')"
                 >
                     Nom
                 </flux:table.column>
 
-                <flux:table.column>
+                <flux:table.column  align="center">
                     Race
                 </flux:table.column>
 
-                <flux:table.column>
+                <flux:table.column  align="center">
                     Genre
                 </flux:table.column>
 
-                <flux:table.column>
+                <flux:table.column align="center">
                     Date de garde
                 </flux:table.column>
 
@@ -51,19 +52,19 @@
 
                     <flux:table.row>
 
-                        <flux:table.cell variant="strong">
+                        <flux:table.cell variant="strong"  align="center">
                             {{ $request->pet?->name }}
                         </flux:table.cell>
 
-                        <flux:table.cell>
+                        <flux:table.cell  align="center">
                             {{__('breed.' . $request->pet?->breed?->name) }}
                         </flux:table.cell>
 
-                        <flux:table.cell>
+                        <flux:table.cell  align="center">
                             {{ $request->pet?->gender ? 'Mâle' : 'Femelle' }}
                         </flux:table.cell>
 
-                        <flux:table.cell>
+                        <flux:table.cell align="center">
                             {{ Carbon::parse($request->start_date)->format('d/m/Y') }}
                             -
                             {{ Carbon::parse($request->end_date)->format('d/m/Y') }}

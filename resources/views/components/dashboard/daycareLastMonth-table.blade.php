@@ -23,27 +23,27 @@
 
     <div class="overflow-hidden rounded-2xl border-2 border-stroke shadow-sm p-5 bg-card dark:bg-blue-950 dark:border-blue-800">
 
-    <flux:table :paginate="$this->lastMonthRequests">
+        <flux:table :paginate="$this->lastMonthRequests">
 
             <flux:table.columns>
 
-                <flux:table.column>
+                <flux:table.column align="center">
                     Nom
                 </flux:table.column>
 
-                <flux:table.column>
+                <flux:table.column align="center">
                     Race
                 </flux:table.column>
 
-                <flux:table.column>
+                <flux:table.column align="center">
                     Genre
                 </flux:table.column>
 
-                <flux:table.column>
+                <flux:table.column align="center">
                     Date de garde
                 </flux:table.column>
 
-                <flux:table.column>
+                <flux:table.column align="center">
                     Propriétaire
                 </flux:table.column>
 
@@ -55,30 +55,29 @@
 
                     <flux:table.row>
 
-                        <flux:table.cell variant="strong">
+                        <flux:table.cell align="center" variant="strong">
                             {{ $request->pet?->name }}
                         </flux:table.cell>
 
-                        <flux:table.cell>
-                            {{__('breed.' . $request->pet?->breed?->name) }}
+                        <flux:table.cell align="center">
+                            {{ __('breed.' . $request->pet?->breed?->name) }}
                         </flux:table.cell>
 
-                        <flux:table.cell>
+                        <flux:table.cell align="center">
                             {{ $request->pet?->gender ? 'Mâle' : 'Femelle' }}
                         </flux:table.cell>
 
-                        <flux:table.cell>
+                        <flux:table.cell align="center">
                             {{ Carbon::parse($request->start_date)->format('d/m/Y') }}
                             -
                             {{ Carbon::parse($request->end_date)->format('d/m/Y') }}
                         </flux:table.cell>
 
-                        <flux:table.cell>
+                        <flux:table.cell align="center">
 
                             <flux:button
-                                variant="ghost"
                                 size="sm"
-                                class="justify-start"
+                                class="cursor-pointer"
                                 wire:click="$dispatch('open-owner-modal', { userId: {{ $request->user->id }} })"
                             >
                                 Voir la fiche
