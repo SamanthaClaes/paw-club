@@ -27,6 +27,11 @@ class extends Component {
     public string $lastWeekSortBy = '';
     public string $lastWeekSortDirection = 'asc';
 
+    public function updatedSearch(): void
+    {
+        $this->resetPage();
+    }
+
     #[Computed]
     public function currentWeekRequests(): LengthAwarePaginator
     {
