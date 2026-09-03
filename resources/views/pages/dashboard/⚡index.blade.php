@@ -29,7 +29,7 @@ class extends Component {
 
     public function updatedSearch(): void
     {
-        $this->resetPage();
+        $this->resetPage('currentWeekPage');
     }
 
     #[Computed]
