@@ -71,6 +71,9 @@ class extends Component {
 
 <div>
     <div class="max-w-5xl mx-auto px-6">
+        <section>
+            <h1 class="text-text text-3xl font-extrabold uppercase text-center mt-20 mb-10"> {{ __('petsitter.planningTitle') }}</h1>
+        </section>
         <x-header.UserNav/>
     </div>
 

@@ -35,11 +35,11 @@
                     Date de garde
                 </flux:table.column>
 
-                <flux:table.column>
+                <flux:table.column align="center">
                     Propriétaire
                 </flux:table.column>
 
-                <flux:table.column align="end">
+                <flux:table.column align="center">
                     Actions
                 </flux:table.column>
 
@@ -69,11 +69,11 @@
                             {{ \Carbon\Carbon::parse($request->end_date)->format('d/m/Y') }}
                         </flux:table.cell>
 
-                        <flux:table.cell>
+                        <flux:table.cell align="center">
 
                             <flux:button
-                                variant="ghost"
                                 size="sm"
+                                class="cursor-pointer"
                                 wire:click="$dispatch('open-owner-modal', { userId: {{ $request->user->id }} })"
                             >
                                 Voir la fiche
@@ -86,6 +86,7 @@
                             <flux:button
                                 variant="danger"
                                 size="sm"
+                                class="cursor-pointer"
                                 wire:click="deleteRequest({{ $request->id }})"
                                 wire:confirm="Supprimer ?"
                             >

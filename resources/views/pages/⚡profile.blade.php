@@ -186,6 +186,9 @@ public function updatePw(): void
 ?>
 
 <div class="max-w-5xl mx-auto mt-20 mb-30">
+    <section>
+        <h1 class="text-text text-3xl font-extrabold uppercase text-center mt-20 mb-10"> {{ __('petsitter.profile') }}</h1>
+    </section>
     <x-header.UserNav/>
     @if($user->is_petsitter)
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-16 mb-20">

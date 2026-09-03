@@ -44,6 +44,9 @@ class extends Component {
 
 <div>
     <div class="pb-20">
+        <section>
+            <h1 class="text-text text-3xl font-extrabold uppercase text-center mt-20 mb-10"> {{ __('petsitter.messageTitle') }}</h1>
+        </section>
         <x-header.UserNav/>
         <section class="mt-10 max-w-7xl mx-auto">
 

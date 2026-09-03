@@ -25,14 +25,12 @@ class extends Component {
 
 
 <div class="max-w-7xl mx-auto px-6">
-
+    <section>
+        <h1 class="text-text text-3xl font-extrabold uppercase text-center mt-20 mb-10"> {{ __('petsitter.favorites') }}</h1>
+    </section>
     <x-header.UserNav/>
 
     <section class="mt-20">
-
-        <h1 class="text-text text-3xl font-bold uppercase mb-10">
-            Mes favoris
-        </h1>
 
         <div class="grid grid-cols-1 gap-8 mb-20">
 

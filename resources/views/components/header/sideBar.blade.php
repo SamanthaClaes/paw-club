@@ -10,7 +10,7 @@
     aria-label="Sidebar">
     <h1 class="sr-only">{{ __('ui.dashboard_navigation') }}</h1>
     <div class="h-full px-3 py-4">
-        <ul class="flex flex-col items-center gap-12">
+        <ul class="flex flex-col items-center gap-8">
             <li class="flex justify-center">
                 <a href="/">
                     <x-svg.logo/>
@@ -51,6 +51,7 @@
                     <span class="ms-3"> {{ __('sideBar.requests') }}</span>
                 </a>
             </li>
+            <flux:separator />
             <li class="w-full">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -61,6 +62,7 @@
                     </button>
                 </form>
             </li>
+
             <li>
                 <flux:radio.group
                     x-data

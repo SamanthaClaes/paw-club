@@ -268,7 +268,9 @@ class extends Component {
 ?>
 
 <div class="max-w-7xl mx-auto px-6 pb-20">
-
+    <section>
+        <h1 class="text-text text-3xl font-extrabold uppercase text-center mt-20 mb-10"> {{ __('petsitter.requestTitle') }}</h1>
+    </section>
     <x-header.UserNav/>
 
     <section class="mt-10">

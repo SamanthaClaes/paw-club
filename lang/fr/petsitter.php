@@ -33,5 +33,10 @@ return [
     'goProfile'=>'aller vers votre profil',
     'noPetsitterFound'=>'Aucun petsitter trouvé',
     'tryOtherFilters'=>'Essayez de modifier vos critères de recherche.',
+    'planningTitle'=>'Mon planning',
+    'requestTitle'=>'Mes demandes',
+    'messageTitle'=>'Mes messages',
+    'favorites'=>'Mes favoris',
+    'profile'=>'Mon profil',
 
 ];

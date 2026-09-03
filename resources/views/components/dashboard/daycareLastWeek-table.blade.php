@@ -39,7 +39,7 @@
                     Date de garde
                 </flux:table.column>
 
-                <flux:table.column>
+                <flux:table.column align="center">
                     Propriétaire
                 </flux:table.column>
 
@@ -69,11 +69,11 @@
                             {{ Carbon::parse($request->end_date)->format('d/m/Y') }}
                         </flux:table.cell>
 
-                        <flux:table.cell>
+                        <flux:table.cell align="center">
 
                             <flux:button
-                                variant="ghost"
                                 size="sm"
+                                class="cursor-pointer"
                                 wire:click="$dispatch('open-owner-modal', { userId: {{ $request->user->id }} })"
                             >
                                 Voir la fiche

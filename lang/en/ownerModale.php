@@ -12,6 +12,6 @@ return [
 
     'phone' => 'Phone number',
 
-    'close' => 'Close modal',
+    'close' => 'Close',
 
 ];

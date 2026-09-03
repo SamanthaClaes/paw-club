@@ -50,5 +50,10 @@ return [
     'goProfile'=>'go to your profile',
     'noPetsitterFound' => 'No petsitters found',
     'tryOtherFilters' => 'Try adjusting your search or filters.',
+    'planningTitle'=>'Planning',
+    'requestTitle'=>'Requests',
+    'messageTitle'=>'Messages',
+    'favorites'=>'Favorites',
+    'profile'=>'Profile',
 
 ];

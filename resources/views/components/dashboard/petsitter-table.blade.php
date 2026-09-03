@@ -61,7 +61,7 @@
                         <button
                             type="button"
                             wire:click="showPetsitterStats({{ $petsitter->id }})"
-                            class="font-bold underline hover:text-hover cursor-pointer transition"
+                            class="font-bold underline cursor-pointer transition"
                         >
                             {{ $petsitter->last_name }}
                         </button>
@@ -72,11 +72,15 @@
                     </flux:table.cell>
 
                     <flux:table.cell>
-                        {{ $petsitter->email }}
+                        <a href="mailto:{{ $petsitter->email }}" class="underline font-bold hover:text-gray-600">
+                            {{ $petsitter->email }}
+                        </a>
                     </flux:table.cell>
 
                     <flux:table.cell>
-                        {{ $petsitter->phone }}
+                        <a href="tel:{{ $petsitter->phone }}" class="underline font-bold hover:text-gray-600">
+                            {{ $petsitter->phone }}
+                        </a>
                     </flux:table.cell>
 
                     <flux:table.cell>

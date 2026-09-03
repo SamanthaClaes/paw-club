@@ -12,6 +12,6 @@ return [
 
     'phone' => 'Téléphone',
 
-    'close' => 'Fermer la modale',
+    'close' => 'Fermer',
 
 ];
